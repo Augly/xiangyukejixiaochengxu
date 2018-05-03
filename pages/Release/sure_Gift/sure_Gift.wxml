@@ -1,0 +1,18 @@
+<!--pages/Release/sure_Gift/sure_Gift.wxml-->
+
+<view class='giftList'>
+  <image class='list_logo'></image>
+  <view class='list_res'>
+    <view class='res_title'>棒棒糖</view>
+    <view class='buy_group'>
+      <view class='jian'>
+        <text class='iconfont icon-jianhao1'></text>
+      </view>
+      <view class='show'>1</view>
+      <view class='jia'>
+              <text class='iconfont icon-icon_add'></text>
+      </view>
+    </view>
+  </view>
+  <view class='cendel'>删除</view>
+</view>

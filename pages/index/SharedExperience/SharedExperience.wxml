@@ -1,0 +1,6 @@
+<!--pages/index/SharedExperience/SharedExperience.wxml-->
+<view class='content'>
+    <view class='head_title'>
+        为最爱的人准备礼物
+    </view>
+</view>

@@ -1,0 +1,57 @@
+<!--pages/Release/Release.wxml-->
+<view class='ipt_title'>
+  <view class='title'>
+    请输入标题
+  </view>
+  <input class='title_ipt'>
+
+  </input>
+</view>
+<view class='select_group'>
+  <view class='title'>
+    选择发布类型
+  </view>
+  <view class='select'>
+    <view class='select_item'>共享经验</view>
+    <view class='select_item select_item_active'>需求</view>
+    <view class='select_item'>兴趣</view>
+  </view>
+</view>
+
+<view class='kind_group'>
+  <view class='kind_group_title'>
+  选择发布种类：
+  </view>
+  <view class='kind_select'>
+      <view class='kind_select_title'>
+        需求
+      </view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class='kind_select_active'>
+            <view class='selected'>
+              {{array[index]}}
+            </view>
+            <text class='iconfont icon-xiangxia'></text>
+      </view>
+      </picker>
+  </view>
+</view>
+
+<view class='submit'>
+  下一步
+</view>
+
+
+
+<!-- <view class='mask'>
+  <view class='User_validation'>
+  <text class='iconfont icon-quxiao1'></text>
+    <view class='User_title'>用户验证</view>
+    <input class='User_phone' placeholder='请输入手机号'></input>
+    <view class='User_val'>
+      <input class='code' placeholder="验证码"></input>
+      <view class='gitcode'>获取</view>
+    </view>
+    <image  class='rightsub' src='http://xiangyu.wx.bronet.cn/images/btn@2x.png'></image>
+  </view>
+</view> -->

@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/Release/join_res/join_res",
+    "pages/Release/experience_res/experience_res",
+    
+    "pages/Release/Publish/Publish",
+    "pages/Release/sure_Gift/sure_Gift",
+    
+    "pages/Release/push_experience/push_experience",
+    "pages/Release/Release",
+    "pages/personl/personl",
+    "pages/index/index",
+    "pages/index/SharedExperience/SharedExperience",
+    "pages/near/near"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "享遇",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedColor": "#9861E1",
+        "iconPath": "img/nav02@2x.png",
+        "selectedIconPath": "img/nav01@2x.png"
+      },
+      {
+        "pagePath": "pages/near/near",
+        "text": "附近",
+        "selectedColor": "#9861E1",
+        "iconPath": "img/nav04@2x.png",
+        "selectedIconPath": "img/nav03@2x.png"
+      },
+      {
+        "pagePath": "pages/Release/Release",
+        "text": "发布",
+        "selectedColor": "#9861E1",
+        "iconPath": "img/nav06@2x.png",
+        "selectedIconPath": "img/nav05@2x.png"
+      },
+      {
+        "pagePath": "pages/personl/personl",
+        "text": "我的",
+        "selectedColor": "#9861E1",
+        "iconPath": "img/nav08@2x.png",
+        "selectedIconPath": "img/nav07@2x.png"
+      }
+    ]
+  }
+}

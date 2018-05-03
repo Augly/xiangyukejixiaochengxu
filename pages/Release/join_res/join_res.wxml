@@ -1,0 +1,50 @@
+<!--pages/Release/join_res/join_res.wxml-->
+<import src="../../../template/template.wxml" />
+<view class='wrap'>
+  <view class='anthur_Group'>
+    <image class='anthur_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
+    <view class='anthur_nameGroup'>
+      <view class='name'>艾诗然
+        <text class='iconfont icon-nv'></text>
+      </view>
+      <view class='data'>24分钟前</view>
+      <view class="send_Adder">
+        天津 · 建国楼 距离0.8km
+      </view>
+    </view>
+    <view class='operation'>
+      <view class="gz {{isgz?'gzed':''}}" bindtap='gz'>
+        <text class='iconfont icon-guanzhu'></text> {{gztype}}
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+
+  </view>
+</view>
+<view class='allpl'>
+  全部评论
+</view>
+<template is="PL_LIST"></template>
+<view class='send_group' wx:if="{{getfous}}">
+  <view class='send_ipt'  bindtap='myipt'>
+    {{send_iptValue}}
+  </view>
+
+  <view class='send_sc'>
+    <text class='iconfont icon-xihuan'></text>
+  </view>
+  <view class='send_share'>
+    <text class='iconfont icon-fenxiang'></text>
+  </view>
+</view>
+<view class='send_groupone' wx:else>
+  <view class='iptGroup'>
+    <input class='ipt_Group' auto-focus bindblur='hidemyipt'>
+
+    </input>
+    <view class='Send'>
+      <text class='iconfont icon-fabu'></text> 发送
+    </view>
+  </view>
+</view>

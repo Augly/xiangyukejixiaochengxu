@@ -1,0 +1,145 @@
+/* pages/personl/personl.wxss */
+
+page {
+  background-color: #F5F6FA;
+}
+
+.personalhead {
+  width: 100%;
+  height: 320rpx;
+  background-color: #9861e1;
+  overflow: hidden;
+}
+
+.personal_set {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 32rpx;
+  box-sizing: border-box;
+  padding: 0rpx 32rpx;
+}
+
+.icon-genggai {
+  font-size: 30rpx;
+  margin-right: 10rpx;
+}
+
+.personalzl {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.personal_logo {
+  width: 350rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal_img {
+  width: 142.4rpx;
+  height: 142.4rpx;
+  border: 2rpx solid #c1a0ed;
+  border-radius: 50%;
+}
+
+.personal_title {
+  margin-top: 10rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+}
+
+.personalfan,
+.personal_gz {
+  width: 120rpx;
+  height: 88rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.num {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.title {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+}
+
+.select_group {
+  width: 100%;
+  height: 160rpx;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select_item {
+  width: 574rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  width: 2rpx;
+  height: 88rpx;
+  background-color: #9861E1;
+}
+
+.mynum {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.mytitle {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.myitem_group {
+  margin-top: 16rpx;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 32rpx;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.myitem_list {
+  width: 100%;
+  height: 96rpx;
+  border-bottom: 1rpx solid #EBEBEB;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding-right: 36rpx;
+}
+
+.myitem_list_title {
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 17rpx;
+}

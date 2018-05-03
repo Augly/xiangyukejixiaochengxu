@@ -1,0 +1,12 @@
+/* pages/index/SharedExperience/SharedExperience.wxss */
+.content{
+  width: 100%;height: auto;
+ box-sizing: border-box;
+ padding:  16rpx;
+}
+.head_title{
+  font-size:30rpx;
+  font-weight: bold;
+font-family:PingFang-SC-Bold;
+color:rgba(0,0,0,1);
+}

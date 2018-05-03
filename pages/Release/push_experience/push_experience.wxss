@@ -1,0 +1,9 @@
+/* pages/Release/push_experience/push_experience.wxss */
+@import "../../../template/template.wxss";
+page{
+  background-color: RGBA(245, 246, 250, 1);
+}
+.kong{
+  width: 100%;
+  height: 150rpx;
+}

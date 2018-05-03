@@ -1,0 +1,220 @@
+/* pages/Release/Release.wxss */
+
+.ipt_title {
+  width: 100%;
+  height: 98rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  box-sizing: border-box;
+  padding: 0rpx 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  width: 200rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.title_ipt {
+  width: 500rpx;
+  height: 90rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+}
+
+.select_group {
+  width: 100%;
+  height: 142rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  box-sizing: border-box;
+  padding: 0rpx 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select {
+  width: 500rpx;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select_item {
+  box-sizing: border-box;
+  width: 160rpx;
+  height: 70rpx;
+  border: 1rpx solid RGBA(153, 153, 153, 1);
+  border-radius: 5rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  background-color: RGBA(255, 255, 255, 1);
+}
+
+.select_item_active {
+  color: RGBA(255, 255, 255, 1);
+  background-color: RGBA(74, 144, 226, 1);
+  border: 1rpx solid RGBA(74, 144, 226, 1);
+}
+
+.kind_group {
+  width: 100%;
+  height: 204rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  box-sizing: border-box;
+  padding: 0rpx 25rpx;
+}
+
+.kind_group_title {
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.kind_select {
+  width: 100%;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.kind_select_title {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  margin-right: 32rpx;
+}
+
+.kind_select_active {
+  width: 500rpx;
+  height: 70rpx;
+  border: 1rpx solid RGBA(153, 153, 153, 1);
+  border-radius: 5rpx;
+  box-sizing: border-box;
+  padding: 0rpx 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selected {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.icon-xiangxia {
+  font-size: 26rpx;
+}
+
+.submit {
+  width: 702rpx;
+  height: 88rpx;
+  border-radius: 5rpx;
+  background-color: RGBA(74, 144, 226, 1);
+  margin: 0 auto;
+  margin-top: 50rpx;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  background-color: RGBA(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-quxiao1 {
+  font-size: 56rpx;
+  align-self: flex-end;
+}
+
+.User_validation {
+  position: relative;
+  margin: 0 auto;
+  width: 620rpx;
+  height: 554rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50rpx;
+  box-sizing: border-box;
+  padding: 17rpx;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.User_title {
+  font-size: 36rpx;
+  text-align: center;
+  font-family: PingFang-SC-Medium;
+  color: rgba(102, 102, 102, 1);
+}
+
+.User_phone {
+  width: 541rpx;
+  height: 80rpx;
+  box-sizing: border-box;
+  padding: 0rpx 27rpx;
+  border: 1rpx solid RGBA(192, 192, 192, 1);
+  margin-top: 50rpx;
+  color: RGBA(102, 102, 102, 1);
+  font-size: 28rpx;
+}
+
+.User_val {
+  width: 541rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.code {
+  width: 335rpx;
+  height: 80rpx;
+  box-sizing: border-box;
+  border: 1rpx solid RGBA(192, 192, 192, 1);
+  padding: 0rpx 27rpx;
+  font-size: 28rpx;
+  color: RGBA(102, 102, 102, 1);
+}
+
+.gitcode {
+  width: 190rpx;
+  height: 80rpx;
+  background: rgba(74, 144, 226, 1);
+  border-radius: 5rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+}
+
+.rightsub {
+  width: 370rpx;
+  height: 90rpx;
+  margin-top: 58rpx;
+}

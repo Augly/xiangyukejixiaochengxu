@@ -1,0 +1,27 @@
+<!--pages/Release/Publish/Publish.wxml-->
+<textarea class='textartcle' placeholder='点此编辑文本'>
+
+</textarea>
+
+<view class='addtype'>
+  <view class='type_item'>
+    <text class='iconfont icon-zhaopian'></text>
+  </view>
+  <view class='type_item'>
+    <text class='iconfont icon-huatong'></text>
+  </view>
+  <view class='type_item'>
+    <text class='iconfont icon-shipin4'></text>
+  </view>
+</view>
+<view class='adder'>
+  <text class='iconfont icon-dizhi'></text>
+  天津市 · 建国楼
+</view>
+<view class='allow'>
+  <text class='iconfont icon-wode1'></text>
+  公开（所有成员）
+</view>
+<view class='foot'>
+  发表参与
+</view>

@@ -1,0 +1,141 @@
+<!--pages/Release/experience_res/experience_res.wxml-->
+<import src="../../../template/template.wxml" />
+<view class='wrap'>
+  <view class='head_title'>
+    为最爱的人准备礼物
+  </view>
+  <view class='anthur_Group'>
+    <image class='anthur_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
+    <view class='anthur_nameGroup'>
+      <view class='name'>艾诗然
+        <text class='iconfont icon-nv'></text>
+      </view>
+      <view class='data'>2018/02/02</view>
+      <view class="zan {{iszan?'zaned':''}}" bindtap='zan'>
+        <text class="iconfont {{iszan?'icon-xihuan1':'icon-xihuan'}}"></text>520</view>
+    </view>
+    <view class='operation'>
+      <view class="gz {{isgz?'gzed':''}}" bindtap='gz'>
+        <text class='iconfont icon-guanzhu'></text> {{gztype}}
+      </view>
+      <view class="sc {{issc?'sced':''}}" bindtap='sc'>
+        <text class="iconfont {{issc?'icon-collection-b':'icon-collection'}}"></text> {{sctype}}
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+
+  </view>
+
+
+</view>
+<view class='tabbar'>
+  <view class='tabbar_item'>
+    <view class='title titleActive'>
+      参与
+    </view>
+  </view>
+  <view class='tabbar_item'>
+    <view class='title'>
+      成员
+    </view>
+  </view>
+</view>
+
+
+<template is="USERLIST"></template>
+
+<view class='kong'></view>
+ <view class='foot'>
+  <view class='foot_item'>
+    <text class='iconfont icon-xin'></text>
+    <text class='foot_title'>点赞</text>
+  </view>
+  <view class='foot_item'>
+    <text class='iconfont icon-gifs'></text>
+    <text class='foot_title'>送礼</text>
+  </view>
+  <view class='foot_item'>
+    <text class='iconfont icon-shuangren'></text>
+    <text class='foot_title'>参与</text>
+  </view>
+  <view class='foot_item'>
+    <text class='iconfont icon-fenxiang'></text>
+    <text class='foot_title'>分享</text>
+  </view>
+</view> 
+
+
+<!-- <view class='giftGroup'>
+  <view class='giftList' style='display:none'>
+    <view class='giftTab'>
+      <view class='Tab_item Tab_itemActive'>高级礼物</view>
+      <view class='Tab_item'>中级礼物</view>
+      <view class='Tab_item' style='border:none'>初级礼物</view>
+    </view>
+    <scroll-view class='giftscrollView' scroll-y>
+      <view class='list_item'>
+        <view class='item_gift item_giftActive'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift01@2x.png'></image>
+        </view>
+        <view class='item_title'>棒棒糖X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift02@2x.png'></image>
+        </view>
+        <view class='item_title'>爱心甜点X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift03@2x.png'></image>
+        </view>
+        <view class='item_title'>棉花糖X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift04@2x.png'></image>
+        </view>
+        <view class='item_title'>冰淇淋X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift05@2x.png'></image>
+        </view>
+        <view class='item_title'>小蛋糕X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift06@2x.png'></image>
+        </view>
+        <view class='item_title'>高级跑车X1</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift07@2x.png'></image>
+        </view>
+        <view class='item_title'>火箭X1</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift08@2x.png'></image>
+        </view>
+        <view class='item_title'>享遇币X1</view>
+      </view>
+    </scroll-view>
+    <view class='send'>
+      赠送
+    </view>
+  </view>
+
+  <view class='noGift'>
+    <view class='notice_res'>
+      <text class='notice_res_title'>没有礼物</text>
+      <text class='notice_res_main'>您的背包里没有礼物，请前往礼物商城购买</text>
+    </view>
+    <view class='notice_Group'>
+      <view class='cendel'>取消</view>
+      <view class='goshop'>前往礼物商城</view>
+    </view>
+  </view>
+</view> -->

@@ -1,0 +1,502 @@
+<!--瀑布流模板  -->
+<template name="item">
+  <view class="item">
+    <view class='showImg'>
+      <image class="item_img" src="{{mian_imgurl}}" mode="widthFix"></image>
+      <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
+      <view class='item_txt'>{{title}}</view>
+    </view>
+    <view class='showText'>
+      <view class='anthur_Group'>
+        <image class='show_anthur' src="{{authur_imgurl}}"></image>
+        <view class='anthur_Info'>
+          <view class='anthurInfo_name'>
+            <view class='name'>{{authur_name}}</view>
+            <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
+            <text class='iconfont icon-nan' wx:else></text>
+          </view>
+          <view class='anthur_Data'>
+            2018/02/02
+          </view>
+        </view>
+        <text class='iconfont icon-xihuan'></text>
+      </view>
+      <view class='adder_Group'>
+        <text class='iconfont icon-dizhi'></text>
+        <view class='adder_res'>天津 · 建国楼</view>
+        <view class='distance'>距离0.8km</view>
+      </view>
+    </view>
+  </view>
+</template>
+<!--兴趣社模板  -->
+<template name="Interestitem">
+  <view class="Interestitem">
+    <view class='InterestshowImg'>
+      <image class="Interestitem_img" src="{{mian_imgurl}}"></image>
+      <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
+    </view>
+    <view class='InterestshowText'>
+      <view class='Interestitem_title'>20天掌握美式连读</view>
+      <view class='anthur_Data'>
+        2018/02/02
+      </view>
+      <view class='Interestanthur_Group'>
+        <image class='Interestshow_anthur' src="{{authur_imgurl}}"></image>
+        <view class='Interestanthur_Info'>
+          <view class='anthurInfo_name'>
+            <view class='name'>{{authur_name}}</view>
+            <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
+            <text class='iconfont icon-nan' wx:else></text>
+          </view>
+        </view>
+      </view>
+      <view class='adder_Group' style='margin-top:0rpx;'>
+        <text class='iconfont icon-dizhi'></text>
+        <view class='adder_res'>天津 · 建国楼</view>
+        <view class='distance' style='color:RGBA(57, 143, 202, 1)'>距离0.8km</view>
+      </view>
+    </view>
+  </view>
+</template>
+<!--附近模板  -->
+<template name="myitem">
+  <view class="item">
+    <view class='showImg'>
+      <image class="item_img" src="{{mian_imgurl}}" mode="widthFix"></image>
+      <image class='myitem_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
+      <view class='myitem_txt'>{{title}}</view>
+      <view class='myshowText'>
+        <view class='anthur_Group'>
+          <image class='show_anthur' src="{{authur_imgurl}}"></image>
+          <view class='anthur_Info'>
+            <view class='anthurInfo_name'>
+              <view class='name'>{{authur_name}}</view>
+              <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
+              <text class='iconfont icon-nan' wx:else></text>
+            </view>
+            <view class='anthur_Data'>
+              2018/02/02
+            </view>
+          </view>
+          <text class='iconfont icon-xihuan'></text>
+        </view>
+        <view class='myadder_Group'>
+          <text class='iconfont icon-dizhi'></text>
+          <view class='adder_res'>天津 · 建国楼</view>
+          <view class='distance'>距离0.8km</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<!--需求模板  -->
+<template name="deminditem">
+  <view class="demminditem">
+    <view class='demind_left'>
+      <image class='demind_img'></image>
+      <image class='new_Release'></image>
+      <image class='run'></image>
+      <view class='demind_txt'></view>
+    </view>
+    <view class='demind_right'>
+      <view class='demindtanthur_Group'>
+        <image class='demindshow_anthur' src="{{authur_imgurl}}"></image>
+        <view class='deminanthurInfo_name'>
+          <view class='demindname'>{{authur_name}}</view>
+          <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
+          <text class='iconfont icon-nan' wx:else></text>
+          <view class='mintime'>5分钟前</view>
+        </view>
+      </view>
+      <view class='demindres'>
+        顺丰速运亲，您有快件放置于小南门2点前货号*，请持有效证件取件，派件员18645923659。
+      </view>
+      <view class='myadder_Group'>
+        <text class='iconfont icon-dizhi'></text>
+        <view class='adder_res'>天津 · 建国楼</view>
+        <view class='distance'>距离0.8km</view>
+      </view>
+    </view>
+  </view>
+</template>
+<!-- 上传封面组件 -->
+<template name="upload_img">
+  <view class='view_Img'>
+    <view class='view_title'>
+      编辑封面(建议尺寸370X440)
+    </view>
+    <view class='view_content'>
+      <image class='view_list'></image>
+    </view>
+  </view>
+</template>
+<!--添加文字，语音，图片，视频模块  -->
+<template name="selet_group">
+  <view class='selet_group'>
+    <view class='select_item_left'>
+      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);'>
+        <text class='iconfont icon-xie'></text> 添加文字
+      </view>
+      <view class='select_item'>
+        <text class='iconfont icon-luyinyuyin'></text> 添加录音
+      </view>
+    </view>
+    <view class='select_item_right'>
+      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);'>
+        <text class='iconfont icon-icon-1'></text> 添加图片
+      </view>
+      <view class='select_item'>
+        <text class='iconfont icon-shipin'></text> 添加视频
+      </view>
+    </view>
+  </view>
+
+</template>
+<!--送礼设置模板  -->
+<template name="switch">
+  <view class="body-view">
+    <view class='switch_title'>
+      送礼设置
+    </view>
+    <switch checked bindchange="switch1Change" />
+  </view>
+</template>
+<!--内容编辑模块  -->
+<template name="textall">
+  <view class="text_view">
+    <view class='text_view_title'>
+      <view class='text_title'>内容编辑</view>
+      <view class='cendel'>删除</view>
+    </view>
+    <textarea placeholder-class="mytext" class='mytext' placeholder='请输入文字内容'>
+
+    </textarea>
+  </view>
+</template>
+
+<!--所在位置模块 -->
+<template name="myadder">
+  <view class="myadder">
+    <text class='iconfont icon-dizhi'></text>
+    <view class='adderres'>所在位置</view>
+  </view>
+</template>
+
+<!--发布者介绍-->
+<template name="anthurPro">
+  <view class='anthurPro'>
+    <view class='anthurPro_title'>
+      发布者介绍
+    </view>
+    <textarea class='anthurPro_test'>
+
+    </textarea>
+  </view>
+</template>
+
+<!--选择种类 -->
+<template name="allkind">
+  <view class='allkind'>
+    <view class='kind_title'>
+      选择种类
+    </view>
+    <view class='kind_select'>
+      <view class='kind_select_title'>种类一</view>
+      <text class='iconfont icon-xiangxia'></text>
+    </view>
+  </view>
+</template>
+
+<!--物品价格  -->
+<template name="allprice">
+  <view class='allprice'>
+    <text class='allprice_title'>物品价格：￥</text>
+    <input class='allprice_ipt'></input>
+  </view>
+</template>
+
+<!--购买享遇币  -->
+<template name="buy_Group">
+  <view class='buy_Group'>
+    <view class='buy_Group_title'>享遇币
+      <text>(礼物不足需要购买)</text>
+    </view>
+    <view class='buy_Group_cart'>
+      <view class='jian'>
+        <text class='iconfont icon-jianhao1'></text>
+      </view>
+      <view class='numview'>10</view>
+      <view class='jia'>
+        <text class='iconfont icon-guanzhu'></text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--音频组件模板-->
+<template name="audio_group">
+  <view class='audio_group'>
+    <view class='audio_tro'>
+      <view class='audio_title'>
+        <view class='audio_title_left'>录制音频</view>
+        <text class='iconfont icon-icon-test3'></text>
+      </view>
+      <view class='audio_more'>
+        <view class='timedj'>
+          00:00:00
+        </view>
+        <view class='timeover'>还可以录制
+          <text> 30 </text>秒</view>
+        <view class='contro'>
+          <view class='contro_cendel'>
+            <view class='contro_cendel_view'>
+              <text class='iconfont icon-icon-test3'></text>
+            </view>
+            <view class='contro_cendel_title'>取消</view>
+          </view>
+          <view class='contro_play'>
+            <text class='iconfont icon-bofang11'></text>
+          </view>
+          <view class='contro_next'>
+            <view class='contro_cendel_view'>
+              <text class='iconfont icon-icon-test2'></text>
+            </view>
+            <view class='contro_cendel_title'>下一步</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--上传音频模板-->
+<template name="up_audio_group">
+  <view class='audio_group'>
+    <view class='audio_tro'>
+      <view class='audio_title'>
+        <view class='audio_title_left'>上传录音</view>
+        <text class='iconfont icon-icon-test3'></text>
+      </view>
+      <view class='audio_more'>
+        <view class='tryLisen'>点击试听</view>
+        <view class='alltime'>时长：4分58秒</view>
+        <view class='botton_Group'>
+          <view class='botton_return'>
+            <view class='botton_view'>
+              <text class='iconfont icon-icon-test1'></text>
+            </view>
+            <view class='botton_title'>重新录制</view>
+          </view>
+          <view class='botton_sure'>
+            <view class='botton_view'>
+              <text class='iconfont icon-icon--'></text>
+            </view>
+            <view class='botton_title'>确认上传</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+
+<!--输入跑腿内容-->
+<template name="run">
+  <view class='iptrun'>
+    <input class='runipt' placeholder='请输入跑腿内容'>
+
+    </input>
+  </view>
+</template>
+
+<!--发布  -->
+<template name="push">
+  <view class='push'>
+    发布
+  </view>
+</template>
+
+<!--送达地址-->
+<template name="alladder">
+  <view class='alladder'>
+    <view class='myadder_title'>
+      送达地址
+    </view>
+    <input class='myadder_ipt' placeholder='请输入送达地址'>
+
+    </input>
+  </view>
+</template>
+
+<!--其它需求-->
+<template name="otherneed">
+  <view class='alladder'>
+    <view class='myadder_title'>
+      其它需求：
+    </view>
+    <input class='myadder_ipt' placeholder='请输入相关需求'>
+
+    </input>
+  </view>
+</template>
+
+<!--联系电话模板-->
+<template name="tellGroup">
+  <view class='tellGroup'>
+    <view class='tellNumber'>
+      <view class='tellnumber_title'>电话号码</view>
+      <input class='telllnum_ipt' placeholder='请输入电话号码'></input>
+    </view>
+    <view class='tellName'>
+      <view class='tellname_title'>姓名</view>
+      <input class='tellname_ipt' placeholder='请输入姓名'></input>
+    </view>
+  </view>
+</template>
+
+<!--打赏路费-->
+<template name="Tip">
+  <view class='Tip_Group'>
+    <view class='Tip_select'>
+      <view class='Tip_title'>
+        选择打赏路费：
+      </view>
+      <view class='Tip_Select'>
+        <view class='Tip_Select_item Tip_Select_item_active'>
+          10元
+        </view>
+        <view class='Tip_Select_item'>
+          20元
+        </view>
+        <view class='Tip_Select_item'>
+          30元
+        </view>
+      </view>
+    </view>
+    <view class='Tip_input'>
+      <view class='Tip_title'>
+        自定义打赏路费：
+      </view>
+      <view class='Tip_ipt'>
+        <view class='Tip_mintitle'>￥</view>
+        <input class='Tip_myipt'></input>
+      </view>
+    </view>
+  </view>
+</template>
+
+
+<!--用户详情模板  -->
+<template name="USERLIST">
+<view class='userList'>
+  <image class='userLogo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
+
+  </image>
+
+  <view class='userRes'>
+    <view class='name'>
+      仇益阳
+      <text class='iconfont icon-nan'></text>
+    </view>
+    <view class='time'>24分钟前</view>
+    <view class='main'>泰勒·本·沙哈尔（Tal Ben-Shahar）写过一本书，叫《幸福的方法》。其中最震撼我的一句话是：幸福是一种能力，而非一种状态。 大部分人把幸福看成一个状态问题。把房子、车子、事业、财富值看作刺激自己幸福的理想对象。比如——“拥有一所大房子”等于“我很幸福”。
+    </view>
+    <view class='lookmore'>全文</view>
+    <view class='imgGroup'>
+       <image class='personlImg'></image> 
+      <!-- <image class='double'></image> -->
+      <!-- <image class='doubleAndpersonl'></image>
+      <image class='doubleAndpersonl'></image>
+      <image class='doubleAndpersonl'></image> -->
+      <!-- <image class='four'>
+
+      </image>
+      <image class='four'>
+        
+      </image>
+      <image class='four'>
+        
+      </image>
+      <image class='four'>
+        
+      </image> -->
+    </view>
+    <view class='userAdder'>
+      <text class='iconfont icon-dizhi'></text>
+      天津 · 建国楼 0.8km
+    </view>
+    <view class='user_pl'>
+      <view class='Trigonometric'></view>
+      <view class='pl_res'>
+        <view class='_zanList'>
+        <text class='iconfont icon-xihuan'></text>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+            <view class='_zanListitem'>
+                苏菀菁
+            </view>
+        </view>
+        <view class='_pl_list'>
+            <text class='_pl_list_title'>向昱筱:</text> 幸福是一种能够能力，而非一种状态。
+        </view>
+      </view>
+    </view>
+
+    <view class='operation_Group'>
+        <view class='operation_res'>
+          <text class='iconfont icon-icon-'></text>
+          详情
+        </view>
+        <view class='operation_pl'>
+          <text class='iconfont icon-pinglun2'></text>
+          评论
+        </view>
+        <view class='operation_zan'>
+          <text class='iconfont icon-xihuan'></text>
+          赞
+        </view>
+    </view>
+  </view>
+</view>
+</template>
+
+
+
+<!--评论列表模板-->
+<template name="PL_LIST">
+<view class='pl_list'>
+    <view class='pl_user'>
+      <image class='pl_userImg' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
+      <view class='pl_name'>苏菀菁</view>
+      <view class='pl_data'>2018-02-11</view>
+    </view>
+    <view class='pl_main'>幸福是一种能力，而非一种状态。</view>
+    <view class='userAdder' style='margin-top: 15rpx;margin-left: 85rpx;'>
+      <text class='iconfont icon-dizhi'></text>
+      天津 · 建国楼 0.8km
+    </view>
+</view>
+</template>
