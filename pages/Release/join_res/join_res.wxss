@@ -174,7 +174,8 @@
   width: 100%;
   height: 100%;
   border-bottom: 1rpx solid rgba(51, 51, 51, 1);
-    display: flex;align-items: center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -184,18 +185,131 @@
   font-size: 28rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(51, 51, 51, 1);
-
 }
-.Send{
+
+.Send {
   display: flex;
   align-items: center;
   line-height: 60rpx;
-  font-size:28rpx;
-font-family:PingFang-SC-Medium;
-color:rgba(66,87,122,1);
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(66, 87, 122, 1);
 }
-.icon-fabu{
- font-size: 30rpx;
- margin-right: 10rpx; 
- color: rgba(51, 51, 51, 1);
+
+.icon-fabu {
+  font-size: 30rpx;
+  margin-right: 10rpx;
+  color: rgba(51, 51, 51, 1);
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('http://xiangyu.wx.bronet.cn/images/bbg@2x.png');
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_userGroup {
+  width: 100%;
+  height: 480rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 80rpx;
+  box-sizing: border-box;
+  padding: 0rpx 35rpx;
+}
+
+.mask_main {
+  width: 600rpx;
+  height: 723rpx;
+  border-radius: 50rpx;
+  background-color: red;
+  background-image: url('http://xiangyu.wx.bronet.cn/images/bbg01@2x.png');
+  background-size: 100% 100%;
+}
+
+.perSonl {
+  position: relative;
+  width: 300rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.per_sonl {
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+}
+
+.sex {
+  width: 64rpx;
+  height: 64rpx;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 250rpx;
+  left: 60%;
+}
+
+.per_title {
+  font-size: 40rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.startZuo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.changeCard, .sendGift {
+  width: 210rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  font-size:30rpx;
+  text-align: center;
+  line-height: 80rpx;
+font-family:MicrosoftYaHei;
+color:rgba(202,0,252,1);
+  background: linear-gradient(to right, RGBA(254, 217, 51, 1), RGBA(252, 243, 52, 1));
+}
+
+.icon-baiyangzuo {
+  font-size: 120rpx;
+  color: rgba(255, 255, 255, 1);
+}
+
+.startTitle {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+}
+.main_botton{
+  box-sizing: border-box;
+  padding: 0rpx 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 42rpx;
 }
