@@ -228,9 +228,10 @@
   width: 600rpx;
   height: 723rpx;
   border-radius: 50rpx;
-  background-color: red;
+  /* background-color: red; */
   background-image: url('http://xiangyu.wx.bronet.cn/images/bbg01@2x.png');
   background-size: 100% 100%;
+  position: relative;
 }
 
 .perSonl {
@@ -270,11 +271,12 @@
   margin-top: 30rpx;
 }
 
-.startZuo {
+.startZuo,.birthday{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 200rpx;
 }
 
 .main_button {
@@ -299,6 +301,10 @@ color:rgba(202,0,252,1);
   font-size: 120rpx;
   color: rgba(255, 255, 255, 1);
 }
+.icon-shengri{
+  font-size: 120rpx;
+  color: rgba(255, 255, 255, 1);
+}
 
 .startTitle {
   font-size: 28rpx;
@@ -312,4 +318,15 @@ color:rgba(202,0,252,1);
   align-items: center;
   justify-content: space-between;
   margin-top: 42rpx;
+}
+
+.cendel{
+  width: 63.3rpx;
+  height: 63.3rpx;
+  /* background-color: red; */
+  position: absolute;right: -20rpx;
+  top: -20rpx;
+  border-radius:50%;
+  background-image: url('http://xiangyu.wx.bronet.cn/images/close@2x.png');
+  background-size: 100% 100%;
 }

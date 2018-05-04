@@ -1,8 +1,11 @@
 {
   "pages": [
-    "pages/Release/join_res/join_res",
+    "pages/Release/joined/joined",
     "pages/Release/experience_res/experience_res",
+    "pages/Release/Interest/Interest",
+   
     
+    "pages/Release/join_res/join_res",
     "pages/Release/Publish/Publish",
     "pages/Release/sure_Gift/sure_Gift",
     

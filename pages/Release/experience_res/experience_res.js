@@ -6,7 +6,8 @@ Page({
    */
   data: {
     gztype:'关注',
-    sctype: '收藏'    
+    sctype: '收藏',
+    clickIndex:true
   },
 
   /**
@@ -89,6 +90,14 @@ Page({
   zan(){
     this.setData({
       iszan:true,
+    })
+  },
+  /**
+   * 切换
+   */
+  clicktab(){
+    this.setData({
+      clickIndex: !this.data.clickIndex
     })
   }
 })

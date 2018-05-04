@@ -1,0 +1,57 @@
+<!--pages/Release/Interest/Interest.wxml-->
+
+<view class='head' style="background-image: url('http://xiangyu.wx.bronet.cn/images/apic02@2x.png')">
+
+  <view class='head_mask'>
+    20天掌握美式连读
+  </view>
+</view>
+
+<view class='join_Number'>
+    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+    <view class='join_title'>
+    50余人已参加
+    </view>
+</view>
+
+<view class='join_anthur'>
+  <view class='join_anthur_head'>
+      <image class='anthur_head' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+      <view class='anthur_name'>
+      杨子叶
+        <text class='iconfont icon-nv'></text>
+      </view>
+      <view class="care">
+        关注
+      </view>
+  </view>
+  <view class='join_anthur_main'>
+      如果你无法简介的表达你的想法，那只说明
+你还不够了解他。
+  </view>
+</view>
+
+
+<view class='interst_res'>
+  <view class='interst_title'>
+    <view class='title'>
+      活动详情
+    </view>
+    <view class="care">
+        关注
+      </view>
+  </view>
+
+  <view class='interst_main'>
+      众所周知，每一种颜色带给用户的视觉感受也是不同的。现在人们对手机的依赖程度，就能看到手机中APP的发展前景，那今天就跟大家聊聊如何通过颜色搭配的不同来进行移动端APP界面的布局和排版设计。
+  </view>
+</view>
+
+
+<view class='right_now'>
+    立即参与
+</view>

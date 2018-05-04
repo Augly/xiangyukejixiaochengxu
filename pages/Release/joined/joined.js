@@ -1,4 +1,4 @@
-// pages/Release/join_res/join_res.js
+// pages/Release/experience_res/experience_res.js
 Page({
 
   /**
@@ -6,66 +6,72 @@ Page({
    */
   data: {
     gztype: '关注',
-    getfous:true,
-    send_iptValue:'评论'
+    sctype: '收藏',
+    clickIndex: true,
+    myheight:'100rpx'
   },
-
+  lookmore:function(){
+    this.setData({
+      myheight: 'auto'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-   /**
+
+  /**
    * 关注
    */
   gz() {
@@ -75,19 +81,28 @@ Page({
     })
   },
   /**
-   * 输入框获得焦点
+   * 收藏
    */
-  myipt(){
+  sc() {
     this.setData({
-      getfous:false
+      issc: true,
+      sctype: '已收藏'
     })
   },
   /**
-   * 输入框失去焦点
+   *点赞 
    */
-  hidemyipt(){
+  zan() {
     this.setData({
-      getfous: true
+      iszan: true,
+    })
+  },
+  /**
+   * 切换
+   */
+  clicktab(e) {
+    this.setData({
+      clickIndex: e.currentTarget.dataset.id
     })
   }
 })

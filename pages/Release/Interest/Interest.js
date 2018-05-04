@@ -1,20 +1,18 @@
-// pages/Release/join_res/join_res.js
+// pages/Release/Interest/Interest.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    gztype: '关注',
-    getfous:true,
-    send_iptValue:'评论'
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+  
   },
 
   /**
@@ -64,30 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-   /**
-   * 关注
-   */
-  gz() {
-    this.setData({
-      isgz: true,
-      gztype: '已关注'
-    })
-  },
-  /**
-   * 输入框获得焦点
-   */
-  myipt(){
-    this.setData({
-      getfous:false
-    })
-  },
-  /**
-   * 输入框失去焦点
-   */
-  hidemyipt(){
-    this.setData({
-      getfous: true
-    })
   }
 })

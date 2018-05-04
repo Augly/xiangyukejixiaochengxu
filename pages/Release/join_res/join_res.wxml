@@ -27,7 +27,7 @@
 </view>
 <template is="PL_LIST"></template>
 <view class='send_group' wx:if="{{getfous}}">
-  <view class='send_ipt'  bindtap='myipt'>
+  <view class='send_ipt' bindtap='myipt'>
     {{send_iptValue}}
   </view>
 
@@ -49,29 +49,30 @@
   </view>
 </view>
 
-<view class='mask'>
-    <view class='mask_main'>
-        <view class='main_userGroup'>
-            <view class='startZuo'>
-              <text class='iconfont icon-baiyangzuo'></text>
-              <text class='startTitle'>白羊座</text>
-            </view>
-            <view class='perSonl'>
-              <image class='per_sonl' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
-
-              </image>
-              <view class='sex'>
-                <text class='iconfont icon-nan' style='font-size:40rpx;'></text>
-              </view>
-              <view class='per_title'>仇益阳</view>
-            </view>
-            <view class='birthday'>
-
-            </view>
+<!-- <view class='mask'>
+  <view class='mask_main'>
+    <view class='cendel'></view>
+    <view class='main_userGroup'>
+      <view class='startZuo'>
+        <text class='iconfont icon-baiyangzuo'></text>
+        <text class='startTitle'>白羊座</text>
+      </view>
+      <view class='perSonl'>
+        <image class='per_sonl' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
+        </image>
+        <view class='sex'>
+          <text class='iconfont icon-nan' style='font-size:40rpx;'></text>
         </view>
-        <view class='main_botton'>
-          <view class='changeCard'>交换名片</view>
-          <view class='sendGift'>送TA礼物</view>
-        </view>
+        <view class='per_title'>仇益阳</view>
+      </view>
+      <view class='birthday'>
+        <text class='iconfont icon-shengri'></text>
+        <text class='startTitle' style='font-size:24rpx;font-family:PingFang-SC-Medium;color:rgba(255,255,255,1);'>1996/03/10</text>
+      </view>
     </view>
-</view>
+    <view class='main_botton'>
+      <view class='changeCard'>交换名片</view>
+      <view class='sendGift'>送TA礼物</view>
+    </view>
+  </view>
+</view> -->
