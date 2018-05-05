@@ -1,0 +1,266 @@
+/* pages/index/run/run.wxss */
+
+.wrap {
+  width: 100%;
+  height: auto;
+}
+
+page {
+  background-color: RGBA(245, 246, 250, 1);
+}
+
+.head_Group {
+  /* margin-top: 36rpx; */
+  box-sizing: border-box;
+  padding: 32rpx 32rpx;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.head_log {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: red;
+}
+
+.head_res {
+  width: 200rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 16rpx;
+}
+
+.head_type {
+  width: 300rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.name {
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.icon-nv {
+  color: RGBA(255, 61, 201, 1);
+  font-size: 36rpx;
+}
+
+.distance {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.head_type_title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.head_type_mintitle {
+  width: 48rpx;
+  height: 48rpx;
+  background-color: RGBA(152, 97, 225, 1);
+  border-radius: 5rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 48rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 5rpx;
+}
+
+.head_main {
+  width: 530rpx;
+  height: auto;
+  margin-left: 119rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 30rpx;
+}
+
+.head_operation {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  margin-top: 30rpx;
+}
+
+.iconfont {
+  font-size: 30rpx;
+  color: RGBA(152, 97, 225, 1);
+  margin-right: 12rpx;
+  /* margin-left: 32rpx; */
+}
+
+.adder_Group {
+  box-sizing: border-box;
+  padding: 50rpx 33rpx;
+  background-color: rgba(255, 255, 255, 1);
+  margin-top: 16rpx;
+  display: flex;
+  align-items: flex-start;
+}
+
+.adder_title {
+  width: 150rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.adder_res {
+  width: 520rpx;
+  height: auto;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
+}
+
+.adder_name {
+  width: 100%;
+}
+
+.process {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 34rpx;
+  background-color: rgba(255, 255, 255, 1);
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
+}
+
+.color {
+  color: RGBA(152, 97, 225, 1);
+}
+
+.type_process {
+  height: 200rpx;
+}
+
+.newpush {
+  width: 150rpx;
+  height: 100%;
+  /* background-color: red; */
+}
+
+.oldpush {
+  width: 180rpx;
+  height: 100%;
+  /* background-color: red; */
+}
+
+.push_head {
+  margin-top: 30rpx;
+  width: 100%;
+  height: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  width: 60rpx;
+  height: 5rpx;
+  background-color: RGBA(176, 176, 176, 1);
+}
+
+.oldline {
+  width: 90rpx;
+  height: 5rpx;
+  background-color: RGBA(176, 176, 176, 1);
+}
+
+.push_logo {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background-color: red;
+  box-sizing: border-box;
+}
+
+.type_process {
+  display: flex;
+  align-items: center;
+}
+
+.line_active {
+  background-color: RGBA(152, 97, 225, 1);
+}
+
+.logo_active {
+  border: 5rpx solid RGBA(152, 97, 225, 1);
+}
+
+.push_title {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(176, 176, 176, 1);
+  margin-left: 60rpx;
+  margin-top: 10rpx;
+}
+
+.oldpush_title {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(176, 176, 176, 1);
+  margin-left: 90rpx;
+  margin-top: 10rpx;
+}
+
+.foot {
+  width: 100%;
+  height: 120rpx;
+  background-color: rgba(255, 255, 255, 1);
+  border-top: 3rpx solid RGBA(0, 0, 0, 0.08);
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 0rpx 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.get{
+  width: 326rpx;
+  height: 100rpx;
+  border: 2rpx solid RGBA(235, 235, 235, 1);
+  border-radius:5rpx;  
+  background-color: RGBA(74, 144, 226, 1);
+  font-size:36rpx;
+  text-align: center;
+  line-height: 100rpx;
+font-family:PingFang-SC-Medium;
+color:rgba(255,255,255,1);
+}
+
+.pl{
+  width: 326rpx;
+  height: 100rpx;
+  border: 2rpx solid RGBA(235, 235, 235, 1);
+  border-radius:5rpx;  
+}

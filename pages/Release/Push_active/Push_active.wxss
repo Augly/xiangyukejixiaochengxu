@@ -1,0 +1,22 @@
+/* pages/Release/push_experience/push_experience.wxss */
+@import "../../../template/template.wxss";
+
+page {
+  background-color: RGBA(245, 246, 250, 1);
+}
+
+.kong {
+  width: 100%;
+  height: 150rpx;
+}
+
+.iptTitle {
+  width: 100%;
+  height: 88rpx;
+  box-sizing: border-box;
+  padding: 0rpx 25rpx;
+  background-color: rgba(255, 255, 255, 1);
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+}

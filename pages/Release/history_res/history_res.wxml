@@ -1,66 +1,33 @@
 <!--pages/Release/experience_res/experience_res.wxml-->
 <import src="../../../template/template.wxml" />
-<view class='head' style="background-image: url('http://xiangyu.wx.bronet.cn/images/apic02@2x.png')">
-
-  <view class='head_mask'>
-    <view class='head_top'>
-      <view class='head_left'>
-        <text class='iconfont icon-bianji'></text>编辑详情
+<view class='wrap'>
+  <view class='head_title'>
+    历史活动的标题
+  </view>
+  <view class='anthur_Group'>
+    <image class='anthur_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
+    <view class='anthur_nameGroup'>
+      <view class='name'>艾诗然
+        <text class='iconfont icon-nv'></text>
       </view>
-      <view class='head_right'>
-        <text class='iconfont icon-fenxiang'></text> 分享
+      <view class='data'>2018/02/02</view>
+      <view class="zan {{iszan?'zaned':''}}" bindtap='zan'>
+        <text class="iconfont {{iszan?'icon-xihuan1':'icon-xihuan'}}"></text>520</view>
+    </view>
+    <view class='operation'>
+      <view class="gz {{isgz?'gzed':''}}" bindtap='gz'>
+        <text class='iconfont icon-guanzhu'></text> {{gztype}}
       </view>
-
-    </view>
-    <view class='head_main'>
-      <view class='head_main_title'>20天掌握美式连读</view>
-      <view class='head_main_mintitle'>50人已参加</view>
+      <view class="sc {{issc?'sced':''}}" bindtap='sc'>
+        <text class="iconfont {{issc?'icon-collection-b':'icon-collection'}}"></text> {{sctype}}
+      </view>
     </view>
   </view>
-</view>
+  <view class='content'>
 
-<view class='join_Number'>
-  <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-  <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-  <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-  <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-  <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-  <view class='join_title'>
-    50余人已参加
   </view>
-</view>
 
 
-<view class='join_anthur'>
-  <image class='join_anthurr_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
-  <view class='join_anthur_group'>
-    <view class='join_anthur_name'>仇益阳
-      <text class='iconfont icon-nan'></text>
-    </view>
-    <view class='join_anthur_mintitle'>已坚持参与5次</view>
-  </view>
-</view>
-
-<view class='anthur_main'>
-  <view class='anthur_main_title'>今日活动标题</view>
-  <view class='anthur_main_artcle' style='height:{{myheight}}'>More than 30 years ago, when I took my first job in New York City, I found myself working with a number of young women. Some I got to know just in passing, but others gradually became my friends. Today, six of these women remain an important part of
-    my life. They are more than simply friends, more even than close friends. They are old friends, as indispensable as sunshine and more dear to me than ever. These people share a long-standing history with me.</view>
-  <view class='lookMore' bindtap='lookmore' wx:if="{{myheight!='auto'}}">
-    查看全文
-    <text class='iconfont icon-xiangxia'></text>
-  </view>
-</view>
-
-
-<view class='hostory'>
-  <text>历史活动</text>
-  <text class='iconfont icon-bangzhujinru'></text>
-</view>
-<view class='hostory'>
-  <view class='hostory_title'>
-    <text class='iconfont icon-tianjiajiahaowubiankuang'></text>点击发布新活动</view>
-
-  <text class='iconfont icon-bangzhujinru'></text>
 </view>
 
 <view class='tabbar'>
@@ -84,18 +51,18 @@
 
 <template is="USERLIST" wx:if="{{clickIndex==1}}"></template>
 <view class='artcle' wx:if="{{clickIndex==2}}">
-  11
+11
 </view>
 <view class='joinpersonl' wx:if="{{clickIndex==3}}">
   <view class='seacherGroup'>
-    <text class='iconfont icon-sousuo'></text>
-    <input class='seach_ipt' placeholder="请输入搜索词"></input>
-    <view class='seacherTitle'>搜索</view>
-  </view>
-  <template is="memberPL_LIST"></template>
+  <text class='iconfont icon-sousuo'></text>
+  <input class='seach_ipt' placeholder="请输入搜索词"></input>
+  <view class='seacherTitle'>搜索</view>
+</view>
+<template is="memberPL_LIST" ></template>
 </view>
 <view class='kong'></view>
-<view class='foot'>
+ <view class='foot'>
   <view class='foot_item'>
     <text class='iconfont icon-xin'></text>
     <text class='foot_title'>点赞</text>
@@ -112,7 +79,7 @@
     <text class='iconfont icon-fenxiang'></text>
     <text class='foot_title'>分享</text>
   </view>
-</view>
+</view> 
 
 
 <!-- <view class='giftGroup'>

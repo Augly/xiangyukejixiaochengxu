@@ -1,3 +1,4 @@
+/* pages/Release/history_res/history_res.wxss */
 /* pages/Release/experience_res/experience_res.wxss */
 @import "../../../template/template.wxss";
 
@@ -9,6 +10,98 @@
   color: rgba(0, 0, 0, 1);
   box-sizing: border-box;
   padding: 0rpx 32rpx;
+}
+
+.head_title {
+  font-weight: bold;
+}
+
+.anthur_Group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 35rpx;
+}
+
+.anthur_logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.anthur_nameGroup {
+  width: 400rpx;
+  height: 100rpx;
+  margin-left: 17rpx;
+}
+
+.name {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.icon-nv {
+  font-size: 30rpx;
+  color: RGBA(255, 61, 201, 1);
+}
+
+.data {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.zan {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.icon-xihuan {
+  font-size: 30rpx;
+  margin-right: 5rpx;
+}
+
+.operation {
+  width: 150rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gz, .sc {
+  width: 150rpx;
+  height: 48rpx;
+  border: 1rpx solid RGBA(204, 204, 204, 1);
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gzed {
+  color: RGBA(152, 97, 225, 1);
+}
+
+.icon-guanzhu, .icon-collection {
+  font-size: 30rpx;
+  margin-right: 8rpx;
+}
+
+.icon-collection-b {
+  font-size: 30rpx;
+  margin-right: 8rpx;
+  color: RGBA(255, 246, 0, 1);
+}
+
+.content {
+  margin-top: 33rpx;
 }
 
 .foot {
@@ -265,203 +358,7 @@
   color: RGBA(153, 153, 153, 1);
 }
 
-.head {
-  width: 100%;
-  height: 482rpx;
-  background-size: 100% 100%;
-  position: relative;
-}
-
-.head_mask {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  font-size: 36rpx;
-  line-height: 100rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-  box-sizing: border-box;
-  padding: 0rpx 35rpx;
-}
-
-.join_Number {
-  width: 100%;
-  height: 86rpx;
-  display: flex;
-  box-sizing: border-box;
-  padding: 0rpx 24rpx;
-  align-items: center;
-  border-bottom: 16rpx solid RGBA(245, 246, 250, 1);
-}
-
-.joinUser {
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 50%;
-  margin-left: -10rpx;
-  border: 2rpx solid rgba(255, 255, 255, 1);
-}
-
-.joinUser:first-child {
-  margin-left: 0;
-}
-
-.join_title {
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-  margin-left: 10rpx;
-}
-
-.head_top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-}
-
-.icon-fenxiang,.icon-bianji{
-  font-size: 24rpx;
-  margin-right: 5rpx;
-}
-.icon-bianji{
-  margin-right: 15rpx;
-}
-.head_main {
-  width: 100%;
-  height: 320rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.head_main_title {
-  text-align: center;
-  font-size: 36rpx;
-  line-height: 36rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-}
-
-.head_main_mintitle {
-  margin-top: 30rpx;
-  text-align: center;
-  font-size: 30rpx;
-  line-height: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-}
-
-.join_anthur {
-  width: 100%;
-  height: 158rpx;
-  box-sizing: border-box;
-  padding: 24rpx;
-  display: flex;
-  align-items: center;
-  border-bottom: 16rpx solid RGBA(245, 246, 250, 1);
-}
-
-.join_anthurr_logo {
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 50%;
-}
-
-.join_anthur_group {
-  width: 550rpx;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 24rpx;
-}
-
-.join_anthur_name {
-  font-size: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-}
-
-.join_anthur_mintitle {
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(153, 153, 153, 1);
-  margin-top: 10rpx;
-}
-
-.anthur_main {
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  padding: 22rpx;
-}
-
-.anthur_main_title {
-  font-size: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-  text-align: center;
-}
-
-.anthur_main_artcle {
-  font-size: 26rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(51, 51, 51, 1);
-  overflow: hidden;
-}
-
-.lookMore {
-  width: 176rpx;
-  height: 66rpx;
-  border: 1rpx solid RGBA(204, 204, 204, 1);
-  border-radius: 5rpx;
-  margin: 0 auto;
-  margin-top: 10rpx;
-  font-size: 26rpx;
-  text-align: center;
-  line-height: 66rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(153, 153, 153, 1);
-}
-
-.icon-xiangxia{
-  font-size: 26rpx;
-}
-
-.hostory{
-  width:750rpx;
-height:88rpx; 
-background:rgba(245,246,250,1);
-box-sizing: border-box;
-padding: 0rpx 25rpx;
-display: flex;
-align-items: center;
-justify-content: space-between;
-font-size:30rpx;
-font-family:PingFang-SC-Medium;
-color:rgba(153,153,153,1);
-}
-
-.icon-bangzhujinru{
-  font-size: 40rpx;
-  color: RGBA(153, 153, 153, 1);
-}
 .kong{
   width: 100%;
   height: 150rpx;
-}
-.artcle{
-  box-sizing: border-box;
-  padding: 32rpx;
-
-}
-
-.icon-tianjiajiahaowubiankuang{
-  margin-right: 15rpx;
 }

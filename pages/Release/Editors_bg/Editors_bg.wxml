@@ -1,0 +1,19 @@
+<view class="wrap">
+    <view class='bg_title'>
+        上传本地图片（推荐尺寸：750X485）
+    </view>
+
+    <view class='bg_add'></view>
+     <view class='bg_title'>
+        推荐图片
+    </view>
+
+    <view class='image_wrap'>
+        <image class='img_litm'></image>
+        <image class='img_litm'></image>
+        <image class='img_litm'></image>
+        <image class='img_litm'></image>
+        <image class='img_litm'></image>
+        <image class='img_litm'></image>
+    </view>
+</view>

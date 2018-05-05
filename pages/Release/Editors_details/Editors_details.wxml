@@ -1,0 +1,26 @@
+<import src="../../../template/template.wxml" />
+<view class="head">
+  <image class='head_img'></image>
+  <view class='editors'>修改背景图</view>
+</view>
+
+
+<view class='produce'>
+  <view class='produce_title'>
+    作者简介
+  </view>
+  <textarea class='produce_main' placeholder='如果你无法简介的表达你的想法，那只说明你还不够了解他。'>
+
+  </textarea>
+</view>
+
+<view class='active_title'>
+  活动详情
+</view>
+
+<!--选择发布方式-->
+<template is="selet_group" data="{{...select}}"></template>
+<!--留位置专用  -->
+<view class='kong'></view>
+<!--发布  -->
+<template is="push"></template>

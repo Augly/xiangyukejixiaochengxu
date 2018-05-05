@@ -9,10 +9,16 @@
 }
 
 .item {
+  box-sizing: border-box;
   border: 1rpx solid RGBA(240, 240, 240, 1);
   margin-top: 10rpx;
   overflow: hidden;
+  /* position: absolute; */
 }
+
+ .item_active{
+  border: 5rpx solid RGBA(152, 97, 225, 1);
+} 
 
 .showImg {
   width: 100%;

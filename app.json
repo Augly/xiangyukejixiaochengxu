@@ -1,15 +1,17 @@
 {
   "pages": [
+    "pages/index/run/run",
+    "pages/Release/Push_active/Push_active",
+    "pages/Release/push_experience/push_experience",
+    "pages/Release/Editors_bg/Editors_bg",
+    "pages/Release/Editors_details/Editors_details",
+    "pages/Release/history/history",
     "pages/Release/joined/joined",
-    "pages/Release/experience_res/experience_res",
-    "pages/Release/Interest/Interest",
-   
-    
+    "pages/Release/history_res/history_res",
     "pages/Release/join_res/join_res",
+    "pages/Release/experience_res/experience_res",
     "pages/Release/Publish/Publish",
     "pages/Release/sure_Gift/sure_Gift",
-    
-    "pages/Release/push_experience/push_experience",
     "pages/Release/Release",
     "pages/personl/personl",
     "pages/index/index",

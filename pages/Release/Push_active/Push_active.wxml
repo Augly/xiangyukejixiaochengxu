@@ -1,0 +1,45 @@
+<!--pages/Release/push_experience/push_experience.wxml-->
+<import src="../../../template/template.wxml" />
+<!--上传封面图  -->
+<input class='iptTitle' placeholder='请输入标题'>
+
+</input>
+<template is="upload_img" data="{{...img}}"></template>
+<!--内容编辑  -->
+<template is="textall" data="{{...text}}"></template>
+<!--选择发布方式-->
+<template is="selet_group" data="{{...select}}"></template>
+<!--所在位置  -->
+<template is="myadder" data="{{...adder}}"></template>
+<!--送礼设置  -->
+<template is="switch" data="{{...switch}}"></template> 
+<!--购买享遇币  -->
+<template is="buy_Group" data="{{...bug}}"></template>
+<!--录音组件 -->
+<!-- <template is="up_audio_group" data="{{...audio}}"></template>   -->
+<!--发布者介绍  -->
+<!-- <template is="anthurPro" data="{{...anthur}}"></template>  -->
+<!--选择种类  -->
+<!-- <template is="allkind" data="{{...kind}}"></template> -->
+<!--物品价格  -->
+<!-- <template is="allprice" data="{{...price}}"></template>   -->
+
+<!--输入跑腿内容  -->
+<!-- <template is="run"></template>  -->
+<!--送达地址  -->
+<!-- <template is="alladder"></template>  -->
+<!--其他需求  -->
+<!-- <template is="otherneed"></template>  -->
+<!--联系人信息  -->
+<!-- <template is="tellGroup"></template>  -->
+<!--打赏  -->
+<!-- <template is="Tip"></template>  -->
+
+<!--留位置专用  -->
+ <view class='kong'></view> 
+<!--发布  -->
+ <template is="push"></template>  
+
+
+
+

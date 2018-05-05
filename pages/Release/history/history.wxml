@@ -1,0 +1,19 @@
+<!--pages/Release/history/history.wxml-->
+<import src="../../../template/template.wxml" />
+<view class='mywrap_head'>
+  <view class='cendel'>删除</view>
+  <view class='mypush'>我要发布</view>
+</view>
+<view class='mywrap'>
+
+  <view class='left'>
+    <block wx:for="{{note}}" wx:key="">
+      <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+    </block>
+  </view>
+  <view class='right'>
+    <block wx:for="{{note}}" wx:key="">
+      <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+</view>
