@@ -1,0 +1,12 @@
+<view class='wrap'>
+  <textarea class="text" placeholder='写下您的评论'>
+      
+  </textarea>
+  <view class='adder'>
+      当前位置：<text class='iconfont icon-dizhi'></text> <text class='adder_res'>天津 · 建国楼</text>
+  </view>
+
+  <view class='logn'>
+    发表
+  </view>
+</view>

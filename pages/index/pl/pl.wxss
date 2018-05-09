@@ -1,0 +1,53 @@
+.wrap {
+  width: 100%;
+  height: 340rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  border-top: 1rpx solid RGBA(235, 235, 235, 1);
+}
+
+.text {
+  width: 100%;
+  height: 250rpx;
+  box-sizing: border-box;
+  padding: 35rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+}
+
+.adder {
+  height: 90rpx;
+  width: 100%;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  padding: 0rpx 35rpx;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  display: flex;
+  align-items: center;
+}
+
+.icon-dizhi{
+  font-size: 35rpx;
+  margin-right: 5rpx;
+  color: RGBA(57, 143, 202, 1);
+}
+.adder_res{
+  font-size:24rpx;
+font-family:PingFang-SC-Medium;
+color:rgba(51,51,51,1);
+}
+
+.logn {
+  width: 640rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  background-color: RGBA(74, 144, 226, 1);
+  margin: 0 auto;
+  margin-top: 50rpx;
+}

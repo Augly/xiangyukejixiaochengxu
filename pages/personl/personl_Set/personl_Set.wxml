@@ -1,0 +1,38 @@
+<view class='myset'>
+  <view class='myset_logo' style='background-image: url(http://xiangyu.wx.bronet.cn/images/e01@2x.png);'>
+    <view class='logo_wrap'>
+      <text class='iconfont icon-camera2'></text>
+    </view>
+  </view>
+</view>
+
+<view class='myzl'>
+  <view class='myzl_item'>
+    <view class='myzl_item_title'>用户名</view>
+    <view class='myzl_item_mintitle'>向昱筱</view>
+    <text class='iconfont icon-bangzhujinru'></text>
+  </view>
+  <view class='myzl_item'>
+    <view class='myzl_item_title'>出生年月</view>
+    <view class='myzl_item_mintitle'>1994-12-19</view>
+    <text class='iconfont icon-bangzhujinru'></text>
+  </view>
+  <view class='myzl_item'>
+    <view class='myzl_item_title'>性别</view>
+    <view class='myzl_item_mintitle'>女</view>
+    <text class='iconfont icon-bangzhujinru'></text>
+  </view>
+  <view class='myzl_item'>
+    <view class='myzl_item_title'>当前位置</view>
+    <view class='myzl_item_mintitle'>天津市和平区</view>
+    <text class='iconfont icon-bangzhujinru'></text>
+  </view>
+</view>
+
+<view class='myzl'>
+  <view class='myzl_item'>
+    <view class='myzl_item_title'>关于我们</view>
+    <view class='myzl_item_mintitle'></view>
+    <text class='iconfont icon-bangzhujinru'></text>
+  </view>
+</view>

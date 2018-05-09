@@ -1,0 +1,72 @@
+<!--pages/personl/push/push.wxml-->
+<view class='head_top'>
+  <view class="head_top_item {{index==0?'active':''}}" bindtap="clicktap" data-id='0'>
+    共享经验
+    <view class='head_top_item_bottom' wx:if="{{index==0}}"></view>
+  </view>
+  <view class="head_top_item {{index==1?'active':''}}" bindtap="clicktap" data-id='1'>兴趣社
+    <view class='head_top_item_bottom' wx:if="{{index==1}}"></view>
+  </view>
+  <view class="head_top_item {{index==2?'active':''}}" bindtap="clicktap" data-id='2'>需求
+    <view class='head_top_item_bottom' wx:if="{{index==2}}"></view>
+  </view>
+</view>
+
+
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;" bindchange="finish" current='{{index}}'>
+  <swiper-item>
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+      <view class='s_item'>
+        <image class='s_item_logo'></image>
+        <view class='s_item_res'>
+          <view class='s_item_res_title'>
+            <view class='s_title'>我的养猫日记</view>
+            <view class='s_mintitle'>
+              <text class='iconfont icon-icon'></text>删除</view>
+          </view>
+          <view class='s_item_res_data'>2018-02-28 8:00</view>
+          <view class='s_item_res_mintitle'>25人参与、45人阅读、55人收藏、30人分享</view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+
+  <swiper-item>
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+      <view class='s_item'>
+        <image class='s_item_logo' style='width:249rpx'></image>
+        <view class='s_item_res' style='width:420rpx'>
+          <view class='s_item_res_title'>
+            <view class='s_title'>我的养猫日记</view>
+            <view class='s_mintitle'>
+              <text class='iconfont icon-icon'></text>删除</view>
+          </view>
+          <view class='s_item_res_data'>2018-02-28 8:00</view>
+          <view class='s_item_res_mintitle'>25人参与、45人阅读、55人收藏、30人分享</view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+      <view class='x_item'>
+        <image class='x_item_logo'></image>
+        <view class='x_item_res'>
+          <view class='x_item_res_title'>
+            <view class='x_title'>我的养猫日记</view>
+            <view class='x_run'>跑</view>
+          </view>
+          <view class='x_item_res_data'>2018-02-28 8:00</view>
+          <view class='x_item_res_mintitle'>
+            <text class='paple'>未完成</text> 45人阅读、30人评论
+            <view class='x_mintitle'>
+              <text class='iconfont icon-icon'></text>删除</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+</swiper>

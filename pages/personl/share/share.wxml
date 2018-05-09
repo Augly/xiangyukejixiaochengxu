@@ -1,0 +1,7 @@
+<canvas canvas-id="myCanvas" style="width:100%;box-sizing:border-box;height:{{systemInfo.windowHeight}}px;" />
+
+<view class='footbottom'>
+  <image class='shareFriend' src='http://xiangyu.wx.bronet.cn/images/fen01@2x.png'></image>
+  <image class='shareFriend' src='http://xiangyu.wx.bronet.cn/images/fen02@2x.png'></image>
+  <image class='shareFriend' src='http://xiangyu.wx.bronet.cn/images/fen03@2x.png' bindtap='sava'></image>
+</view>

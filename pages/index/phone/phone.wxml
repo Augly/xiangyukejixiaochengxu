@@ -1,0 +1,17 @@
+<!--pages/index/phone/phone.wxml-->
+<view class='wrap'>
+  <view class='tellView'>
+    <input class='tell' placeholder='手机号'></input>
+  </view>
+  <view class='Code'>
+    <input class='codeipt' placeholder='验证码'></input>
+    <view class='getCode'>获取验证码</view>
+  </view>
+  <view class='notice'>
+    温馨提示：为了您的订单安全，请先进行手机验证
+  </view>
+
+  <view class='logn'>
+    登录
+  </view>
+</view>

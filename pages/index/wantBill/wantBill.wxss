@@ -118,12 +118,15 @@ page {
   padding: 50rpx 33rpx;
   background-color: rgba(255, 255, 255, 1);
   margin-top: 16rpx;
+}
+
+.adder_item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .adder_title {
-  width: 150rpx;
+  width: 80rpx;
   font-size: 28rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(153, 153, 153, 1);
@@ -268,4 +271,48 @@ page {
   line-height: 100rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(153, 153, 153, 1);
+}
+
+.sendTime {
+  width: 100%;
+  height: 88rpx;
+  background-color: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  padding: 0rpx 33rpx;
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sendtitle {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  margin-right: auto;
+}
+
+.sendtime {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
+}
+
+.icon-xiangxia{
+  font-size: 32rpx;
+  margin-left: 40rpx;
+}
+
+.logn {
+  width: 640rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  background-color: RGBA(74, 144, 226, 1);
+  margin: 0 auto;
+  margin-top:54rpx;
 }

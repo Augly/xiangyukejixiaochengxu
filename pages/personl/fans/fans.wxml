@@ -1,0 +1,5 @@
+<view class="fans_list">
+  <image class='fans_logo'></image>
+  <view class='fans_title'>向昱筱 <text class='iconfont icon-nv'></text> </view>
+  <view class='fans_type' bindtap='gz' data-true='false'> <text class='iconfont icon-quxiaoguanzhux'></text>添加关注</view>
+</view>

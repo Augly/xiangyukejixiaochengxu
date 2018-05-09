@@ -1,0 +1,44 @@
+<view class='wrap'>
+  <view class='head_Group'>
+    <view class='head'>
+      <image class='head_log'></image>
+      <view class='head_res'>
+        <view class='name'>仇益阳
+          <text class='iconfont icon-nv'></text> </view>
+        <view class='distance'>距离2.2km</view>
+      </view>
+      <view class='head_type'>
+        <view class='head_type_title'>18346597684</view>
+      </view>
+    </view>
+    <view class='head_main'>
+      如果你无法简洁的表达你的想法，那只说明 你还不够了解它。
+    </view>
+    <view class='head_operation'>
+      <text class='iconfont icon-xihuan'></text> 88
+      <text class='iconfont icon-fenxiang'></text> 分享
+    </view>
+  </view>
+
+
+  <view class='adder_Group'>
+    <view class='adder_item'>
+      <view class='adder_title'>起点</view>
+      <view class='adder_res'>天津市和平区</view>
+    </view>
+    <view class='adder_item' style='margin-top:20rpx'>
+      <view class='adder_title'>终点</view>
+      <view class='adder_res'>天津市和平区</view>
+    </view>
+  </view>
+
+  <view class='sendTime'>
+    <view class='sendtitle'>预计送达时间</view>
+    <view class='sendtime'>13:00</view>
+    <!-- <text class='iconfont icon-xiangxia'></text> -->
+  </view>
+
+  <view class='logn'>
+    确认接单
+  </view>
+</view>

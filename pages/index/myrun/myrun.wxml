@@ -1,3 +1,16 @@
+
+<view class='receiptInfo'>
+    <view class='receipt_title'>已接单，目前正在配送中，预计送达时间13:00</view>
+    <view class='receipt_Group'>
+        <image class='Group_logo'></image>
+        <view class='Group_name'>
+          <view class='G_name'>接单者昵称</view>
+          <view class='G_tell'>18346597684</view>
+        </view>
+        <view class='Group_sure'>确认已收到</view>
+    </view>
+</view>
+
 <view class='wrap'>
   <view class='head_Group'>
     <view class='head'>
@@ -77,10 +90,15 @@
     </view>
   </view>
 </view>
+<view class='kong'></view>
 
 
 
-<view class='foot'>
-    <view class='get'>我要接单</view>
+<!-- <view class='foot'>
+    取消订单
+</view> -->
+
+<view class='myfoot'>
+    <view class='get'>取消订单</view>
     <view class='pl'>评论</view>
 </view>

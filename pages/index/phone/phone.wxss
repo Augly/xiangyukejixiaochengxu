@@ -1,0 +1,59 @@
+/* pages/index/phone/phone.wxss */
+
+.wrap {
+  width: 100%;
+  height: 120rpx;
+  box-sizing: border-box;
+  padding: 0rpx 32rpx;
+}
+
+.tellView, .Code {
+  width: 100%;
+  height: 120rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+}
+
+.tell {
+  width: 100%;
+  height: 100%;
+}
+
+.codeipt {
+  width: 500rpx;
+  height: 100%;
+}
+
+.getCode {
+  width: 200rpx;
+  height: 100%;
+  color: RGBA(74, 144, 226, 1);
+  line-height: 120rpx;
+  text-align: center;
+}
+
+.notice {
+  height: 100rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: RGBA(153, 153, 153, 1);
+}
+
+.logn {
+  width: 640rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  background-color: RGBA(74, 144, 226, 1);
+  margin: 0 auto;
+}

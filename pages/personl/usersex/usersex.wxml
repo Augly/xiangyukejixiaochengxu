@@ -1,0 +1,9 @@
+<view class="sex_select">
+    <view class='select_title'>男</view>
+</view>
+<view class="sex_select">
+   <view class='select_title'>女</view>
+</view>
+ <view class='foot'>
+    保存
+</view> 
