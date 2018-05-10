@@ -1,0 +1,249 @@
+page {
+  width: 100%;
+  height: 100%;
+  background-color: RGBA(245, 246, 250, 1);
+}
+
+.wrap {
+  width: 100%;
+  height: auto;
+  margin-top: 8rpx;
+}
+
+.item {
+  width: 100%;
+  height: 218rpx;
+  background-color: rgba(255, 255, 255, 1);
+  margin-top: 8rpx;
+  box-sizing: border-box;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item_logo {
+  width: 170rpx;
+  height: 170rpx;
+  border: 1rpx solid RGBA(235, 235, 235, 1);
+}
+
+.item_res {
+  width: 500rpx;
+  height: 170rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item_title {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item_mintitle {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.item_shop {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(102, 102, 102, 1);
+}
+
+.nowBuy, .item_shop_price {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(152, 97, 225, 1);
+}
+
+.changeMoney {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.changeMoney_title {
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.bianxian {
+  width: 120rpx;
+  height: 60rpx;
+  border-radius: 5rpx;
+  border: 1rpx solid rgba(152, 97, 225, 1);
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(152, 97, 225, 1);
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.mywrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: RGBA(0, 0, 0, 0.8);
+}
+
+.bottom_content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  border-radius: 20rpx 20rpx 0rpx 0rpx;
+  background-color: white;
+  animation: myfirst 1s ease;
+  animation-fill-mode: forwards;
+}
+
+.bottom_main {
+  height: 500rpx;
+  box-sizing: border-box;
+  padding: 32rpx 0rpx 32rpx 0rpx;
+}
+
+.bottom_sure {
+  width: 100%;
+  height: 100rpx;
+  background-color: RGBA(74, 144, 226, 1);
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.main_title {
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  text-align: center;
+}
+
+.main_Group {
+  width: 100%;
+  height: 254rpx;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 30rpx 32rpx 54rpx 32rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+}
+
+.main_logo {
+  width: 170rpx;
+  height: 170rpx;
+  border: 1rpx solid RGBA(235, 235, 235, 1);
+  margin-right: 20rpx;
+}
+
+.main_res {
+  width: 450rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.car_group {
+  width: 100%;
+  height: 107rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  box-sizing: border-box;
+  padding: 0rpx 32rpx;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.res_title {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.res_number {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(102, 102, 102, 1);
+}
+
+.res_price {
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.shop_Group {
+  width: 220rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shop_ipt {
+  width: 93rpx;
+  height: 100rpx;
+  border: none;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(51, 51, 51, 1);
+  text-align: center;
+}
+
+.shop_jia, .shop_jian {
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 3rpx;
+  border: 1rpx solid RGBA(235, 235, 235, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-icon_add, .icon-jianhao1 {
+  font-size: 30rpx;
+}
+
+.group_title {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+  margin-right: 75rpx;
+}
+
+.ts_mintitle {
+  color: RGBA(74, 144, 226, 1);
+}
+.group_mintitle{
+  margin-left: auto;
+}
+
+@keyframes myfirst {
+  from {
+    height: 0rpx;
+  }
+
+  to {
+    height: 600rpx;
+  }
+}

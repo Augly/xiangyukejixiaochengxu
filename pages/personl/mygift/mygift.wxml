@@ -1,0 +1,14 @@
+<view class="account">
+  <image class='account_logo'></image>
+  <view class='rule'>
+    <text class='iconfont icon-genggai'></text> 规则
+  </view>
+</view>
+<view class='account_item'>
+  <view class='acount_item_title'>我的礼物</view>
+  <text class='iconfont icon-arrow'></text>
+</view>
+<view class='account_item'>
+  <view class='acount_item_title'>我的账单</view>
+  <text class='iconfont icon-arrow'></text>
+</view>

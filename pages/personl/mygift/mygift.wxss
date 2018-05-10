@@ -1,0 +1,93 @@
+/* pages/personl/account/account.wxss */
+
+.account {
+  width: 100%;
+  height: 380rpx;
+  background-image: url('http://xiangyu.wx.bronet.cn/images/dpic02@2x.png');
+  background-size: 100% 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account_title {
+  font-size: 30rpx;
+  text-align: center;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 50rpx;
+}
+
+.account_money {
+  font-size: 88rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.operation_Group {
+  width: 572rpx;
+  height: 128rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.operation_item {
+  width: 188rpx;
+  height: 80rpx;
+  border-radius: 32rpx;
+  border: 2rpx solid RGBA(255, 255, 255, 1);
+  background-color: RGBA(191, 143, 254, 1);
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
+}
+
+.account_item {
+  width: 100%;
+  height: 121rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  box-sizing: border-box;
+  padding: 0rpx 32rpx;
+  display: flex;
+  align-items: center;
+}
+
+.acount_item_logo {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx
+}
+
+.acount_item_title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
+}
+.icon-arrow{
+  font-size: 32rpx;
+  margin-left: auto;
+  color: RGBA(153, 153, 153, 1);
+}
+.account_logo{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius:50%; 
+  border: 5rpx solid RGBA(193, 160, 237, 1);
+}
+.icon-genggai{
+  font-size: 30rpx;
+}
+.rule{
+  font-size:28rpx;
+font-family:PingFang-SC-Medium;
+color:rgba(255,255,255,1);
+position: absolute;
+right: 33rpx;
+top: 33rpx;
+}

@@ -1,0 +1,7 @@
+@import "../../../template/template.wxss";
+.wrap{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0rpx 24rpx;
+}

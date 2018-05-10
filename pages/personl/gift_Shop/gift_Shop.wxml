@@ -1,0 +1,23 @@
+<view class="wrap">
+  <view class='item'>
+    <view class='item_logo'></view>
+    <view class='item_res'>
+      <view class='item_title'>
+        <view class='item_mintitle'>享遇币</view>
+        <view class='nowBuy'>立即购买</view>
+      </view>
+      <view class='item_shop'>
+        <view class='item_shop_price'>￥1314</view>
+        <view class='shop_Group'>
+          <view class='shop_jia'>
+            <text class='iconfont icon-icon_add'></text>
+          </view>
+          <input class='shop_ipt' value='1'></input>
+          <view class='shop_jian'>
+            <text class='iconfont icon-jianhao1'></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+.tap_click {
+  width: 655rpx;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 41rpx 0rpx;
+  margin-left: 70rpx;
+}
+
+.tap_item {
+  width: 180rpx;
+  height: 100rpx;
+  margin-right: 35rpx;
+  border: 2rpx solid RGBA(74, 144, 226, 1);
+  border-radius: 5rpx;
+  margin-bottom: 32rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(74, 144, 226, 1);
+}
+
+.item_active{
+  background-color:  RGBA(74, 144, 226, 1);
+  color: RGBA(255, 255, 255, 1);
+}
+
+.Recharge{
+  width:686rpx;
+height:100rpx; 
+background:rgba(74,144,226,1);
+border-radius: 50rpx;
+margin: 0 auto; 
+font-size:36rpx;
+font-family:PingFang-SC-Medium;
+color:rgba(255,255,255,1);
+text-align: center;
+line-height: 100rpx;
+margin-top: 80rpx;
+}

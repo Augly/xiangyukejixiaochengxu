@@ -1,5 +1,19 @@
 {
   "pages": [
+    "pages/personl/mygift/mygift",
+    "pages/personl/account/account",
+    
+    "pages/index/wantBill/wantBill",
+    "pages/personl/personl",
+    "pages/personl/myOrdered/myOrdered",
+    "pages/index/index",
+    "pages/personl/myBackpaker/myBackpaker",
+    "pages/personl/gift_Shop/gift_Shop",
+    "pages/personl/myOrdel/myOrdel",
+    "pages/personl/rule/rule",
+    "pages/personl/Put_forward/Put_forward",
+    "pages/personl/Recharge/Recharge",
+   
     "pages/personl/join/join",
     "pages/personl/push/push",
     "pages/personl/fans/fans",
@@ -9,12 +23,11 @@
     "pages/personl/personl_Set/personl_Set",
     "pages/personl/share/share",
     "pages/personl/userabout/userabout",
-    "pages/index/index",
     "pages/Release/history_res/history_res",
     "pages/Release/joined/joined",
     "pages/index/pl/pl",
     "pages/index/myrun/myrun",
-    "pages/index/wantBill/wantBill",
+    
     "pages/index/run/run",
     "pages/index/phone/phone",
     "pages/Release/Push_active/Push_active",
@@ -27,7 +40,6 @@
     "pages/Release/Publish/Publish",
     "pages/Release/sure_Gift/sure_Gift",
     "pages/Release/Release",
-    "pages/personl/personl",
     "pages/index/SharedExperience/SharedExperience",
     "pages/near/near"
   ],

@@ -1,0 +1,23 @@
+<view class="put">
+  <view class='put_title'>账户余额</view>
+  <view class='put_money'>￥1000.00
+  </view>
+  <view class='put_Group'>
+    <view class='put_Group_title'>提现金额</view>
+    <view class='put_Group_ipt'>
+      <view class='put_Group_ipt_title'>
+        ￥
+      </view>
+      <input class='put_ipt'></input>
+    </view>
+    <view class='put_Group_mintitle'>全部提现</view>
+  </view>
+</view>
+<view class='Recharge'>提现</view>
+
+
+
+<view class='rule'>
+    <text class='iconfont icon-guize'></text>
+    提现规则
+</view>

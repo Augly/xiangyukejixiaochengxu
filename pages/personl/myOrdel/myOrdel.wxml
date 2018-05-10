@@ -1,0 +1,84 @@
+<!--pages/personl/push/push.wxml-->
+<view class='head_top'>
+  <view class="head_top_item {{index==0?'active':''}}" bindtap="clicktap" data-id='0'>
+    我的订单
+    <view class='head_top_item_bottom' wx:if="{{index==0}}"></view>
+  </view>
+  <view class="head_top_item {{index==1?'active':''}}" bindtap="clicktap" data-id='1'>提现记录
+    <view class='head_top_item_bottom' wx:if="{{index==1}}"></view>
+  </view>
+  <view class="head_top_item {{index==2?'active':''}}" bindtap="clicktap" data-id='2'>充值记录
+    <view class='head_top_item_bottom' wx:if="{{index==2}}"></view>
+  </view>
+</view>
+
+
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;" bindchange="finish" current='{{index}}'>
+  <swiper-item>
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+      <view class='x_item'>
+        <view class='item'>
+          <image class='x_item_logo'></image>
+          <view class='x_item_res'>
+            <view class='x_item_res_title'>
+              <view class='x_title'>我的养猫日记</view>
+              <view class='x_run'>跑</view>
+            </view>
+            <view class='x_item_res_mintitle'>
+              45人阅读、30人评论
+            </view>
+          </view>
+        </view>
+        <view class='item_data'>
+          <view class='data'>日期：2018-03-01</view>
+          <view class='money'>实付款：￥100.00</view>
+        </view>
+      </view>
+      <view class='x_item'>
+        <view class='item'>
+          <image class='x_item_logo'></image>
+          <view class='x_item_res'>
+            <view class='x_item_res_title'>
+              <view class='x_title'>爱心甜点</view>
+              <!-- <view class='x_run'>跑</view> -->
+            </view>
+            <view class='x_item_res_mintitle'>
+              10个
+            </view>
+          </view>
+        </view>
+        <view class='item_data'>
+          <view class='data'>日期：2018-03-01</view>
+          <view class='money'>实付款：￥100.00</view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item>
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+      <view class='tx_item'>
+        <view class='tx_item_left'>
+          <view class='tx_item_left_title'>余额提现</view>
+          <view class='tx_item_left_mintitle'>2018-02-15 22:25:07</view>
+        </view>
+        <view class='tx_item_right'>
+          <text class='iconfont icon-icon_add'></text> 100.00元</view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item>
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+      <view class='tx_item'>
+        <view class='tx_item_left'>
+          <view class='tx_item_left_title'>余额提现</view>
+          <view class='tx_item_left_mintitle'>2018-02-15 22:25:07</view>
+        </view>
+        <view class='tx_item_right'>
+          <text class='iconfont icon-icon_add'></text> 100.00元</view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+</swiper>
+<!--pages/personl/myOrdel/myOrdel.wxml-->

@@ -1,0 +1,98 @@
+page {
+  width: 100%;
+  height: 100%;
+  background-color: RGBA(245, 246, 250, 1);
+}
+
+.wrap {
+  width: 100%;
+  height: auto;
+  margin-top: 8rpx;
+}
+
+.item {
+  width: 100%;
+  height: 218rpx;
+  background-color: rgba(255, 255, 255, 1);
+  margin-top: 8rpx;
+  box-sizing: border-box;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item_logo {
+  width: 170rpx;
+  height: 170rpx;
+  border: 1rpx solid RGBA(235, 235, 235, 1);
+}
+
+.item_res {
+  width: 500rpx;
+  height: 170rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item_title {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item_mintitle {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.item_shop {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nowBuy, .item_shop_price {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 0, 0, 1);
+}
+
+.shop_Group {
+  width: 220rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shop_ipt {
+  width: 93rpx;
+  height: 100rpx;
+  border: none;
+  font-size: 36rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(51, 51, 51, 1);
+  text-align: center;
+}
+
+.shop_jia, .shop_jian {
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 3rpx;
+  border: 1rpx solid RGBA(235, 235, 235, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-icon_add, .icon-jianhao1 {
+  font-size: 30rpx;
+}

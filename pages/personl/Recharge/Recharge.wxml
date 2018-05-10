@@ -1,0 +1,8 @@
+<view class='tap_click'>
+  <view class="tap_item {{myindex==index?'item_active':''}}" wx:for="{{tapArr}}" bindtap='click' data-id='{{index}}' wx:key="key">
+    {{item}}
+  </view>
+</view>
+
+<view class='Recharge'>充值</view>
+
