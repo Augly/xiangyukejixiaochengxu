@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<import src="../../template/template.wxml" />
+<view class='nav'>
+  <view class="nav_bar {{index==1?'nav_active':''}}" data-id='1' bindtap='navClick'>
+    共享经验
+  </view>
+  <view class="nav_bar {{index==2?'nav_active':''}}" data-id='2' bindtap='navClick'>
+    兴趣社
+  </view>
+  <view class="nav_bar {{index==3?'nav_active':''}}" data-id='3' bindtap='navClick'>
+    问答
+  </view>
+  <view class="nav_bar {{index==4?'nav_active':''}}" data-id='4' bindtap='navClick'>
+    二手置换
+  </view>
+</view>
+
+
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:if="{{index==1}}">
+  <view class='scrollView'>
+    <view class='left'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+      </block>
+    </view>
+    <view class='right'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      </block>
+    </view>
+  </view>
+</scroll-view>
+
+
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==2}}">
+  <view class='InterestGroup'>
+    <block wx:for="{{note}}" wx:key="">
+      <template is="Interestitem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+</scroll-view>
+
+
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==3}}">
+  <view class='InterestGroup'>
+    <block wx:for="{{note}}" wx:key="">
+      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+</scroll-view>
+
+
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==4}}">
+  <view class='InterestGroup'>
+    <block wx:for="{{note}}" wx:key="">
+      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+</scroll-view>

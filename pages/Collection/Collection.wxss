@@ -28,7 +28,7 @@
 }
 
 .nav_active {
-  color:RGBA(152, 97, 225, 1);
+  color: RGBA(152, 97, 225, 1);
   border-bottom: 3rpx solid RGBA(152, 97, 225, 1);
 }
 

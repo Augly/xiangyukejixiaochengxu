@@ -1,19 +1,20 @@
 {
   "pages": [
+    "pages/business_edit/business_edit",
+    "pages/business_Card/business_Card",
+    "pages/Collection/Collection",
+    "pages/index/index",
     "pages/personl/mygift/mygift",
     "pages/personl/account/account",
-    
     "pages/index/wantBill/wantBill",
     "pages/personl/personl",
     "pages/personl/myOrdered/myOrdered",
-    "pages/index/index",
     "pages/personl/myBackpaker/myBackpaker",
     "pages/personl/gift_Shop/gift_Shop",
     "pages/personl/myOrdel/myOrdel",
     "pages/personl/rule/rule",
     "pages/personl/Put_forward/Put_forward",
     "pages/personl/Recharge/Recharge",
-   
     "pages/personl/join/join",
     "pages/personl/push/push",
     "pages/personl/fans/fans",
