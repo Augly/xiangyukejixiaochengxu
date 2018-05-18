@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/business_edit/business_edit",
     "pages/business_Card/business_Card",
     "pages/Collection/Collection",
-    "pages/index/index",
     "pages/personl/mygift/mygift",
     "pages/personl/account/account",
     "pages/index/wantBill/wantBill",
@@ -28,7 +28,6 @@
     "pages/Release/joined/joined",
     "pages/index/pl/pl",
     "pages/index/myrun/myrun",
-    
     "pages/index/run/run",
     "pages/index/phone/phone",
     "pages/Release/Push_active/Push_active",

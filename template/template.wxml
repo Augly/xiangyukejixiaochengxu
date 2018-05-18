@@ -135,10 +135,10 @@
 <template name="selet_group">
   <view class='selet_group'>
     <view class='select_item_left'>
-      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);'>
+      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);' bindtap='showtext'>
         <text class='iconfont icon-xie'></text> 添加文字
       </view>
-      <view class='select_item'>
+      <view class='select_item' bindtap='addaudio'>
         <text class='iconfont icon-luyinyuyin'></text> 添加录音
       </view>
     </view>
@@ -162,6 +162,30 @@
     <switch checked bindchange="switch1Change" />
   </view>
 </template>
+
+
+
+<!--添加音频展示模块儿-->
+<template name="myaudio">
+  <view class='myaudio'>
+    <image src='../../../img/huatong@2x.png' class='mai'></image>
+    <image src='../../../img/jai@2x.png' class='shengyin'></image>
+    <text class='myaudio_time'>1:54"</text>
+  </view>
+</template>
+
+<!--添加视频展示模块儿-->
+<template name="myvideo">
+  <video class='myvideo' objectFit="fill" controls="{{controls}}"></video>
+</template>
+
+
+<!--添加图片展示模块儿-->
+<template name="mypic">
+  <view class='mypic'></view>
+</template>
+
+
 <!--内容编辑模块  -->
 <template name="textall">
   <view class="text_view">
@@ -236,33 +260,35 @@
 
 <!--音频组件模板-->
 <template name="audio_group">
-  <view class='audio_group'>
+  <view class='audio_group Augly-fadeinB'>
     <view class='audio_tro'>
       <view class='audio_title'>
         <view class='audio_title_left'>录制音频</view>
-        <text class='iconfont icon-icon-test3'></text>
+        <!-- <text class='iconfont icon-icon-test3'  bindtap='hideaudio'></text> -->
       </view>
       <view class='audio_more'>
         <view class='timedj'>
-          00:00:00
+          {{loadingTime}}
         </view>
         <view class='timeover'>还可以录制
-          <text> 30 </text>秒</view>
+          <text>  {{showTime}} </text>时长</view>
         <view class='contro'>
-          <view class='contro_cendel'>
+          <view class='contro_cendel' bindtap='celaudio'>
             <view class='contro_cendel_view'>
-              <text class='iconfont icon-icon-test3'></text>
+              <text class='iconfont icon-icon-test3' ></text>
             </view>
             <view class='contro_cendel_title'>取消</view>
           </view>
           <view class='contro_play'>
-            <text class='iconfont icon-bofang11'></text>
+            <text class='iconfont icon-bofang11' wx:if="{{mytype=='start'}}" bindtap='audio_start'></text>
+            <text class='iconfont icon-zanting' wx:if="{{mytype=='zanting'}}" bindtap='audio_zanting'></text>
+            <text class='iconfont icon-tingzhi Augly-swing' wx:if="{{mytype=='stop'}}" bindtap='audio_stop'></text>
           </view>
-          <view class='contro_next'>
+          <view class='contro_next' bindtap='nextStep'>
             <view class='contro_cendel_view'>
               <text class='iconfont icon-icon-test2'></text>
             </view>
-            <view class='contro_cendel_title'>下一步</view>
+            <view class='contro_cendel_title' >下一步</view>
           </view>
         </view>
       </view>
@@ -272,15 +298,15 @@
 
 <!--上传音频模板-->
 <template name="up_audio_group">
-  <view class='audio_group'>
+  <view class='audio_group Augly-fadeinB'>
     <view class='audio_tro'>
       <view class='audio_title'>
         <view class='audio_title_left'>上传录音</view>
-        <text class='iconfont icon-icon-test3'></text>
+        <text class='iconfont icon-icon-test3' bindtap='hideaudio'></text>
       </view>
       <view class='audio_more'>
-        <view class='tryLisen'>点击试听</view>
-        <view class='alltime'>时长：4分58秒</view>
+        <view class='tryLisen' bindtap='trylisten'>点击试听</view>
+        <view class='alltime'>时长：{{audioTime}}</view>
         <view class='botton_Group'>
           <view class='botton_return'>
             <view class='botton_view'>
@@ -312,9 +338,9 @@
 
 <!--发布  -->
 <template name="push">
-  <view class='push'>
+  <cover-view class='push'>
     发布
-  </view>
+  </cover-view>
 </template>
 
 <!--送达地址-->

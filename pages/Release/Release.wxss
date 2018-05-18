@@ -1,5 +1,6 @@
 /* pages/Release/Release.wxss */
 
+@import "../../utils/Augly_Animation.wxss";
 .ipt_title {
   width: 100%;
   height: 98rpx;

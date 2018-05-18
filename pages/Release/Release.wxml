@@ -3,7 +3,7 @@
   <view class='title'>
     请输入标题
   </view>
-  <input class='title_ipt'>
+  <input class='title_ipt' maxlength='20' bindinput='getTitle'>
 
   </input>
 </view>
@@ -12,13 +12,13 @@
     选择发布类型
   </view>
   <view class='select'>
-    <view class='select_item'>共享经验</view>
-    <view class='select_item select_item_active'>需求</view>
-    <view class='select_item'>兴趣</view>
+    <view class="select_item {{selectIndex==1?'select_item_active':''}}" bindtap='click' data-id='1'>共享经验</view>
+    <view class="select_item {{selectIndex==2?'select_item_active':''}}" bindtap='click' data-id='2'>需求</view>
+    <view class="select_item {{selectIndex==3?'select_item_active':''}}" bindtap='click' data-id='3'>兴趣</view>
   </view>
 </view>
 
-<view class='kind_group'>
+<view class='kind_group' wx:if="{{selectIndex==2}}">
   <view class='kind_group_title'>
   选择发布种类：
   </view>
@@ -37,21 +37,21 @@
   </view>
 </view>
 
-<view class='submit'>
+<view class='submit' bindtap='nextStep'>
   下一步
 </view>
 
 
 
-<!-- <view class='mask'>
-  <view class='User_validation'>
-  <text class='iconfont icon-quxiao1'></text>
+ <view class='mask' wx:if="{{phoneMask}}">
+  <view class='User_validation Augly-bounceinT'>
+  <text class='iconfont icon-quxiao1' catchtap='hidemask'></text>
     <view class='User_title'>用户验证</view>
-    <input class='User_phone' placeholder='请输入手机号'></input>
+    <input class='User_phone' placeholder='请输入手机号' bindinput="fou"  maxlength="11"></input>
     <view class='User_val'>
-      <input class='code' placeholder="验证码"></input>
-      <view class='gitcode'>获取</view>
+      <input class='code' placeholder='短信验证码' bindinput="fouone"  maxlength="6"></input>
+      <view class='gitcode' disabled='{{disabled}}' data-id="{{fun_id}}" bindtap="getVerificationCode">{{time}}</view>
     </view>
-    <image  class='rightsub' src='http://xiangyu.wx.bronet.cn/images/btn@2x.png'></image>
+    <image  class='rightsub' src='http://xiangyu.wx.bronet.cn/images/btn@2x.png' bindtap='submit'></image>
   </view>
-</view> -->
+</view> 

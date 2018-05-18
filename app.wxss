@@ -1,6 +1,6 @@
 /**app.wxss**/
 @import "/wxParse/wxParse.wxss";
-
+@import "/utils/Augly_Animation";
 image {
   font-size: 0;
   border: none;

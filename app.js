@@ -1,10 +1,23 @@
 //app.js
+const config = require("utils/config.js");
 App({
   onLaunch: function () {
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        let param = {
+          code: res.code
+        }
+        //参数对象
+        config.ajax("POST", param, config.getOpenid, (res) => {
+          //ajax访问成功函数
+          this.globalData.user_id = res.data.data.user_id
+        }, (res) => {
+          //ajax访问失败函数
+        }, (res) => {
+          //不管成功与否都调用函数
+        });
       }
     })
     // 获取用户信息
@@ -29,6 +42,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    user_id:null,
     imgurl:'http://xiangyu.wx.bronet.cn/images/',
   }
 })

@@ -1,42 +1,59 @@
 <!--pages/Release/push_experience/push_experience.wxml-->
 <import src="../../../template/template.wxml" />
 <!--上传封面图  -->
+<view wx:if="{{!audioshow}}">
+
+
+
+
+
 <template is="upload_img" data="{{...img}}"></template>
 <!--内容编辑  -->
-<template is="textall" data="{{...text}}"></template>
+<template is="textall" data="{{...text}}" wx:if="{{showtext}}"></template>
+<!--我添加的音频-->
+<template is="myaudio" data="{{...myaudio}}"></template>
+<!--我添加的视频-->
+<template is="myvideo" data="{{...myvidio}}"></template>
 <!--选择发布方式-->
 <template is="selet_group" data="{{...select}}"></template>
 <!--所在位置  -->
 <template is="myadder" data="{{...adder}}"></template>
 <!--送礼设置  -->
-<template is="switch" data="{{...switch}}"></template> 
+<template is="switch" data="{{...switch}}"></template>
 <!--购买享遇币  -->
 <template is="buy_Group" data="{{...bug}}"></template>
+</view>
 <!--录音组件 -->
-<!-- <template is="up_audio_group" data="{{...audio}}"></template>   -->
+<view class='audio_group' wx:if="{{audioshow}}">
+  <template is="audio_group" data="{{...audio}}" wx:if="{{showaudio}}"></template>
+  <template is="up_audio_group" data="{{...audio}}" wx:if="{{!showaudio}}"></template>
+</view>
+
+
+<view wx:if="{{!audioshow}}">
+
+
+
 <!--发布者介绍  -->
-<template is="anthurPro" data="{{...anthur}}"></template> 
+<template is="anthurPro" data="{{...anthur}}"></template>
 <!--选择种类  -->
 <template is="allkind" data="{{...kind}}"></template>
 <!--物品价格  -->
-<template is="allprice" data="{{...price}}"></template>  
+<template is="allprice" data="{{...price}}"></template>
 
 <!--输入跑腿内容  -->
-<template is="run"></template> 
+<template is="run"></template>
 <!--送达地址  -->
-<template is="alladder"></template> 
+<template is="alladder"></template>
 <!--其他需求  -->
-<template is="otherneed"></template> 
+<template is="otherneed"></template>
 <!--联系人信息  -->
-<template is="tellGroup"></template> 
+<template is="tellGroup"></template>
 <!--打赏  -->
-<template is="Tip"></template> 
+<template is="Tip"></template>
 
 <!--留位置专用  -->
 <view class='kong'></view>
 <!--发布  -->
- <template is="push"></template>  
-
-
-
-
+<template is="push" wx:if="{{!audioshow}}"></template>
+</view>
