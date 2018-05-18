@@ -1,9 +1,9 @@
 let uid = "";
 const options = {
   duration: 120000,
-  sampleRate: 44100,
-  numberOfChannels: 1,
-  encodeBitRate: 192000,
+  sampleRate:8000,
+  numberOfChannels: 2,
+  encodeBitRate: 16000,
   format:'mp3'
 }
 const getOpenid = "/api/portal/Index/getOpenid";  //获取openid

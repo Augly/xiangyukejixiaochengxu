@@ -305,7 +305,8 @@
         <text class='iconfont icon-icon-test3' bindtap='hideaudio'></text>
       </view>
       <view class='audio_more'>
-        <view class='tryLisen' bindtap='trylisten'>点击试听</view>
+        <view class='tryLisen' bindtap='trylisten' wx:if="{{trylisten}}">点击试听</view>
+        <view class='tryLisen' wx:if="{{!trylisten}}">正在试听</view>
         <view class='alltime'>时长：{{audioTime}}</view>
         <view class='botton_Group'>
           <view class='botton_return'>
