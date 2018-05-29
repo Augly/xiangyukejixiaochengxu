@@ -4,7 +4,7 @@ var time = config.options.duration;  //获取预定时间
 var timeclone = null; //  开始录音时的定时器
 var mytime = null; //录音文件的时间
 var playTime = null;  //试听的时间
-let app=getApp()
+let app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -36,36 +36,91 @@ Page({
       audioTime: 0, //
       trylisten: true
     },
-    text:{
-      info:null
+    text: {
+      info: null
     },
-    adder:{
-      adder:null
+    adder: {
+      adder: null
     },
-    myallkind:{
-      index:0,
-      kindarray:['种类一','种类二','种类三']
+    myallkind: {
+      index: 0,
+      kindarray: ['种类一', '种类二', '种类三']
     },
-    description:{
-      descriptioncontent:''
-    }
+    description: {
+      descriptioncontent: ''
+    },
+    otherneed: {
+      selectArr: ['你好', '我好', '大家好'],
+      selectIndex:0
+    },
+    runData:{
+      runipt:''
+    },
+    Tip_Data: {
+      Tip_Arr: [{
+        name: '10元',
+        value: 10
+      }, {
+        name: '20元',
+        value: 20
+      }, {
+        name: '30元',
+        value: 30
+      }],
+      TipIndex:0,
+      Tip_myipt:''
+    },
+    otherdemind:{
+      otheript:''
+    },
+    tellGroup:{
+      phone:'',
+      name: ''
+    },
   },
   /**
    * 作者介绍
    */
-  description:function(e){
+  description: function (e) {
     this.setData({
       'description.descriptioncontent': e.detail.value,
+    })
+  },
+  /**
+   * 附加需求
+   *
+   */
+  select:function(e){
+    this.setData({
+      'otherneed.selectIndex': e.currentTarget.dataset.index
+    })
+  },
+  /**
+   * 点击选择打赏金额
+   */
+  getTip:function(e){
+    this.setData({
+      'Tip_Data.TipIndex': e.currentTarget.dataset.index,
+      'Tip_Data.value': e.currentTarget.dataset.value
+    })
+  },
+  /**
+   * 自定义打赏金额
+   */
+  Tip_myipt:function(e){
+    this.setData({
+      'Tip_Data.Tip_myipt':e.detail.value
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
-      title:options.title,
+      title: options.title,
       'adder.adder': app.globalData.adder,
-      'type': options.type
+      type: options.type
     });
     var that = this;
     this.recorderManager = wx.getRecorderManager();
@@ -102,6 +157,41 @@ Page({
     })
   },
   /**
+   * 送达地址
+   */
+  sendAdder: function (e) {
+    this.setData({
+      sendAdder: e.detail.value
+    })
+  },
+
+  /**
+   *其他需求
+   */
+  otheript: function (e) {
+    console.log(e)
+    this.setData({
+      'otheript.otheript': e.detail.value
+    })
+  },
+
+  /**
+   * 获取手机号
+   */
+  getphone: function (e) {
+    this.setData({
+      'phone.phone': e.detail.value
+    })
+  },
+  /**
+   *获取收件人
+   */
+  getname: function (e) {
+    this.setData({
+      'name.name': e.detail.value
+    })
+  },
+  /**
    * 上传封面图
    */
   upwrapimg: function () {
@@ -121,7 +211,7 @@ Page({
   /**
    * 选择种类
    */
-  bindPickerKind:function(e){
+  bindPickerKind: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       'myallkind.index': e.detail.value
@@ -141,6 +231,14 @@ Page({
 
   },
   /**
+   * 输入跑腿内容
+   */
+  runipt: function (e) {
+    this.setData({
+      runipt: e.detail.value
+    })
+  },
+  /**
    * 添加文字显示
    */
   showtext: function () {
@@ -150,9 +248,9 @@ Page({
   },
 
 
-  subtext:function(e){
+  subtext: function (e) {
     this.setData({
-      'text.info':e.detail.value,
+      'text.info': e.detail.value,
     })
   },
   /**
@@ -256,7 +354,6 @@ Page({
       audioshow: false,
       'myaudio.duration': this.formatDuringtwo(this.data.audio_faile.duration)
     })
-
   },
   /**
    * 播放音频
@@ -433,8 +530,8 @@ Page({
    */
   push: function () {
     //参数对象
-    var that=this
-    
+    var that = this
+
 
     let audio, myaudio = '', imgSrc, myimgSrc = '', videoSrc, myvideoSrc = '', imgurl, myimgurl = '', info, sendgift, giftnumber = this.data.bugGroup.buy_number;
     //封面图
@@ -445,7 +542,7 @@ Page({
         showCancel: false,
       })
       return false
-    }else{
+    } else {
       console.log(this.data.img.imgurl)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -456,19 +553,15 @@ Page({
           app: 'material'
         },
         success: function (res) {
-          // console.log(JSON.parse(res.data))
           myimgSrc = JSON.parse(res.data).data[0].filepath
 
         }
       })
     }
-
-
-
     //上传音频
     if (this.data.myaudio == null || this.data.myaudio == undefined) {
       audio = ''
-    }else{
+    } else {
       console.log(this.data.myaudio)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -487,7 +580,7 @@ Page({
     //上传图片
     if (this.data.myimg.imgSrc == null || this.data.myimg.imgSrc == undefined) {
       imgSrc = ''
-    }else{
+    } else {
       console.log(this.data.myimg)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -506,7 +599,7 @@ Page({
     //上传视频
     if (this.data.myvideo.videoSrc == null || this.data.myvideo.videoSrc == undefined) {
       videoSrc = ''
-    }else{
+    } else {
       console.log(this.data.myvideo)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -523,134 +616,181 @@ Page({
     }
 
     //礼物开关
-    if (this.data.sendgift==true){
-      sendgift=1
-    }else{
-      sendgift=0
+    if (this.data.sendgift == true) {
+      sendgift = 1
+    } else {
+      sendgift = 0
     }
     //文字说明
-    if (this.data.text.info == null || this.data.text.info == undefined) {
-      wx.showModal({
-        title: '提示',
-        content: '请添加文字说明',
-        showCancel: false,
-      })
-      return false
-    } else {
-      wx.showLoading({
-        title: '正在发布...',
-      })
-      var ti = setInterval(function () {
-        if (myimgSrc != null || myimgSrc != undefined) {
-          if (audio != '' && audio != null && audio != undefined) {
-            //上传了音频
-            if (myaudio != null && myaudio != '' && myaudio != undefined) {
-              if (imgurl != '' && imgurl != null && imgurl != undefined) {
-                //上传图片
-                if (myimgurl != null && myimgSrc != '' && myimgurl != undefined) {
-                  if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
-                    //上传视频
-                    if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
-                      //上传了图片，音频，视频都成功了
+
+    if (that.data.type=='跑腿'){
+      if (myimgSrc != null || myimgSrc != undefined) {
+        let price=''
+        if (that.data.Tip_Data.Tip_myipt==''){
+          price = that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value
+        }else{
+          price = that.data.Tip_Data.Tip_myipt
+        }
+
+
+        if (that.data.runipt.runipt==''){
+            wx.showModal({
+              title:'提示',
+              content: '请输入跑腿内容',
+              showCancel: false,
+            })
+            return false
+        }
+
+        if (that.data.sendAdder==''){
+          wx.showModal({
+            title: '提示',
+            content: '请输入送达地址',
+            showCancel: false,
+          })
+          return false
+        }
+
+        let param = {
+          type: 1,
+          user_id: app.globalData.user_id,
+          title: that.data.title,
+          thumb: myimgSrc,
+          word: that.data.runipt.runipt,
+          address: that.data.sendAdder,
+          lat: app.globalData.lat,
+          lng: app.globalData.lng,
+          prize: that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value,
+          position: that.data.adder.adder
+        }
+        config.ajax("POST", param, config.send, (res) => {
+          //ajax访问成功函数
+          console.log(res)
+        }, (res) => {
+          //ajax访问失败函数
+        }, (res) => {
+          //不管成功与否都调用函数
+        });
+        
+      }else{
+
+      }
+    }else{
+      if (this.data.text.info == null || this.data.text.info == undefined) {
+        wx.showModal({
+          title: '提示',
+          content: '请添加文字说明',
+          showCancel: false,
+        })
+        return false
+      } else {
+        wx.showLoading({
+          title: '正在发布...',
+        })
+        var ti = setInterval(function () {
+          if (myimgSrc != null || myimgSrc != undefined) {
+            if (audio != '' && audio != null && audio != undefined) {
+              //上传了音频
+              if (myaudio != null && myaudio != '' && myaudio != undefined) {
+                if (imgurl != '' && imgurl != null && imgurl != undefined) {
+                  //上传图片
+                  if (myimgurl != null && myimgSrc != '' && myimgurl != undefined) {
+                    if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
+                      //上传视频
+                      if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
+                        //上传了图片，音频，视频都成功了
+                        wx.hideLoading()
+                        if (that.data.type == '兴趣') {
+                          getins()
+                        } else if (that.data.type == '共享经验') {
+                          getshare()
+                        }
+                      }
+                    } else {
+                      //上传了图片，音频成功
                       wx.hideLoading()
-                      if(that.data.type=='兴趣'){
+                      if (that.data.type == '兴趣') {
                         getins()
-                      } else if (that.data.type == '共享经验'){
+                      } else if (that.data.type == '共享经验') {
                         getshare()
                       }
-                      clearInterval(ti)
+                    }
+                  }
+                } else {
+                  if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
+                    if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
+                      //上传了音频，视频成功
+                      wx.hideLoading()
+                      if (that.data.type == '兴趣') {
+                        getins()
+                      } else if (that.data.type == '共享经验') {
+                        getshare()
+                      }
                     }
                   } else {
-                    //上传了图片，音频成功
+                    //只上传了音频成功
                     wx.hideLoading()
                     if (that.data.type == '兴趣') {
                       getins()
                     } else if (that.data.type == '共享经验') {
                       getshare()
                     }
-                    clearInterval(ti)
                   }
-                }
-              } else {
-                if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
-                  if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
-                    //上传了音频，视频成功
-                    wx.hideLoading()
-                    if (that.data.type == '兴趣') {
-                      getins()
-                    } else if (that.data.type == '共享经验') {
-                      getshare()
-                    }
-                    clearInterval(ti)
-                  }
-                } else {
-                  //只上传了音频成功
-                  wx.hideLoading()
-                  if (that.data.type == '兴趣') {
-                    getins()
-                  } else if (that.data.type == '共享经验') {
-                    getshare()
-                  }
-                  clearInterval(ti)
-                }
-              }
-            }
-          } else {
-            if (imgurl != '' && imgurl != null && imgurl != undefined) {
-              if (myimgurl != null && myimgurl != undefined) {
-                if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
-                  if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
-                    //上传了视频，图片成功
-                    wx.hideLoading()
-                    if (that.data.type == '兴趣') {
-                      getins()
-                    } else if (that.data.type == '共享经验') {
-                      getshare()
-                    }
-                    clearInterval(ti)
-                  }
-                } else {
-                  //上传了图片成功
-                  wx.hideLoading()
-                  if (that.data.type == '兴趣') {
-                    getins()
-                  } else if (that.data.type == '共享经验') {
-                    getshare()
-                  }
-                  clearInterval(ti)
                 }
               }
             } else {
-              if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
-                if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
-                  //上传了视频和音频成功
+              if (imgurl != '' && imgurl != null && imgurl != undefined) {
+                if (myimgurl != null && myimgurl != undefined) {
+                  if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
+                    if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
+                      //上传了视频，图片成功
+                      wx.hideLoading()
+                      if (that.data.type == '兴趣') {
+                        getins()
+                      } else if (that.data.type == '共享经验') {
+                        getshare()
+                      }
+                    }
+                  } else {
+                    //上传了图片成功
+                    wx.hideLoading()
+                    if (that.data.type == '兴趣') {
+                      getins()
+                    } else if (that.data.type == '共享经验') {
+                      getshare()
+                    }
+                  }
+                }
+              } else {
+                if (videoSrc != '' && videoSrc != null && videoSrc != undefined) {
+                  if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
+                    //上传了视频和音频成功
+                    wx.hideLoading()
+                    if (that.data.type == '兴趣') {
+                      getins()
+                    } else if (that.data.type == '共享经验') {
+                      getshare()
+                    }
+                  }
+                } else {
+                  //什么都没上传
                   wx.hideLoading()
                   if (that.data.type == '兴趣') {
                     getins()
-
                   } else if (that.data.type == '共享经验') {
                     getshare()
                   }
-                  clearInterval(ti)
                 }
-              } else {
-                //什么都没上传
-                wx.hideLoading()
-                if (that.data.type == '兴趣') {
-                  getins()
-                } else if (that.data.type == '共享经验') {
-                  getshare()
-                }
-                clearInterval(ti)
               }
             }
           }
-        }
-      }, 1000)
+        }, 1000)
+      }
     }
 
 
-    function getshare(){
+
+    function getshare() {
       let material = {
         myimgurl: myimgurl,
         myaudio: myaudio,
@@ -672,7 +812,6 @@ Page({
       config.ajax("POST", param, config.addShare, (res) => {
         //ajax访问成功函数
         console.log(res)
-       
       }, (res) => {
         //ajax访问失败函数
       }, (res) => {
@@ -680,10 +819,34 @@ Page({
       });
     }
 
+
+    // function run(){
+    //   let param={
+    //     type:1,
+    //     user_id: app.globalData.user_id,
+    //     title: that.data.title,
+    //     thumb: myimgSrc,
+    //     word: that.data.runipt.runipt,
+    //     address: that.data.sendAdder.sendAdder,
+    //     lat: app.globalData.lat,
+    //     lng: app.globalData.lng,
+    //     prize: that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value,
+    //     position: that.data.adder.adder
+    //   }
+    //   config.ajax("POST", param, config.send, (res) => {
+    //     //ajax访问成功函数
+    //     console.log(res)
+    //   }, (res) => {
+    //     //ajax访问失败函数
+    //   }, (res) => {
+    //     //不管成功与否都调用函数
+    //   });
+    // }
+
     function getins() {
       var param = {
         user_id: app.globalData.user_id,
-        sort_id:1,
+        sort_id: 1,
         title: that.data.title,
         thumb: myimgSrc,
         word: that.data.text.info,

@@ -1,13 +1,40 @@
 let uid = "";
 const options = {
   duration: 120000,
-  sampleRate:8000,
+  sampleRate: 8000,
   numberOfChannels: 2,
   encodeBitRate: 16000,
-  format:'mp3'
-}
-const getOpenid = "/api/portal/Index/getOpenid";  //获取openid
+  format: 'mp3'
+},
+
+myimgUrl ="https://xiangyu.lu.broteam.cn/public/assets/", // 图片地址
+
+addShare ="/api/portal/Share/setShare",
+
+uploadFile ="https://xiangyu.lu.broteam.cn/portal/Common/upload", //上传文件接口
+
+getOpenid = "/api/portal/Index/getOpenid",  //获取openid
+
+setInfo ='/api/portal/User/changeName',
+
+setInterest ='/api/portal/Interest/setInterest',
+
+person ='/api/portal/User/index',
+
+interestSort ='/api/portal/Interest/interestSort', //兴趣社分类
+
+insterstList ='/api/portal/Interest/interestList',
+
+send ='/api/portal/Purchase/send', //发布跑腿
+
+sortList ='/api/portal/Interest/interestSort',
+
+fans ='/api/portal/User/fans',
+
+getexper ='/api/portal/Share/getShare';
+
 //获取dataset
+
 function getDataset(event, key) {
   return event.currentTarget.dataset[key];
 }
@@ -53,7 +80,19 @@ function ajax(Type, params, url, successData, errorData, completeData) {
 module.exports = {
   getDataset: getDataset,
   uid: uid,
+  setInfo: setInfo,
   ajax: ajax,
   getOpenid: getOpenid,
-  options: options
+  options: options,
+  uploadFile: uploadFile,
+  addShare: addShare,
+  myimgUrl:myimgUrl,
+  getexper: getexper,
+  setInterest: setInterest,
+  person: person,
+  insterstList: insterstList,
+  sortList: sortList,
+  fans: fans,
+  interestSort: interestSort,
+  send: send
 }

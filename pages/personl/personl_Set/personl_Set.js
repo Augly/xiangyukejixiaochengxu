@@ -1,25 +1,90 @@
 // pages/personl/personl_Set/personl_Set.js
+const config = require("../../../utils/config.js");
+const app = getApp();
+var myallinfo='';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    region: ['广东省', '广州市', '海珠区'],
+    array:['男','女'],
+    index:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    config.ajax('POST',{
+      user_id: app.globalData.user_id
+    }, config.setInfo,(res)=>{
+      console.log(res)
+      myallinfo = res.data.data
+        that.setData({
+          myinfo: res.data.data
+        })
+    })
   },
-
+/**
+ * 选择性别
+ */
+  bindPickerSex:function(e){
+    var that = this;
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    myallinfo.sex = e.detail.value;
+    config.ajax('POST', myallinfo, config.setInfo, (res) => {
+      that.setData({
+        index: e.detail.value
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
   
+  },
+  /**
+   * 选择出生年月
+   */
+  bindDate: function (e) {
+    var that = this;
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    myallinfo.birthday= e.detail.value;
+    config.ajax('POST', myallinfo, config.setInfo, (res) => {
+      console.log(myallinfo)
+      that.setData({
+        date: e.detail.value
+      })
+    })
+  },
+
+
+  /**
+   * 修改用户名
+   */
+  userName:function(){
+    wx.navigateTo({
+      url: '../username/username?maadder=' + JSON.stringify(this.data.myinfo),
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  /**
+   * 选择省市区
+   */
+  bindRegionChange: function (e) {
+    var that = this;
+    myallinfo.live = e.detail.value[0] + '-' + e.detail.value[1] + '-' + e.detail.value[2];
+    config.ajax('POST', myallinfo, config.setInfo, (res) => {
+      that.setData({
+        region: e.detail.value
+      })
+    })
   },
 
   /**

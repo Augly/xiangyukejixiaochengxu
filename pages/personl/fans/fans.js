@@ -1,4 +1,6 @@
 // pages/personl/fans/fans.js
+const config=require('../../../utils/config.js');
+const app=getApp()
 Page({
 
   /**
@@ -12,7 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log('1')
+    config.ajax('POST',{
+      user_id: app.globalData.user_id
+    }, config.fans,(res)=>{
+      console.log(res)
+    })
   },
 
   /**

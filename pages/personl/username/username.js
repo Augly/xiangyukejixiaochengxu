@@ -1,20 +1,41 @@
 // pages/personl/username/username.js
+const config = require("../../../utils/config.js");
+const app = getApp();
+var myallinfo = '';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    user:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    myallinfo = JSON.parse(options.maadder)
+    console.log(JSON.parse(options.maadder))
   },
-
+  /**
+   *修改用户名
+   */
+  user:function(e){
+    this.setData({
+      user:e.detail.value
+    })
+  },
+  /**
+   * 保存
+   */
+  submit:function(){
+    var that=this;
+    config.ajax('POST',{
+      user:that.data.value
+    }, config.setInfo,(res)=>{
+          config.log(res)
+      })},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -36,6 +57,9 @@ Page({
   
   },
 
+  /**
+   * 保存修改
+   */
   /**
    * 生命周期函数--监听页面卸载
    */

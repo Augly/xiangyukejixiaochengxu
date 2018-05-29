@@ -1,8 +1,14 @@
 //app.js
 const config = require("utils/config.js");
+const QQMapWX = require('utils/qqmap-wx-jssdk.js');
+var qqmapsdk = ""
 App({
   onLaunch: function () {
     // 登录
+    qqmapsdk = new QQMapWX({
+      key: 'CRZBZ-GGA6S-AFZOH-6JEIJ-RFOAE-RSB5H'
+    });
+    var that=this
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -12,14 +18,44 @@ App({
         //参数对象
         config.ajax("POST", param, config.getOpenid, (res) => {
           //ajax访问成功函数
-          this.globalData.user_id = res.data.data.user_id
+          that.globalData.user_id = res.data.data.user_id
+          wx.getLocation({
+            type: 'wgs84',
+            success:(res)=>{
+              that.globalData.lat = res.latitude
+              that.globalData.lng = res.longitude
+              qqmapsdk.reverseGeocoder({
+                location: {
+                  latitude: res.latitude,
+                  longitude: res.longitude
+                },
+                success: function (res) {
+                  console.log(res.result.address_component);
+                  that.globalData.adder = res.result.address_component.city + ' · ' + res.result.address_component.district
+                },
+                fail: function (res) {
+                  console.log(res);
+                 
+                },
+                complete: function (res) {
+                  // console.log(res);
+                }
+              });
+            },
+            fail:(res)=>{
+              wx.navigateBack({ delta: 1 })
+            }
+
+          })
         }, (res) => {
+
           //ajax访问失败函数
         }, (res) => {
           //不管成功与否都调用函数
         });
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -43,6 +79,12 @@ App({
   globalData: {
     userInfo: null,
     user_id:null,
+    lat:null,
+    lng:null,
     imgurl:'http://xiangyu.wx.bronet.cn/images/',
+    adder:null
   }
 })
+
+
+

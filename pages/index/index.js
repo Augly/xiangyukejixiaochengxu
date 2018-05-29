@@ -10,6 +10,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     index:1,
     myindex:1,
+    myimgUrl: config.myimgUrl,
     imgUrls: [
       'http://xiangyu.wx.bronet.cn/images/abanner@2x.png',
       'http://xiangyu.wx.bronet.cn/images/abanner@2x.png',
@@ -66,16 +67,63 @@ Page({
     interval: 5000,
     duration: 500,
     circular:true,
+    true: true,
     scrollView:{
       width:'100%',
       height:'100%',
-    }
+    },
   },
+
   //事件处理函数
   navClick: function(event) {
+    var that=this
     this.setData({
       index: event.currentTarget.dataset.id
     })
+    if (event.currentTarget.dataset.id=='2'){
+      //获取共享经验数据
+      config.ajax('POST', {
+        user_id: app.globalData.user_id,
+        lat: app.globalData.lat,
+        lng: app.globalData.lng
+      }, config.getexper, (res) => {
+        console.log(res.data.data.list)
+
+        for (let i = 0; i < res.data.data.list.length; i++) {
+          res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(2)
+        }
+        that.setData({
+          note: res.data.data.list
+        })
+      })
+    } else if (event.currentTarget.dataset.id == '3'){
+      //获取兴趣社数据
+      config.ajax('POST', {}, config.interestSort, (res) => {
+        console.log(res.data.data)
+        that.setData({
+          interestSort: res.data.data
+        })
+      })
+
+      config.ajax('POST', {
+        user_id: app.globalData.user_id,
+        lat: app.globalData.lat,
+        lng: app.globalData.lng,
+        sort_id:''
+      }, config.insterstList, (res) => {
+        
+        for (let i = 0; i < res.data.data.length; i++) {
+          res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(2)
+        }
+        console.log(res.data.data)
+        that.setData({
+          interestList: res.data.data
+        })
+        that.setData({
+          'interestList.myimgUrl':config.myimgUrl
+        })
+      })
+    }
   },
   demindtap:function(event){
     this.setData({

@@ -1,6 +1,8 @@
 {
   "pages": [
+
     "pages/index/index",
+    "pages/Release/demanded/demanded",
     "pages/business_edit/business_edit",
     "pages/business_Card/business_Card",
     "pages/Collection/Collection",

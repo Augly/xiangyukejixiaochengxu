@@ -55,20 +55,23 @@
   box-sizing: border-box;
 }
 .select_head{
-  width: 100%;
+   width:auto; 
   height: 88rpx;
-  display: flex;
+   display: flex; 
   align-items: center;
   border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  /* overflow-y:auto;  */
+  flex-wrap: nowrap;
+  overflow-x: scroll
 }
-.select_item {
+.selectone_item {
   box-sizing: border-box;
   padding: 16rpx 22rpx;
   height: 56rpx;
   font-size: 24rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(153, 153, 153, 1);
-  display: inline-block;
+  display: inline-block; 
   margin-left: 24rpx;
   border-radius: 28rpx;
 }

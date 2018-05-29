@@ -1,0 +1,77 @@
+<!--pages/Release/push_experience/push_experience.wxml-->
+<import src="../../../template/template.wxml" />
+<!--上传封面图  -->
+<view wx:if="{{!audioshow}}">
+  <template is="upload_img" data="{{...img}}"></template>
+  <!--输入跑腿内容  -->
+  <!--二手置换才显示  -->
+
+
+
+  <view wx:if="{{type=='二手置换'||type=='问答'}}">
+    <!--作者介绍  -->
+    <template is="anthurPro" data='{{...description}}'></template>
+    <!--内容编辑  -->
+    <template is="textall" data="{{...text}}" wx:if="{{showtext}}"></template>
+    <!--我添加的音频-->
+    <template is="myaudio" data="{{...myaudio}}" wx:if="{{myaudio!=null}}"></template>
+    <!--我添加的视频-->
+    <template is="myvideo" data="{{...myvideo}}" wx:if="{{myvideo.videoSrc!=null}}"></template>
+    <!--上图片组件  -->
+    <template is="upimg" data="{{...myimg}}" wx:if="{{myimg.imgSrc!=null}}"></template>
+    <!--选择媒体  -->
+    <template is="selet_group" data="{{...select}}"></template>
+    <!--所在位置  -->
+    <template is="myadder" data="{{...adder}}"></template>
+    <!--物品价格-->
+  
+    <template is="allprice" wx:if="{{type=='二手置换'}}"></template>
+    <!--礼物价值-->
+
+    <template is="giftprice" wx:if="{{type=='问答'}}"></template>
+  </view>
+
+  <!--选择种类-->
+
+
+
+  <!-- <template is='allkind' data="{{...myallkind}}"></template> -->
+  
+  <view wx:if="{{type=='跑腿'}}">
+    <!--跑腿-->
+    <template is="run" data="{{...runData}}"></template>
+        <!--所在位置  -->
+    <template is="myadder" data="{{...adder}}"></template>
+    <!--送达地址  -->
+    <template is="alladder"></template>
+    <!--附加需求 -->
+    <template is='needs' data="{{...otherneed}}"></template>
+    <!--其它需求-->
+    <template is="otherneed" data="{{...otherdemind}}"></template>
+    <!--联系电话-->
+    <template is="tellGroup" data='{{...tellGroup}}'></template>
+    <!--打赏金额 -->
+    <template is="Tip" data="{{...Tip_Data}}"></template>
+  </view>
+
+
+
+  <!--送礼设置  -->
+  <!-- <template is="switch" data="{{...switch}}"></template> -->
+  <!--购买享遇币  -->
+  <!-- <template is="buy_Group" data="{{...bugGroup}}"></template> -->
+  <!--购买享遇币  -->
+  <!-- <template is="buy" data="{{...bug}}"></template> -->
+
+</view>
+<!--录音组件 -->
+<view class='audio_group' wx:if="{{audioshow}}">
+  <template is="audio_group" data="{{...audio}}" wx:if="{{showaudio}}"></template>
+  <template is="up_audio_group" data="{{...audio}}" wx:if="{{!showaudio}}"></template>
+</view>
+<view wx:if="{{!audioshow}}">
+  <!--留位置专用  -->
+  <view class='kong'></view>
+  <!--发布  -->
+  <template is="push" wx:if="{{!audioshow}}"></template>
+</view>

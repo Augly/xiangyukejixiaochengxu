@@ -15,7 +15,7 @@
   </view>
 </view>
 
-
+<!--推荐-->
 <scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:if="{{index==1}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
     <block wx:for="{{imgUrls}}" wx:key="index">
@@ -37,6 +37,9 @@
     </view>
   </view>
 </scroll-view>
+
+
+<!--共享经验-->
 <scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==2}}">
   <view class='scrollView'>
     <view class='left'>
@@ -51,6 +54,9 @@
     </view>
   </view>
 </scroll-view>
+
+
+<!--兴趣社-->
 <scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==3}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
     <block wx:for="{{imgUrls}}" wx:key="index">
@@ -60,29 +66,68 @@
     </block>
   </swiper>
   <view class='scrollView'>
-    <view class='select_Group'>
-      <view class='select_head'>
-        <view class='select_item'>
+    <view class='select_Group' style="width: 100%;overflow: hidden;background: #fff;white-space: nowrap;">
+      <scroll-view class='select_head' scroll-x>
+      <view style='height:88rpx;display:flex;align-items:center;'>
+        <view class='selectone_item' wx:for="{{interestSort[0]}}">
           全部
         </view>
-        <view class='select_item'>
+        <view class='selectone_item'>
           阅读
         </view>
-        <view class='select_item'>
-          外语
+        <view class='selectone_item'>
+          全部
         </view>
-        <view class='select_item'>
-          技能
+        <view class='selectone_item'>
+          阅读
         </view>
-        <view class='select_item'>
-          运动
+        <view class='selectone_item'>
+          全部
         </view>
-        <view class='select_item'>
-          其它
-          <text class='iconfont icon-xiangxia'></text>
+        <view class='selectone_item'>
+          阅读
+        </view>
+        <view class='selectone_item'>
+          全部
+        </view>
+        <view class='selectone_item'>
+          阅读
+        </view>
+        <view class='selectone_item'>
+          全部
+        </view>
+        <view class='selectone_item'>
+          阅读
+        </view>
+        <view class='selectone_item'>
+          全部
+        </view>
+        <view class='selectone_item'>
+          阅读
+        </view>
+        <view class='selectone_item'>
+          全部
+        </view>
+        <view class='selectone_item'>
+          阅读
+        </view>
+        <view class='selectone_item'>
+          全部
+        </view>
+        <view class='selectone_item'>
+          阅读
+        </view>
+        <view class='selectone_item'>
+          全部
+        </view>
+        <view class='selectone_item'>
+          阅读
         </view>
       </view>
-      <view class='select_more'>
+        
+        
+      </scroll-view>
+      <!-- <view class='select_more'>
         <view class='select_more_item'>兴趣1</view>
         <view class='select_more_item'>兴趣1</view>
         <view class='select_more_item'>兴趣1</view>
@@ -92,7 +137,7 @@
         <view class='select_more_item'>兴趣1</view>
         <view class='select_more_item'>兴趣1</view>
         <view class='select_more_item'>兴趣1</view>
-      </view>
+      </view> -->
     </view>
 
     <!-- <view class='left'>
@@ -109,13 +154,13 @@
 
   </view>
   <view class='InterestGroup'>
-    <block wx:for="{{note}}" wx:key="">
-      <template is="Interestitem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    <block wx:for="{{interestList}}" wx:key="">
+       <template is="Interestitem" data="{{...item}}">{{num}}</template> 
     </block>
   </view>
 </scroll-view>
 
-
+<!--需求-->
 <scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==4}}">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
     <block wx:for="{{imgUrls}}" wx:key="index">
@@ -138,8 +183,6 @@
         </view>
       </view>
     </view>
-
-
   </view>
   <view class='InterestGroup' wx:if="{{myindex==1}}">
     <block wx:for="{{note}}" wx:key="">

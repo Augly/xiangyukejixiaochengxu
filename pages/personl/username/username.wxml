@@ -1,5 +1,5 @@
-<input class="username" value="向昱筱"></input>
+<input class="username" value="{{user}}" bindinput='user'></input>
 
- <view class='foot'>
+ <view class='foot' bindtap='submit'>
     保存
 </view> 

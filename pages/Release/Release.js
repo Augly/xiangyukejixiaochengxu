@@ -1,8 +1,10 @@
 // pages/Release/Release.js
 const config = require("../../utils/config.js");
+// 引入SDK核心类
+const QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+var qqmapsdk=""
 var interval = null //倒计时函数
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -53,23 +55,27 @@ Page({
   submit: function () {
     var that = this
     var myinfo = JSON.stringify(that.data.info)
-    wx.request({
-      url: "https://skiing.wx.bronet.cn/index.php/Api/Index/do_bing_phone",
-      data: {
-        openid: that.data.openid,
-        tel: that.data.main,
-        code: that.data.code
-      },
-      header: {
-        'Content-type': 'application/x-www-form-urlencoded'
-      },
-      method: "POST",
-      success: function (res) {
-        wx.navigateTo({
-          url: "../ordel/ordel?info=" + myinfo
-        })
-      }
+
+    wx.navigateTo({
+      url: 'demanded/demanded?title='+this.data.title + '&type=' + this.data.array[this.data.index],
     })
+    // wx.request({
+    //   url: "https://skiing.wx.bronet.cn/index.php/Api/Index/do_bing_phone",
+    //   data: {
+    //     openid: that.data.openid,
+    //     tel: that.data.main,
+    //     code: that.data.code
+    //   },
+    //   header: {
+    //     'Content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   method: "POST",
+    //   success: function (res) {
+    //     wx.navigateTo({
+    //       url: "../ordel/ordel?info=" + myinfo
+    //     })
+    //   }
+    // })
   },
   getVerificationCode() {
     var that = this
@@ -129,7 +135,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    qqmapsdk = new QQMapWX({
+      key: 'CRZBZ-GGA6S-AFZOH-6JEIJ-RFOAE-RSB5H'
+    });
   },
 
   /**
@@ -143,7 +151,7 @@ Page({
   /**
    * 下一步
    */
-  nextStep(){
+  nextStep(){     
     if(this.data.title==""){
       wx.showModal({
         title: '提示',
@@ -167,12 +175,18 @@ Page({
       this.setData({
         phoneMask:true
       })
+
+
+
+
     } else if (this.data.selectIndex == '1'){
        wx.navigateTo({
-         url: 'push_experience/push_experience?title='+this.data.title,
+         url: 'push_experience/push_experience?title='+this.data.title+'&type=共享经验',
        })
     }else{
-
+      wx.navigateTo({
+        url: 'push_experience/push_experience?title=' + this.data.title+'&type=兴趣',
+      })
     }
   },
   /**

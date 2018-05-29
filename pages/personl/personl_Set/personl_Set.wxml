@@ -7,27 +7,40 @@
 </view>
 
 <view class='myzl'>
-  <view class='myzl_item'>
+  <view class='myzl_item' bindtap='userName'>
     <view class='myzl_item_title'>用户名</view>
     <view class='myzl_item_mintitle'>向昱筱</view>
     <text class='iconfont icon-bangzhujinru'></text>
   </view>
-  <view class='myzl_item'>
+
+<picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDate">
+    <view class='myzl_item'>
     <view class='myzl_item_title'>出生年月</view>
-    <view class='myzl_item_mintitle'>1994-12-19</view>
+    <view class='myzl_item_mintitle'>{{date}}</view>
     <text class='iconfont icon-bangzhujinru'></text>
   </view>
-  <view class='myzl_item'>
-    <view class='myzl_item_title'>性别</view>
-    <view class='myzl_item_mintitle'>女</view>
-    <text class='iconfont icon-bangzhujinru'></text>
-  </view>
-  <view class='myzl_item'>
-    <view class='myzl_item_title'>当前位置</view>
-    <view class='myzl_item_mintitle'>天津市和平区</view>
-    <text class='iconfont icon-bangzhujinru'></text>
-  </view>
+
+</picker>
+
+
+
+  <picker bindchange="bindPickerSex" value="{{index}}" range="{{array}}">
+    <view class='myzl_item'>
+      <view class='myzl_item_title'>性别</view>
+      <view class='myzl_item_mintitle'>{{array[index]}}</view>
+      <text class='iconfont icon-bangzhujinru'></text>
+    </view>
+  </picker>
+
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class='myzl_item'>
+      <view class='myzl_item_title'>当前位置</view>
+      <view class='myzl_item_mintitle'>{{region[0]}}-{{region[1]}}-{{region[2]}}</view>
+      <text class='iconfont icon-bangzhujinru'></text>
+    </view>
+    </picker>
 </view>
+
 
 <view class='myzl'>
   <view class='myzl_item'>

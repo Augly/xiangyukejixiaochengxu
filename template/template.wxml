@@ -1,8 +1,8 @@
 <!--瀑布流模板  -->
 <template name="item">
-  <view class="item">
+  <view class="item" bindtap='lookres'>
     <view class='showImg'>
-      <image class="item_img" src="{{mian_imgurl}}" mode="widthFix"></image>
+      <image class="item_img" src="{{thumb}}" mode="widthFix"></image>
       <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
       <view class='item_txt'>{{title}}</view>
     </view>
@@ -16,15 +16,15 @@
             <text class='iconfont icon-nan' wx:else></text>
           </view>
           <view class='anthur_Data'>
-            2018/02/02
+            {{create_time}}
           </view>
         </view>
-        <text class='iconfont icon-xihuan'></text>
+        <text class='iconfont icon-xihuan' catchtap='love'></text>
       </view>
       <view class='adder_Group'>
         <text class='iconfont icon-dizhi'></text>
         <view class='adder_res'>天津 · 建国楼</view>
-        <view class='distance'>距离0.8km</view>
+        <view class='distance'>距离{{distance}}km</view>
       </view>
     </view>
   </view>
@@ -32,20 +32,21 @@
 <!--兴趣社模板  -->
 <template name="Interestitem">
   <view class="Interestitem">
+  {{id}}
     <view class='InterestshowImg'>
-      <image class="Interestitem_img" src="{{mian_imgurl}}"></image>
+      <image class="Interestitem_img" src=""></image>
       <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
     </view>
     <view class='InterestshowText'>
-      <view class='Interestitem_title'>20天掌握美式连读</view>
+      <view class='Interestitem_title'>{{title}}</view>
       <view class='anthur_Data'>
-        2018/02/02
+        {{distance}}
       </view>
       <view class='Interestanthur_Group'>
-        <image class='Interestshow_anthur' src="{{authur_imgurl}}"></image>
+        <image class='Interestshow_anthur' src=""></image>
         <view class='Interestanthur_Info'>
           <view class='anthurInfo_name'>
-            <view class='name'>{{authur_name}}</view>
+            <view class='name'>{{user_nickname}}</view>
             <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
             <text class='iconfont icon-nan' wx:else></text>
           </view>
@@ -53,8 +54,8 @@
       </view>
       <view class='adder_Group' style='margin-top:0rpx;'>
         <text class='iconfont icon-dizhi'></text>
-        <view class='adder_res'>天津 · 建国楼</view>
-        <view class='distance' style='color:RGBA(57, 143, 202, 1)'>距离0.8km</view>
+        <view class='adder_res'>{{position}}</view>
+        <view class='distance' style='color:RGBA(57, 143, 202, 1)'>距离{{distance}}km</view>
       </view>
     </view>
   </view>
@@ -127,7 +128,7 @@
       编辑封面(建议尺寸370X440)
     </view>
     <view class='view_content'>
-      <image class='view_list'></image>
+      <image class='view_list' src='{{imgurl}}' bindtap='upwrapimg'></image>
     </view>
   </view>
 </template>
@@ -143,10 +144,10 @@
       </view>
     </view>
     <view class='select_item_right'>
-      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);'>
+      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);' bindtap='upimg' >
         <text class='iconfont icon-icon-1'></text> 添加图片
       </view>
-      <view class='select_item'>
+      <view class='select_item' bindtap='Record'>
         <text class='iconfont icon-shipin'></text> 添加视频
       </view>
     </view>
@@ -159,30 +160,50 @@
     <view class='switch_title'>
       送礼设置
     </view>
-    <switch checked bindchange="switch1Change" />
+    <switch  bindchange="switch1Change" />
   </view>
 </template>
 
 
-
+<!--购买享遇币  -->
+<template name="buy">
+  <view class="buy">
+    <view class='buy_title'>
+      请购买享遇币
+    </view>
+    <text class='iconfont  icon-arrow'></text>
+  </view>
+</template>
 <!--添加音频展示模块儿-->
 <template name="myaudio">
-  <view class='myaudio'>
+  <view class='myaudio' bindtap='playaudio'>
     <image src='../../../img/huatong@2x.png' class='mai'></image>
     <image src='../../../img/jai@2x.png' class='shengyin'></image>
-    <text class='myaudio_time'>1:54"</text>
+    <text class='myaudio_time'>{{duration}}</text>
   </view>
 </template>
 
+
+<!--附加需求  -->
+<template name='needs'>
+  <view class='myadder'>
+      <view class='myadder_title'>附加需求</view>
+      <view class='myadder_selectGroup'>
+        <view class="myadder_selectItem {{selectIndex==index?'myadder_selectItemActive':''}}" wx:for="{{selectArr}}" data-index='{{index}}' bindtap='select'>
+          {{selectArr[index]}}
+        </view>
+      </view>
+  </view>
+</template>
 <!--添加视频展示模块儿-->
 <template name="myvideo">
-  <video class='myvideo' objectFit="fill" controls="{{controls}}"></video>
+  <cover-view class='myvideo'style="z-index:10;" >
+    <video class='myvideo' style='margin:0;' objectFit="cover" controls="{{controls}}" src='{{videoSrc}}'></video>
+  </cover-view>
 </template>
-
-
 <!--添加图片展示模块儿-->
-<template name="mypic">
-  <view class='mypic'></view>
+<template name="upimg">
+  <image class='myvideo'  src='{{imgSrc}}' mode="widthFix"></image>
 </template>
 
 
@@ -191,9 +212,9 @@
   <view class="text_view">
     <view class='text_view_title'>
       <view class='text_title'>内容编辑</view>
-      <view class='cendel'>删除</view>
+      <view class='cendel' bindtap='cendel'>删除</view>
     </view>
-    <textarea placeholder-class="mytext" class='mytext' placeholder='请输入文字内容'>
+    <textarea placeholder-class="mytext" bindinput='subtext' class='mytext' placeholder='请输入文字内容' value='{{info}}'>
 
     </textarea>
   </view>
@@ -203,7 +224,7 @@
 <template name="myadder">
   <view class="myadder">
     <text class='iconfont icon-dizhi'></text>
-    <view class='adderres'>所在位置</view>
+    <view class='adderres'>{{adder}}</view>
   </view>
 </template>
 
@@ -213,7 +234,7 @@
     <view class='anthurPro_title'>
       发布者介绍
     </view>
-    <textarea class='anthurPro_test'>
+    <textarea class='anthurPro_test' bindinput='description' value='{{descriptioncontent}}'>
 
     </textarea>
   </view>
@@ -225,10 +246,12 @@
     <view class='kind_title'>
       选择种类
     </view>
-    <view class='kind_select'>
-      <view class='kind_select_title'>种类一</view>
+    <picker mode = 'selector'  bindchange="bindPickerKind" value="{{index}}" range="{{kindarray}}">
+      <view class='kind_select'>
+      <view class='kind_select_title'>{{kindarray[index]}}</view>
       <text class='iconfont icon-xiangxia'></text>
     </view>
+    </picker>
   </view>
 </template>
 
@@ -240,6 +263,14 @@
   </view>
 </template>
 
+
+<!--礼物价值  -->
+<template name="giftprice">
+  <view class='allprice'>
+    <text class='allprice_title'>礼物价值：￥</text>
+    <input class='allprice_ipt'></input>
+  </view>
+</template>
 <!--购买享遇币  -->
 <template name="buy_Group">
   <view class='buy_Group'>
@@ -247,11 +278,11 @@
       <text>(礼物不足需要购买)</text>
     </view>
     <view class='buy_Group_cart'>
-      <view class='jian'>
+      <view class='jian' bindtap='jian'>
         <text class='iconfont icon-jianhao1'></text>
       </view>
-      <view class='numview'>10</view>
-      <view class='jia'>
+      <view class='numview'>{{buy_number}}</view>
+      <view class='jia' bindtap='jia'>
         <text class='iconfont icon-guanzhu'></text>
       </view>
     </view>
@@ -309,13 +340,13 @@
         <view class='tryLisen' wx:if="{{!trylisten}}">正在试听</view>
         <view class='alltime'>时长：{{audioTime}}</view>
         <view class='botton_Group'>
-          <view class='botton_return'>
+          <view class='botton_return' bindtap='returnaddaudio'>
             <view class='botton_view'>
               <text class='iconfont icon-icon-test1'></text>
             </view>
             <view class='botton_title'>重新录制</view>
           </view>
-          <view class='botton_sure'>
+          <view class='botton_sure' bindtap='uploadaudio'>
             <view class='botton_view'>
               <text class='iconfont icon-icon--'></text>
             </view>
@@ -331,7 +362,7 @@
 <!--输入跑腿内容-->
 <template name="run">
   <view class='iptrun'>
-    <input class='runipt' placeholder='请输入跑腿内容'>
+    <input class='runipt' placeholder='请输入跑腿内容' bindinput='runipt' value='runipt'>
 
     </input>
   </view>
@@ -339,7 +370,7 @@
 
 <!--发布  -->
 <template name="push">
-  <cover-view class='push'>
+  <cover-view class='push' style='z-index:10;' bindtap='push'>
     发布
   </cover-view>
 </template>
@@ -350,7 +381,7 @@
     <view class='myadder_title'>
       送达地址
     </view>
-    <input class='myadder_ipt' placeholder='请输入送达地址'>
+    <input class='myadder_ipt' placeholder='请输入送达地址' bindinput='sendAdder'>
 
     </input>
   </view>
@@ -362,7 +393,7 @@
     <view class='myadder_title'>
       其它需求：
     </view>
-    <input class='myadder_ipt' placeholder='请输入相关需求'>
+    <input class='myadder_ipt' placeholder='请输入相关需求' bindinput='otheript' value='{{otheript}}'>
 
     </input>
   </view>
@@ -373,11 +404,11 @@
   <view class='tellGroup'>
     <view class='tellNumber'>
       <view class='tellnumber_title'>电话号码</view>
-      <input class='telllnum_ipt' placeholder='请输入电话号码'></input>
+      <input class='telllnum_ipt' placeholder='请输入电话号码' bindinput='getphone' value='{{phone}}'></input>
     </view>
     <view class='tellName'>
       <view class='tellname_title'>姓名</view>
-      <input class='tellname_ipt' placeholder='请输入姓名'></input>
+      <input class='tellname_ipt' placeholder='请输入姓名' bindinput='getname' value='{{name}}'></input>
     </view>
   </view>
 </template>
@@ -390,14 +421,8 @@
         选择打赏路费：
       </view>
       <view class='Tip_Select'>
-        <view class='Tip_Select_item Tip_Select_item_active'>
-          10元
-        </view>
-        <view class='Tip_Select_item'>
-          20元
-        </view>
-        <view class='Tip_Select_item'>
-          30元
+        <view class="Tip_Select_item {{TipIndex==index?'Tip_Select_item_active':''}}"  wx:for="{{Tip_Arr}}"  data-index='{{index}}' data-value='{{item.value}}' bindtap='getTip'>
+          {{item.name}}
         </view>
       </view>
     </view>
@@ -407,7 +432,7 @@
       </view>
       <view class='Tip_ipt'>
         <view class='Tip_mintitle'>￥</view>
-        <input class='Tip_myipt'></input>
+        <input class='Tip_myipt' bindinput='Tip_myipt' value='{{Tip_myipt}}'></input>
       </view>
     </view>
   </view>
