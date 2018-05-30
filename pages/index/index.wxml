@@ -69,59 +69,8 @@
     <view class='select_Group' style="width: 100%;overflow: hidden;background: #fff;white-space: nowrap;">
       <scroll-view class='select_head' scroll-x>
       <view style='height:88rpx;display:flex;align-items:center;'>
-        <view class='selectone_item' wx:for="{{interestSort[0]}}">
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
-        </view>
-        <view class='selectone_item'>
-          全部
-        </view>
-        <view class='selectone_item'>
-          阅读
+        <view class="selectone_item {{selectIndex==index?'selectone_itemActive':''}}" wx:for="{{interestSort[0]}}" bindtap='select_active' data-index='{{index}}'>
+          {{item.sort_name}}
         </view>
       </view>
         
@@ -155,7 +104,7 @@
   </view>
   <view class='InterestGroup'>
     <block wx:for="{{interestList}}" wx:key="">
-       <template is="Interestitem" data="{{...item}}">{{num}}</template> 
+       <template is="Interestitem" data="{{...item}}"></template> 
     </block>
   </view>
 </scroll-view>
@@ -185,19 +134,19 @@
     </view>
   </view>
   <view class='InterestGroup' wx:if="{{myindex==1}}">
-    <block wx:for="{{note}}" wx:key="">
+    <block wx:for="{{demindlist}}" wx:key="">
       <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
     </block>
   </view>
 
   <view class='InterestGroup' wx:elif="{{myindex==2}}">
-    <block wx:for="{{note}}" wx:key="">
+    <block wx:for="{{demindlist}}" wx:key="">
       <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
     </block>
   </view>
 
   <view class='InterestGroup' wx:else="{{myindex==3}}">
-    <block wx:for="{{note}}" wx:key="">
+    <block wx:for="{{demindlist}}" wx:key="">
       <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
     </block>
   </view>

@@ -651,11 +651,23 @@ Page({
 
 
     function getshare(){
-      let material = {
-        myimgurl: myimgurl,
-        myaudio: myaudio,
-        myvideoSrc: myvideoSrc
+      let material=''
+      if (myaudio!=''){
+        material = {
+          myimgurl: myimgurl,
+          time: that.data.audio_faile.duration,
+          myaudio: myaudio,
+          myvideoSrc: myvideoSrc
+        }
+      }else{
+        material = {
+          myimgurl: myimgurl,
+          time: that.data.audio_faile.duration,
+          myaudio: myaudio,
+          myvideoSrc: myvideoSrc
+        }
       }
+     
       console.log(JSON.stringify(material))
       var param = {
         user_id: app.globalData.user_id,

@@ -25,10 +25,10 @@
     <template is="myadder" data="{{...adder}}"></template>
     <!--物品价格-->
   
-    <template is="allprice" wx:if="{{type=='二手置换'}}"></template>
+    <template is="allprice" wx:if="{{type=='二手置换'}}" data="{{...allprice}}"></template>
     <!--礼物价值-->
 
-    <template is="giftprice" wx:if="{{type=='问答'}}"></template>
+    <template is="giftprice" wx:if="{{type=='问答'}}" data="{{...price}}"></template>
   </view>
 
   <!--选择种类-->

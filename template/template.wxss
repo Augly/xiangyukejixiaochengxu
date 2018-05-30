@@ -301,6 +301,11 @@
   position: absolute;
   right: 10rpx;
   top: 10rpx;
+  background: RGBA(152, 97, 225, 0.6);
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 50rpx;
+  color: rgba(255, 255, 255, 1)
 }
 
 .demind_txt {

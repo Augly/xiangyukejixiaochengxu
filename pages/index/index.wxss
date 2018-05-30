@@ -74,6 +74,7 @@
   display: inline-block; 
   margin-left: 24rpx;
   border-radius: 28rpx;
+  line-height: 24rpx;
 }
 .icon-xiangxia{
   font-size: 24rpx;
@@ -128,4 +129,9 @@ color:rgba(153,153,153,1);
 .demandselect_item_active{
   background-color:RGBA(152, 97, 225, 1); 
   color: RGBA(255, 255, 255, 1);
+}
+
+.selectone_itemActive{
+  background-color: RGBA(152, 97, 225, 1);
+  color:RGBA(255, 255, 225, 1);
 }

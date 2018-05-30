@@ -1,4 +1,6 @@
 // pages/Release/experience_res/experience_res.js
+let app=getApp()
+const config=require('../../../utils/config.js')
 Page({
 
   /**
@@ -7,16 +9,86 @@ Page({
   data: {
     gztype:'关注',
     sctype: '收藏',
-    clickIndex:true
+    clickIndex:true,
+    myaudio:"",
+    myvideo:{
+      videoSrc:'',
+      controls:false
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this
+    this.innerAudioContext = wx.createInnerAudioContext();
+    this.innerAudioContext.onError((res) => {
+      that.tip("播放录音失败！")
+    })
+    config.ajax('POST',{
+      user_id: app.globalData.user_id,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng,
+      share_id: options.share_id
+    }, config.getShareDetail,(res)=>{
+        console.log(res)
+        let myaudio={
+          src: res.data.data.media,
+          time:res.data.data.time
+        }
+        that.setData({
+          alldata:res.data.data,
+          myaudio: myaudio,
+          'myvideo.videoSrc': res.data.data.video,
+          time: res.data.data.time
+        })
+    })
+  },
+/**
+ * 播放音频
+ */
+  playaudio() {
+    var that = this;
+    this.innerAudioContext.src = that.data.myaudio.src;
+    this.innerAudioContext.play()
+    var moneytime = that.data.time;
+    // if (mytime > moneytime) {
+
+    // } else {
+      var timeclone = setInterval(function () {
+        
+        
+        if (that.data.myaudio.time < 1000) {
+          clearInterval(timeclone)
+          that.data.myaudio.time = moneytime
+        }
+        that.data.myaudio.time -= 1000;
+        that.setData({
+          'myaudio.duration': that.formatDuringtwo(that.data.myaudio.time),
+        })
+      }, 1000)
+    // }
+
   },
 
+  tip: function (msg) {
+    wx.showModal({
+      title: '提示',
+      content: msg,
+      showCancel: false
+    })
+  },
+  //时间转换
+  formatDuringtwo(mss) {
+    var days = parseInt(mss / (1000 * 60 * 60 * 24));
+    var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+    var min = minutes.toString().length == 1 ? '0' + minutes : minutes;
+    var seconds = Math.round((mss % (1000 * 60)) / 1000);
+    var sec = seconds.toString().length == 1 ? '0' + seconds : seconds;
+    return min + ":" + sec + '"';
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

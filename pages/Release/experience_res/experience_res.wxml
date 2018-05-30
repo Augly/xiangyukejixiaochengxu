@@ -2,17 +2,18 @@
 <import src="../../../template/template.wxml" />
 <view class='wrap'>
   <view class='head_title'>
-    为最爱的人准备礼物
+    {{alldata.title}}
   </view>
   <view class='anthur_Group'>
     <image class='anthur_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
     <view class='anthur_nameGroup'>
-      <view class='name'>艾诗然
-        <text class='iconfont icon-nv'></text>
+      <view class='name'>{{alldata.user_nickname}}
+        <!-- <text class='iconfont icon-nv' wx:if="{{alldata}}"></text> -->
+        <text class='iconfont icon-nan'></text>
       </view>
-      <view class='data'>2018/02/02</view>
+      <view class='data'>{{alldata.create_time}}</view>
       <view class="zan {{iszan?'zaned':''}}" bindtap='zan'>
-        <text class="iconfont {{iszan?'icon-xihuan1':'icon-xihuan'}}"></text>520</view>
+        <text class="iconfont {{iszan?'icon-xihuan1':'icon-xihuan'}}"></text>{{alldata.good_count}}</view>
     </view>
     <view class='operation'>
       <view class="gz {{isgz?'gzed':''}}" bindtap='gz'>
@@ -24,10 +25,14 @@
     </view>
   </view>
   <view class='content'>
-
+    <image class='thumb' mode='widthFix' src='{{alldata.thumb}}'></image>
+    <view class='textContent'>{{alldata.word}}</view>
+    <image class='thumb' mode='widthFix' src='{{alldata.image}}' wx:if="{{alldata.image!=''}}"></image>
+    <!--我添加的音频-->
+    <template is="myaudio" data="{{...myaudio}}" wx:if="{{alldata.time!=0}}"></template>
+    <!--我添加的视频-->
+    <template is="myvideo" data="{{...myvideo}}" wx:if="{{myvideo.videoSrc!=''}}"></template>
   </view>
-
-
 </view>
 <view class='tabbar'>
   <view class='tabbar_item' bindtap='clicktab'>
@@ -41,17 +46,15 @@
     </view>
   </view>
 </view>
-
-
 <template is="USERLIST" wx:if="{{clickIndex}}"></template>
-<view class='seacherGroup'>
+ <view class='seacherGroup' wx:if="{{!clickIndex}}">
   <text class='iconfont icon-sousuo'></text>
   <input class='seach_ipt' placeholder="请输入搜索词"></input>
   <view class='seacherTitle'>搜索</view>
-</view>
+</view> 
 <template is="memberPL_LIST" wx:if="{{!clickIndex}}"></template>
 <view class='kong'></view>
- <view class='foot'>
+<view class='foot'>
   <view class='foot_item'>
     <text class='iconfont icon-xin'></text>
     <text class='foot_title'>点赞</text>
@@ -68,7 +71,7 @@
     <text class='iconfont icon-fenxiang'></text>
     <text class='foot_title'>分享</text>
   </view>
-</view> 
+</view>
 
 
 <!-- <view class='giftGroup'>

@@ -1,6 +1,6 @@
 <!--瀑布流模板  -->
 <template name="item">
-  <view class="item" bindtap='lookres'>
+  <view class="item" bindtap='lookres' data-id='{{id}}'>
     <view class='showImg'>
       <image class="item_img" src="{{thumb}}" mode="widthFix"></image>
       <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
@@ -32,10 +32,9 @@
 <!--兴趣社模板  -->
 <template name="Interestitem">
   <view class="Interestitem">
-  {{id}}
     <view class='InterestshowImg'>
-      <image class="Interestitem_img" src=""></image>
-      <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
+      <image class="Interestitem_img" src="{{thumb}}"></image>
+      <image class='item_act' wx:if="{{is_present==1}}" src="{{authur_act}}"></image>
     </view>
     <view class='InterestshowText'>
       <view class='Interestitem_title'>{{title}}</view>
@@ -43,11 +42,11 @@
         {{distance}}
       </view>
       <view class='Interestanthur_Group'>
-        <image class='Interestshow_anthur' src=""></image>
+        <image class='Interestshow_anthur' src="{{avatar}}"></image>
         <view class='Interestanthur_Info'>
           <view class='anthurInfo_name'>
             <view class='name'>{{user_nickname}}</view>
-            <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
+            <text class='iconfont icon-nv' wx:if="{{sex==2}}"></text>
             <text class='iconfont icon-nan' wx:else></text>
           </view>
         </view>
@@ -95,28 +94,27 @@
 <template name="deminditem">
   <view class="demminditem">
     <view class='demind_left'>
-      <image class='demind_img'></image>
-      <image class='new_Release'></image>
-      <image class='run'></image>
-      <view class='demind_txt'></view>
+      <image class='demind_img' src='{{thumb}}'></image>
+      <view class='run'>{{type}}</view>
+      <view class='demind_txt'>{{title}}</view>
     </view>
     <view class='demind_right'>
       <view class='demindtanthur_Group'>
-        <image class='demindshow_anthur' src="{{authur_imgurl}}"></image>
+        <image class='demindshow_anthur' src="{{avatar}}"></image>
         <view class='deminanthurInfo_name'>
-          <view class='demindname'>{{authur_name}}</view>
-          <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
+          <view class='demindname'>{{user_nickname}}</view>
+          <text class='iconfont icon-nv' wx:if="{{sex==1}}"></text>
           <text class='iconfont icon-nan' wx:else></text>
-          <view class='mintime'>5分钟前</view>
+          <view class='mintime'>{{create_time}}</view>
         </view>
       </view>
       <view class='demindres'>
-        顺丰速运亲，您有快件放置于小南门2点前货号*，请持有效证件取件，派件员18645923659。
+        {{word}}
       </view>
       <view class='myadder_Group'>
         <text class='iconfont icon-dizhi'></text>
-        <view class='adder_res'>天津 · 建国楼</view>
-        <view class='distance'>距离0.8km</view>
+        <view class='adder_res'>{{position}}</view>
+        <view class='distance'>距离{{distance}}km</view>
       </view>
     </view>
   </view>
@@ -152,7 +150,6 @@
       </view>
     </view>
   </view>
-
 </template>
 <!--送礼设置模板  -->
 <template name="switch">
@@ -163,8 +160,6 @@
     <switch  bindchange="switch1Change" />
   </view>
 </template>
-
-
 <!--购买享遇币  -->
 <template name="buy">
   <view class="buy">
@@ -182,8 +177,6 @@
     <text class='myaudio_time'>{{duration}}</text>
   </view>
 </template>
-
-
 <!--附加需求  -->
 <template name='needs'>
   <view class='myadder'>
@@ -197,16 +190,14 @@
 </template>
 <!--添加视频展示模块儿-->
 <template name="myvideo">
-  <cover-view class='myvideo'style="z-index:10;" >
+  <view class='myvideo'style="z-index:10;" >
     <video class='myvideo' style='margin:0;' objectFit="cover" controls="{{controls}}" src='{{videoSrc}}'></video>
-  </cover-view>
+  </view>
 </template>
 <!--添加图片展示模块儿-->
 <template name="upimg">
   <image class='myvideo'  src='{{imgSrc}}' mode="widthFix"></image>
 </template>
-
-
 <!--内容编辑模块  -->
 <template name="textall">
   <view class="text_view">
@@ -259,7 +250,7 @@
 <template name="allprice">
   <view class='allprice'>
     <text class='allprice_title'>物品价格：￥</text>
-    <input class='allprice_ipt'></input>
+    <input class='allprice_ipt' bindinput='allprice'  value='{{allprice}}'></input>
   </view>
 </template>
 
@@ -268,7 +259,7 @@
 <template name="giftprice">
   <view class='allprice'>
     <text class='allprice_title'>礼物价值：￥</text>
-    <input class='allprice_ipt'></input>
+    <input class='allprice_ipt' bindinput='giftprice' value='{{price}}'></input>
   </view>
 </template>
 <!--购买享遇币  -->

@@ -72,6 +72,7 @@ Page({
       width:'100%',
       height:'100%',
     },
+    selectIndex:0
   },
 
   //事件处理函数
@@ -82,6 +83,10 @@ Page({
     })
     if (event.currentTarget.dataset.id=='2'){
       //获取共享经验数据
+      wx.showLoading({
+        title: '加载中',
+        mask:true
+      })
       config.ajax('POST', {
         user_id: app.globalData.user_id,
         lat: app.globalData.lat,
@@ -95,14 +100,20 @@ Page({
         that.setData({
           note: res.data.data.list
         })
+        wx.hideLoading()
       })
     } else if (event.currentTarget.dataset.id == '3'){
       //获取兴趣社数据
+      wx.showLoading({
+        title: '加载中...',
+        mask: true,
+      })
       config.ajax('POST', {}, config.interestSort, (res) => {
         console.log(res.data.data)
         that.setData({
           interestSort: res.data.data
         })
+        
       })
 
       config.ajax('POST', {
@@ -113,21 +124,114 @@ Page({
       }, config.insterstList, (res) => {
         
         for (let i = 0; i < res.data.data.length; i++) {
-          res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(2)
+          res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(2);
+          res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
         }
         console.log(res.data.data)
+        // that.setData({
+        //   interestList: res.data.data
+        // })
+
+        // for(let n=0;n<res.data.data.length;n++){
+          
+        // }
         that.setData({
           interestList: res.data.data
         })
-        that.setData({
-          'interestList.myimgUrl':config.myimgUrl
-        })
+        wx.hideLoading()
       })
+    } else if (event.currentTarget.dataset.id == '4') {
+      //获取需求数据
+      wx.showLoading({
+        title: '加载中...',
+        mask: true,
+      })
+      config.ajax('POST', {
+        type: that.data.myindex,
+        user_id: app.globalData.user_id,
+        lat: app.globalData.lat,
+        lng: app.globalData.lng,
+      }, config.lists, (res) => {
+        wx.hideLoading()
+        for (let n = 0; n < res.data.data.length; n++) {
+          res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time*1000)
+        }
+        that.setData({
+          demindlist: res.data.data
+        })
+        console.log(res.data.data)
+        // that.setData({
+        //   interestSort: res.data.data
+        // })
+
+      })
+
+      // config.ajax('POST', {
+      //   user_id: app.globalData.user_id,
+      //   lat: app.globalData.lat,
+      //   lng: app.globalData.lng,
+      //   sort_id: ''
+      // }, config.insterstList, (res) => {
+
+      //   for (let i = 0; i < res.data.data.length; i++) {
+      //     res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(2);
+      //     res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
+      //   }
+      //   console.log(res.data.data)
+      //   // that.setData({
+      //   //   interestList: res.data.data
+      //   // })
+
+      //   // for(let n=0;n<res.data.data.length;n++){
+
+      //   // }
+      //   that.setData({
+      //     interestList: res.data.data
+      //   })
+      //   wx.hideLoading()
+      // })
     }
   },
+
+  select_active:function(e){
+    this.setData({
+      selectIndex: e.currentTarget.dataset.index
+    })
+  },
   demindtap:function(event){
+    var that=this
     this.setData({
       myindex: event.currentTarget.dataset.id
+    })
+    wx.showLoading({
+      title: '加载中...',
+      mask: true,
+    })
+    config.ajax('POST', {
+      type: that.data.myindex,
+      user_id: app.globalData.user_id,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng,
+    }, config.lists, (res) => {
+      wx.hideLoading()
+      console.log(res.data.data)
+      for(let n=0;n<res.data.data.length;n++){
+        res.data.data[n].distance = (res.data.data[n].distance / 1000).toFixed(2);
+        res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time*1000)
+      }
+      that.setData({
+        demindlist: res.data.data
+      })
+      console.log(res.data.data)
+
+    })
+  },
+  /**
+   * 查看共享经验详情
+   */
+  lookres:function(e){
+    wx.navigateTo({
+      url: '../Release/experience_res/experience_res?share_id=' + e.currentTarget.dataset.id,
     })
   },
   scrolltolower:function(){

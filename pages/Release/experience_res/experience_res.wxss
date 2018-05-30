@@ -100,7 +100,12 @@
 }
 
 .content {
-  margin-top: 33rpx;
+  margin-top: 53rpx;
+  padding-bottom:10rpx; 
+}
+.textContent{
+  font-size: 30rpx;
+  color: RGBA(51, 51, 51, 1);
 }
 
 .foot {
@@ -111,6 +116,7 @@
   position: fixed;
   bottom: 0;
   display: flex;
+  z-index: 20
 }
 
 .foot_item {
@@ -354,4 +360,10 @@
   font-family: PingFang-SC-Medium;
   line-height: 88rpx;
   color:RGBA(153, 153, 153, 1);
+}
+
+
+.thumb{
+  width: 100%;
+  height: auto;
 }
