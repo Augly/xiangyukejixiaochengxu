@@ -1049,13 +1049,16 @@
 }
 
 .imgGroup {
-  margin-top: 5rpx;
+  padding-top:20rpx;
+  padding-bottom:20rpx;
+  overflow: hidden;
 }
 
 .personlImg {
   width: 320rpx;
   height: 320rpx;
   background-color: red;
+  display: block
 }
 
 .double {
@@ -1064,6 +1067,7 @@
   background-color: yellow;
   margin-right: 16rpx;
   float: left;
+  display: block;
 }
 
 .doubleAndpersonl {
@@ -1071,8 +1075,9 @@
   height: 180rpx;
   background-color: blue;
   margin-right: 11rpx;
-  margin-bottom: 11rpx;
+  margin-bottom: 15rpx;
   float: left;
+  display: block;
 }
 
 .four {
@@ -1082,6 +1087,7 @@
   float: left;
   margin-right: 16rpx;
   margin-bottom: 16rpx;
+  display: block;
 }
 
 .userAdder {

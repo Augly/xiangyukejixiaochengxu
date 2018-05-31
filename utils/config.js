@@ -19,6 +19,8 @@ setInfo ='/api/portal/User/changeName',
 
 lists ='/api/portal/Purchase/lists',
 
+setJoin ='/api/portal/Join/setJoin',
+
 getShareDetail ='/api/portal/Share/getShareDetail',
 
 setInterest ='/api/portal/Interest/setInterest',
@@ -141,5 +143,6 @@ module.exports = {
   send: send,
   lists: lists,
   timeFormat: timeFormat,
-  getShareDetail: getShareDetail
+  getShareDetail: getShareDetail,
+  setJoin: setJoin
 }

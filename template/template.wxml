@@ -142,7 +142,7 @@
       </view>
     </view>
     <view class='select_item_right'>
-      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);' bindtap='upimg' >
+      <view class='select_item' style='box-sizing: border-box; border-bottom: 1rpx solid RGBA(235, 235, 235, 1);' bindtap='upimg'>
         <text class='iconfont icon-icon-1'></text> 添加图片
       </view>
       <view class='select_item' bindtap='Record'>
@@ -157,7 +157,7 @@
     <view class='switch_title'>
       送礼设置
     </view>
-    <switch  bindchange="switch1Change" />
+    <switch bindchange="switch1Change" />
   </view>
 </template>
 <!--购买享遇币  -->
@@ -180,23 +180,23 @@
 <!--附加需求  -->
 <template name='needs'>
   <view class='myadder'>
-      <view class='myadder_title'>附加需求</view>
-      <view class='myadder_selectGroup'>
-        <view class="myadder_selectItem {{selectIndex==index?'myadder_selectItemActive':''}}" wx:for="{{selectArr}}" data-index='{{index}}' bindtap='select'>
-          {{selectArr[index]}}
-        </view>
+    <view class='myadder_title'>附加需求</view>
+    <view class='myadder_selectGroup'>
+      <view class="myadder_selectItem {{selectIndex==index?'myadder_selectItemActive':''}}" wx:for="{{selectArr}}" data-index='{{index}}' bindtap='select'>
+        {{selectArr[index]}}
       </view>
+    </view>
   </view>
 </template>
 <!--添加视频展示模块儿-->
 <template name="myvideo">
-  <view class='myvideo'style="z-index:10;" >
+  <view class='myvideo' style="z-index:10;">
     <video class='myvideo' style='margin:0;' objectFit="cover" controls="{{controls}}" src='{{videoSrc}}'></video>
   </view>
 </template>
 <!--添加图片展示模块儿-->
 <template name="upimg">
-  <image class='myvideo'  src='{{imgSrc}}' mode="widthFix"></image>
+  <image class='myvideo' src='{{imgSrc}}' mode="widthFix"></image>
 </template>
 <!--内容编辑模块  -->
 <template name="textall">
@@ -237,11 +237,11 @@
     <view class='kind_title'>
       选择种类
     </view>
-    <picker mode = 'selector'  bindchange="bindPickerKind" value="{{index}}" range="{{kindarray}}">
+    <picker mode='selector' bindchange="bindPickerKind" value="{{index}}" range="{{kindarray}}">
       <view class='kind_select'>
-      <view class='kind_select_title'>{{kindarray[index]}}</view>
-      <text class='iconfont icon-xiangxia'></text>
-    </view>
+        <view class='kind_select_title'>{{kindarray[index]}}</view>
+        <text class='iconfont icon-xiangxia'></text>
+      </view>
     </picker>
   </view>
 </template>
@@ -250,7 +250,7 @@
 <template name="allprice">
   <view class='allprice'>
     <text class='allprice_title'>物品价格：￥</text>
-    <input class='allprice_ipt' bindinput='allprice'  value='{{allprice}}'></input>
+    <input class='allprice_ipt' bindinput='allprice' value='{{allprice}}'></input>
   </view>
 </template>
 
@@ -297,7 +297,7 @@
         <view class='contro'>
           <view class='contro_cendel' bindtap='celaudio'>
             <view class='contro_cendel_view'>
-              <text class='iconfont icon-icon-test3' ></text>
+              <text class='iconfont icon-icon-test3'></text>
             </view>
             <view class='contro_cendel_title'>取消</view>
           </view>
@@ -310,7 +310,7 @@
             <view class='contro_cendel_view'>
               <text class='iconfont icon-icon-test2'></text>
             </view>
-            <view class='contro_cendel_title' >下一步</view>
+            <view class='contro_cendel_title'>下一步</view>
           </view>
         </view>
       </view>
@@ -412,7 +412,7 @@
         选择打赏路费：
       </view>
       <view class='Tip_Select'>
-        <view class="Tip_Select_item {{TipIndex==index?'Tip_Select_item_active':''}}"  wx:for="{{Tip_Arr}}"  data-index='{{index}}' data-value='{{item.value}}' bindtap='getTip'>
+        <view class="Tip_Select_item {{TipIndex==index?'Tip_Select_item_active':''}}" wx:for="{{Tip_Arr}}" data-index='{{index}}' data-value='{{item.value}}' bindtap='getTip'>
           {{item.name}}
         </view>
       </view>
@@ -432,105 +432,86 @@
 
 <!--用户详情模板  -->
 <template name="USERLIST">
-<view class='userList'>
-  <image class='userLogo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
+  <view class='userList'>
+    <image class='userLogo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
 
-  </image>
+    </image>
 
-  <view class='userRes'>
-    <view class='name'>
-      仇益阳
-      <text class='iconfont icon-nan'></text>
-    </view>
-    <view class='time'>24分钟前</view>
-    <view class='main'>泰勒·本·沙哈尔（Tal Ben-Shahar）写过一本书，叫《幸福的方法》。其中最震撼我的一句话是：幸福是一种能力，而非一种状态。 大部分人把幸福看成一个状态问题。把房子、车子、事业、财富值看作刺激自己幸福的理想对象。比如——“拥有一所大房子”等于“我很幸福”。
-    </view>
-    <view class='lookmore'>全文</view>
-    <view class='imgGroup'>
-       <image class='personlImg'></image> 
-      <!-- <image class='double'></image> -->
-      <!-- <image class='doubleAndpersonl'></image>
-      <image class='doubleAndpersonl'></image>
-      <image class='doubleAndpersonl'></image> -->
-      <!-- <image class='four'>
-
-      </image>
-      <image class='four'>
-        
-      </image>
-      <image class='four'>
-        
-      </image>
-      <image class='four'>
-        
-      </image> -->
-    </view>
-    <view class='userAdder'>
-      <text class='iconfont icon-dizhi'></text>
-      天津 · 建国楼 0.8km
-    </view>
-    <view class='user_pl'>
-      <view class='Trigonometric'></view>
-      <view class='pl_res'>
-        <view class='_zanList'>
-        <text class='iconfont icon-xihuan'></text>
+    <view class='userRes'>
+      <view class='name'>
+        {{avatar}}
+        <text class='iconfont icon-nan'></text>
+      </view>
+      <view class='time'>{{create_time}}</view>
+      <view class='main'>{{word}}</view>
+      <view class='lookmore'>全文</view>
+      <view class='imgGroup'>
+        <image class='personlImg' wx:for="{{image}}" wx:if="{{image.length==1}}" src='{{item}}'></image>
+        <image class='doubleAndpersonl' wx:for="{{image}}" wx:if="{{image.length==2||image.length==4}}" src='{{item}}'></image>
+        <image class='four' wx:for="{{image}}" wx:if="{{image.length>=5}}" src='{{item}}'></image>
+      </view>
+      <view class='userAdder'>
+        <text class='iconfont icon-dizhi'></text>{{position}} {{distance}}km
+      </view>
+      <view class='user_pl'>
+        <view class='Trigonometric'></view>
+        <view class='pl_res'>
+          <view class='_zanList'>
+            <text class='iconfont icon-xihuan'></text>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
             <view class='_zanListitem'>
-                苏菀菁
+              苏菀菁
             </view>
-        </view>
-        <view class='_pl_list'>
+          </view>
+          <view class='_pl_list'>
             <text class='_pl_list_title'>向昱筱:</text> 幸福是一种能够能力，而非一种状态。
+          </view>
+        </view>
+      </view>
+
+      <view class='operation_Group'>
+        <view class='operation_res'>
+          <text class='iconfont icon-icon-'></text> 详情
+        </view>
+        <view class='operation_pl' bindtap='myipt'>
+          <text class='iconfont icon-pinglun2'></text> 评论
+        </view>
+        <view class='operation_zan'>
+          <text class='iconfont icon-xihuan'></text> 赞
         </view>
       </view>
     </view>
-
-    <view class='operation_Group'>
-        <view class='operation_res'>
-          <text class='iconfont icon-icon-'></text>
-          详情
-        </view>
-        <view class='operation_pl'>
-          <text class='iconfont icon-pinglun2'></text>
-          评论
-        </view>
-        <view class='operation_zan'>
-          <text class='iconfont icon-xihuan'></text>
-          赞
-        </view>
-    </view>
   </view>
-</view>
 </template>
 
 
 
 <!--评论列表模板-->
 <template name="PL_LIST">
-<view class='pl_list'>
+  <view class='pl_list'>
     <view class='pl_user'>
       <image class='pl_userImg' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
       <view class='pl_name'>苏菀菁</view>
@@ -538,23 +519,23 @@
     </view>
     <view class='pl_main'>幸福是一种能力，而非一种状态。</view>
     <view class='userAdder' style='margin-top: 15rpx;margin-left: 85rpx;'>
-      <text class='iconfont icon-dizhi'></text>
-      天津 · 建国楼 0.8km
+      <text class='iconfont icon-dizhi'></text> 天津 · 建国楼 0.8km
     </view>
-</view>
+  </view>
 </template>
 
 
 <template name="memberPL_LIST">
-<view class='pl_list'>
+  <view class='pl_list'>
     <view class='pl_user'>
       <image class='pl_userImg' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
-      <view class='pl_name'>苏菀菁 <text class='iconfont icon-nv'></text></view>
+      <view class='pl_name'>苏菀菁
+        <text class='iconfont icon-nv'></text>
+      </view>
       <view class='pl_data'>2018-02-11加入</view>
     </view>
     <view class='userAdder' style='margin-top: 15rpx;margin-left: 85rpx;'>
-      <text class='iconfont icon-dizhi'></text>
-      天津 · 建国楼 0.8km
+      <text class='iconfont icon-dizhi'></text> 天津 · 建国楼 0.8km
     </view>
-</view>
+  </view>
 </template>

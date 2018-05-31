@@ -1,4 +1,5 @@
 <!--pages/Release/push_experience/push_experience.wxml-->
+<!--发布共享经验-->
 <import src="../../../template/template.wxml" />
 <!--上传封面图  -->
 <view wx:if="{{!audioshow}}">

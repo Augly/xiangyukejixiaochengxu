@@ -1,27 +1,57 @@
 <!--pages/Release/Publish/Publish.wxml-->
-<textarea class='textartcle' placeholder='点此编辑文本'>
+<import src="../../../template/template.wxml" />
+<textarea class='textartcle' placeholder='点此编辑文本' bindinput='bj' value='{{bjData}}'>
 
 </textarea>
 
 <view class='addtype'>
-  <view class='type_item'>
+  <view class='type_item' bindtap='upimg'>
     <text class='iconfont icon-zhaopian'></text>
   </view>
-  <view class='type_item'>
+  <view class='type_item'  bindtap='addaudio'>
     <text class='iconfont icon-huatong'></text>
   </view>
-  <view class='type_item'>
+  <view class='type_item' bindtap='Record'>
     <text class='iconfont icon-shipin4'></text>
   </view>
 </view>
+
+<view class='foot' bindtap='push'>
+  发表参与
+</view>
+
+<!--我添加的音频-->
+<template is="myaudio" data="{{...myaudio}}" wx:if="{{myaudio!=null}}"></template>
+<!--我添加的视频-->
+<template is="myvideo" data="{{...myvideo}}" wx:if="{{myvideo.videoSrc!=null}}"></template>
+<!--我上传的图片-->
+<!-- <template is="upimg" data="{{...myimg}}" wx:if="{{myimg.imgSrc!=null}}"></template> -->
+
+  <view class='imgGroup' style='width: 578rpx;margin:0 auto;' >
+      <image class='personlImg' wx:if="{{myimg.imgSrc.length==1}}" wx:for="{{myimg.imgSrc}}" src="{{item}}"></image>  
+       <!-- <image class='double'></image>  -->
+      <image class='doubleAndpersonl' wx:if="{{myimg.imgSrc.length==3||myimg.imgSrc.length>=5}}" wx:for="{{myimg.imgSrc}}" src="{{item}}"></image> 
+        <image class='four' wx:if="{{myimg.imgSrc.length==2||myimg.imgSrc.length==4}}" wx:for="{{myimg.imgSrc}}" src="{{item}}"></image>
+      
+</view> 
+
 <view class='adder'>
   <text class='iconfont icon-dizhi'></text>
-  天津市 · 建国楼
+  {{adder}}
 </view>
-<view class='allow'>
+<picker>
+<!--权限公开或私有仅限自己观看-->
+  <view class='allow'>
   <text class='iconfont icon-wode1'></text>
   公开（所有成员）
 </view>
-<view class='foot'>
-  发表参与
+</picker>
+
+
+<!--留位置专用  -->
+<view class='kong'></view>
+<!--录音组件 -->
+<view class='audio_group' wx:if="{{audioshow}}">
+  <template is="audio_group" data="{{...audio}}" wx:if="{{showaudio}}"></template>
+  <template is="up_audio_group" data="{{...audio}}" wx:if="{{!showaudio}}"></template>
 </view>

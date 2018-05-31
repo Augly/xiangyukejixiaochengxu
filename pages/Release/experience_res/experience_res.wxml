@@ -34,48 +34,71 @@
     <template is="myvideo" data="{{...myvideo}}" wx:if="{{myvideo.videoSrc!=''}}"></template>
   </view>
 </view>
-<view class='tabbar'>
-  <view class='tabbar_item' bindtap='clicktab'>
-    <view class="title {{clickIndex?'titleActive':''}}">
-      参与
+<view wx:if="{{alldata.is_join==1}}">
+
+
+
+
+  <view class='tabbar'>
+    <view class='tabbar_item' bindtap='clicktab'>
+      <view class="title {{clickIndex?'titleActive':''}}">
+        参与
+      </view>
+    </view>
+    <view class='tabbar_item' bindtap='clicktab'>
+      <view class="title {{!clickIndex?'titleActive':''}}">
+        成员
+      </view>
     </view>
   </view>
-  <view class='tabbar_item' bindtap='clicktab'>
-    <view class="title {{!clickIndex?'titleActive':''}}">
-      成员
-    </view>
+  <template is="USERLIST" wx:if="{{clickIndex}}" wx:for="{{alldata.join}}" data="{{...item}}"></template>
+  <view class='seacherGroup' wx:if="{{!clickIndex}}">
+    <text class='iconfont icon-sousuo'></text>
+    <input class='seach_ipt' placeholder="请输入搜索词"></input>
+    <view class='seacherTitle'>搜索</view>
   </view>
+  <block>
+    <template is="memberPL_LIST" wx:if="{{!clickIndex}}"></template>
+  </block>
 </view>
-<template is="USERLIST" wx:if="{{clickIndex}}"></template>
- <view class='seacherGroup' wx:if="{{!clickIndex}}">
-  <text class='iconfont icon-sousuo'></text>
-  <input class='seach_ipt' placeholder="请输入搜索词"></input>
-  <view class='seacherTitle'>搜索</view>
-</view> 
-<template is="memberPL_LIST" wx:if="{{!clickIndex}}"></template>
 <view class='kong'></view>
-<view class='foot'>
-  <view class='foot_item'>
-    <text class='iconfont icon-xin'></text>
-    <text class='foot_title'>点赞</text>
-  </view>
-  <view class='foot_item'>
-    <text class='iconfont icon-gifs'></text>
-    <text class='foot_title'>送礼</text>
-  </view>
-  <view class='foot_item'>
-    <text class='iconfont icon-shuangren'></text>
-    <text class='foot_title'>参与</text>
-  </view>
-  <view class='foot_item'>
-    <text class='iconfont icon-fenxiang'></text>
-    <text class='foot_title'>分享</text>
+
+<view wx:if="{{!getfous||!gift}}">
+  <view class='foot'>
+    <view class='foot_item'>
+      <text class='iconfont icon-xin'></text>
+      <text class='foot_title'>点赞</text>
+    </view>
+    <view class='foot_item' bindtap='sendgift'>
+      <text class='iconfont icon-gifs'></text>
+      <text class='foot_title'>送礼</text>
+    </view>
+    <view class='foot_item' bindtap='topublish'>
+      <text class='iconfont icon-shuangren'></text>
+      <text class='foot_title'>参与</text>
+    </view>
+    <view class='foot_item'>
+      <text class='iconfont icon-fenxiang'></text>
+      <text class='foot_title'>分享</text>
+    </view>
   </view>
 </view>
 
 
-<!-- <view class='giftGroup'>
-  <view class='giftList' style='display:none'>
+<view class='send_groupone' wx:if="{{getfous}}">
+  <view class='iptGroup'>
+    <input class='ipt_Group' auto-focus bindblur='hidemyipt'>
+
+    </input>
+    <view class='Send'>
+      <text class='iconfont icon-fabu'></text> 发送
+    </view>
+  </view>
+</view>
+
+
+ <view class='giftGroup' wx:if="{{gift}}">
+  <view class='giftList'>
     <view class='giftTab'>
       <view class='Tab_item Tab_itemActive'>高级礼物</view>
       <view class='Tab_item'>中级礼物</view>
@@ -136,7 +159,7 @@
     </view>
   </view>
 
-  <view class='noGift'>
+  <!-- <view class='noGift'>
     <view class='notice_res'>
       <text class='notice_res_title'>没有礼物</text>
       <text class='notice_res_main'>您的背包里没有礼物，请前往礼物商城购买</text>
@@ -145,5 +168,5 @@
       <view class='cendel'>取消</view>
       <view class='goshop'>前往礼物商城</view>
     </view>
-  </view>
-</view> -->
+  </view> -->
+</view> 

@@ -652,7 +652,9 @@ Page({
 
     function getshare(){
       let material=''
+      console.log(myaudio)
       if (myaudio!=''){
+        console.log(11)
         material = {
           myimgurl: myimgurl,
           time: that.data.audio_faile.duration,
@@ -660,10 +662,11 @@ Page({
           myvideoSrc: myvideoSrc
         }
       }else{
+        console.log(22)
         material = {
           myimgurl: myimgurl,
-          time: that.data.audio_faile.duration,
           myaudio: myaudio,
+          time:0,
           myvideoSrc: myvideoSrc
         }
       }
