@@ -35,9 +35,17 @@ send ='/api/portal/Purchase/send', //发布跑腿
 
 sortList ='/api/portal/Interest/interestSort',
 
+joinComment ='/api/portal/Common/joinComment', //发表评论
+
 fans ='/api/portal/User/fans',
 
-follow ='/api/portal/User/follow', //关注
+userGood ='/api/portal/Common/userGood', //点赞
+
+follow ='/api/portal/User/addFollow', //关注
+
+favorite ='/api/portal/Common/favorite', //收藏 
+
+Recharge ='/api/portal/User/addBalance',
 
 getexper ='/api/portal/Share/getShare';
 
@@ -79,8 +87,35 @@ function ajax(Type, params, url, successData, errorData, completeData) {
       }
     }
   })
-};
+}
 
+function pay(res, successData){
+  wx.requestPayment({
+    "timeStamp": res.data.data.timeStamp,
+    "nonceStr": res.data.data.nonceStr,
+    "package": res.data.data.package,
+    "signType": "MD5",
+    "paySign": res.data.data.paySign,
+    "success": function (res) {
+      wx.showToast({
+        title: '支付完成',
+        icon: "success",
+        duration: 1500,
+        success: function (data) {
+          successData(data)
+        }
+      })
+    },
+    "fail": function (res) {
+      console.log(res)
+      wx.showToast({
+        title: '取消支付成功！',
+        icon: "success",
+        duration: 1500,
+      })
+    }
+  })
+}
 
 /**
  * 时间转换
@@ -144,5 +179,11 @@ module.exports = {
   lists: lists,
   timeFormat: timeFormat,
   getShareDetail: getShareDetail,
-  setJoin: setJoin
+  setJoin: setJoin,
+  userGood:userGood,
+  follow: follow,
+  favorite: favorite,
+  joinComment: joinComment,
+  Recharge: Recharge,
+  pay: pay
 }

@@ -14,7 +14,30 @@ Page({
   onLoad: function (options) {
   
   },
-
+  /**
+   * 规则
+   */
+  rule:function(){
+    wx.navigateTo({
+      url: '../rule/rule',
+    })
+  },
+  /**
+   * 购买商城
+   */
+  gift_shop:function(){
+    wx.navigateTo({
+      url: '../gift_Shop/gift_Shop'
+    })
+  },
+  /**
+   * 我的背包
+   */
+  backpacker(){
+    wx.navigateTo({
+      url: '../myBackpaker/myBackpaker',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

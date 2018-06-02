@@ -17,7 +17,7 @@
 
 
 
-<view class='rule'>
+<view class='rule' bindtap='rule'>
     <text class='iconfont icon-guize'></text>
     提现规则
 </view>

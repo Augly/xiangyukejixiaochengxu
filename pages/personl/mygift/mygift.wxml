@@ -1,14 +1,14 @@
 <view class="account">
   <image class='account_logo'></image>
-  <view class='rule'>
+  <view class='rule' bindtap='rule'>
     <text class='iconfont icon-genggai'></text> 规则
   </view>
 </view>
-<view class='account_item'>
-  <view class='acount_item_title'>我的礼物</view>
+<view class='account_item' bindtap='gift_shop'>
+  <view class='acount_item_title'>购买商城</view>
   <text class='iconfont icon-arrow'></text>
 </view>
-<view class='account_item'>
-  <view class='acount_item_title'>我的账单</view>
+<view class='account_item' bindtap='backpacker'>
+  <view class='acount_item_title'>我的背包</view>
   <text class='iconfont icon-arrow'></text>
 </view>

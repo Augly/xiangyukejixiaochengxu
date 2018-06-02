@@ -51,7 +51,7 @@
       </view>
     </view>
   </view>
-  <template is="USERLIST" wx:if="{{clickIndex}}" wx:for="{{alldata.join}}" data="{{...item}}"></template>
+  <template is="USERLIST" wx:if="{{clickIndex}}"  data="{{...alldata}}"></template>
   <view class='seacherGroup' wx:if="{{!clickIndex}}">
     <text class='iconfont icon-sousuo'></text>
     <input class='seach_ipt' placeholder="请输入搜索词"></input>
@@ -65,8 +65,8 @@
 
 <view wx:if="{{!getfous||!gift}}">
   <view class='foot'>
-    <view class='foot_item'>
-      <text class='iconfont icon-xin'></text>
+    <view class='foot_item' bindtap='zan'>
+      <text class="iconfont {{iszan?'icon-xihuan1':'icon-xin'}}"></text>
       <text class='foot_title'>点赞</text>
     </view>
     <view class='foot_item' bindtap='sendgift'>
@@ -87,17 +87,17 @@
 
 <view class='send_groupone' wx:if="{{getfous}}">
   <view class='iptGroup'>
-    <input class='ipt_Group' auto-focus bindblur='hidemyipt'>
+    <input class='ipt_Group' auto-focus bindblur='hidemyipt' bindinput='pl'>
 
     </input>
-    <view class='Send'>
+    <view class='Send' bindtap='send'>
       <text class='iconfont icon-fabu'></text> 发送
     </view>
   </view>
 </view>
 
 
- <view class='giftGroup' wx:if="{{gift}}">
+ <view class='giftGroup' wx:if="{{gift}}" bindtap='hidegift'>
   <view class='giftList'>
     <view class='giftTab'>
       <view class='Tab_item Tab_itemActive'>高级礼物</view>

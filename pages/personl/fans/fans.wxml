@@ -1,5 +1,11 @@
-<view class="fans_list">
+<view class="fans_list" wx:for="{{allData}}">
   <image class='fans_logo'></image>
-  <view class='fans_title'>向昱筱 <text class='iconfont icon-nv'></text> </view>
-  <view class='fans_type' bindtap='gz' data-true='false'> <text class='iconfont icon-quxiaoguanzhux'></text>添加关注</view>
+  <view class='fans_title'>{{item.user_nickname}}
+    <text class='iconfont icon-nv' wx:if="{{item.sex==1}}"></text>
+    <text class='iconfont icon-nan' wx:if="{{item.sex==0}}"></text> </view>
+  <view class='fans_type' bindtap='gzone'  data-id="{{item.id}}">
+    <text class='iconfont icon-guanzhu1' wx:if="{{isgz}}"></text>
+    <text class='iconfont icon-quxiaoguanzhux' wx:if="{{!isgz}}"></text> {{gztype}}  
+  </view>
+    <!-- 添加关注</view> -->
 </view>

@@ -2,17 +2,17 @@
   <view class='account_title'>账户余额（元）</view>
   <view class='account_money'>10.00</view>
   <view class='operation_Group'>
-    <view class='operation_item'>充值</view>
-    <view class='operation_item'>提现</view>
+    <view class='operation_item' bindtap='cz'>充值</view>
+    <view class='operation_item' bindtap='tx'>提现</view>
   </view>
 </view>
 
-<view class='account_item'>
+<view class='account_item' bindtap='mygift'>
   <image class='acount_item_logo' src='http://xiangyu.wx.bronet.cn/images/tixian01@2x.png'></image>
   <view class='acount_item_title'>我的礼物</view>
   <text class='iconfont icon-arrow'></text>
 </view>
-<view class='account_item'>
+<view class='account_item' >
   <image class='acount_item_logo' src='http://xiangyu.wx.bronet.cn/images/tixian02@2x.png'></image>
   <view class='acount_item_title'>我的账单</view>
   <text class='iconfont icon-arrow'></text>
@@ -22,7 +22,7 @@
   <view class='acount_item_title'>我的接单</view>
   <text class='iconfont icon-arrow'></text>
 </view>
-<view class='account_item'>
+<view class='account_item' bindtap='rule'>
   <image class='acount_item_logo' src='http://xiangyu.wx.bronet.cn/images/tixian04@2x.png'></image>
   <view class='acount_item_title'>提现规则</view>
   <text class='iconfont icon-arrow'></text>

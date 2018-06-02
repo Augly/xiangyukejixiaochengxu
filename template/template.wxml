@@ -23,7 +23,7 @@
       </view>
       <view class='adder_Group'>
         <text class='iconfont icon-dizhi'></text>
-        <view class='adder_res'>天津 · 建国楼</view>
+        <view class='adder_res'>{{position}}</view>
         <view class='distance'>距离{{distance}}km</view>
       </view>
     </view>
@@ -432,75 +432,65 @@
 
 <!--用户详情模板  -->
 <template name="USERLIST">
-  <view class='userList'>
+  <view class='userList' wx:for="{{join}}">
     <image class='userLogo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
 
     </image>
 
     <view class='userRes'>
       <view class='name'>
-        {{avatar}}
+        {{item.avatar}}
         <text class='iconfont icon-nan'></text>
       </view>
-      <view class='time'>{{create_time}}</view>
-      <view class='main'>{{word}}</view>
+      <view class='time'>{{item.create_time}}</view>
+      <view class='main'>{{item.word}}</view>
       <view class='lookmore'>全文</view>
       <view class='imgGroup'>
-        <image class='personlImg' wx:for="{{image}}" wx:if="{{image.length==1}}" src='{{item}}'></image>
-        <image class='doubleAndpersonl' wx:for="{{image}}" wx:if="{{image.length==2||image.length==4}}" src='{{item}}'></image>
-        <image class='four' wx:for="{{image}}" wx:if="{{image.length>=5}}" src='{{item}}'></image>
+        <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem"  wx:if="{{item.image.length==1}}" src='{{myitem}}'></image>
+        <image class='doubleAndpersonl' wx:for="{{item.image}}" wx:if="{{item.image.length==2||item.image.length==4}}" src='{{myitem}}'></image>
+        <image class='four' wx:for="{{item.image}}" wx:if="{{item.image.length>=5}}" src='{{myitem}}'></image>
       </view>
+
+      <view class='myaudio' bindtap='playjoinaudio' style='margin-left:0rpx' data-src='{{item.media}}' data-id='{{index}}' wx:if="{{item.video!=''}}">
+        <image src='../../../img/huatong@2x.png' class='mai'></image>
+        <image src='../../../img/jai@2x.png' class='shengyin'></image>
+        <text class='myaudio_time'>{{item.duration}}</text>
+      </view>
+
+      <view class='myvideo' style="z-index:10;margin-left:0" wx:if="{{item.video!=''}}">
+        <video class='myvideo' style='margin:0;' objectFit="cover" controls="{{controls}}" src='{{item.video}}'></video>
+      </view>
+
+
+
       <view class='userAdder'>
-        <text class='iconfont icon-dizhi'></text>{{position}} {{distance}}km
+        <text class='iconfont icon-dizhi'></text>{{item.position}} {{item.distance}}km
       </view>
       <view class='user_pl'>
         <view class='Trigonometric'></view>
         <view class='pl_res'>
           <view class='_zanList'>
             <text class='iconfont icon-xihuan'></text>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
-            </view>
-            <view class='_zanListitem'>
-              苏菀菁
+            <view class='_zanListitem' wx:for="{{item.good_list}}" wx:for-item="sitem">
+              {{sitem.user_nickname}}
             </view>
           </view>
-          <view class='_pl_list'>
-            <text class='_pl_list_title'>向昱筱:</text> 幸福是一种能够能力，而非一种状态。
+          <view class='_pl_list' wx:for="{{item.comment_list}}" wx:for-item="titem">
+            <text class='_pl_list_title'>{{titem.user_nickname}}:</text> {{titem.word}}
           </view>
         </view>
       </view>
-
       <view class='operation_Group'>
         <view class='operation_res'>
           <text class='iconfont icon-icon-'></text> 详情
         </view>
-        <view class='operation_pl' bindtap='myipt'>
+        <view class='operation_pl' bindtap='myipt' data-id='{{item.id}}' data-index='{{index}}'>
           <text class='iconfont icon-pinglun2'></text> 评论
         </view>
-        <view class='operation_zan'>
-          <text class='iconfont icon-xihuan'></text> 赞
+        <view class='operation_zan' bindtap='joinzan' data-id='{{item.id}}' data-index='{{index}}'>
+          <text class='iconfont icon-xihuan' wx:if="{{item.is_good==0}}"></text>
+          <text class='iconfont icon-xihuan1' wx:else></text>
+           赞
         </view>
       </view>
     </view>

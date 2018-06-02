@@ -26,6 +26,10 @@
   font-size: 35rpx;
   margin-right: 10rpx;
 }
+.icon-guanzhu1{
+  font-size: 35rpx;
+  margin-right: 10rpx;
+}
 .fans_type {
   font-size: 30rpx;
   font-family: PingFang-SC-Medium;

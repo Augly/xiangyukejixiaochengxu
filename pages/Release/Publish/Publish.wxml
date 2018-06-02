@@ -19,14 +19,14 @@
 <view class='foot' bindtap='push'>
   发表参与
 </view>
-
+<view class='imgGroup' style='width: 578rpx;margin-left:62rpx;' >
 <!--我添加的音频-->
 <template is="myaudio" data="{{...myaudio}}" wx:if="{{myaudio!=null}}"></template>
 <!--我添加的视频-->
 <template is="myvideo" data="{{...myvideo}}" wx:if="{{myvideo.videoSrc!=null}}"></template>
 <!--我上传的图片-->
 <!-- <template is="upimg" data="{{...myimg}}" wx:if="{{myimg.imgSrc!=null}}"></template> -->
-
+</view>
   <view class='imgGroup' style='width: 578rpx;margin:0 auto;' >
       <image class='personlImg' wx:if="{{myimg.imgSrc.length==1}}" wx:for="{{myimg.imgSrc}}" src="{{item}}"></image>  
        <!-- <image class='double'></image>  -->

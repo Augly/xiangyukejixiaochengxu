@@ -508,7 +508,7 @@ bj:function(e){
       if (myaudio != '') {
         console.log(11)
         material = {
-          myimgurl: myimgurl,
+          myimgurl: myimgurl.slice(1, myimgurl.length),
           time: that.data.audio_faile.duration,
           myaudio: myaudio,
           myvideoSrc: myvideoSrc

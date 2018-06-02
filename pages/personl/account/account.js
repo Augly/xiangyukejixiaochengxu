@@ -14,7 +14,38 @@ Page({
   onLoad: function (options) {
     
   },
-
+  /**
+   * 充值
+   */
+  cz:function(){
+    wx.navigateTo({
+      url: '../Recharge/Recharge',
+    })
+  },
+  /**
+   * 提现
+   */
+  tx:function(){
+    wx.navigateTo({
+      url: '../Put_forward/Put_forward',
+    })
+  },
+  /**
+   * 提现规则
+   */
+  rule:function(){
+    wx.navigateTo({
+      url: '../rule/rule',
+    })
+  },
+  /**
+   * 我的礼物
+   */
+  mygift:function(){
+    wx.navigateTo({
+      url: '../mygift/mygift',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

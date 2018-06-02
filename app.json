@@ -1,11 +1,13 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/Release/join_res/join_res",
 
+"pages/index/index",
+  "pages/personl/account/account",
+   
+     
+    "pages/Release/join_res/join_res",
     "pages/Release/history/history",
     "pages/Release/Editors_details/Editors_details",
-    
     "pages/Release/experience_res/experience_res",
     
     
@@ -34,7 +36,7 @@
     "pages/personl/myOrdered/myOrdered",
     "pages/personl/personl",
     "pages/index/wantBill/wantBill",
-    "pages/personl/account/account",
+    
     "pages/personl/mygift/mygift",
     "pages/Collection/Collection",
     "pages/business_Card/business_Card",

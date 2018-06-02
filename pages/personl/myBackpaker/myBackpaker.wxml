@@ -18,7 +18,7 @@
 </view>
 
 
-<view class='mywrap'>
+<!-- <view class='mywrap'>
   <view class="bottom_content">
     <view class='bottom_main'>
       <view class='main_title'>
@@ -56,4 +56,4 @@
       立即变现
     </view>
   </view>
-</view>
+</view> -->
