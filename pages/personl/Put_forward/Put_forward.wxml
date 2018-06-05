@@ -13,7 +13,7 @@
     <view class='put_Group_mintitle'>全部提现</view>
   </view>
 </view>
-<view class='Recharge'>提现</view>
+<view class='Recharge' bindtap='tx'>提现</view>
 
 
 

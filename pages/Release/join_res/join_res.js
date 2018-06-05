@@ -7,7 +7,10 @@ Page({
   data: {
     gztype: '关注',
     getfous:true,
-    send_iptValue:'评论'
+    send_iptValue:'评论',
+    changeCard:{
+      changeCard:false
+    }
   },
 
   /**
@@ -16,7 +19,22 @@ Page({
   onLoad: function (options) {
     
   },
-
+  /**
+   * 显示名片
+   */
+  showCard:function(){
+    this.setData({
+      'changeCard.changeCard': true
+    })
+  },
+/**
+ * 关闭名片按钮
+ */
+  cendelChangeCard:function(){
+    this.setData({
+      'changeCard.changeCard':false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

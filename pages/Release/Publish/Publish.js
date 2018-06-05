@@ -29,9 +29,15 @@ Page({
       audioTime: 0, //
       trylisten: true
     },
-    bjData:''
+    bjData:'',
+    slict: ['公开（所有成员）','仅限自己查看'],
+    selectindex:0
   },
-
+  bindPickerChange: function (e) {
+    this.setData({
+      selectindex: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,7 +45,8 @@ Page({
     var that = this;
     that.setData({
       adder: app.globalData.adder,
-      id: options.id
+      id: options.id,
+      typeid:options.typeid
     })
     console.log(app.globalData.adder)
     this.recorderManager = wx.getRecorderManager();
@@ -522,17 +529,22 @@ bj:function(e){
           myvideoSrc: myvideoSrc
         }
       }
-
+      var is_show=1
       console.log(JSON.stringify(material))
+      if (that.data.selectindex==0){
+        is_show=1
+      }else{
+        is_show=2
+      }
       var param = {
         user_id: app.globalData.user_id,
-        type:1,
+        type: that.data.typeid,
         jid: that.data.id,
         word: that.data.bjData,
         material: JSON.stringify(material),
         lat: app.globalData.lat,
         lng: app.globalData.lng,
-        is_show: 1,
+        is_show: is_show,
         position: that.data.adder
       }
       config.ajax("POST", param, config.setJoin, (res) => {

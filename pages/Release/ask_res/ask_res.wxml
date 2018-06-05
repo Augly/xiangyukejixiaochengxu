@@ -1,11 +1,12 @@
 <!--pages/Release/experience_res/experience_res.wxml-->
+<!--问答详情  -->
 <import src="../../../template/template.wxml" />
 <view class='wrap'>
   <view class='head_title'>
     {{alldata.title}}
   </view>
   <view class='anthur_Group'>
-    <image class='anthur_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0' bindtap='showCard'></image>
+    <image class='anthur_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
     <view class='anthur_nameGroup'>
       <view class='name'>{{alldata.user_nickname}}
         <!-- <text class='iconfont icon-nv' wx:if="{{alldata}}"></text> -->
@@ -35,6 +36,10 @@
   </view>
 </view>
 <view wx:if="{{alldata.is_join==1}}">
+
+
+
+
   <view class='tabbar'>
     <view class='tabbar_item' bindtap='clicktab'>
       <view class="title {{clickIndex?'titleActive':''}}">
@@ -149,18 +154,6 @@
         </view>
         <view class='item_title'>享遇币X1</view>
       </view>
-      <view class='list_item'>
-        <view class='item_gift'>
-            <image src='http://xiangyu.wx.bronet.cn/images/gift08@2x.png'></image>
-        </view>
-        <view class='item_title'>享遇币X1</view>
-      </view>
-      <view class='list_item'>
-        <view class='item_gift'>
-            <image src='http://xiangyu.wx.bronet.cn/images/gift08@2x.png'></image>
-        </view>
-        <view class='item_title'>享遇币X1</view>
-      </view>
     </scroll-view>
     <view class='send'>
       赠送
@@ -178,7 +171,3 @@
     </view>
   </view> -->
 </view> 
-
-<template is='changeCard' data="{{...changeCard}}"></template>
-
-

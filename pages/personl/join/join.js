@@ -1,4 +1,6 @@
 // pages/personl/push/push.js
+const config=require('../../../utils/config.js')
+let app=getApp();
 Page({
 
   /**
@@ -17,9 +19,35 @@ Page({
     index: 0
   },
   clicktap(e) {
+    var that=this
     this.setData({
       index: e.currentTarget.dataset.id
     })
+    if(this.data.index=='0'){
+      config.ajax('POST', {
+        user_id: app.globalData.user_id
+      }, config.joinShare, (res) => {
+        for(let n=0;n<res.data.data.length;n++){
+          res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time*1000);
+        }
+        that.setData({
+          sharelist:res.data.data
+        })
+      })
+    }else{
+      config.ajax('POST', {
+        user_id: app.globalData.user_id
+      }, config.joinInterest, (res) => {
+        console.log(res)
+        for (let n = 0; n < res.data.data.length; n++) {
+          res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time * 1000);
+        }
+        that.setData({
+          interestlist: res.data.data
+        })
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -33,7 +61,19 @@ Page({
         })
       }
     })
+    config.ajax('POST',{
+      user_id: app.globalData.user_id
+    }, config.joinShare,(res)=>{
+      for (let n = 0; n < res.data.data.length; n++) {
+        res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time * 1000);
+      }
+      that.setData({
+        sharelist: res.data.data
+      })
+    })
   },
+
+
   finish: function (e) {
     this.setData({
       index: e.detail.current

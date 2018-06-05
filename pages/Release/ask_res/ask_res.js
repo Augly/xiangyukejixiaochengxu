@@ -16,31 +16,13 @@ Page({
       videoSrc: '',
       controls: false
     },
+
     getfous: false,
     send_iptValue: '评论',
     gift: false,
     word: '',
     mid: '',
-    joinIndex: '',
-    changeCard: {
-      changeCard: false
-    }
-  },
-  /**
- * 显示名片
- */
-  showCard: function () {
-    this.setData({
-      'changeCard.changeCard': true
-    })
-  },
-  /**
-   * 关闭名片按钮
-   */
-  cendelChangeCard: function () {
-    this.setData({
-      'changeCard.changeCard': false
-    })
+    joinIndex: ''
   },
   /**
    * * 输入框获得焦点 
@@ -55,8 +37,8 @@ Page({
     })
   },
   /**
-       * 点赞
-       */
+   * 点赞
+   */
   joinzan(event) {
     var that = this
     this.setData({
@@ -70,22 +52,24 @@ Page({
     }, config.userGood, (res) => {
       console.log(res)
       var myjoin = that.data.alldata.join
-      var myarr = myjoin[that.data.joinIndex].good_list
+      console.log(myjoin[that.data.joinIndex].good_list)
       if (res.data.code == 1) {
         myjoin[that.data.joinIndex].is_good = 1
+        var myarr = myjoin[that.data.joinIndex].good_list
+
         myarr.push({
           user_nickname: res.data.data[0].user_nickname
         })
         myjoin[that.data.joinIndex].good_list = myarr
+        console.log(myjoin[that.data.joinIndex].good_list)
         that.setData({
           'alldata.join': myjoin
         })
       } else {
         myjoin[that.data.joinIndex].is_good = 0
-        console.log(myarr)
-        myarr = myarr.slice(0, myarr.length - 1)
-        console.log(myarr)
-        myjoin[that.data.joinIndex].good_list = myarr
+        //  function checkAdult(age) {
+        //    return age == '';
+        //  }
         that.setData({
           'alldata.join': myjoin
         })
@@ -134,9 +118,6 @@ Page({
    * 
    * */
   sendgift: function () {
-    config.ajax('POST', {}, config.gitpresent,(res)=>{
-      console.log(res)
-    })
     this.setData({
       gift: true,
     })
@@ -278,10 +259,10 @@ Page({
    */
   topublish: function () {
     wx.navigateTo({
-      url: '../Publish/Publish?id=' + this.data.id + '&typeid=1',
+      url: '../Publish/Publish?id=' + this.data.id,
     })
   },
-  
+
   tip: function (msg) {
     wx.showModal({
       title: '提示',
@@ -402,7 +383,7 @@ Page({
           })
         }
       }
-      
+
     })
 
   },

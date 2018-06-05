@@ -7,6 +7,8 @@ const options = {
   format: 'mp3'
 },
 
+checkInterestJoin='/api/portal/Join/checkInterestJoin', //检查兴趣社是否可参与
+
 myimgUrl ="https://xiangyu.lu.broteam.cn/public/assets/", // 图片地址
 
 addShare ="/api/portal/Share/setShare",
@@ -33,11 +35,19 @@ insterstList ='/api/portal/Interest/interestList',
 
 send ='/api/portal/Purchase/send', //发布跑腿
 
-sortList ='/api/portal/Interest/interestSort',
+sortList ='/api/portal/Interest/interestSort', 
+
+joinShare ='/api/portal/User/joinShare',  //我参与的共享经验
+
+joinInterest ='/api/portal/User/joinInterest', //我参与的兴趣社
 
 joinComment ='/api/portal/Common/joinComment', //发表评论
 
 fans ='/api/portal/User/fans',
+
+withdraw ='/api/portal/User/withdraw', //提现页面
+
+tx='/api/portal/User/withdraw_handle', //提现提交
 
 userGood ='/api/portal/Common/userGood', //点赞
 
@@ -47,7 +57,11 @@ favorite ='/api/portal/Common/favorite', //收藏
 
 Recharge ='/api/portal/User/addBalance',
 
-getexper ='/api/portal/Share/getShare';
+interest='/api/portal/Interest/interest ',
+
+getexper ='/api/portal/Share/getShare',
+
+gitpresent='/api/portal/Common/present';
 
 //获取dataset
 
@@ -124,14 +138,13 @@ function timeFormat(time) {
   var date = new Date(time),
     curDate = new Date(),
     year = date.getFullYear(),
-    month = date.getMonth() + 10,
+    month = date.getMonth() + 1,
     day = date.getDate(),
     hour = date.getHours(),
     minute = date.getMinutes(),
     curYear = curDate.getFullYear(),
     curHour = curDate.getHours(),
     timeStr;
-
   if (year < curYear) {
     timeStr = year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
   } else {
@@ -159,8 +172,14 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  tx: tx,
+  withdraw:withdraw,
+  interest: interest,
+  joinInterest:joinInterest,
+  joinShare: joinShare,
   getDataset: getDataset,
   uid: uid,
+  checkInterestJoin:checkInterestJoin,
   setInfo: setInfo,
   ajax: ajax,
   getOpenid: getOpenid,
@@ -185,5 +204,6 @@ module.exports = {
   favorite: favorite,
   joinComment: joinComment,
   Recharge: Recharge,
-  pay: pay
+  pay: pay,
+  gitpresent: gitpresent
 }

@@ -31,7 +31,7 @@
 </template>
 <!--兴趣社模板  -->
 <template name="Interestitem">
-  <view class="Interestitem">
+  <view class="Interestitem" bindtap='lookinterst' data-id='{{id}}'>
     <view class='InterestshowImg'>
       <image class="Interestitem_img" src="{{thumb}}"></image>
       <image class='item_act' wx:if="{{is_present==1}}" src="{{authur_act}}"></image>
@@ -237,9 +237,9 @@
     <view class='kind_title'>
       选择种类
     </view>
-    <picker mode='selector' bindchange="bindPickerKind" value="{{index}}" range="{{kindarray}}">
+    <picker mode='selector' bindchange="bindPickerKind" value="{{index}}" range="{{kindarray}}" range-key="{{'sort_name'}}">
       <view class='kind_select'>
-        <view class='kind_select_title'>{{kindarray[index]}}</view>
+        <view class='kind_select_title'>{{kindarray[index]['sort_name']}}</view>
         <text class='iconfont icon-xiangxia'></text>
       </view>
     </picker>
@@ -433,7 +433,7 @@
 <!--用户详情模板  -->
 <template name="USERLIST">
   <view class='userList' wx:for="{{join}}">
-    <image class='userLogo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
+    <image class='userLogo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0' bindtap='showCard'>
 
     </image>
 
@@ -518,7 +518,7 @@
 <template name="memberPL_LIST">
   <view class='pl_list'>
     <view class='pl_user'>
-      <image class='pl_userImg' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'></image>
+      <image class='pl_userImg' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0' bindtap='showCard'></image>
       <view class='pl_name'>苏菀菁
         <text class='iconfont icon-nv'></text>
       </view>
@@ -528,4 +528,35 @@
       <text class='iconfont icon-dizhi'></text> 天津 · 建国楼 0.8km
     </view>
   </view>
+</template>
+
+
+<template name='changeCard'>
+   <view class='mask' wx:if="{{changeCard}}">
+  <view class='mask_main Augly-bouncein'>
+    <view class='cendelcard' bindtap='cendelChangeCard'></view>
+    <view class='main_userGroup'>
+      <view class='startZuo'>
+        <text class='iconfont icon-baiyangzuo'></text>
+        <text class='startTitle'>白羊座</text>
+      </view>
+      <view class='perSonl'>
+        <image class='per_sonl' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
+        </image>
+        <view class='sex'>
+          <text class='iconfont icon-nan' style='font-size:40rpx;'></text>
+        </view>
+        <view class='per_title'>仇益阳</view>
+      </view>
+      <view class='birthday'>
+        <text class='iconfont icon-shengri'></text>
+        <text class='startTitle' style='font-size:24rpx;font-family:PingFang-SC-Medium;color:rgba(255,255,255,1);'>1996/03/10</text>
+      </view>
+    </view>
+    <view class='main_botton'>
+      <view class='changeCard'>交换名片</view>
+      <view class='sendGift'>送TA礼物</view>
+    </view>
+  </view>
+</view> 
 </template>

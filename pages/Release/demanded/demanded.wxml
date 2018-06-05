@@ -5,9 +5,6 @@
   <template is="upload_img" data="{{...img}}"></template>
   <!--输入跑腿内容  -->
   <!--二手置换才显示  -->
-
-
-
   <view wx:if="{{type=='二手置换'||type=='问答'}}">
     <!--作者介绍  -->
     <template is="anthurPro" data='{{...description}}'></template>

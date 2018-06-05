@@ -277,3 +277,13 @@ image {
 .icon-zanting:before { content: "\e664"; }
 
 .icon-zanting1:before { content: "\e665"; }
+
+
+.icon-nv {
+  color: RGBA(255, 71, 204, 1);
+}
+
+
+.icon-nan{
+  color: RGBA(57, 143, 202, 1)
+}

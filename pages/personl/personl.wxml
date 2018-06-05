@@ -38,12 +38,12 @@
 </view>
 
 <view class='myitem_group'>
-  <view class='myitem_list'>
+  <view class='myitem_list' bindtap='myjoin'>
     <text class='iconfont icon-canyuqingkuang'></text>
     <view class='myitem_list_title'>我的参与</view>
    <text class='iconfont icon-bangzhujinru' style='margin-left:auto;color:#999999'></text>
   </view>
-   <view class='myitem_list'>
+   <view class='myitem_list' bindtap='mybill'>
     <text class='iconfont icon-zhanghuchongzhi-copy'></text>
     <view class='myitem_list_title'>我的账户</view>
    <text class='iconfont icon-bangzhujinru' style='margin-left:auto;color:#999999'></text>
@@ -53,7 +53,7 @@
     <view class='myitem_list_title'>通讯录</view>
    <text class='iconfont icon-bangzhujinru' style='margin-left:auto;color:#999999'></text>
   </view>
-   <view class='myitem_list'>
+   <view class='myitem_list' bindtap='mycard'>
     <text class='iconfont icon-mingpian2'></text>
     <view class='myitem_list_title'>我的名片</view>
    <text class='iconfont icon-bangzhujinru' style='margin-left:auto;color:#999999'></text>

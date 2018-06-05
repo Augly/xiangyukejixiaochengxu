@@ -39,11 +39,11 @@
   <text class='iconfont icon-dizhi'></text>
   {{adder}}
 </view>
-<picker>
+<picker mode='selector' range="{{slict}}" value="{{selectindex}}" bindchange="bindPickerChange">
 <!--权限公开或私有仅限自己观看-->
   <view class='allow'>
   <text class='iconfont icon-wode1'></text>
-  公开（所有成员）
+  {{slict[selectindex]}}
 </view>
 </picker>
 

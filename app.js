@@ -31,7 +31,7 @@ App({
                 },
                 success: function (res) {
                   console.log(res.result.address_component);
-                  that.globalData.adder = res.result.address_component.city + ' · ' + res.result.address_component.district
+                  that.globalData.adder = res.result.address_component.city.slice(0, res.result.address_component.city.length - 1) + ' · ' + res.result.address_component.district.slice(0, res.result.address_component.district.length - 1)
                 },
                 fail: function (res) {
                   console.log(res);

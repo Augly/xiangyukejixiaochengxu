@@ -95,7 +95,7 @@ Page({
         console.log(res.data.data.list)
 
         for (let i = 0; i < res.data.data.list.length; i++) {
-          res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(2)
+          res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
         }
         that.setData({
           note: res.data.data.list
@@ -122,19 +122,10 @@ Page({
         lng: app.globalData.lng,
         sort_id:''
       }, config.insterstList, (res) => {
-        
         for (let i = 0; i < res.data.data.length; i++) {
-          res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(2);
+          res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(1);
           res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
         }
-        console.log(res.data.data)
-        // that.setData({
-        //   interestList: res.data.data
-        // })
-
-        // for(let n=0;n<res.data.data.length;n++){
-          
-        // }
         that.setData({
           interestList: res.data.data
         })
@@ -193,10 +184,36 @@ Page({
     }
   },
 
+
+  lookinterst(e){
+    wx.navigateTo({
+      url: '../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   select_active:function(e){
+    var that=this
     this.setData({
       selectIndex: e.currentTarget.dataset.index
     })
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng,
+      sort_id: that.data.interestSort[0][that.data.selectIndex].id
+    }, config.insterstList, (res) => {
+      for (let i = 0; i < res.data.data.length; i++) {
+        res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(1);
+        res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
+      }
+      that.setData({
+        interestList: res.data.data
+      })
+      wx.hideLoading()
+    })
+
+
+
   },
   demindtap:function(event){
     var that=this
@@ -216,7 +233,7 @@ Page({
       wx.hideLoading()
       console.log(res.data.data)
       for(let n=0;n<res.data.data.length;n++){
-        res.data.data[n].distance = (res.data.data[n].distance / 1000).toFixed(2);
+        res.data.data[n].distance = (res.data.data[n].distance / 1000).toFixed(1);
         res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time*1000)
       }
       that.setData({

@@ -44,7 +44,8 @@ Page({
     },
     myallkind:{
       index:0,
-      kindarray:['种类一','种类二','种类三']
+      kindarray:['种类一','种类二','种类三'],
+      seletMain:''
     },
     description:{
       descriptioncontent:''
@@ -62,6 +63,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    config.ajax('POST', {}, config.interestSort,(res)=>{
+      console.log(res.data.data)
+      this.setData({
+        'myallkind.kindarray':res.data.data[0]
+      })
+    })
     this.setData({
       title:options.title,
       'adder.adder': app.globalData.adder,
@@ -122,9 +129,10 @@ Page({
    * 选择种类
    */
   bindPickerKind:function(e){
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var that=this
     this.setData({
-      'myallkind.index': e.detail.value
+      'myallkind.index': e.detail.value,
+      'myallkind.seletMain': that.data.myallkind.kindarray[that.data.myallkind.index].id
     })
   },
   /**
@@ -698,7 +706,7 @@ Page({
     function getins() {
       var param = {
         user_id: app.globalData.user_id,
-        sort_id:1,
+        sort_id: that.data.myallkind.seletMain,
         title: that.data.title,
         thumb: myimgSrc,
         word: that.data.text.info,

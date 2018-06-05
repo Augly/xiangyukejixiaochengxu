@@ -1,24 +1,22 @@
 {
   "pages": [
-
-"pages/index/index",
-  "pages/personl/account/account",
-   
-     
+    "pages/index/index",
     "pages/Release/join_res/join_res",
+    "pages/Release/joined/joined",
+    
+   
+    "pages/personl/account/account",
     "pages/Release/history/history",
     "pages/Release/Editors_details/Editors_details",
     "pages/Release/experience_res/experience_res",
-    
-    
-    
+    "pages/Release/ask_res/ask_res",
+    "pages/Release/Interest/Interest",
     "pages/Release/Editors_bg/Editors_bg",
     "pages/Release/push_experience/push_experience",
     "pages/Release/Push_active/Push_active",
     "pages/index/phone/phone",
     "pages/index/run/run",
     "pages/index/myrun/myrun",
-    "pages/Release/joined/joined",
     "pages/Release/history_res/history_res",
     "pages/personl/userabout/userabout",
     "pages/personl/share/share",
@@ -36,50 +34,14 @@
     "pages/personl/myOrdered/myOrdered",
     "pages/personl/personl",
     "pages/index/wantBill/wantBill",
-    
     "pages/personl/mygift/mygift",
     "pages/Collection/Collection",
     "pages/business_Card/business_Card",
     "pages/business_edit/business_edit",
-"pages/Release/demanded/demanded",
-    
-    
-    
-    
-    
-    
-   
-    
-   
-    
-    
-   
-    
-    
-   
-   
-    
-   
-   
-    
-   
+    "pages/Release/demanded/demanded",
     "pages/personl/username/username",
     "pages/personl/personl_Set/personl_Set",
-    
-    
-    
-    
     "pages/index/pl/pl",
-    
-    
-    
-    
-   
-    
-    
-   
-    
-    
     "pages/Release/Publish/Publish",
     "pages/Release/sure_Gift/sure_Gift",
     "pages/Release/Release",

@@ -1,57 +1,260 @@
 <!--pages/Release/Interest/Interest.wxml-->
 
-<view class='head' style="background-image: url('http://xiangyu.wx.bronet.cn/images/apic02@2x.png')">
 
-  <view class='head_mask'>
-    20天掌握美式连读
+<view wx:if="{{interestData.is_join==0}}">
+<view class='head' style='background-image: url("{{interestData.thumb}}")'>
+  <view class='head_maskone'>
+    {{interestData.title}}
   </view>
 </view>
 
 <view class='join_Number'>
-    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
-    <image class='joinUser' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+    <image class='joinUser' wx:for="{{join_avatar}}" src='{{item.avatar}}'></image>
     <view class='join_title'>
-    50余人已参加
+    {{interestData.join_count}}余人已参加
     </view>
 </view>
 
 <view class='join_anthur'>
   <view class='join_anthur_head'>
-      <image class='anthur_head' src='http://xiangyu.wx.bronet.cn/images/apic01@2x.png'></image>
+      <image class='anthur_head' src='{{interestData.avatar}}' bindtap='showCard'></image>
       <view class='anthur_name'>
-      杨子叶
-        <text class='iconfont icon-nv'></text>
+      {{interestData.user_nickname}}
+        <text class='iconfont icon-nan' wx:if="{{interestData.sex==1}}"></text>
+        <text class='iconfont icon-nv' wx:if="{{interestData.sex==2}}"></text>
       </view>
-      <view class="care">
-        关注
+      <view class="care" bindtap='gz'>
+        {{gztype}}
       </view>
   </view>
   <view class='join_anthur_main'>
-      如果你无法简介的表达你的想法，那只说明
-你还不够了解他。
+      {{interestData.description}}
   </view>
 </view>
 
 
 <view class='interst_res'>
   <view class='interst_title'>
-    <view class='title'>
+    <view class='titleone'>
       活动详情
     </view>
-    <view class="care">
-        关注
+    <view class="care" bindtap='sc'>
+        {{sctype}}
       </view>
   </view>
-
   <view class='interst_main'>
-      众所周知，每一种颜色带给用户的视觉感受也是不同的。现在人们对手机的依赖程度，就能看到手机中APP的发展前景，那今天就跟大家聊聊如何通过颜色搭配的不同来进行移动端APP界面的布局和排版设计。
+      {{interestData.word}}
   </view>
 </view>
 
 
-<view class='right_now'>
+<view class='right_now' bindtap='rightJoin' wx:if="{{interestData.is_join==0}}">
     立即参与
+</view>
+
+</view>
+
+
+<view wx:if="{{interestData.is_join==1}}">
+    <!--pages/Release/experience_res/experience_res.wxml-->
+<import src="../../../template/template.wxml" />
+<view class='head' style='background-image: url("{{interestData.thumb}}")'>
+  <view class='head_mask'>
+    <view class='head_top'>
+      <view class='head_left'>
+        <text class='iconfont icon-bianji'></text>编辑详情
+      </view>
+      <view class='head_right'>
+        <text class='iconfont icon-fenxiang'></text> 分享
+      </view>
+
+    </view>
+    <view class='head_main'>
+      <view class='head_main_title'>{{interestData.title}}</view>
+      <view class='head_main_mintitle'>{{interestData.join_count}}人已参加</view>
+    </view>
+  </view>
+</view>
+
+<view class='join_Number'>
+  <image class='joinUser' wx:for="{{join_avatar}}" src='{{item.avatar}}'></image>
+  <view class='join_title'>
+    {{interestData.join_count}}余人已参加
+  </view>
+</view>
+
+
+<view class='join_anthurone'>
+  <image class='anthur_head' src='{{interestData.avatar}}' bindtap='showCard'></image>
+  <view class='join_anthur_group'>
+    <view class='join_anthur_name'>{{interestData.user_nickname}}
+      <text class='iconfont icon-nan'></text>
+    </view>
+    <view class='join_anthur_mintitle'>已坚持参与5次</view>
+  </view>
+</view>
+
+<view class='anthur_main' wx:if="{{interestData.recommend!=null}}">
+  <view class='anthur_main_title'>今日活动标题</view>
+  <view class='anthur_main_artcle' style='height:{{myheight}}'>More than 30 years ago, when I took my first job in New York City, I found myself working with a number of young women. Some I got to know just in passing, but others gradually became my friends. Today, six of these women remain an important part of
+    my life. They are more than simply friends, more even than close friends. They are old friends, as indispensable as sunshine and more dear to me than ever. These people share a long-standing history with me.</view>
+  <view class='lookMore' bindtap='lookmore' wx:if="{{myheight!='auto'}}">
+    查看全文
+    <text class='iconfont icon-xiangxia'></text>
+  </view>
+</view>
+
+
+<view class='hostory' wx:if="{{interestData.recommend!=null}}">
+  <text>历史活动</text>
+  <text class='iconfont icon-bangzhujinru'></text>
+</view>
+<view class='hostory' wx:if="{{interestData.recommend==null}}">
+  <view class='hostory_title'>
+    <text class='iconfont icon-tianjiajiahaowubiankuang'></text>点击发布新活动</view>
+  <text class='iconfont icon-bangzhujinru'></text>
+</view>
+
+<view class='tabbar'>
+  <view class='tabbar_item' bindtap='clicktab' data-id='1'>
+    <view class="title {{clickIndex==1?'titleActive':''}}">
+      参与
+    </view>
+  </view>
+  <view class='tabbar_item' bindtap='clicktab' data-id='2'>
+    <view class="title {{clickIndex==2?'titleActive':''}}">
+      详情
+    </view>
+  </view>
+  <view class='tabbar_item' bindtap='clicktab' data-id='3'>
+    <view class="title {{clickIndex==3?'titleActive':''}}">
+      成员
+    </view>
+  </view>
+</view>
+
+
+<template is="USERLIST" wx:if="{{clickIndex==1}}" data="{{...alldata}}"></template>
+<view class='artcle' wx:if="{{clickIndex==2}}">
+  {{interestData.word}}
+</view>
+<view class='joinpersonl' wx:if="{{clickIndex==3}}">
+  <view class='seacherGroup'>
+    <text class='iconfont icon-sousuo'></text>
+    <input class='seach_ipt' placeholder="请输入搜索词"></input>
+    <view class='seacherTitle'>搜索</view>
+  </view>
+  <template is="memberPL_LIST"></template>
+</view>
+
+
+<view class='kong'></view>
+<view wx:if="{{!getfous||!gift}}">
+  <view class='foot'>
+    <view class='foot_item' bindtap='zan'>
+      <text class="iconfont {{iszan?'icon-xihuan1':'icon-xin'}}"></text>
+      <text class='foot_title'>点赞</text>
+    </view>
+    <view class='foot_item' bindtap='sendgift'>
+      <text class='iconfont icon-gifs'></text>
+      <text class='foot_title'>送礼</text>
+    </view>
+    <view class='foot_item' bindtap='topublish'>
+      <text class='iconfont icon-shuangren'></text>
+      <text class='foot_title'>参与</text>
+    </view>
+    <view class='foot_item'>
+      <text class='iconfont icon-fenxiang'></text>
+      <text class='foot_title'>分享</text>
+    </view>
+  </view>
+</view>
+
+
+<view class='send_groupone' wx:if="{{getfous}}">
+  <view class='iptGroup'>
+    <input class='ipt_Group' auto-focus bindblur='hidemyipt' bindinput='pl'>
+
+    </input>
+    <view class='Send' bindtap='send'>
+      <text class='iconfont icon-fabu'></text> 发送
+    </view>
+  </view>
+</view>
+
+
+ <view class='giftGroup' wx:if="{{gift}}" bindtap='hidegift'>
+  <view class='giftList'>
+    <view class='giftTab'>
+      <view class='Tab_item Tab_itemActive'>高级礼物</view>
+      <view class='Tab_item'>中级礼物</view>
+      <view class='Tab_item' style='border:none'>初级礼物</view>
+    </view>
+    <scroll-view class='giftscrollView' scroll-y>
+      <view class='list_item'>
+        <view class='item_gift item_giftActive'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift01@2x.png'></image>
+        </view>
+        <view class='item_title'>棒棒糖X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift02@2x.png'></image>
+        </view>
+        <view class='item_title'>爱心甜点X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift03@2x.png'></image>
+        </view>
+        <view class='item_title'>棉花糖X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift04@2x.png'></image>
+        </view>
+        <view class='item_title'>冰淇淋X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift05@2x.png'></image>
+        </view>
+        <view class='item_title'>小蛋糕X10</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift06@2x.png'></image>
+        </view>
+        <view class='item_title'>高级跑车X1</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift07@2x.png'></image>
+        </view>
+        <view class='item_title'>火箭X1</view>
+      </view>
+      <view class='list_item'>
+        <view class='item_gift'>
+            <image src='http://xiangyu.wx.bronet.cn/images/gift08@2x.png'></image>
+        </view>
+        <view class='item_title'>享遇币X1</view>
+      </view>
+    </scroll-view>
+    <view class='send'>
+      赠送
+    </view>
+  </view>
+
+  <!-- <view class='noGift'>
+    <view class='notice_res'>
+      <text class='notice_res_title'>没有礼物</text>
+      <text class='notice_res_main'>您的背包里没有礼物，请前往礼物商城购买</text>
+    </view>
+    <view class='notice_Group'>
+      <view class='cendel'>取消</view>
+      <view class='goshop'>前往礼物商城</view>
+    </view>
+  </view> -->
+</view> 
+<template is='changeCard' data="{{...changeCard}}"></template>
 </view>

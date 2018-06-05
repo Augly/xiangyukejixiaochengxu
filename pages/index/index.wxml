@@ -16,7 +16,7 @@
 </view>
 
 <!--推荐-->
-<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:if="{{index==1}}">
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:if="{{index==1}}" scroll-with-animation>
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
     <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item>
@@ -40,7 +40,7 @@
 
 
 <!--共享经验-->
-<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==2}}">
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==2}}" scroll-with-animation>
   <view class='scrollView'>
     <view class='left'>
       <block wx:for="{{note}}" wx:key="">
@@ -57,7 +57,7 @@
 
 
 <!--兴趣社-->
-<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==3}}">
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==3}}" scroll-with-animation>
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
     <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item>
@@ -73,8 +73,6 @@
           {{item.sort_name}}
         </view>
       </view>
-        
-        
       </scroll-view>
       <!-- <view class='select_more'>
         <view class='select_more_item'>兴趣1</view>
@@ -110,7 +108,7 @@
 </scroll-view>
 
 <!--需求-->
-<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==4}}">
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==4}}" scroll-with-animation>
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
     <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item>

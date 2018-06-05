@@ -24,6 +24,27 @@ Page({
     })
   },
 
+  //我的参与
+  myjoin(){
+    wx.navigateTo({
+      url: '../personl/join/join',
+    })
+  },
+
+
+  //我的钱包
+  mybill(){
+      wx.navigateTo({
+        url: 'account/account',
+      })
+  },
+  
+  //我的名片
+  mycard:function(){
+    wx.navigateTo({
+      url: '../business_Card/business_Card',
+    })
+  },
   fans:function(){
     wx.navigateTo({
       url: 'fans/fans',

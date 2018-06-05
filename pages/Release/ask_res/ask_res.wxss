@@ -1,152 +1,3 @@
-/* pages/Release/Interest/Interest.wxss */
-
-.head {
-  width: 100%;
-  height: 482rpx;
-  background-size: 100% 100%;
-  position: relative;
-}
-
-.head_maskone {
-  position: absolute;
-  bottom: 0;
-  height: 100rpx;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  font-size: 36rpx;
-  line-height: 100rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-  box-sizing: border-box;
-  padding: 0rpx 35rpx;
-}
-
-.join_Number {
-  width: 100%;
-  height: 86rpx;
-  display: flex;
-  box-sizing: border-box;
-  padding: 0rpx 24rpx;
-  align-items: center;
-  border-bottom: 16rpx solid RGBA(245, 246, 250, 1);
-}
-
-.joinUser {
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 50%;
-  margin-left: -10rpx;
-  border: 2rpx solid rgba(255, 255, 255, 1);
-}
-
-.joinUser:first-child {
-  margin-left: 0;
-}
-
-.join_title {
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-  margin-left: 10rpx;
-}
-
-.join_anthur {
-  box-sizing: border-box;
-  padding: 25rpx 25rpx 40rpx 25rpx;
-  border-bottom: 16rpx solid RGBA(245, 246, 250, 1);
-}
-
-.join_anthur_head {
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-}
-
-.anthur_head {
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 50%;
-  background-color: red;
-}
-
-.anthur_name {
-  margin-left: 20rpx;
-  font-size: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-}
-
-.anthur_name .iconfont {
-  font-size: 30rpx;
-}
-
-.icon-nv {
-  color: RGBA(255, 61, 201, 1);
-}
-
-.care {
-  width: 124rpx;
-  height: 60rpx;
-  border: 1rpx solid RGBA(204, 204, 204, 1);
-  border-radius: 5rpx;
-  text-align: center;
-  line-height: 60rpx;
-  margin-left: auto;
-  font-size:30rpx;
-font-family:PingFang-SC-Medium;
-color:rgba(153,153,153,1);
-}
-
-.join_anthur_main {
-  width: 466rpx;
-  height: auto;
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-  margin-left: 130rpx;
-}
-
-.interst_res {
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  padding: 32rpx 25rpx 125rpx 25rpx;
-}
-
-.interst_title {
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-}
-
-.interst_main {
-  margin-top: 57rpx;
-  font-size: 26rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(51, 51, 51, 1);
-}
-
-.right_now {
-  width: 100%;
-  height: 100rpx;
-  position: fixed;
-  bottom: 0;
-  background-color: RGBA(74, 144, 226, 1);
-  font-size: 32rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-  line-height: 100rpx;
-}
-
-
-
 /* pages/Release/experience_res/experience_res.wxss */
 @import "../../../template/template.wxss";
 
@@ -160,6 +11,104 @@ color:rgba(153,153,153,1);
   padding: 0rpx 32rpx;
 }
 
+.head_title {
+  font-weight: bold;
+}
+
+.anthur_Group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 35rpx;
+}
+
+.anthur_logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.anthur_nameGroup {
+  width: 400rpx;
+  height: 100rpx;
+  margin-left: 17rpx;
+}
+
+.name {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+
+.icon-nv {
+  font-size: 30rpx;
+  color: RGBA(255, 61, 201, 1);
+}
+
+.data {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.zan {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.icon-xihuan {
+  font-size: 30rpx;
+  margin-right: 5rpx;
+}
+
+.operation {
+  width: 150rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gz, .sc {
+  width: 150rpx;
+  height: 48rpx;
+  border: 1rpx solid RGBA(204, 204, 204, 1);
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gzed {
+  color: RGBA(152, 97, 225, 1);
+}
+
+.icon-guanzhu, .icon-collection {
+  font-size: 30rpx;
+  margin-right: 8rpx;
+}
+
+.icon-collection-b {
+  font-size: 30rpx;
+  margin-right: 8rpx;
+  color: RGBA(255, 246, 0, 1);
+}
+
+.content {
+  margin-top: 53rpx;
+  padding-bottom: 10rpx;
+}
+
+.textContent {
+  font-size: 30rpx;
+  color: RGBA(51, 51, 51, 1);
+}
+
 .foot {
   width: 100%;
   height: 100rpx;
@@ -168,6 +117,7 @@ color:rgba(153,153,153,1);
   position: fixed;
   bottom: 0;
   display: flex;
+  z-index: 20;
 }
 
 .foot_item {
@@ -183,7 +133,7 @@ color:rgba(153,153,153,1);
 }
 
 .foot_item .iconfont {
-  font-size: 30rpx;
+  font-size: 40rpx;
   display: block;
 }
 
@@ -191,6 +141,11 @@ color:rgba(153,153,153,1);
   color: RGBA(152, 97, 225, 1);
 }
 
+.foot_item .icon-xihuan1 {
+  font-size: 40rpx;
+  margin-right: 5rpx;
+  color: RGBA(152, 97, 225, 1);
+}
 .icon-xihuan1 {
   font-size: 30rpx;
   margin-right: 5rpx;
@@ -203,6 +158,7 @@ color:rgba(153,153,153,1);
   position: fixed;
   top: 0;
   background-color: rgba(51, 51, 51, 0.8);
+  z-index: 30
 }
 
 .giftTab {
@@ -361,7 +317,7 @@ color:rgba(153,153,153,1);
 }
 
 .tabbar_item {
-  width: 33%;
+  width: 50%;
   height: 100%;
 }
 
@@ -414,207 +370,56 @@ color:rgba(153,153,153,1);
   color: RGBA(153, 153, 153, 1);
 }
 
-.head {
-  width: 100%;
-  height: 482rpx;
-  background-size: 100% 100%;
-  position: relative;
-}
-
-.head_mask {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  font-size: 36rpx;
-  line-height: 100rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-  box-sizing: border-box;
-  padding: 0rpx 35rpx;
-}
-
-.join_Number {
-  width: 100%;
-  height: 86rpx;
-  display: flex;
-  box-sizing: border-box;
-  padding: 0rpx 24rpx;
-  align-items: center;
-  border-bottom: 16rpx solid RGBA(245, 246, 250, 1);
-}
-
-.joinUser {
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 50%;
-  margin-left: -10rpx;
-  border: 2rpx solid rgba(255, 255, 255, 1);
-}
-
-.joinUser:first-child {
-  margin-left: 0;
-}
-
-.join_title {
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-  margin-left: 10rpx;
-}
-
-.head_top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-}
-
-.icon-fenxiang,.icon-bianji{
-  font-size: 24rpx;
-  margin-right: 5rpx;
-}
-.icon-bianji{
-  margin-right: 15rpx;
-}
-.head_main {
-  width: 100%;
-  height: 320rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.head_main_title {
-  text-align: center;
-  font-size: 36rpx;
-  line-height: 36rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-}
-
-.head_main_mintitle {
-  margin-top: 30rpx;
-  text-align: center;
-  font-size: 30rpx;
-  line-height: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(255, 255, 255, 1);
-}
-
-.join_anthurone {
-  width: 100%;
-  height: 158rpx;
-  box-sizing: border-box;
-  padding: 24rpx;
-  display: flex;
-  align-items: center;
-  border-bottom: 16rpx solid RGBA(245, 246, 250, 1);
-}
-
-.join_anthurr_logo {
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 50%;
-}
-
-.join_anthur_group {
-  width: 550rpx;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 24rpx;
-}
-
-.join_anthur_name {
-  font-size: 30rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-}
-
-.join_anthur_mintitle {
-  font-size: 24rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(153, 153, 153, 1);
-  margin-top: 10rpx;
-}
-
-.anthur_main {
+.thumb {
   width: 100%;
   height: auto;
+}
+
+.send_group {
+  width: 100%;
+  height: 100rpx;
+  background-color: rgba(255, 255, 255, 1);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 22rpx;
+  padding: 0rpx 32rpx;
+  justify-content: space-between;
+  z-index: 9999
 }
 
-.anthur_main_title {
-  font-size: 30rpx;
+.send_ipt {
+  width: 458rpx;
+  height: 60rpx;
+  border-bottom: 1rpx solid RGBA(66, 87, 122, 1);
+  font-size: 28rpx;
   font-family: PingFang-SC-Medium;
-  color: rgba(0, 0, 0, 1);
-  text-align: center;
-}
-
-.anthur_main_artcle {
-  font-size: 26rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(51, 51, 51, 1);
-  overflow: hidden;
-}
-
-.lookMore {
-  width: 176rpx;
-  height: 66rpx;
-  border: 1rpx solid RGBA(204, 204, 204, 1);
-  border-radius: 5rpx;
-  margin: 0 auto;
-  margin-top: 10rpx;
-  font-size: 26rpx;
-  text-align: center;
-  line-height: 66rpx;
-  font-family: PingFang-SC-Medium;
-  color: rgba(153, 153, 153, 1);
-}
-
-.icon-xiangxia{
-  font-size: 26rpx;
-}
-
-.hostory{
-  width:750rpx;
-height:88rpx; 
-background:rgba(245,246,250,1);
-box-sizing: border-box;
-padding: 0rpx 25rpx;
-display: flex;
-align-items: center;
-justify-content: space-between;
-font-size:30rpx;
-font-family:PingFang-SC-Medium;
-color:rgba(153,153,153,1);
-}
-
-.icon-bangzhujinru{
-  font-size: 40rpx;
   color: RGBA(153, 153, 153, 1);
 }
-.kong{
-  width: 100%;
-  height: 150rpx;
-}
-.artcle{
-  box-sizing: border-box;
-  padding: 32rpx;
 
+.send_sc, .send_share {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background-color: RGBA(132, 148, 173, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.zan .icon-xihuan {
+  font-size: 30rpx;
+  /* color: rgba(255, 255, 255, 1); */
+}
+.icon-xihuan {
+  font-size: 40rpx;
+  /* color: rgba(255, 255, 255, 1); */
 }
 
-.icon-tianjiajiahaowubiankuang{
-  margin-right: 15rpx;
+.icon-fenxiang {
+  font-size: 40rpx;
+  /* color: rgba(255, 255, 255, 1); */
 }
-
 
 .send_groupone {
   width: 100%;
@@ -661,4 +466,3 @@ color:rgba(153,153,153,1);
   margin-right: 10rpx;
   color: rgba(51, 51, 51, 1);
 }
-

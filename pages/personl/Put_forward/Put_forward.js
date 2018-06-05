@@ -1,4 +1,6 @@
 // pages/personl/Put_forward/Put_forward.js
+const config=require('../../../utils/config.js')
+let app=getApp()
 Page({
 
   /**
@@ -12,7 +14,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this
+    config.ajax('POST',{
+      user_id: app.globalData.user_id
+    }, config.withdraw,(res)=>{
+      console.log(res)
+      that.setData({
+        bill:res.data.data
+      })
+    })
   },
 
   /**
@@ -36,6 +46,20 @@ Page({
   
   },
 
+  /**
+   * 提现提交
+   */
+  tx:function(){
+    var that=this
+    config.ajax('POST',{
+      user_id: app.globalData.user_id,
+      price:0.5,
+      time: that.data.bill.time,
+      authcode:that.data.bill.authcode
+    },config.tx,(res)=>{
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
