@@ -2,24 +2,24 @@
 <template name="item">
   <view class="item" bindtap='lookres' data-id='{{id}}'>
     <view class='showImg'>
-      <image class="item_img" src="{{thumb}}" mode="widthFix"></image>
-      <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
+      <image class="item_img" src="{{thumb}}" mode="widthFix" lazy-load='true'></image>
+      <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}" lazy-load='true'></image>
       <view class='item_txt'>{{title}}</view>
     </view>
     <view class='showText'>
       <view class='anthur_Group'>
-        <image class='show_anthur' src="{{authur_imgurl}}"></image>
+        <image class='show_anthur' src="{{avatar}}" lazy-load='true'></image>
         <view class='anthur_Info'>
           <view class='anthurInfo_name'>
-            <view class='name'>{{authur_name}}</view>
-            <text class='iconfont icon-nv' wx:if="{{authur_sex==1}}"></text>
+            <view class='name'>{{user_nickname}}</view>
+            <text class='iconfont icon-nv' wx:if="{{sex==1}}"></text>
             <text class='iconfont icon-nan' wx:else></text>
           </view>
           <view class='anthur_Data'>
             {{create_time}}
           </view>
         </view>
-        <text class='iconfont icon-xihuan' catchtap='love'></text>
+        <text class='iconfont icon-xihuan' catchtap='love' data-tid="{{user_id}}"></text>
       </view>
       <view class='adder_Group'>
         <text class='iconfont icon-dizhi'></text>
@@ -446,7 +446,7 @@
       <view class='main'>{{item.word}}</view>
       <view class='lookmore'>全文</view>
       <view class='imgGroup'>
-        <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem"  wx:if="{{item.image.length==1}}" src='{{myitem}}'></image>
+        <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem" wx:if="{{item.image.length==1}}" src='{{myitem}}'></image>
         <image class='doubleAndpersonl' wx:for="{{item.image}}" wx:if="{{item.image.length==2||item.image.length==4}}" src='{{myitem}}'></image>
         <image class='four' wx:for="{{item.image}}" wx:if="{{item.image.length>=5}}" src='{{myitem}}'></image>
       </view>
@@ -489,8 +489,7 @@
         </view>
         <view class='operation_zan' bindtap='joinzan' data-id='{{item.id}}' data-index='{{index}}'>
           <text class='iconfont icon-xihuan' wx:if="{{item.is_good==0}}"></text>
-          <text class='iconfont icon-xihuan1' wx:else></text>
-           赞
+          <text class='iconfont icon-xihuan1' wx:else></text> 赞
         </view>
       </view>
     </view>
@@ -532,31 +531,66 @@
 
 
 <template name='changeCard'>
-   <view class='mask' wx:if="{{changeCard}}">
-  <view class='mask_main Augly-bouncein'>
-    <view class='cendelcard' bindtap='cendelChangeCard'></view>
-    <view class='main_userGroup'>
-      <view class='startZuo'>
-        <text class='iconfont icon-baiyangzuo'></text>
-        <text class='startTitle'>白羊座</text>
-      </view>
-      <view class='perSonl'>
-        <image class='per_sonl' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
-        </image>
-        <view class='sex'>
-          <text class='iconfont icon-nan' style='font-size:40rpx;'></text>
+  <view class='mask' wx:if="{{changeCard}}">
+    <view class='mask_main Augly-bouncein'>
+      <view class='cendelcard' bindtap='cendelChangeCard'></view>
+      <view class='main_userGroup'>
+        <view class='startZuo'>
+          <text class='iconfont icon-baiyangzuo'></text>
+          <text class='startTitle'>白羊座</text>
         </view>
-        <view class='per_title'>仇益阳</view>
+        <view class='perSonl'>
+          <image class='per_sonl' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
+          </image>
+          <view class='sex'>
+            <text class='iconfont icon-nan' style='font-size:40rpx;'></text>
+          </view>
+          <view class='per_title'>仇益阳</view>
+        </view>
+        <view class='birthday'>
+          <text class='iconfont icon-shengri'></text>
+          <text class='startTitle' style='font-size:24rpx;font-family:PingFang-SC-Medium;color:rgba(255,255,255,1);'>1996/03/10</text>
+        </view>
       </view>
-      <view class='birthday'>
-        <text class='iconfont icon-shengri'></text>
-        <text class='startTitle' style='font-size:24rpx;font-family:PingFang-SC-Medium;color:rgba(255,255,255,1);'>1996/03/10</text>
+      <view class='main_botton'>
+        <view class='changeCard'>交换名片</view>
+        <view class='sendGift' bindtap='sendgift'>送TA礼物</view>
       </view>
-    </view>
-    <view class='main_botton'>
-      <view class='changeCard'>交换名片</view>
-      <view class='sendGift'>送TA礼物</view>
     </view>
   </view>
-</view> 
+</template>
+
+
+<template name='giftGroup'>
+  <view class='giftGroup' wx:if="{{gift}}" bindtap='hidegift'>
+    <view class='giftList' catchtap='wp' wx:if="{{GiftData.length>0}}">
+      <view class='giftTab'>
+        <view class="Tab_item {{myindex==0?'Tab_itemActive':''}}" catchtap='lookgift' data-id='0' wx:if="{{GiftData.length>0}}">{{GiftData[0].sort_name}}</view>
+        <view class="Tab_item {{myindex==1?'Tab_itemActive':''}}" catchtap='lookgift' data-id='1' wx:if="{{GiftData.length>1}}">{{GiftData[1].sort_name}}</view>
+        <view class="Tab_item {{myindex==2?'Tab_itemActive':''}}" style='border:none' catchtap='lookgift' data-id='2'wx:if="{{GiftData.length>2}}">{{GiftData[2].sort_name}}</view>
+      </view>
+      <scroll-view class='giftscrollView' scroll-y>
+        <view class='list_item' wx:for="{{GiftData[myindex].presentList}}" catchtap='selectIndex' data-index="{{index}}">
+          <view class="item_gift {{item.check?'item_giftActive':''}}">
+            <image src='{{item.thumb}}'></image>
+          </view>
+          <view class='item_title'>{{item.name}}</view>
+        </view>
+      </scroll-view>
+      <view class='send' catchtap='sendGift'>
+        赠送
+      </view>
+    </view>
+       <view class='noGift' wx:if="{{GiftData.length==0}}">
+    <view class='notice_res'>
+      <text class='notice_res_title'>没有礼物</text>
+      <text class='notice_res_main'>您的背包里没有礼物，请前往礼物商城购买</text>
+    </view>
+    <view class='notice_Group'>
+      <view class='cendel'>取消</view>
+      <view class='goshop' catchtap='gift_shop'>前往礼物商城</view>
+    </view>
+  </view>  
+  </view>
+
 </template>

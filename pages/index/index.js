@@ -92,11 +92,12 @@ Page({
         lat: app.globalData.lat,
         lng: app.globalData.lng
       }, config.getexper, (res) => {
-        console.log(res.data.data.list)
-
+        //给共享经验设置距离
         for (let i = 0; i < res.data.data.list.length; i++) {
           res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
         }
+        console.log(res.data.data.list)
+        //赋值给数据note
         that.setData({
           note: res.data.data.list
         })
@@ -108,20 +109,20 @@ Page({
         title: '加载中...',
         mask: true,
       })
+      //获取兴趣社分类
       config.ajax('POST', {}, config.interestSort, (res) => {
-        console.log(res.data.data)
         that.setData({
           interestSort: res.data.data
         })
-        
       })
-
+      //获取兴趣社数据
       config.ajax('POST', {
         user_id: app.globalData.user_id,
         lat: app.globalData.lat,
         lng: app.globalData.lng,
         sort_id:''
       }, config.insterstList, (res) => {
+        //循环设置距离
         for (let i = 0; i < res.data.data.length; i++) {
           res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(1);
           res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
@@ -132,11 +133,11 @@ Page({
         wx.hideLoading()
       })
     } else if (event.currentTarget.dataset.id == '4') {
-      //获取需求数据
       wx.showLoading({
         title: '加载中...',
         mask: true,
       })
+      //获取需求数据
       config.ajax('POST', {
         type: that.data.myindex,
         user_id: app.globalData.user_id,
@@ -144,64 +145,40 @@ Page({
         lng: app.globalData.lng,
       }, config.lists, (res) => {
         wx.hideLoading()
+        //循环设置时间格式
         for (let n = 0; n < res.data.data.length; n++) {
           res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time*1000)
         }
         that.setData({
           demindlist: res.data.data
         })
-        console.log(res.data.data)
-        // that.setData({
-        //   interestSort: res.data.data
-        // })
-
       })
-
-      // config.ajax('POST', {
-      //   user_id: app.globalData.user_id,
-      //   lat: app.globalData.lat,
-      //   lng: app.globalData.lng,
-      //   sort_id: ''
-      // }, config.insterstList, (res) => {
-
-      //   for (let i = 0; i < res.data.data.length; i++) {
-      //     res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(2);
-      //     res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
-      //   }
-      //   console.log(res.data.data)
-      //   // that.setData({
-      //   //   interestList: res.data.data
-      //   // })
-
-      //   // for(let n=0;n<res.data.data.length;n++){
-
-      //   // }
-      //   that.setData({
-      //     interestList: res.data.data
-      //   })
-      //   wx.hideLoading()
-      // })
     }
   },
 
 
+  //点击查看兴趣社详情
   lookinterst(e){
     wx.navigateTo({
       url: '../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
     })
   },
 
+
+  //选择兴趣社名下分类
   select_active:function(e){
     var that=this
     this.setData({
       selectIndex: e.currentTarget.dataset.index
     })
+    //获取兴趣社该分类下的数据
     config.ajax('POST', {
       user_id: app.globalData.user_id,
       lat: app.globalData.lat,
       lng: app.globalData.lng,
       sort_id: that.data.interestSort[0][that.data.selectIndex].id
     }, config.insterstList, (res) => {
+      //循环设置距离
       for (let i = 0; i < res.data.data.length; i++) {
         res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(1);
         res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
@@ -211,10 +188,9 @@ Page({
       })
       wx.hideLoading()
     })
-
-
-
   },
+
+  //点击需求下的分类
   demindtap:function(event){
     var that=this
     this.setData({
@@ -230,8 +206,6 @@ Page({
       lat: app.globalData.lat,
       lng: app.globalData.lng,
     }, config.lists, (res) => {
-      wx.hideLoading()
-      console.log(res.data.data)
       for(let n=0;n<res.data.data.length;n++){
         res.data.data[n].distance = (res.data.data[n].distance / 1000).toFixed(1);
         res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time*1000)
@@ -239,8 +213,7 @@ Page({
       that.setData({
         demindlist: res.data.data
       })
-      console.log(res.data.data)
-
+      wx.hideLoading()
     })
   },
   /**
@@ -252,7 +225,7 @@ Page({
     })
   },
   scrolltolower:function(){
-      console.log(1)
+      
   },
   /**
    * 获取设备信息
@@ -300,8 +273,33 @@ Page({
       })
     }
   },
+
+
+
+  /**
+ *点赞 
+ */
+  love(event) {
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      type: 1,
+      jid: config.getDataset(event,'tid')
+    }, config.userGood, (res) => {
+      console.log(res)
+      // if (res.data.code == 1) {
+      //   this.setData({
+      //     iszan: true,
+      //     'alldata.good_count': res.data.data[0].count
+      //   })
+      // } else {
+      //   this.setData({
+      //     iszan: false,
+      //     'alldata.good_count': res.data.data[0].count
+      //   })
+      // }
+    })
+  },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

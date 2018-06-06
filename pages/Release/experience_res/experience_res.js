@@ -1,9 +1,7 @@
-// pages/Release/experience_res/experience_res.js
 let app = getApp()
 const config = require('../../../utils/config.js')
 var moneytime = ''
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -18,7 +16,11 @@ Page({
     },
     getfous: false,
     send_iptValue: '评论',
-    gift: false,
+    giftGroup: {
+      gift: false,
+      selectIndex: '0',
+      myindex: '0'
+    },
     word: '',
     mid: '',
     joinIndex: '',
@@ -27,11 +29,63 @@ Page({
     }
   },
   /**
+   * wp
+   */
+  wp() {
+
+  },
+  /**
  * 显示名片
  */
   showCard: function () {
     this.setData({
       'changeCard.changeCard': true
+    })
+  },
+
+  /**
+ * 购买礼物商城
+ */
+  gift_shop: function () {
+    wx.navigateTo({
+      url: '../../personl/gift_Shop/gift_Shop'
+    })
+  },
+
+  /**
+   * 赠送礼物
+   */
+  sendGift: function () {
+    var alldataArr = []
+    var alldata = this.data.giftGroup.GiftData
+    for (let n in alldata) {
+      for (let x in alldata[n].presentList) {
+        if (alldata[n].presentList[x].check == true) {
+          alldataArr.push(alldata[n].presentList[x])
+        }
+      }
+    }
+    var allArr = JSON.stringify(alldataArr)
+    wx.navigateTo({
+      url: '../../personl/sendGift/sendGift?alldataArr=' + allArr + '&user_id=' + this.data.alldata.user_id,
+    })
+  },
+  /**
+ * 礼物切换
+ */
+  lookgift: function (event) {
+    this.setData({
+      'giftGroup.myindex': config.getDataset(event, 'id')
+    })
+  },
+  /**
+ * 选择礼物
+ */
+  selectIndex: function (event) {
+    var allData = this.data.giftGroup.GiftData
+    allData[this.data.giftGroup.myindex].presentList[config.getDataset(event, 'index')].check = !allData[this.data.giftGroup.myindex].presentList[config.getDataset(event, 'index')].check
+    this.setData({
+      'giftGroup.GiftData': allData
     })
   },
   /**
@@ -134,19 +188,15 @@ Page({
    * 
    * */
   sendgift: function () {
-    config.ajax('POST', {}, config.gitpresent,(res)=>{
-      console.log(res)
-    })
     this.setData({
-      gift: true,
+      'giftGroup.gift': true,
     })
   },
   hidegift() {
     this.setData({
-      gift: false,
+      'giftGroup.gift': false,
     })
   },
-
   hidemyipt() {
     this.setData({
       getfous: false
@@ -214,9 +264,15 @@ Page({
       that.setData({
         'myaudio.duration': that.formatDuringtwo(that.data.myaudio.time),
       })
-
     })
-
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+    }, config.gitpresent, (res) => {
+      console.log(res)
+      that.setData({
+        'giftGroup.GiftData': res.data.data[0]
+      })
+    })
   },
   /**
    * 播放音频
@@ -243,11 +299,9 @@ Page({
     }
 
   },
-
   /**
    * 播放参与的东西
    */
-
   playjoinaudio(event) {
     var that = this;
     let index = config.getDataset(event, 'id')
@@ -281,7 +335,7 @@ Page({
       url: '../Publish/Publish?id=' + this.data.id + '&typeid=1',
     })
   },
-  
+
   tip: function (msg) {
     wx.showModal({
       title: '提示',
@@ -402,14 +456,11 @@ Page({
           })
         }
       }
-      
     })
-
   },
   /**
    * 收藏
    */
-
   sc() {
     config.ajax('POST', {
       user_id: app.globalData.user_id,

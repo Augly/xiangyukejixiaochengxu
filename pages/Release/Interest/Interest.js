@@ -24,8 +24,13 @@ Page({
     mid: '',
     joinIndex: '',
     changeCard: {
-      changeCard: false
-    }
+      changeCard: true
+    },
+    giftGroup: {
+      gift: false,
+      selectIndex: '0',
+      myindex: '0'
+    },
   },
 
   lookmore: function () {
@@ -41,6 +46,7 @@ Page({
     this.setData({
       'changeCard.changeCard': true
     })
+    console.log(this.data.changeCard.changeCard)
   },
   /**
    * 关闭名片按钮
@@ -48,6 +54,52 @@ Page({
   cendelChangeCard: function () {
     this.setData({
       'changeCard.changeCard': false
+    })
+  },
+
+  /**
+ * 购买礼物商城
+ */
+  gift_shop: function () {
+    wx.navigateTo({
+      url: '../../personl/gift_Shop/gift_Shop'
+    })
+  },
+
+  /**
+   * 赠送礼物
+   */
+  sendGift: function () {
+    var alldataArr = []
+    var alldata = this.data.giftGroup.GiftData
+    for (let n in alldata) {
+      for (let x in alldata[n].presentList) {
+        if (alldata[n].presentList[x].check == true) {
+          alldataArr.push(alldata[n].presentList[x])
+        }
+      }
+    }
+    var allArr = JSON.stringify(alldataArr)
+    wx.navigateTo({
+      url: '../../personl/sendGift/sendGift?alldataArr=' + allArr + '&user_id=' + this.data.alldata.user_id,
+    })
+  },
+  /**
+ * 礼物切换
+ */
+  lookgift: function (event) {
+    this.setData({
+      'giftGroup.myindex': config.getDataset(event, 'id')
+    })
+  },
+  /**
+ * 选择礼物
+ */
+  selectIndex: function (event) {
+    var allData = this.data.giftGroup.GiftData
+    allData[this.data.giftGroup.myindex].presentList[config.getDataset(event, 'index')].check = !allData[this.data.giftGroup.myindex].presentList[config.getDataset(event, 'index')].check
+    this.setData({
+      'giftGroup.GiftData': allData
     })
   },
   /**
@@ -114,6 +166,14 @@ Page({
         interestData: res.data.data,
         id: res.data.data.id,
         user_id: res.data.data.user_id
+      })
+    })
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+    }, config.gitpresent, (res) => {
+      console.log(res)
+      that.setData({
+        'giftGroup.GiftData': res.data.data[0]
       })
     })
   },
@@ -211,12 +271,12 @@ Page({
    * */
   sendgift: function () {
     this.setData({
-      gift: true,
+      'giftGroup.gift': true,
     })
   },
   hidegift() {
     this.setData({
-      gift: false,
+      'giftGroup.gift': false,
     })
   },
 

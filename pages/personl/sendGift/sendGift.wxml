@@ -1,0 +1,22 @@
+<!--pages/personl/sendGift/sendGift.wxml-->
+<view class='content'>
+  <view class='list' wx:for="{{alldata}}">
+    <view class='list_logo'>
+      <image class='gift_logo' src='{{item.thumb}}'></image>
+      <view class='gift_num'>{{item.price}}</view>
+    </view>
+    <view class='list_main'>
+      <view class='main_left'>
+        <view class='main_left_title'>{{item.name}}</view>
+        <view class='main_left_carGroup'>
+          <view class='jian' data-index='{{index}}' bindtap='jian'>-</view>
+          <input class='num' value='{{item.value}}'></input>
+          <view class='jia' data-index="{{index}}" bindtap='jia'>+</view>
+        </view>
+      </view>
+      <view class='main_right' bindtap='cendel' data-index="{{index}}">删除</view>
+    </view>
+  </view>
+</view>
+
+<view class='sureSend' bindtap='sureSend'>确认送出</view>

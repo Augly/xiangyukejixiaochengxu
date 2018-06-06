@@ -1,11 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/personl/sendGift/sendGift",
+
+    
+    
+    
+
     "pages/Release/join_res/join_res",
     "pages/Release/joined/joined",
     
    
     "pages/personl/account/account",
+    
     "pages/Release/history/history",
     "pages/Release/Editors_details/Editors_details",
     "pages/Release/experience_res/experience_res",

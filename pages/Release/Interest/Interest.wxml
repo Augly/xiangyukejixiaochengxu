@@ -1,6 +1,6 @@
 <!--pages/Release/Interest/Interest.wxml-->
 
-
+<import src="../../../template/template.wxml" />
 <view wx:if="{{interestData.is_join==0}}">
 <view class='head' style='background-image: url("{{interestData.thumb}}")'>
   <view class='head_maskone'>
@@ -51,7 +51,7 @@
 <view class='right_now' bindtap='rightJoin' wx:if="{{interestData.is_join==0}}">
     立即参与
 </view>
-
+<template is='changeCard' data="{{...changeCard}}"></template>
 </view>
 
 
@@ -183,7 +183,7 @@
 </view>
 
 
- <view class='giftGroup' wx:if="{{gift}}" bindtap='hidegift'>
+ <!-- <view class='giftGroup' wx:if="{{gift}}" bindtap='hidegift'>
   <view class='giftList'>
     <view class='giftTab'>
       <view class='Tab_item Tab_itemActive'>高级礼物</view>
@@ -243,7 +243,7 @@
     <view class='send'>
       赠送
     </view>
-  </view>
+  </view> -->
 
   <!-- <view class='noGift'>
     <view class='notice_res'>
@@ -255,6 +255,8 @@
       <view class='goshop'>前往礼物商城</view>
     </view>
   </view> -->
-</view> 
+<!-- </view>  -->
+
 <template is='changeCard' data="{{...changeCard}}"></template>
+<template is='giftGroup' data="{{...giftGroup}}"></template>
 </view>

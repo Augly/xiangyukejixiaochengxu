@@ -61,6 +61,8 @@ interest='/api/portal/Interest/interest ',
 
 getexper ='/api/portal/Share/getShare',
 
+send_present ='/api/portal/Common/send_present', //赠送礼物
+
 gitpresent='/api/portal/Common/present';
 
 //获取dataset
@@ -172,6 +174,7 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  send_present: send_present,
   tx: tx,
   withdraw:withdraw,
   interest: interest,

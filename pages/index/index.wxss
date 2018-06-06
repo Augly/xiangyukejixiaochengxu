@@ -43,9 +43,10 @@
 }
 
 .wrap {
+  position: absolute;
   box-sizing: border-box;
-  padding-top: 100rpx;
-  /* padding-bottom: 100rpx; */
+  top: 100rpx;
+  bottom: 0rpx; 
 }
 
 .select_Group {
