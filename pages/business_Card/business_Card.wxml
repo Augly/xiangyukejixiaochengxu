@@ -58,6 +58,6 @@
 
 <view class='kong'></view>
 
-<view class='footBottom'>
+<view class='footBottom' bindtap='editCard'>
     编辑名片
 </view>

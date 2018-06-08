@@ -26,8 +26,15 @@ page {
   width: 170rpx;
   height: 170rpx;
   border: 1rpx solid RGBA(235, 235, 235, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.logoImg{
+  width:140rpx;
+  height:140rpx;
+}
 .item_res {
   width: 500rpx;
   height: 170rpx;
@@ -150,6 +157,9 @@ page {
   height: 170rpx;
   border: 1rpx solid RGBA(235, 235, 235, 1);
   margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main_res {

@@ -14,7 +14,14 @@ Page({
   onLoad: function (options) {
   
   },
-
+  /**
+   * 编辑名片
+   */
+  editCard:function(){
+    wx.navigateTo({
+      url: '../business_edit/business_edit',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

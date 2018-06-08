@@ -17,7 +17,7 @@
 
 <view class='join_anthur'>
   <view class='join_anthur_head'>
-      <image class='anthur_head' src='{{interestData.avatar}}' bindtap='showCard'></image>
+      <image class='anthur_head' src='{{interestData.avatar}}' bindtap='showCard' data-userid='{{interestData.user_id}}'></image>
       <view class='anthur_name'>
       {{interestData.user_nickname}}
         <text class='iconfont icon-nan' wx:if="{{interestData.sex==1}}"></text>
@@ -85,7 +85,7 @@
 
 
 <view class='join_anthurone'>
-  <image class='anthur_head' src='{{interestData.avatar}}' bindtap='showCard'></image>
+  <image class='anthur_head' src='{{interestData.avatar}}' bindtap='showCard' data-userid='{{interestData.user_id}}'></image>
   <view class='join_anthur_group'>
     <view class='join_anthur_name'>{{interestData.user_nickname}}
       <text class='iconfont icon-nan'></text>

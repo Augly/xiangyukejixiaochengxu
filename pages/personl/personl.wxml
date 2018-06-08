@@ -11,7 +11,7 @@
       <text class='title'>粉丝</text>
     </view>
     <view class='personal_logo'>
-      <image class='personal_img'>
+      <image class='personal_img' src='{{userInfo.avatarUrl}}'>
 
       </image>
       <view class='personal_title'>向昱筱</view>

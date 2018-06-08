@@ -1,18 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/begin/begin",
+    
+    "pages/pay/pay",
     "pages/personl/sendGift/sendGift",
-
-    
-    
-    
-
     "pages/Release/join_res/join_res",
     "pages/Release/joined/joined",
-    
-   
     "pages/personl/account/account",
-    
     "pages/Release/history/history",
     "pages/Release/Editors_details/Editors_details",
     "pages/Release/experience_res/experience_res",
@@ -64,7 +59,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/begin/begin",
         "text": "首页",
         "selectedColor": "#9861E1",
         "iconPath": "img/nav02@2x.png",

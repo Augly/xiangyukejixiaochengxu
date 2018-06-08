@@ -1,23 +1,34 @@
 <view class="wrap">
-  <view class='item'>
-    <view class='item_logo'></view>
+  <view class='item' wx:for="{{alldata}}">
+    <view class='check' wx:if="{{item.check==false}}" bindtap='check' data-index='{{index}}'></view>
+    <view class='checked' wx:if="{{item.check==true}}"  bindtap='check' data-index='{{index}}'></view>
+    <view class='item_main'>
+          <view class='item_logo'>
+      <image class='logoImg' src='{{item.thumb}}'></image>
+    </view>
     <view class='item_res'>
       <view class='item_title'>
-        <view class='item_mintitle'>享遇币</view>
-        <view class='nowBuy'>立即购买</view>
+        <view class='item_mintitle'>{{item.name}}</view>
+        <!-- <view class='nowBuy'>立即购买</view> -->
       </view>
       <view class='item_shop'>
-        <view class='item_shop_price'>￥1314</view>
+        <view class='item_shop_price'>￥{{item.price}}</view>
         <view class='shop_Group'>
-          <view class='shop_jia'>
+          <view class='shop_jia' data-index='{{index}}' bindtap='jia'>
             <text class='iconfont icon-icon_add'></text>
           </view>
-          <input class='shop_ipt' value='1'></input>
-          <view class='shop_jian'>
+          <input class='shop_ipt' type='number' value='{{item.num}}' bindinput='ipt' data-index='{{index}}' maxlength='2'></input>
+          <view class='shop_jian' data-index='{{index}}' bindtap='jian'>
             <text class='iconfont icon-jianhao1'></text>
           </view>
         </view>
       </view>
     </view>
+    </view>
+
   </view>
+
+
+  
 </view>
+<cover-view class='submit' bindtap='submit'>确认购买</cover-view>

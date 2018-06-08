@@ -1,6 +1,6 @@
 <view class="put">
   <view class='put_title'>账户余额</view>
-  <view class='put_money'>￥1000.00
+  <view class='put_money'>￥{{bill.balance}}
   </view>
   <view class='put_Group'>
     <view class='put_Group_title'>提现金额</view>

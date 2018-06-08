@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+
   },
 
   /**
@@ -21,6 +21,9 @@ Page({
         that.setData({
           alldata:res.data.data
         })
+    })
+    this.setData({
+      userInfo: app.globalData.userInfo
     })
   },
 

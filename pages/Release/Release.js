@@ -4,6 +4,7 @@ const config = require("../../utils/config.js");
 const QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 var qqmapsdk=""
 var interval = null //倒计时函数
+let app=getApp()
 Page({
   /**
    * 页面的初始数据
@@ -33,6 +34,7 @@ Page({
         time: currentTime + '秒'
       })
       if (currentTime <= 0) {
+        console.log(1)
         clearInterval(interval)
         that.setData({
           time: '重新发送',
@@ -55,27 +57,23 @@ Page({
   submit: function () {
     var that = this
     var myinfo = JSON.stringify(that.data.info)
-
-    wx.navigateTo({
-      url: 'demanded/demanded?title='+this.data.title + '&type=' + this.data.array[this.data.index],
+    config.ajax('POST',{
+      user_id: app.globalData.user_id,
+      mobile: that.data.main,
+      code: that.data.code
+    }, config.bindMobile,(res)=>{
+      if(res.data.code==1){
+        wx.navigateTo({
+          url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.array[this.data.index],
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: '验证码不正确',
+          showCancel: false,
+        })
+      }
     })
-    // wx.request({
-    //   url: "https://skiing.wx.bronet.cn/index.php/Api/Index/do_bing_phone",
-    //   data: {
-    //     openid: that.data.openid,
-    //     tel: that.data.main,
-    //     code: that.data.code
-    //   },
-    //   header: {
-    //     'Content-type': 'application/x-www-form-urlencoded'
-    //   },
-    //   method: "POST",
-    //   success: function (res) {
-    //     wx.navigateTo({
-    //       url: "../ordel/ordel?info=" + myinfo
-    //     })
-    //   }
-    // })
   },
   getVerificationCode() {
     var that = this
@@ -87,26 +85,12 @@ Page({
         that.setData({
           disabled: false
         })
-        // wx.request({
-        //   url: "https://skiing.wx.bronet.cn/index.php/Api/Index/send_code",
-        //   data: {
-        //     openid: that.data.openid,
-        //     tel: that.data.main
-        //   },
-        //   header: {
-        //     'Content-type': 'application/x-www-form-urlencoded'
-        //   },
-        //   method: "POST",
-        //   success: function (res) {
-        //     if (res.data.state == "success") {
-        //       wx.showToast({
-        //         title: '验证码已发送',
-        //         icon: "success",
-        //         duration: 1500
-        //       })
-        //     }
-        //   }
-        // })
+        config.ajax('POST',{
+          user_id: app.globalData.user_id,
+          mobile: that.data.main
+        },config.sendCode,(res)=>{
+          console.log(res)
+        })
       }
     } else {
       wx.showModal({
@@ -172,12 +156,19 @@ Page({
       return false
     }
     if (this.data.selectIndex=='2'){
-      this.setData({
-        phoneMask:true
+      config.ajax('POST',{
+        user_id: app.globalData.user_id
+      }, config.checkMobile,(res)=>{
+        if(res.data.cod==2){
+          this.setData({
+            phoneMask: true
+          })
+        }else{
+          wx.navigateTo({
+            url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.array[this.data.index],
+          })
+        }
       })
-
-
-
 
     } else if (this.data.selectIndex == '1'){
        wx.navigateTo({

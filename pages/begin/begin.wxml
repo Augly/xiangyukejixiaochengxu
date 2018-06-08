@@ -1,0 +1,151 @@
+<!--index.wxml-->
+<import src="../../template/template.wxml" />
+<view class='nav'>
+  <view class="nav_bar {{index==1?'nav_active':''}}" data-id='1' bindtap='navClick'>
+    推荐
+  </view>
+  <view class="nav_bar {{index==2?'nav_active':''}}" data-id='2' bindtap='navClick'>
+    共享经验
+  </view>
+  <view class="nav_bar {{index==3?'nav_active':''}}" data-id='3' bindtap='navClick'>
+    兴趣社
+  </view>
+  <view class="nav_bar {{index==4?'nav_active':''}}" data-id='4' bindtap='navClick'>
+    需求
+  </view>
+</view>
+
+<!--推荐-->
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:if="{{index==1}}" scroll-with-animation>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
+    <block wx:for="{{imgUrls}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150" lazy-load='true' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='scrollView'>
+    <view class='left'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+      </block>
+    </view>
+    <view class='right'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      </block>
+    </view>
+  </view>
+</scroll-view>
+
+
+<!--共享经验-->
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==2}}" scroll-with-animation>
+  <view class='scrollView'>
+    <view class='left'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+      </block>
+    </view>
+    <view class='right'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      </block>
+    </view>
+  </view>
+</scroll-view>
+
+
+<!--兴趣社-->
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==3}}" scroll-with-animation>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
+    <block wx:for="{{imgUrls}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='scrollView'>
+    <view class='select_Group' style="width: 100%;overflow: hidden;background: #fff;white-space: nowrap;">
+      <scroll-view class='select_head' scroll-x>
+      <view style='height:88rpx;display:flex;align-items:center;'>
+        <view class="selectone_item {{selectIndex==index?'selectone_itemActive':''}}" wx:for="{{interestSort[0]}}" bindtap='select_active' data-index='{{index}}'>
+          {{item.sort_name}}
+        </view>
+      </view>
+      </scroll-view>
+      <!-- <view class='select_more'>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+        <view class='select_more_item'>兴趣1</view>
+      </view> -->
+    </view>
+
+    <!-- <view class='left'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+      </block>
+    </view>
+    <view class='right'>
+      <block wx:for="{{note}}" wx:key="">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      </block>
+    </view> -->
+
+
+  </view>
+  <view class='InterestGroup'>
+    <block wx:for="{{interestList}}" wx:key="">
+       <template is="Interestitem" data="{{...item}}"></template> 
+    </block>
+  </view>
+</scroll-view>
+
+<!--需求-->
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="scrolltolower" style='width:100%;height:{{scrollView.height}};' class='wrap' wx:elif="{{index==4}}" scroll-with-animation>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='mySwiper'>
+    <block wx:for="{{imgUrls}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='scrollView'>
+    <view class='select_Group'>
+      <view class='demandselect_head'>
+        <view class="demandselect_item {{myindex==1?'demandselect_item_active':''}}" data-id='1' bindtap='demindtap'>
+          附近跑腿
+        </view>
+        <view class="demandselect_item {{myindex==2?'demandselect_item_active':''}}" data-id='2' bindtap='demindtap'>
+          问答
+        </view>
+        <view class="demandselect_item {{myindex==3?'demandselect_item_active':''}}" data-id='3' bindtap='demindtap'>
+          二手置换
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='InterestGroup' wx:if="{{myindex==1}}">
+    <block wx:for="{{demindlist}}" wx:key="">
+      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+
+  <view class='InterestGroup' wx:elif="{{myindex==2}}">
+    <block wx:for="{{demindlist}}" wx:key="">
+      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+
+  <view class='InterestGroup' wx:else="{{myindex==3}}">
+    <block wx:for="{{demindlist}}" wx:key="">
+      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+</scroll-view>

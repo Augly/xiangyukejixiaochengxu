@@ -373,6 +373,7 @@
 .thumb {
   width: 100%;
   height: auto;
+  margin-top: 0.1rem
 }
 
 .send_group {

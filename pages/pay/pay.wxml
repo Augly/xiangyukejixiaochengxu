@@ -1,0 +1,21 @@
+<view class='wrap'>
+  <view class='wrap_list' bindtap='check' data-id="1" wx:if="{{alldata.allow_balance!=0}}">
+    <image src='http://xiangyu.wx.bronet.cn/images/i01@2x.png' class='list_logo'></image>
+    <view class='list_center'>
+      <view class='center_top'>余额支付(默认)</view>
+      <view class='center_other'>可用余额2000元</view>
+    </view>
+    <view class="list_check {{index==1?'list_checked':''}}" ></view>
+  </view>
+  <view class='wrap_list' bindtap='check' data-id="2">
+    <image src='http://xiangyu.wx.bronet.cn/images/i02@2x.png' class='list_logo'></image>
+    <view class='list_center'>
+      <view class='center_top'>微信支付</view>
+      <view class='center_other'>使用微信支付，安全便捷</view>
+    </view>
+    <view class="list_check {{index==2?'list_checked':''}}" ></view>
+  </view>
+</view>
+
+
+<view class='sumbit' bindtap='sumbit'>确认支付</view>

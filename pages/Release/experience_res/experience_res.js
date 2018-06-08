@@ -37,10 +37,17 @@ Page({
   /**
  * 显示名片
  */
-  showCard: function () {
-    this.setData({
-      'changeCard.changeCard': true
+  showCard: function (event) {
+    config.ajax('POST', {
+      user_id: config.getDataset(event, 'userid')
+    }, config.userCard, (res) => {
+      console.log(res.data.data[0])
+      this.setData({
+        'changeCard.changeCard': true,
+        'changeCard.data': res.data.data[0]
+      })
     })
+
   },
 
   /**
@@ -109,8 +116,8 @@ Page({
     })
   },
   /**
-       * 点赞
-       */
+   * 点赞
+   */
   joinzan(event) {
     var that = this
     this.setData({
@@ -188,9 +195,18 @@ Page({
    * 
    * */
   sendgift: function () {
-    this.setData({
-      'giftGroup.gift': true,
-    })
+    console.log(this.data.mid, app.globalData.user_id)
+    if (this.data.alldata.user_id == app.globalData.user_id) {
+      wx.showToast({
+        title: '不可对自己送礼',
+        icon: 'none',
+        mask: true,
+      })
+    } else {
+      this.setData({
+        'giftGroup.gift': true,
+      })
+    }
   },
   hidegift() {
     this.setData({
@@ -455,6 +471,12 @@ Page({
             showCancel: false,
           })
         }
+      }else{
+        wx.showToast({
+          title: '不可关注自己',
+          icon: 'none',
+          mask: true,
+        })
       }
     })
   },

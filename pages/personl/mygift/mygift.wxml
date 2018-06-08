@@ -1,5 +1,5 @@
 <view class="account">
-  <image class='account_logo'></image>
+  <image class='account_logo' src='{{userInfo.avatarUrl}}'></image>
   <view class='rule' bindtap='rule'>
     <text class='iconfont icon-genggai'></text> 规则
   </view>

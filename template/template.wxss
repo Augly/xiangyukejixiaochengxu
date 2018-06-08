@@ -16,9 +16,9 @@
   /* position: absolute; */
 }
 
- .item_active{
+.item_active {
   border: 5rpx solid RGBA(152, 97, 225, 1);
-} 
+}
 
 .showImg {
   width: 100%;
@@ -305,7 +305,7 @@
   font-size: 30rpx;
   text-align: center;
   line-height: 50rpx;
-  color: rgba(255, 255, 255, 1)
+  color: rgba(255, 255, 255, 1);
 }
 
 .demind_txt {
@@ -762,12 +762,10 @@
   font-size: 20rpx;
 }
 
-.icon-bofang11,.icon-tingzhi,.icon-zanting{
+.icon-bofang11, .icon-tingzhi, .icon-zanting {
   font-size: 88rpx;
   color: RGBA(74, 144, 226, 1);
 }
-
-
 
 .tryLisen {
   width: 233rpx;
@@ -950,7 +948,7 @@
   color: rgba(102, 102, 102, 1);
 }
 
-.Tip_Select{
+.Tip_Select {
   width: 100%;
   height: 88rpx;
   display: flex;
@@ -967,12 +965,13 @@
   line-height: 72rpx;
   margin-right: 32rpx;
 }
-.Tip_Select_item_active{
+
+.Tip_Select_item_active {
   background-color: RGBA(74, 144, 226, 1);
   color: RGBA(255, 255, 255, 1);
 }
 
-.Tip_ipt{
+.Tip_ipt {
   width: 100%;
   height: 88rpx;
   display: flex;
@@ -982,19 +981,17 @@
   padding: 0rpx 25rpx;
 }
 
-.Tip_mintitle{
+.Tip_mintitle {
   display: inline-block;
   line-height: 88rpx;
   font-size: 54rpx;
 }
 
-.Tip_myipt{
+.Tip_myipt {
   width: 550rpx;
   height: 100%;
   font-size: 54rpx;
 }
-
-
 
 .userList {
   box-sizing: border-box;
@@ -1049,8 +1046,8 @@
 }
 
 .imgGroup {
-  padding-top:20rpx;
-  padding-bottom:20rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
   overflow: hidden;
 }
 
@@ -1058,7 +1055,7 @@
   width: 320rpx;
   height: 320rpx;
   /* background-color: red; */
-  display: block
+  display: block;
 }
 
 .double {
@@ -1203,13 +1200,6 @@
   margin-right: 10rpx;
 }
 
-
-
-
-
-
-
-
 .pl_list {
   width: 100%;
   /* height: 100rpx; */
@@ -1236,7 +1226,8 @@
   display: flex;
   align-items: center;
 }
-.pl_name .iconfont{
+
+.pl_name .iconfont {
   font-size: 28rpx;
 }
 
@@ -1256,8 +1247,7 @@
   color: rgba(102, 102, 102, 1);
 }
 
-
-.myaudio{
+.myaudio {
   width: 492rpx;
   height: 88rpx;
   background-color: RGBA(40, 213, 203, 1);
@@ -1269,82 +1259,87 @@
   display: flex;
   align-items: center;
 }
-.mai{
+
+.mai {
   width: 48rpx;
   height: 48rpx;
 }
-.shengyin{
+
+.shengyin {
   width: 48rpx;
   height: 48rpx;
 }
-.myaudio_time{
+
+.myaudio_time {
   margin-left: auto;
-  font-size:28rpx;
-font-family:PingFang-SC-Medium;
-color:rgba(255,255,255,1);
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(255, 255, 255, 1);
 }
-.myvideo{
+
+.myvideo {
   width: 360rpx;
   height: 360rpx;
   display: block;
-  background-color: RGBA(40, 213, 203, 1);
   margin-left: 24rpx;
   margin-top: 24rpx;
 }
 
-.buy{
-  width:100%;
+.buy {
+  width: 100%;
   height: 88rpx;
   box-sizing: border-box;
-  margin-top:16rpx;
+  margin-top: 16rpx;
   background-color: rgba(255, 255, 255, 1);
   padding: 0rpx 22rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.buy_title{
-  font-size:26rpx;
-font-family:PingFang-SC-Medium;
-color:rgba(0,0,0,1);
+
+.buy_title {
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
 }
-.icon-arrow{
+
+.icon-arrow {
   font-size: 30rpx;
   color: RGBA(153, 153, 153, 1);
 }
 
-.myadder{
+.myadder {
   justify-content: flex-start;
 }
 
-.myadder_selectGroup{
+.myadder_selectGroup {
   width: 500rpx;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-.myadder_selectItem{
+.myadder_selectItem {
   width: 140rpx;
   height: 70rpx;
   box-sizing: border-box;
   border: 1rpx solid RGBA(153, 153, 153, 1);
-  border-radius:5rpx;
+  border-radius: 5rpx;
   text-align: center;
   line-height: 65rpx;
-  color:RGBA(102, 102, 102, 1);
+  color: RGBA(102, 102, 102, 1);
   font-size: 26rpx;
   margin-right: 28rpx;
 }
 
-.myadder_selectItemActive{
+.myadder_selectItemActive {
   background-color: RGBA(74, 144, 226, 1);
   border: 1rpx solid RGBA(74, 144, 226, 1);
   color: white;
 }
 
-
 /* 交换名片 */
+
 .mask {
   position: fixed;
   top: 0;
@@ -1414,7 +1409,7 @@ color:rgba(0,0,0,1);
   margin-top: 30rpx;
 }
 
-.startZuo,.birthday{
+.startZuo, .birthday {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1432,19 +1427,20 @@ color:rgba(0,0,0,1);
   width: 210rpx;
   height: 80rpx;
   border-radius: 40rpx;
-  font-size:30rpx;
+  font-size: 30rpx;
   text-align: center;
   line-height: 80rpx;
-font-family:MicrosoftYaHei;
-color:rgba(202,0,252,1);
+  font-family: MicrosoftYaHei;
+  color: rgba(202, 0, 252, 1);
   background: linear-gradient(to right, RGBA(254, 217, 51, 1), RGBA(252, 243, 52, 1));
 }
 
-.icon-baiyangzuo {
+.startZuo .iconfont {
   font-size: 120rpx;
   color: rgba(255, 255, 255, 1);
 }
-.icon-shengri{
+
+.icon-shengri {
   font-size: 120rpx;
   color: rgba(255, 255, 255, 1);
 }
@@ -1454,7 +1450,8 @@ color:rgba(202,0,252,1);
   font-family: PingFang-SC-Medium;
   color: rgba(255, 255, 255, 1);
 }
-.main_botton{
+
+.main_botton {
   box-sizing: border-box;
   padding: 0rpx 50rpx;
   display: flex;
@@ -1463,13 +1460,14 @@ color:rgba(202,0,252,1);
   margin-top: 42rpx;
 }
 
-.cendelcard{
+.cendelcard {
   width: 63.3rpx;
   height: 63.3rpx;
   /* background-color: red; */
-  position: absolute;right: -20rpx;
+  position: absolute;
+  right: -20rpx;
   top: -20rpx;
-  border-radius:50%;
+  border-radius: 50%;
   background-image: url('http://xiangyu.wx.bronet.cn/images/close@2x.png');
   background-size: 100% 100%;
 }

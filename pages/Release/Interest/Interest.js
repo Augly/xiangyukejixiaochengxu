@@ -24,7 +24,7 @@ Page({
     mid: '',
     joinIndex: '',
     changeCard: {
-      changeCard: true
+      changeCard: false
     },
     giftGroup: {
       gift: false,
@@ -41,12 +41,42 @@ Page({
   /**
 * 显示名片
 */
-  showCard: function () {
-    console.log(1)
-    this.setData({
-      'changeCard.changeCard': true
+  showCard: function (event) {
+    console.log(config.getDataset(event, 'userid'))
+    config.ajax('POST', {
+      user_id: config.getDataset(event, 'userid')
+    }, config.userCard, (res) => {
+      console.log(res)
+      console.log(res.data.data[0])
+      this.setData({
+        'changeCard.changeCard': true,
+        'changeCard.data': res.data.data[0]
+      })
     })
-    console.log(this.data.changeCard.changeCard)
+
+  },
+  /**
+   *点赞 
+   */
+  zan() {
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      type: 2,
+      jid: this.data.id
+    }, config.userGood, (res) => {
+      console.log(res)
+      if (res.data.code == 1) {
+        this.setData({
+          iszan: true,
+          'alldata.good_count': res.data.data[0].count
+        })
+      } else {
+        this.setData({
+          iszan: false,
+          'alldata.good_count': res.data.data[0].count
+        })
+      }
+    })
   },
   /**
    * 关闭名片按钮
@@ -128,6 +158,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     var that = this
     config.ajax('POST', {
       user_id: app.globalData.user_id,
@@ -135,6 +166,7 @@ Page({
       lat: app.globalData.lat,
       lng: app.globalData.lng
     }, config.interest, (res) => {
+      console.log(res)
       for (let i = 0; i < res.data.data.join.length; i++) {
         res.data.data.join[i].distance = (res.data.data.join[i].distance / 1000).toFixed(2)
         res.data.data.join[i].create_time = config.timeFormat(res.data.data.join[i].create_time * 1000)
@@ -162,6 +194,7 @@ Page({
       that.setData({
         alldata: res.data.data,
       })
+      console.log(res.data.data)
       that.setData({
         interestData: res.data.data,
         id: res.data.data.id,

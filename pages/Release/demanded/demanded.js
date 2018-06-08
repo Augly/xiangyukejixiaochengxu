@@ -19,6 +19,12 @@ Page({
       controls: false,
       videoSrc: null
     },
+    phone:{
+      phone:''
+    },
+    name:{
+      name:''
+    },
     myaudio: null,
     myimg: {
       imgSrc: null
@@ -42,6 +48,7 @@ Page({
     adder: {
       adder: null
     },
+    sendAdder:'',
     myallkind: {
       index: 0,
       kindarray: ['种类一', '种类二', '种类三']
@@ -54,7 +61,7 @@ Page({
       selectIndex:0
     },
     runData:{
-      runipt:''
+      otherdemind:''
     },
     allprice:{
       allprice:''
@@ -257,7 +264,7 @@ Page({
    */
   runipt: function (e) {
     this.setData({
-      runipt: e.detail.value
+      'rundata.otherdemind': e.detail.value
     })
   },
   /**
@@ -314,36 +321,6 @@ Page({
   addaudio: function () {
     console.log(1)
     var that = this
-    // wx.getSetting({
-    //   success(res) {
-    //     if (!res.authSetting['scope.record']) {
-    //       wx.authorize({
-    //         scope: 'scope.record',
-    //         success: function(res) {
-
-
-    //         },
-    //         fail: function(res) {
-    //           wx.showModal({
-    //             title: '提示',
-    //             content: '您拒绝了录音授权无法使用录音功能',
-    //           })
-
-    //           wx.showModal({
-    //             title: '提示',
-    //             content: '您拒绝了录音授权无法使用录音功能,是否重新授权',
-    //             success: function(res) {
-    //               wx.openSetting()
-    //             },
-    //             fail: function(res) {},
-    //             complete: function(res) {},
-    //           })
-    //         },
-    //         complete: function(res) {},
-    //       })
-    //     }
-    //   }
-    // })
     time = config.options.duration;
     console.log(2)
     that.setData({
@@ -555,7 +532,7 @@ Page({
     var that = this
     let audio, myaudio = '', imgSrc, myimgSrc = '', videoSrc, myvideoSrc = '', imgurl, myimgurl = '', info, sendgift, giftnumber = this.data.bugGroup.buy_number;
     //封面图
-    if (this.data.img.imgurl == null || this.data.img.imgurl == undefined) {
+    if (this.data.img.imgurl == 'http://xiangyu.wx.bronet.cn/images/jiajia@2x.png' || this.data.img.imgurl == undefined || this.data.img.imgurl == null) {
       wx.showModal({
         title: '提示',
         content: '请上传封面照片',
@@ -563,7 +540,6 @@ Page({
       })
       return false
     } else {
-      console.log(this.data.img.imgurl)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
         filePath: this.data.img.imgurl[0],
@@ -574,9 +550,11 @@ Page({
         },
         success: function (res) {
           myimgSrc = JSON.parse(res.data).data[0].filepath
+          console.log(myimgSrc)
         }
       })
     }
+
     //上传音频
     if (this.data.myaudio == null || this.data.myaudio == undefined) {
       audio = ''
@@ -638,54 +616,83 @@ Page({
       sendgift = 0
     }
     //文字说明
-    if (that.data.type=='跑腿'){
-      if (myimgSrc != null || myimgSrc != undefined) {
-        let price=''
-        if (that.data.Tip_Data.Tip_myipt==''){
-          price = that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value
-        }else{
-          price = that.data.Tip_Data.Tip_myipt
-        }
-        if (that.data.runipt.runipt==''){
-            wx.showModal({
-              title:'提示',
-              content: '请输入跑腿内容',
-              showCancel: false,
-            })
-            return false
-        }
-        if (that.data.sendAdder==''){
-          wx.showModal({
-            title: '提示',
-            content: '请输入送达地址',
-            showCancel: false,
-          })
-          return false
-        }
-        let param = {
-          type: 1,
-          user_id: app.globalData.user_id,
-          title: that.data.title,
-          thumb: myimgSrc,
-          word: that.data.runipt.runipt,
-          address: that.data.sendAdder,
-          lat: app.globalData.lat,
-          lng: app.globalData.lng,
-          price: that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value,
-          position: that.data.adder.adder,
-        }
-        config.ajax("POST", param, config.send, (res) => {
-          //ajax访问成功函数
-          console.log(res)
-        }, (res) => {
-          //ajax访问失败函数
-        }, (res) => {
-          //不管成功与否都调用函数
-        });
-        
-      }else{
+    var reg = /^1(3|4|5|7|8)\d{9}$/;
+    if (that.data.name.name != '') {}else{
+      return false
+    wx.showModal({
+      title: '提示',
+      content: '收件人姓名不能为空',
+    })
+  }
 
-      }
+    if (reg.test(that.data.phone.phone) == true) { 
+
+    }else{
+      return false
+    wx.showModal({
+      title: '提示',
+      content: '收件人手机号不正确',
+    })
+  }
+    if (that.data.type=='跑腿'){
+      var ti = setInterval(function () {
+        if (myimgSrc != null || myimgSrc != undefined) {  
+
+            
+              wx.showLoading({
+                title: '发布中',
+              })
+              let price = ''
+              if (that.data.Tip_Data.Tip_myipt == '') {
+                price = that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value
+              } else {
+                price = that.data.Tip_Data.Tip_myipt
+              }
+              if (that.data.rundata.otherdemind == '') {
+                wx.showModal({
+                  title: '提示',
+                  content: '请输入跑腿内容',
+                  showCancel: false,
+                })
+                return false
+              }
+              if (that.data.sendAdder == '') {
+                wx.showModal({
+                  title: '提示',
+                  content: '请输入送达地址',
+                  showCancel: false,
+                })
+                return false
+              }
+              let param = {
+                type: 1,
+                user_id: app.globalData.user_id,
+                user_name: that.data.name.name,
+                user_tel: that.data.phone.phone,
+                title: that.data.title,
+                thumb: myimgSrc,
+                word: that.data.rundata.otherdemind,
+                address: that.data.sendAdder,
+                lat: app.globalData.lat,
+                lng: app.globalData.lng,
+                price: that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value,
+                position: that.data.adder.adder,
+              }
+              config.ajax("POST", param, config.send, (res) => {
+                //ajax访问成功函数
+                console.log(res)
+                clearInterval(ti)
+                wx.hideLoading()
+
+              }, (res) => {
+                //ajax访问失败函数
+              }, (res) => {
+                //不管成功与否都调用函数
+              });
+            
+          
+        }
+      }, 1000)
     }else{
       if (this.data.text.info == null || this.data.text.info == undefined) {
         wx.showModal({
@@ -802,10 +809,25 @@ Page({
 
 
     function getsh() {
-      let material = {
-        myimgurl: myimgurl,
-        myaudio: myaudio,
-        myvideoSrc: myvideoSrc
+      
+      let material = ''
+      console.log(myaudio)
+      if (myaudio != '') {
+        console.log(11)
+        material = {
+          myimgurl: myimgurl,
+          time: that.data.audio_faile.duration,
+          myaudio: myaudio,
+          myvideoSrc: myvideoSrc
+        }
+      } else {
+        console.log(22)
+        material = {
+          myimgurl: myimgurl,
+          myaudio: myaudio,
+          time: 0,
+          myvideoSrc: myvideoSrc
+        }
       }
       var param = {
         type: 3,
@@ -830,10 +852,24 @@ Page({
       });
     }
     function getQa() {
-      let material = {
-        myimgurl: myimgurl,
-        myaudio: myaudio,
-        myvideoSrc: myvideoSrc
+      let material = ''
+      console.log(myaudio)
+      if (myaudio != '') {
+        console.log(11)
+        material = {
+          myimgurl: myimgurl,
+          time: that.data.audio_faile.duration,
+          myaudio: myaudio,
+          myvideoSrc: myvideoSrc
+        }
+      } else {
+        console.log(22)
+        material = {
+          myimgurl: myimgurl,
+          myaudio: myaudio,
+          time: 0,
+          myvideoSrc: myvideoSrc
+        }
       }
       var param = {
         type:2,

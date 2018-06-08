@@ -21,10 +21,11 @@ Page({
     config.ajax('POST', {
       user_id: app.globalData.user_id
     }, config.setInfo, (res) => {
-      console.log(res)
+      console.log(res.data.data)
       myallinfo = res.data.data
       that.setData({
-        myinfo: res.data.data
+        myinfo: res.data.data,
+        
       })
     })
   },
@@ -52,40 +53,38 @@ Page({
    */
   bindDate: function (e) {
     var that = this;
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     myallinfo.birthday = e.detail.value;
+
     var st = myallinfo.birthday.split('-')
     var sm = parseInt(st[1] + st[2])
     var n = 0
     if (sm >= 321 && sm <= 419) {
-      n = 1
+      n ='白羊座'
     } else if (sm >= 420 && sm <= 520) {
-      n = 2
+      n = '金牛座'
     } else if (sm >= 521 && sm <= 621) {
-      n = 3
+      n = '双子座'
     } else if (sm >= 622 && sm <= 722) {
-      n = 4
+      n = '巨蟹座'
     } else if (sm >= 723 && sm <= 822) {
-      n = 5
+      n = '狮子座'
     } else if (sm >= 823 && sm <= 922) {
-      n = 6
+      n = '处女座'
     } else if (sm >= 923 && sm <= 1023) {
-      n = 7
+      n = '天枰座'
     } else if (sm >= 1024 && sm <= 1122) {
-      n = 8
+      n = '天蝎座'
     } else if (sm >= 1123 && sm <= 1221) {
-      n = 9
+      n = '射手座'
     } else if (sm >= 1222) {
-      n = 10
+      n = '魔蝎座'
     } else if (sm >= 120 && sm <= 218) {
-      n = 11
+      n = '水瓶座'
     } else if (sm >= 219 && sm <= 320) {
-      n = 12
+      n = '双鱼座'
     }
-
-    console.log(n)
+    myallinfo.constellation =n;
     config.ajax('POST', myallinfo, config.setInfo, (res) => {
-      console.log(myallinfo)
       that.setData({
         date: e.detail.value
       })

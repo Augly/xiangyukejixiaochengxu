@@ -12,7 +12,7 @@
         <view class='anthur_Info'>
           <view class='anthurInfo_name'>
             <view class='name'>{{user_nickname}}</view>
-            <text class='iconfont icon-nv' wx:if="{{sex==1}}"></text>
+            <text class='iconfont icon-nv' wx:if="{{sex==2}}"></text>
             <text class='iconfont icon-nan' wx:else></text>
           </view>
           <view class='anthur_Data'>
@@ -92,7 +92,7 @@
 </template>
 <!--需求模板  -->
 <template name="deminditem">
-  <view class="demminditem">
+  <view class="demminditem" bindtap='goask_res' data-id='{{id}}'>
     <view class='demind_left'>
       <image class='demind_img' src='{{thumb}}'></image>
       <view class='run'>{{type}}</view>
@@ -103,8 +103,8 @@
         <image class='demindshow_anthur' src="{{avatar}}"></image>
         <view class='deminanthurInfo_name'>
           <view class='demindname'>{{user_nickname}}</view>
-          <text class='iconfont icon-nv' wx:if="{{sex==1}}"></text>
-          <text class='iconfont icon-nan' wx:else></text>
+          <text class='iconfont icon-nv' wx:if="{{sex==2}}" ></text>
+          <text class='iconfont icon-nan' wx:if="{{sex==1}}"></text>
           <view class='mintime'>{{create_time}}</view>
         </view>
       </view>
@@ -353,7 +353,7 @@
 <!--输入跑腿内容-->
 <template name="run">
   <view class='iptrun'>
-    <input class='runipt' placeholder='请输入跑腿内容' bindinput='runipt' value='runipt'>
+    <input class='runipt' placeholder='请输入跑腿内容' bindinput='runipt' value='{{otherdemind}}'>
 
     </input>
   </view>
@@ -433,18 +433,17 @@
 <!--用户详情模板  -->
 <template name="USERLIST">
   <view class='userList' wx:for="{{join}}">
-    <image class='userLogo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0' bindtap='showCard'>
+    <image class='userLogo' src='{{item.avatar}}' bindtap='showCard' data-userid='{{item.user_id}}'>
 
     </image>
-
     <view class='userRes'>
       <view class='name'>
-        {{item.avatar}}
+        {{item.user_nickname}}
         <text class='iconfont icon-nan'></text>
       </view>
       <view class='time'>{{item.create_time}}</view>
       <view class='main'>{{item.word}}</view>
-      <view class='lookmore'>全文</view>
+      <!-- <view class='lookmore'>全文</view> -->
       <view class='imgGroup'>
         <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem" wx:if="{{item.image.length==1}}" src='{{myitem}}'></image>
         <image class='doubleAndpersonl' wx:for="{{item.image}}" wx:if="{{item.image.length==2||item.image.length==4}}" src='{{myitem}}'></image>
@@ -529,27 +528,39 @@
   </view>
 </template>
 
-
+<!--用户名片模板 -->
 <template name='changeCard'>
   <view class='mask' wx:if="{{changeCard}}">
     <view class='mask_main Augly-bouncein'>
       <view class='cendelcard' bindtap='cendelChangeCard'></view>
       <view class='main_userGroup'>
         <view class='startZuo'>
-          <text class='iconfont icon-baiyangzuo'></text>
-          <text class='startTitle'>白羊座</text>
+          <text class='iconfont icon-shuipingzuo' wx:if="{{data.constellation=='水瓶座'}}"></text>
+          <text class='iconfont icon-shuangyuzuo' wx:if="{{data.constellation=='双鱼座'}}"></text>
+           <text class='iconfont icon-shizizuo' wx:if="{{data.constellation=='狮子座'}}"></text>
+            <text class='iconfont icon-juxiezuo' wx:if="{{data.constellation=='巨蟹座'}}"></text>
+             <text class='iconfont icon-shuangzizuo' wx:if="{{data.constellation=='双子座'}}"></text>
+              <text class='iconfont icon-mojiezuo' wx:if="{{data.constellation=='摩羯座'}}"></text>
+               <text class='iconfont icon-jinniuzuo' wx:if="{{data.constellation=='金牛座'}}"></text>
+                <text class='iconfont icon-tianchengzuo' wx:if="{{data.constellation=='天枰座'}}"></text>
+                 <text class='iconfont icon-sheshouzuo' wx:if="{{data.constellation=='射手座'}}"></text>
+                  <text class='iconfont icon-chunvzuo' wx:if="{{data.constellation=='处女座'}}"></text>
+                   <text class='iconfont icon-tianhezuo' wx:if="{{data.constellation=='天蝎座'}}"></text>
+                    <text class='iconfont icon-baiyangzuo' wx:if="{{data.constellation=='白羊座'}}"></text>
+          <text class='startTitle'>{{data.constellation}}</text>
         </view>
         <view class='perSonl'>
-          <image class='per_sonl' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0'>
+          <image class='per_sonl' src='{{data.avatar}}'>
           </image>
           <view class='sex'>
-            <text class='iconfont icon-nan' style='font-size:40rpx;'></text>
+            <text class='iconfont icon-nan' style='font-size:40rpx;' wx:if="{{data.sex==1}}"></text>
+            <text class='iconfont icon-nv' style='font-size:40rpx;'wx:if="{{data.sex==2}}"></text>
           </view>
-          <view class='per_title'>仇益阳</view>
+          <view class='per_title'>{{data.user_nickname}}</view>
         </view>
         <view class='birthday'>
           <text class='iconfont icon-shengri'></text>
-          <text class='startTitle' style='font-size:24rpx;font-family:PingFang-SC-Medium;color:rgba(255,255,255,1);'>1996/03/10</text>
+          <text class='startTitle' style='font-size:24rpx;font-family:PingFang-SC-Medium;color:rgba(255,255,255,1);'>{{data.birthday}}</text>
         </view>
       </view>
       <view class='main_botton'>

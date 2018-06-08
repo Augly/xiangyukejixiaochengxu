@@ -13,7 +13,7 @@
     <text class='iconfont icon-bangzhujinru'></text>
   </view>
 
-<picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDate">
+<picker mode="date" value="{{date}}" start="" end="" bindchange="bindDate">
     <view class='myzl_item'>
     <view class='myzl_item_title'>出生年月</view>
     <view class='myzl_item_mintitle'>{{date}}</view>

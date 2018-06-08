@@ -1,59 +1,62 @@
 <view class="wrap">
-  <view class='item'>
-    <view class='item_logo'></view>
+  <view class='item' wx:for="{{alldata}}">
+    <view class='item_logo'>
+      <image class='logoImg' src='{{item.thumb}}'></image>
+    </view>
     <view class='item_res'>
       <view class='item_title'>
-        <view class='item_mintitle'>享遇币</view>
-        <view class='nowBuy'>立即购买</view>
+        <view class='item_mintitle'>{{item.name}}</view>
+        <view class='nowBuy'>合计：{{item.num*item.price}}元</view>
       </view>
       <view class='item_shop'>
-        100个
+        {{item.num}}个
       </view>
       <view class='changeMoney'>
-        <view class='changeMoney_title'>10元/个</view>
-        <view class='bianxian'>变现</view>
+        <view class='changeMoney_title'>{{item.price}}元/个</view>
+        <view class='bianxian' bindtap='bx' data-index='{{index}}'>变现</view>
       </view>
     </view>
   </view>
 </view>
 
 
-<!-- <view class='mywrap'>
-  <view class="bottom_content">
+ <view class='mywrap' wx:if="{{wrap}}" bindtap='hidewrap'>
+  <view class="bottom_content" catchtap='kong'>
     <view class='bottom_main'>
       <view class='main_title'>
         变现
       </view>
       <view class='main_Group'>
-        <view class='main_logo'></view>
+        <view class='main_logo'>
+          <image class='logoImg' src='{{arr.thumb}}'></image>
+        </view>
         <view class='main_res'>
-          <view class='res_title'>棒棒糖
+          <view class='res_title'>{{arr.name}}
           </view>
-          <view class='res_number'>100个</view>
-          <view class='res_price'>10元/个</view>
+          <view class='res_number'>{{arr.num}}个</view>
+          <view class='res_price'>{{arr.tprice}}元/个</view>
         </view>
       </view>
-
       <view class='car_group'>
         <view class='group_title'>
           数量
         </view>
         <view class='shop_Group'>
-          <view class='shop_jia'>
+          <view class='shop_jia' catchtap='jia'>
             <text class='iconfont icon-icon_add'></text>
           </view>
-          <input class='shop_ipt' value='1'></input>
-          <view class='shop_jian'>
+          <input class='shop_ipt' value='{{arr.mynum}}'  bindinput='ipt' type='number'></input>
+          <view class='shop_jian' catchtap='jian'>
             <text class='iconfont icon-jianhao1'></text>
           </view>
         </view>
         <view class='group_mintitle'>变现金额：
-          <text class='ts_mintitle'>2元</text>
+          <text class='ts_mintitle'>{{hj}}元</text>
         </view>
       </view>
     </view>
-    <view class='bottom_sure'>
+    <view class='bottom_sure' bindtap='Changemoney'>
       立即变现
     </view>
   </view>
-</view> -->
+</view> 

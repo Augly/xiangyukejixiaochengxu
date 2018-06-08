@@ -202,36 +202,6 @@ Page({
   addaudio: function () {
     console.log(1)
     var that = this
-    // wx.getSetting({
-    //   success(res) {
-    //     if (!res.authSetting['scope.record']) {
-    //       wx.authorize({
-    //         scope: 'scope.record',
-    //         success: function(res) {
-
-
-    //         },
-    //         fail: function(res) {
-    //           wx.showModal({
-    //             title: '提示',
-    //             content: '您拒绝了录音授权无法使用录音功能',
-    //           })
-
-    //           wx.showModal({
-    //             title: '提示',
-    //             content: '您拒绝了录音授权无法使用录音功能,是否重新授权',
-    //             success: function(res) {
-    //               wx.openSetting()
-    //             },
-    //             fail: function(res) {},
-    //             complete: function(res) {},
-    //           })
-    //         },
-    //         complete: function(res) {},
-    //       })
-    //     }
-    //   }
-    // })
     time = config.options.duration;
     console.log(2)
     that.setData({
@@ -446,7 +416,7 @@ Page({
 
     let audio, myaudio = '', imgSrc, myimgSrc = '', videoSrc, myvideoSrc = '', imgurl, myimgurl = '', info, sendgift, giftnumber = this.data.bugGroup.buy_number;
     //封面图
-    if (this.data.img.imgurl == null || this.data.img.imgurl == undefined) {
+    if (this.data.img.imgurl == 'http://xiangyu.wx.bronet.cn/images/jiajia@2x.png' || this.data.img.imgurl == undefined || this.data.img.imgurl == null) {
       wx.showModal({
         title: '提示',
         content: '请上传封面照片',
@@ -464,7 +434,7 @@ Page({
           app: 'material'
         },
         success: function (res) {
-          // console.log(JSON.parse(res.data))
+          console.log(JSON.parse(res.data))
           myimgSrc = JSON.parse(res.data).data[0].filepath
 
         }
@@ -704,6 +674,25 @@ Page({
     }
 
     function getins() {
+      let material = ''
+      console.log(myaudio)
+      if (myaudio != '') {
+        console.log(11)
+        material = {
+          myimgurl: myimgurl,
+          time: that.data.audio_faile.duration,
+          myaudio: myaudio,
+          myvideoSrc: myvideoSrc
+        }
+      } else {
+        console.log(22)
+        material = {
+          myimgurl: myimgurl,
+          myaudio: myaudio,
+          time: 0,
+          myvideoSrc: myvideoSrc
+        }
+      }
       var param = {
         user_id: app.globalData.user_id,
         sort_id: that.data.myallkind.seletMain,

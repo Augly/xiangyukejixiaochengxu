@@ -35,7 +35,13 @@ insterstList ='/api/portal/Interest/interestList',
 
 send ='/api/portal/Purchase/send', //发布跑腿
 
+sendCode='/api/portal/Common/sendCode',  //发送手机短信
+
+bindMobile ='/api/portal/Common/bindMobile', //绑定手机号
+
 sortList ='/api/portal/Interest/interestSort', 
+
+payOrder ='/api/portal/User/payOrder',  //购买礼物提交
 
 joinShare ='/api/portal/User/joinShare',  //我参与的共享经验
 
@@ -44,6 +50,8 @@ joinInterest ='/api/portal/User/joinInterest', //我参与的兴趣社
 joinComment ='/api/portal/Common/joinComment', //发表评论
 
 fans ='/api/portal/User/fans',
+
+myOrder='/api/portal/User/myOrder',  //礼物变现
 
 withdraw ='/api/portal/User/withdraw', //提现页面
 
@@ -57,11 +65,25 @@ favorite ='/api/portal/Common/favorite', //收藏
 
 Recharge ='/api/portal/User/addBalance',
 
+authorize='/api/portal/Common/authorize',  //个人信息存储
+
+giftlist='/api/portal/User/gift', //礼物列表
+
+giftBuy='/api/portal/User/giftBuy', //购买礼物
+
+myGift='/api/portal/User/myGift',  //我的背包
+
 interest='/api/portal/Interest/interest ',
+
+myPresentWithdraw='/api/portal/User/myPresentWithdraw', //礼物变现
 
 getexper ='/api/portal/Share/getShare',
 
+checkMobile='/api/portal/Common/checkMobile', //检查是否绑定过手机号
+
 send_present ='/api/portal/Common/send_present', //赠送礼物
+
+userCard='/api/portal/Common/userCard',  //获取用户名片信息
 
 gitpresent='/api/portal/Common/present';
 
@@ -174,6 +196,7 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  payOrder:payOrder,
   send_present: send_present,
   tx: tx,
   withdraw:withdraw,
@@ -208,5 +231,14 @@ module.exports = {
   joinComment: joinComment,
   Recharge: Recharge,
   pay: pay,
-  gitpresent: gitpresent
+  gitpresent: gitpresent,
+  userCard: userCard,
+  sendCode: sendCode,
+  bindMobile: bindMobile,
+  checkMobile: checkMobile,
+  giftlist: giftlist,
+  giftBuy:giftBuy,
+  myGift: myGift,
+  authorize: authorize,
+  myPresentWithdraw: myPresentWithdraw
 }

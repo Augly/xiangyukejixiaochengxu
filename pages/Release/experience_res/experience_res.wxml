@@ -5,7 +5,7 @@
     {{alldata.title}}
   </view>
   <view class='anthur_Group'>
-    <image class='anthur_logo' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0' bindtap='showCard'></image>
+    <image class='anthur_logo' src='{{alldata.avatar}}' bindtap='showCard' data-userid='{{alldata.user_id}}'></image>
     <view class='anthur_nameGroup'>
       <view class='name'>{{alldata.user_nickname}}
         <!-- <text class='iconfont icon-nv' wx:if="{{alldata}}"></text> -->
