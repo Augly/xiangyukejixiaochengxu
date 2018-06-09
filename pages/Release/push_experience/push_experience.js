@@ -45,7 +45,7 @@ Page({
     myallkind:{
       index:0,
       kindarray:['种类一','种类二','种类三'],
-      seletMain:''
+      seletMain:1
     },
     description:{
       descriptioncontent:''
@@ -63,6 +63,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.type=='兴趣'){
+      wx.setNavigationBarTitle({
+        title: '发布兴趣'
+      })
+    }else{
+      wx.setNavigationBarTitle({
+        title: '发布共享经验'
+      })
+    }
     config.ajax('POST', {}, config.interestSort,(res)=>{
       console.log(res.data.data)
       this.setData({
@@ -139,14 +148,26 @@ Page({
    * 送礼设置开关
    */
   switch1Change: function (res) {
-
+    console.log(res.detail.value)
+    if (res.detail.value==true){
+      this.setData({
+        sendgift:true
+      })
+    } else {
+      this.setData({
+        sendgift: false
+      })}
   },
 
-  jian: () => {
-
+  jian:function(){
+    this.setData({
+      'bugGroup.buy_number': this.data.bugGroup.buy_number--
+    })
   },
-  jia: () => {
-
+  jia:function(){
+    this.setData({
+      'bugGroup.buy_number': this.data.bugGroup.buy_number++
+    })
   },
   /**
    * 添加文字显示
@@ -659,7 +680,7 @@ Page({
         lat: app.globalData.lat,
         lng: app.globalData.lng,
         is_present: sendgift,
-        num: 0,
+        num: giftnumber,
         position: that.data.adder.adder
       }
       config.ajax("POST", param, config.addShare, (res) => {
@@ -699,11 +720,12 @@ Page({
         title: that.data.title,
         thumb: myimgSrc,
         word: that.data.text.info,
+        material: JSON.stringify(material),
         description: that.data.description.descriptioncontent,
         lat: app.globalData.lat,
         lng: app.globalData.lng,
         is_present: sendgift,
-        num: 0,
+        num: giftnumber,
         position: that.data.adder.adder,
       }
       config.ajax("POST", param, config.setInterest, (res) => {

@@ -1,7 +1,6 @@
 // pages/personl/myBackpaker/myBackpaker.js
 const config=require('../../../utils/config.js')
 let app=getApp()
-var arr=''
 Page({
 
   /**
@@ -15,15 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    config.ajax('POST',{
-      user_id: app.globalData.user_id
-    }, config.myGift,(res)=>{
-      console.log(res)
-      this.setData({
-        alldata:res.data.data.list,
-        all:res.data.data
-      })
-    })
+
   },
 
   Changemoney:function(){
@@ -35,8 +26,28 @@ Page({
       time: that.data.all.time,
       authcode: that.data.all.authcode
     }, config.myPresentWithdraw,(res)=>{
-      var mydata = that.data.alldata
-      console.log(mydata[that.data.arr.index])
+      console.log(res)
+
+      if(res.data.code==1){
+        var mydata = that.data.alldata
+        mydata[that.data.arr.index].num = res.data.data
+        var arr = this.data.arr
+        arr.num = res.data.data
+        that.setData({
+          alldata: mydata,
+          arr: arr
+        })
+        wx.showToast({
+          title: '变现成功',
+          mask: true,
+        })
+      }else{
+        wx.showToast({
+          title: '提现失败',
+          icon: 'none',
+          mask: true,
+        })
+      }
     })
   },
   /**
@@ -96,9 +107,7 @@ Page({
    * 变现
    */
   bx:function(e){
-    arr = ''
     var all = this.data.alldata
-    console.log(all)
     all[e.currentTarget.dataset.index].mynum=1
     all[e.currentTarget.dataset.index].index = e.currentTarget.dataset.index
     this.setData({
@@ -123,7 +132,8 @@ Page({
       user_id: app.globalData.user_id
     }, config.myGift, (res) => {
       this.setData({
-        alldata: res.data.data.list
+        alldata: res.data.data.list,
+        all: res.data.data
       })
     })
   },

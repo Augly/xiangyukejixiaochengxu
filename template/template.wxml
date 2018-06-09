@@ -19,7 +19,8 @@
             {{create_time}}
           </view>
         </view>
-        <text class='iconfont icon-xihuan' catchtap='love' data-tid="{{user_id}}"></text>
+        <text class='iconfont icon-xihuan' catchtap='love' data-tid="{{user_id}}" wx:if="{{is_good==0}}"></text>
+        <text class='iconfont icon-xihuan1' catchtap='love' data-tid="{{user_id}}" wx:if="{{is_good==1}}"></text>
       </view>
       <view class='adder_Group'>
         <text class='iconfont icon-dizhi'></text>

@@ -136,3 +136,9 @@ color:rgba(153,153,153,1);
   background-color: RGBA(152, 97, 225, 1);
   color:RGBA(255, 255, 225, 1);
 }
+
+.icon-xihuan1 {
+  font-size: 30rpx;
+  margin-right: 5rpx;
+  color: RGBA(152, 97, 225, 1);
+}

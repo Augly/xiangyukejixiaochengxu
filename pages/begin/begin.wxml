@@ -133,7 +133,7 @@
   </view>
   <view class='InterestGroup' wx:if="{{myindex==1}}">
     <block wx:for="{{demindlist}}" wx:key="">
-      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      <template is="deminditem" data="{{...item}}"></template>
     </block>
   </view>
 

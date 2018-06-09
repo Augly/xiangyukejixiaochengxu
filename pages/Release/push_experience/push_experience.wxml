@@ -22,7 +22,7 @@
 <!--送礼设置  -->
 <template is="switch" data="{{...switch}}"></template>
 <!--购买享遇币  -->
-<template is="buy_Group" data="{{...bugGroup}}" ></template>
+<template is="buy_Group" data="{{...bugGroup}}"  wx:if="{{sendgift}}"></template>
 <!--购买享遇币  -->
 <template is="buy" data="{{...bug}}"></template>
 </view>

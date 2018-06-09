@@ -7,6 +7,8 @@ const options = {
   format: 'mp3'
 },
 
+errDetail ='/api/portal/Purchase/errDetail', //需求详情
+
 checkInterestJoin='/api/portal/Join/checkInterestJoin', //检查兴趣社是否可参与
 
 myimgUrl ="https://xiangyu.lu.broteam.cn/public/assets/", // 图片地址
@@ -196,6 +198,7 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  errDetail: errDetail,
   payOrder:payOrder,
   send_present: send_present,
   tx: tx,
