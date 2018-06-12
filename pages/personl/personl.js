@@ -26,14 +26,28 @@ Page({
       userInfo: app.globalData.userInfo
     })
   },
-
+/**
+ * 我的发布
+ */
+  push:function(){
+    wx.navigateTo({
+      url: 'push/push',
+    })
+  },
   //我的参与
   myjoin(){
     wx.navigateTo({
       url: '../personl/join/join',
     })
   },
-
+  /***
+   * 我的收藏
+   */
+  Collection(){
+    wx.navigateTo({
+      url: '../Collection/Collection',
+    })
+  },
 
   //我的钱包
   mybill(){
@@ -50,7 +64,12 @@ Page({
   },
   fans:function(){
     wx.navigateTo({
-      url: 'fans/fans',
+      url: 'fans/fans?_type=粉丝',
+    })
+  },
+  follow:function(){
+    wx.navigateTo({
+      url: 'fans/fans?_type=关注',
     })
   },
 

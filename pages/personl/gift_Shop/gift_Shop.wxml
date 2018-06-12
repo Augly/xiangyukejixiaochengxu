@@ -1,7 +1,7 @@
 <view class="wrap">
-  <view class='item' wx:for="{{alldata}}">
-    <view class='check' wx:if="{{item.check==false}}" bindtap='check' data-index='{{index}}'></view>
-    <view class='checked' wx:if="{{item.check==true}}"  bindtap='check' data-index='{{index}}'></view>
+  <view class='item' wx:for="{{alldata}}" bindtap='check' data-index='{{index}}'>
+    <view class='check' wx:if="{{item.check==false}}" ></view>
+    <view class='checked' wx:if="{{item.check==true}}" ></view>
     <view class='item_main'>
           <view class='item_logo'>
       <image class='logoImg' src='{{item.thumb}}'></image>

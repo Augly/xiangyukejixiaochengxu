@@ -1,6 +1,6 @@
 <view class="account">
   <view class='account_title'>账户余额（元）</view>
-  <view class='account_money'>10.00</view>
+  <view class='account_money'>{{balance}}</view>
   <view class='operation_Group'>
     <view class='operation_item' bindtap='cz'>充值</view>
     <view class='operation_item' bindtap='tx'>提现</view>

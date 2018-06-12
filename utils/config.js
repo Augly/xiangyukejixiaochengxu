@@ -9,7 +9,11 @@ const options = {
 
 errDetail ='/api/portal/Purchase/errDetail', //需求详情
 
+myBalance='/api/portal/User/myBalance',  //用户余额
+
 checkInterestJoin='/api/portal/Join/checkInterestJoin', //检查兴趣社是否可参与
+
+imgurl ="http://xiangyu.wx.bronet.cn/images/",
 
 myimgUrl ="https://xiangyu.lu.broteam.cn/public/assets/", // 图片地址
 
@@ -75,17 +79,31 @@ giftBuy='/api/portal/User/giftBuy', //购买礼物
 
 myGift='/api/portal/User/myGift',  //我的背包
 
-interest='/api/portal/Interest/interest ',
+interest ='/api/portal/Interest/interestindex', 
+
+user_share='/api/portal/User/share',  //我发布的共享经验
+
+user_interest='/api/portal/User/interest',  //我发布的兴趣社
+
+user_need ='/api/portal/User/need',  //我发布的需求
+
+user_card='/api/portal/User/myCard',  //我的名片
 
 myPresentWithdraw='/api/portal/User/myPresentWithdraw', //礼物变现
 
-getexper ='/api/portal/Share/getShare',
+getexper ='/api/portal/Share/getShare', 
+
+nearly='/api/portal/Index/nearly',  //附近
+
+myCollection='/api/portal/User/myCollection',  //我的收藏
 
 checkMobile='/api/portal/Common/checkMobile', //检查是否绑定过手机号
 
 send_present ='/api/portal/Common/send_present', //赠送礼物
 
 userCard='/api/portal/Common/userCard',  //获取用户名片信息
+
+getfollow='/api/portal/User/follow',  //获取我的关注列表
 
 gitpresent='/api/portal/Common/present';
 
@@ -198,6 +216,14 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  nearly: nearly,
+  myCollection: myCollection,
+  user_card: user_card,
+  user_need: user_need,
+  user_interest:user_interest,
+  user_share: user_share,
+  myBalance: myBalance,
+  getfollow: getfollow,
   errDetail: errDetail,
   payOrder:payOrder,
   send_present: send_present,
@@ -243,5 +269,6 @@ module.exports = {
   giftBuy:giftBuy,
   myGift: myGift,
   authorize: authorize,
-  myPresentWithdraw: myPresentWithdraw
+  myPresentWithdraw: myPresentWithdraw,
+  imgurl: imgurl
 }

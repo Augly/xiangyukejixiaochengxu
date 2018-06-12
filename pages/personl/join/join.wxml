@@ -13,16 +13,16 @@
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;" bindchange="finish" current='{{index}}'>
   <swiper-item>
     <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
-      <view class='s_item' wx:for="{{sharelist}}">
-        <image class='s_item_logo'></image>
+      <view class='s_item' wx:for="{{sharelist}}" bindtap='share' data-id="{{item.id}}">
+        <image class='s_item_logo' src='{{item.thumb}}'></image>
         <view class='s_item_res'>
           <view class='s_item_res_title'>
             <view class='s_title'>{{item.title}}</view>
           </view>
           <view class='s_item_res_data'>{{item.create_time}}</view>
           <view class='s_item_res_mintitle'>
-            <image class='s_item_res_mintitle_logo' src='{{item.thumb}}'></image>
-            {{item.user_nickname}} <text class='iconfont icon-nan' wx:if="{{sex==1}}"></text><text class='iconfont icon-nv' wx:if="{{sex==0}}"></text>
+            <image class='s_item_res_mintitle_logo' src='{{item.avatar}}'></image>
+            {{item.user_nickname}}<text class='iconfont icon-nan' wx:if="{{item.sex==1}}"></text><text class='iconfont icon-nv' wx:if="{{item.sex==2}}"></text>
           </view>
         </view>
       </view>
@@ -32,17 +32,17 @@
 
   <swiper-item>
     <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
-      <view class='s_item'>
-        <image class='s_item_logo' style='width:249rpx'></image>
+      <view class='s_item' wx:for="{{interestlist}}" bindtap='lookinterset' data-id="{{item.id}}">
+        <image class='s_item_logo' style='width:249rpx' src='{{item.thumb}}'></image>
         <view class='s_item_res' style='width:420rpx'>
           <view class='s_item_res_title'>
-            <view class='s_title'>我的养猫日记</view>
+            <view class='s_title'>{{item.title}}</view>
             
           </view>
-          <view class='s_item_res_data'>2018-02-28 8:00</view>
+          <view class='s_item_res_data'>{{item.create_time}}</view>
           <view class='s_item_res_mintitle'>
-            <image class='s_item_res_mintitle_logo'></image>
-            111 <text class='iconfont icon-nan'></text>
+            <image class='s_item_res_mintitle_logo' src='{{item.avatar}}'></image>
+            {{item.user_nickname}} <text class='iconfont icon-nan' wx:if="{{item.sex==1}}"></text><text class='iconfont icon-nv' wx:if="{{item.sex==2}}"></text>
           </view>
         </view>
       </view>

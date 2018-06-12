@@ -67,6 +67,9 @@ Page({
       wx.setNavigationBarTitle({
         title: '发布兴趣'
       })
+      this.setData({
+        showtext:true
+      })
     }else{
       wx.setNavigationBarTitle({
         title: '发布共享经验'
@@ -695,32 +698,32 @@ Page({
     }
 
     function getins() {
-      let material = ''
-      console.log(myaudio)
-      if (myaudio != '') {
-        console.log(11)
-        material = {
-          myimgurl: myimgurl,
-          time: that.data.audio_faile.duration,
-          myaudio: myaudio,
-          myvideoSrc: myvideoSrc
-        }
-      } else {
-        console.log(22)
-        material = {
-          myimgurl: myimgurl,
-          myaudio: myaudio,
-          time: 0,
-          myvideoSrc: myvideoSrc
-        }
-      }
+      // let material = ''
+      // console.log(myaudio)
+      // if (myaudio != '') {
+      //   console.log(11)
+      //   material = {
+      //     myimgurl: myimgurl,
+      //     time: that.data.audio_faile.duration,
+      //     myaudio: myaudio,
+      //     myvideoSrc: myvideoSrc
+      //   }
+      // } else {
+      //   console.log(22)
+      //   material = {
+      //     myimgurl: myimgurl,
+      //     myaudio: myaudio,
+      //     time: 0,
+      //     myvideoSrc: myvideoSrc
+      //   }
+      // }
       var param = {
         user_id: app.globalData.user_id,
         sort_id: that.data.myallkind.seletMain,
         title: that.data.title,
         thumb: myimgSrc,
         word: that.data.text.info,
-        material: JSON.stringify(material),
+        // material: JSON.stringify(material),
         description: that.data.description.descriptioncontent,
         lat: app.globalData.lat,
         lng: app.globalData.lng,

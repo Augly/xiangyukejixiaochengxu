@@ -1,22 +1,22 @@
 <view class='wrap'>
   <view class='head_Group'>
     <view class='head'>
-      <image class='head_log'></image>
+      <image class='head_log' src='{{alldata.user.avatar}}'></image>
       <view class='head_res'>
-        <view class='name'>仇益阳
+        <view class='name'>{{alldata.user.user_nickname}}
           <text class='iconfont icon-nv'></text> </view>
-        <view class='distance'>距离2.2km</view>
+        <view class='distance'>距离{{alldata.user.distance}}km</view>
       </view>
       <view class='head_type'>
-        <view class='head_type_title'>5分钟</view>
+        <view class='head_type_title'>{{alldata.err.create_time}}</view>
         <view class='head_type_mintitle'>跑</view>
       </view>
     </view>
     <view class='head_main'>
-      如果你无法简洁的表达你的想法，那只说明 你还不够了解它。
+      {{alldata.err.word}}
     </view>
     <view class='head_operation'>
-      <text class='iconfont icon-xihuan'></text> 88
+      <text class='iconfont icon-xihuan'></text> {{alldata.fabulous}}
       <text class='iconfont icon-fenxiang'></text> 分享
     </view>
   </view>
@@ -25,8 +25,8 @@
   <view class='adder_Group'>
     <view class='adder_title'>送达地址</view>
     <view class='adder_res'>
-      <view class='adder_name'>张三 18965943659</view>
-      <view class='adder_main'>气象台路中环公寓29门602</view>
+      <view class='adder_name'>{{alldata.err.user_name}} {{alldata.err.user_tel}}</view>
+      <view class='adder_main'>{{alldata.err.address}}</view>
     </view>
   </view>
 
@@ -34,14 +34,14 @@
   <view class='process'>
     <view class='process_title'>
       已在线支付报酬
-      <text class='color'>10元</text>
+      <text class='color'>{{alldata.err.price}}元</text>
     </view>
 
     <view class='type_process'>
       <view class='newpush'>
         <view class='push_head'>
-          <view class='line line_active'></view>
-          <view class='push_logo logo_active'></view>
+          <view class="line  {{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2||alldata.err.status==1?'line_active':''}}"></view>
+          <image class="push_logo {{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2||alldata.err.status==1?'logo_active':''}}"  src="{{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2||alldata.err.status==1?alldata.user.avatar:imgUrl}}"></image>
         </view>
         <view class='push_title'>
             新发布
@@ -49,8 +49,8 @@
       </view>
       <view class='oldpush'>
         <view class='push_head'>
-          <view class='oldline'></view>
-          <view class='push_logo'></view>
+          <view class="line  {{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?'line_active':''}}"></view>
+          <image class="push_logo {{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?'logo_active':''}}" src="{{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?alldata.user.avatar:imgUrl}}"></image>
         </view>
         <view class='oldpush_title'>
             被抢啦
@@ -58,8 +58,8 @@
       </view>
       <view class='oldpush'>
         <view class='push_head'>
-          <view class='oldline'></view>
-          <view class='push_logo'></view>
+         <view class="line  {{alldata.err.status==4||alldata.err.status==3?'line_active':''}}"></view>
+          <image class="push_logo {{alldata.err.status==4||alldata.err.status==3?'logo_active':''}}"  src="{{alldata.err.status==4||alldata.err.status==3?alldata.user.avatar:imgUrl}}"></image>
         </view>
         <view class='oldpush_title'>
             已送达
@@ -67,8 +67,8 @@
       </view>
       <view class='newpush'>
         <view class='push_head'>
-          <view class='line'></view>
-          <view class='push_logo'></view>
+          <view class="line  {{alldata.err.status==4?'line_active':''}}"></view>
+          <image class="push_logo {{alldata.err.status==4?'logo_active':''}}" src="{{alldata.err.status==4?alldata.user.avatar:imgUrl}}"></image>
         </view>
         <view class='push_title'>
             已结算
@@ -81,6 +81,6 @@
 
 
 <view class='foot'>
-    <view class='get'>我要接单</view>
-    <view class='pl'>评论</view>
+    <view class='get' wx:if="{{alldata.err.status==1}}">我要接单</view>
+    <view class='pl' bindtap='pl'>评论</view>
 </view>

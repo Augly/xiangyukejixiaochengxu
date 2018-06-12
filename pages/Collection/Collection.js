@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const config=require('../../utils/config.js')
+let app = getApp()
 Page({
   data: {
     motto: 'Hello World',
@@ -72,9 +73,48 @@ Page({
   },
   //事件处理函数
   navClick: function (event) {
+    // var _type=''
+    var that=this
     this.setData({
       index: event.currentTarget.dataset.id
     })
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      type: event.currentTarget.dataset.id,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng
+    }, config.myCollection, (res) => {
+      console.log(res)
+      if(res.data.data.length==0){
+        that.setData({
+          note: []
+        })
+        wx.showToast({
+          title: '暂无数据',
+          icon: 'none',
+        })
+      }else{
+        for (let i = 0; i < res.data.data.list.length; i++) {
+          res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
+        }
+        that.setData({
+          note: res.data.data.list
+        })
+      }
+     
+      //赋值给数据note
+     
+    })
+
+    // if (event.currentTarget.dataset.id==1){
+    //   _type=1
+    // } else if (event.currentTarget.dataset.id == 2) {
+    //   _type=2
+    // } else if (event.currentTarget.dataset.id == 3) {
+    //   _type
+    // }else{
+
+    // }
   },
   demindtap: function (event) {
     this.setData({
@@ -99,43 +139,25 @@ Page({
     })
   },
   onLoad: function () {
+    var that=this
     this.setData({
       imgurl: app.globalData.imgurl
     })
     this.getSystemInfo()
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+    config.ajax('POST',{
+      user_id: app.globalData.user_id,
+      type:1,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng
+    }, config.myCollection,(res)=>{
+      for (let i = 0; i < res.data.data.list.length; i++) {
+        res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+      console.log(res.data.data.list)
+      //赋值给数据note
+      that.setData({
+        note: res.data.data.list
       })
-    }
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
     })
-  }
+  },
 })

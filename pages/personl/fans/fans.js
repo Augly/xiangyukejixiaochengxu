@@ -15,35 +15,78 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    config.ajax('POST',{
-      user_id: app.globalData.user_id
-    }, config.fans,(res)=>{
-      console.log(res)
-      this.setData({
-        allData:res.data.data
-      })
+    wx.setNavigationBarTitle({
+      title:'我的'+options._type
     })
+
+    if (options._type=='粉丝'){
+      config.ajax('POST', {
+        user_id: app.globalData.user_id
+      }, config.fans, (res) => {
+        console.log(res)
+        for (let n = 0; n < res.data.data.length; n++) {
+          if (res.data.data[n].is_each == 1) {
+            res.data.data[n].gztype = '取消关注'
+          } else {
+            res.data.data[n].gztype = '添加关注'
+          }
+        }
+        this.setData({
+          _type: options._type,
+          allData: res.data.data
+        })
+      })
+    }else{
+      config.ajax('POST', {
+        user_id: app.globalData.user_id
+      }, config.getfollow, (res) => {
+        console.log(res)
+        for (let n = 0; n < res.data.data.length; n++) {
+          if (res.data.data[n].is_each == 1) {
+            res.data.data[n].gztype = '取消关注'
+          } else {
+            res.data.data[n].gztype = '添加关注'
+          }
+        }
+        this.setData({
+          _type: options._type,
+          allData: res.data.data
+        })
+        console.log(this.data.allData)
+      })
+    }
   },
 //   gzone(){
 //     console.log(1) 
 //  },
   gzone(event) {
-    console.log(1)
+    var that=this
+    console.log(event.currentTarget.dataset.id)
     config.ajax('POST', {
       user_id: app.globalData.user_id,
       concerned_id: event.currentTarget.dataset.id
     }, config.follow, (res) => {
       console.log(res)
+      console.log(event.currentTarget.dataset.index)
+      var gz = this.data.allData
       if(res.data.code=='1'){
         if (res.data.data.status == '1') {
+          gz[event.currentTarget.dataset.index].is_each=1
+          gz[event.currentTarget.dataset.index].gztype = '取消关注'
           this.setData({
-            isgz: true,
-            gztype: '取消关注'
+            allData: gz,
           })
         } else if (res.data.data.status == '0') {
+          if (this.data._type=='关注'){
+            gz = gz.splice(event.currentTarget.dataset.index,1)
+            console.log(gz)
+          }else{
+          gz[event.currentTarget.dataset.index].is_each=0
+          gz[event.currentTarget.dataset.index].gztype = '添加关注'
+          
+          }
           this.setData({
-            isgz: false,
-            gztype: '添加关注'
+            allData: gz,
           })
         } else {
           wx.showModal({

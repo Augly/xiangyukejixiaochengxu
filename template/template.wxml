@@ -1,6 +1,6 @@
 <!--瀑布流模板  -->
 <template name="item">
-  <view class="item" bindtap='lookres' data-id='{{id}}'>
+  <view class="item" bindtap='lookres' data-id='{{id}}' data-user_id="{{user_id}}">
     <view class='showImg'>
       <image class="item_img" src="{{thumb}}" mode="widthFix" lazy-load='true'></image>
       <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}" lazy-load='true'></image>
@@ -40,7 +40,7 @@
     <view class='InterestshowText'>
       <view class='Interestitem_title'>{{title}}</view>
       <view class='anthur_Data'>
-        {{distance}}
+        {{create_time}}
       </view>
       <view class='Interestanthur_Group'>
         <image class='Interestshow_anthur' src="{{avatar}}"></image>
@@ -93,7 +93,7 @@
 </template>
 <!--需求模板  -->
 <template name="deminditem">
-  <view class="demminditem" bindtap='goask_res' data-id='{{id}}'>
+  <view class="demminditem" bindtap='goask_res' data-id='{{id}}'  data-userid="{{user_id}}">
     <view class='demind_left'>
       <image class='demind_img' src='{{thumb}}'></image>
       <view class='run'>{{type}}</view>
@@ -192,7 +192,7 @@
 <!--添加视频展示模块儿-->
 <template name="myvideo">
   <view class='myvideo' style="z-index:10;">
-    <video class='myvideo' style='margin:0;' objectFit="cover" controls="{{controls}}" src='{{videoSrc}}'></video>
+    <video class='myvideo' style='margin:0;' requestFullScreen objectFit="cover" controls="{{controls}}" src='{{videoSrc}}'></video>
   </view>
 </template>
 <!--添加图片展示模块儿-->

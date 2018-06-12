@@ -109,8 +109,8 @@
   <text>历史活动</text>
   <text class='iconfont icon-bangzhujinru'></text>
 </view>
-<view class='hostory' wx:if="{{interestData.recommend==null}}">
-  <view class='hostory_title'>
+<view class='hostory' wx:if="{{interestData.recommend==null}}" bindtap='push_active'>
+  <view class='hostory_title' >
     <text class='iconfont icon-tianjiajiahaowubiankuang'></text>点击发布新活动</view>
   <text class='iconfont icon-bangzhujinru'></text>
 </view>

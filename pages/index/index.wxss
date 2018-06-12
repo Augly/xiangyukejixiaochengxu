@@ -17,6 +17,7 @@ page {
   margin: 269rpx auto 0;
   border-radius: 20rpx;
   background: linear-gradient(to bottom, #8200fd, #cb00fc);
+  display: block;
 }
 
 .draw_text{

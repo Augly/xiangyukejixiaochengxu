@@ -1,4 +1,5 @@
 // pages/index/pl/pl.js
+const config=require('../../pay/pay.js')
 Page({
 
   /**

@@ -14,9 +14,9 @@
       <image class='personal_img' src='{{userInfo.avatarUrl}}'>
 
       </image>
-      <view class='personal_title'>向昱筱</view>
+      <view class='personal_title'>{{userInfo.nickName}}</view>
     </view>
-    <view class='personal_gz'>
+    <view class='personal_gz' bindtap='follow'>
       <text class='num'>{{alldata.myconcern}}</text>
       <text class='title'>我的关注</text>
     </view>
@@ -26,12 +26,12 @@
 
 
 <view class='select_group'>
-  <view class='select_item'>
+  <view class='select_item' bindtap='push'>
       <text class='mynum'>{{alldata.mysend}}</text>
       <text class='mytitle'>我的发布</text>
   </view>
   <view class='line'></view>
-  <view class='select_item'>
+  <view class='select_item' bindtap='Collection'>
     <text class='mynum'>{{alldata.mycollection}}</text>
       <text class='mytitle'>我的收藏</text>
   </view>

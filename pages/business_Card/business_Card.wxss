@@ -12,7 +12,6 @@
 .head_logo {
   width: 169rpx;
   height: 169rpx;
-  background-color: red;
   border-radius: 50%;
 }
 

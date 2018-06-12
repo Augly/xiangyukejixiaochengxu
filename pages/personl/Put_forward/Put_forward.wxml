@@ -8,9 +8,9 @@
       <view class='put_Group_ipt_title'>
         ￥
       </view>
-      <input class='put_ipt'></input>
+      <input class='put_ipt' maxlength='{{bill.balance.length}}' value='{{myviff}}' bindinput='iptall'></input>
     </view>
-    <view class='put_Group_mintitle'>全部提现</view>
+    <view class='put_Group_mintitle' bindtap='allmoney'>全部提现</view>
   </view>
 </view>
 <view class='Recharge' bindtap='tx'>提现</view>

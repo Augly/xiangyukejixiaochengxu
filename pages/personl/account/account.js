@@ -1,4 +1,6 @@
 // pages/personl/account/account.js
+const config=require('../../../utils/config.js')
+let app=getApp();
 Page({
 
   /**
@@ -12,7 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    config.ajax('POST',{
+      user_id: app.globalData.user_id
+    }, config.myBalance,(res)=>{
+      console.log(res)
+      this.setData({
+        balance: res.data.data.balance
+      })
+    })
   },
   /**
    * 充值

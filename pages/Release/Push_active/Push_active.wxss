@@ -1,6 +1,31 @@
 /* pages/Release/push_experience/push_experience.wxss */
 @import "../../../template/template.wxss";
+.ipt_title {
+  width: 100%;
+  height: 98rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  background-color: RGBA(255, 255, 255, 1);
+  box-sizing: border-box;
+  padding: 0rpx 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
 
+.title {
+  width: 200rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(153, 153, 153, 1);
+}
+
+.title_ipt {
+  width: 500rpx;
+  height: 90rpx;
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+}
 page {
   background-color: RGBA(245, 246, 250, 1);
 }

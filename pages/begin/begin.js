@@ -154,6 +154,24 @@ Page({
           demindlist: res.data.data
         })
       })
+    } else if (event.currentTarget.dataset.id == '1'){
+      config.ajax('POST', {
+        user_id: app.globalData.user_id,
+        lat: app.globalData.lat,
+        lng: app.globalData.lng
+      }, config.nearly, (res) => {
+        console.log(res)
+        //给共享经验设置距离
+        for (let i = 0; i < res.data.data.list.length; i++) {
+          res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
+        }
+        console.log(res.data.data.list)
+        //赋值给数据note
+        that.setData({
+          note: res.data.data.list
+        })
+        wx.hideLoading()
+      })
     }
   },
 
@@ -166,7 +184,7 @@ Page({
   },
   goask_res(e) {
     wx.navigateTo({
-      url: '../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
+      url: '../index/run/run?id=' + e.currentTarget.dataset.id + '&userid=' + e.currentTarget.dataset.userid,
     })
   },
 
@@ -185,16 +203,18 @@ Page({
     }, config.insterstList, (res) => {
       //循环设置距离
       for (let i = 0; i < res.data.data.length; i++) {
+        console.log(res.data.data[i].create_time)
+        // res.data.data[i].create_time = config.timeFormat(res.data.data[i].create_time * 1000)
         res.data.data[i].distance = (res.data.data[i].distance / 1000).toFixed(1);
         res.data.data[i].authur_act = 'http://xiangyu.wx.bronet.cn/images/a01@2x.png'
       }
+      console.log(res.data.data)
       that.setData({
         interestList: res.data.data
       })
       wx.hideLoading()
     })
   },
-
   //点击需求下的分类
   demindtap: function (event) {
     var that = this

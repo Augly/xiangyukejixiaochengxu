@@ -62,20 +62,20 @@
 <view wx:if="{{!getfous||!gift}}">
   <view class='foot'>
     <view class='foot_item' bindtap='zan'>
-      <text class="iconfont {{iszan?'icon-xihuan1':'icon-xin'}}"></text>
-      <text class='foot_title'>点赞</text>
+      <view class="iconfont {{iszan?'icon-xihuan1':'icon-xin'}}"></view>
+      <view class='foot_title'>点赞</view>
     </view>
     <view class='foot_item' bindtap='sendgift'>
-      <text class='iconfont icon-gifs'></text>
-      <text class='foot_title'>送礼</text>
+      <view class='iconfont icon-gifs'></view>
+      <view class='foot_title'>送礼</view>
     </view>
     <view class='foot_item' bindtap='topublish'>
-      <text class='iconfont icon-shuangren'></text>
-      <text class='foot_title'>参与</text>
+      <view class='iconfont icon-shuangren'></view>
+      <view class='foot_title'>参与</view>
     </view>
     <view class='foot_item'>
-      <text class='iconfont icon-fenxiang'></text>
-      <text class='foot_title'>分享</text>
+      <view class='iconfont icon-fenxiang'></view>
+      <view class='foot_title'>分享</view>
     </view>
   </view>
 </view>

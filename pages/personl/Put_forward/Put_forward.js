@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    myviff: 0.00
   },
 
   /**
@@ -32,6 +32,20 @@ Page({
   
   },
   /**
+   * 输入提现金额
+   */
+  iptall:function(e){
+    if (e.detail.value > this.data.bill.balance){
+      this.setData({
+        myviff: this.data.bill.balance
+      })
+    } else if (e.detail.value == '' || e.detail.value ==0){
+      this.setData({
+        myviff:0.00
+      })
+    }
+  },
+  /**
    * 提现规则
    */
   rule(){
@@ -51,13 +65,35 @@ Page({
    */
   tx:function(){
     var that=this
-    config.ajax('POST',{
+    if (this.data.myviff>0){
+      config.ajax('POST', {
+        user_id: app.globalData.user_id,
+        price: this.data.myviff,
+        time: that.data.bill.time,
+        authcode: that.data.bill.authcode
+      }, config.tx, (res) => {
+        console.log(res)
+        wx.showToast({
+          title: '提现成功',
+          icon: 'none',
+        })
+      })
+    }
+  },
+  //全部提现
+  allmoney:function(){
+    var that = this
+    config.ajax('POST', {
       user_id: app.globalData.user_id,
-      price:0.5,
+      price: this.data.bill.balance,
       time: that.data.bill.time,
-      authcode:that.data.bill.authcode
-    },config.tx,(res)=>{
+      authcode: that.data.bill.authcode
+    }, config.tx, (res) => {
       console.log(res)
+      wx.showToast({
+        title: '提现成功',
+        icon: 'none',
+      })
     })
   },
   /**

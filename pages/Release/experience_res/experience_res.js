@@ -299,7 +299,6 @@ Page({
     if (mytime > moneytime) {
 
     } else {
-      console.log(2)
       that.innerAudioContext.src = that.data.myaudio.src;
       that.innerAudioContext.play()
       var timeclone = setInterval(function () {

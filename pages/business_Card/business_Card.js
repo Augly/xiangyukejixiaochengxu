@@ -1,4 +1,6 @@
 // pages/business_Card/business_Card.js
+const config=require('../../utils/config.js')
+let app=getApp()
 Page({
 
   /**
@@ -12,7 +14,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    config.ajax('POST',{
+      user_id: app.globalData.user_id
+    }, config.user_card,(res)=>{
+      console.log(res)
+      if(res.data.data.sex==1){
+          res.data.data.sex="男"
+      }else{
+        res.data.data.sex = "女"
+      }
+      this.setData({
+        alldata:res.data.data
+      })
+    })
   },
   /**
    * 编辑名片

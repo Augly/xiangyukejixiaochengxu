@@ -1,4 +1,6 @@
 // pages/personl/push/push.js
+const config=require('../../../utils/config.js')
+let app=getApp()
 Page({
 
   /**
@@ -20,6 +22,34 @@ Page({
     this.setData({
       index: e.currentTarget.dataset.id
     })
+    if (e.currentTarget.dataset.id==0){
+      config.ajax('POST', {
+        user_id: app.globalData.user_id
+      }, config.user_share, (res) => {
+        console.log(res)
+        this.setData({
+          myShare: res.data.data
+        })
+      })
+    } else if (e.currentTarget.dataset.id == 1){
+      config.ajax('POST', {
+        user_id: app.globalData.user_id
+      }, config.user_interest, (res) => {
+        console.log(res)
+        this.setData({
+          myInterest : res.data.data
+        })
+      })
+    }else{
+      config.ajax('POST', {
+        user_id: app.globalData.user_id
+      }, config.user_need, (res) => {
+        console.log(res)
+        this.setData({
+          myNeed: res.data.data
+        })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -33,10 +63,35 @@ Page({
         })
       }
     })
+    config.ajax('POST',{
+      user_id: app.globalData.user_id
+    }, config.user_share,(res)=>{
+      console.log(res)
+      this.setData({
+        myShare:res.data.data
+      })
+    })
+
   },
   finish:function(e){
     this.setData({
       index: e.detail.current
+    })
+  },
+  /**
+ * 跳转到共享经验详情
+ */
+  share: function (e) {
+    wx.navigateTo({
+      url: '../../Release/experience_res/experience_res?share_id=' + e.currentTarget.dataset.id,
+    })
+  },
+  /**
+   * 跳转到兴趣社详情
+   */
+  lookinterset: function (e) {
+    wx.navigateTo({
+      url: '../../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
     })
   },
   /**

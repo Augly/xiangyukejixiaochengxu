@@ -96,6 +96,7 @@
   font-size:30rpx;
 font-family:PingFang-SC-Medium;
 color:rgba(153,153,153,1);
+box-sizing: border-box;
 }
 
 .join_anthur_main {

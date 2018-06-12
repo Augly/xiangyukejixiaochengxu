@@ -55,6 +55,11 @@ Page({
     })
 
   },
+  push_active:function(){
+    wx.navigateTo({
+      url: '../Push_active/Push_active',
+    })
+  },
   /**
    *点赞 
    */
@@ -152,6 +157,9 @@ Page({
       jid: that.data.id
     }, config.setJoin, (res) => {
       console.log(res)
+      this.setData({
+        'interestData.is_join':1
+      })
     })
   },
   /**

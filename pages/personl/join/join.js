@@ -47,7 +47,23 @@ Page({
         })
       })
     }
+  },
 
+  /**
+   * 跳转到共享经验详情
+   */
+  share:function(e){
+    wx.navigateTo({
+      url: '../../Release/experience_res/experience_res?share_id=' + e.currentTarget.dataset.id,
+    })
+  },
+  /**
+   * 跳转到兴趣社详情
+   */
+  lookinterset:function(e){
+    wx.navigateTo({
+      url: '../../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -67,12 +83,12 @@ Page({
       for (let n = 0; n < res.data.data.length; n++) {
         res.data.data[n].create_time = config.timeFormat(res.data.data[n].create_time * 1000);
       }
+      console.log(res)
       that.setData({
         sharelist: res.data.data
       })
     })
   },
-
 
   finish: function (e) {
     this.setData({

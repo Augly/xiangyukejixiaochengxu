@@ -1,7 +1,7 @@
 <view class="mywrap">
   <view class='head'>
-    <image class='head_logo'></image>
-    <view class='head_title'>向昱筱</view>
+    <image class='head_logo' src='{{alldata.avatar}}'></image>
+    <view class='head_title'>{{avatar.user_nickname}}</view>
     <view class='head_mintitle'>在实现自我价值中寻求一种满足感</view>
   </view>
 </view>
@@ -18,7 +18,7 @@
   </view>
   <view class='zl_item'>
     <text class='iconfont icon-wode'></text>
-    <text class='item_res'>女 白羊座 1994-03-22</text>
+    <text class='item_res'>{{alldata.sex}} {{alldata.constellation}} {{alldata.birthday}}</text>
   </view>
   <view class='zl_item'>
     <text class='iconfont icon-weizhi'></text>
