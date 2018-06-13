@@ -268,6 +268,18 @@ Page({
     })
   },
   onLoad: function () {
+    wx.showTabBarRedDot({
+      index: 3,
+      success: function (res) {
+        wx.setTabBarBadge({
+          index: 3,
+          text: '1111',
+
+        })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
     this.setData({
       imgurl: app.globalData.imgurl
     })

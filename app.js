@@ -8,6 +8,8 @@ App({
     qqmapsdk = new QQMapWX({
       key: 'CRZBZ-GGA6S-AFZOH-6JEIJ-RFOAE-RSB5H'
     });
+
+
     var that=this
     wx.login({
       success: res => {

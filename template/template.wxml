@@ -66,6 +66,8 @@
     <view class='showImg'>
       <image class="item_img" src="{{mian_imgurl}}" mode="widthFix"></image>
       <image class='myitem_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}"></image>
+      <view class='myitem_price'>赚10元</view>
+      <view class='myitem_type'>跑</view>
       <view class='myitem_txt'>{{title}}</view>
       <view class='myshowText'>
         <view class='anthur_Group'>

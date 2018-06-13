@@ -1,4 +1,6 @@
 // pages/near/near.js
+const config=require('../../utils/config.js')
+let app=getApp()
 Page({
 
   /**
@@ -90,7 +92,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getSystemInfo()
+    var that=this
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng,
+      page:1
+    }, config.nearly, (res) => {
+      console.log(res)
+      //给共享经验设置距离
+      for (let i = 0; i < res.data.data[0].length; i++) {
+        res.data.data[0][i].distance = (res.data.data[0][i].distance / 1000).toFixed(1)
+      }
+      // console.log(res.data.data.list)
+      //赋值给数据note
+      that.setData({
+        note: res.data.data[0]
+      })
+      wx.hideLoading()
+    })
   },
   /**
    * 滑动事件

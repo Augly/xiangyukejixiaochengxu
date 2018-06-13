@@ -1476,3 +1476,23 @@
   background-image: url('http://xiangyu.wx.bronet.cn/images/close@2x.png');
   background-size: 100% 100%;
 }
+
+
+.myitem_type,.myitem_price{
+  border-radius:5rpx; 
+  background-color: RGBA(152, 97, 225, 0.6);
+  padding: 10rpx;
+  font-size:30rpx;
+  font-family:PingFang-SC-Medium;
+  color:rgba(255,255,255,1);
+  position: absolute;
+  line-height: 30rpx;
+}
+.myitem_type{
+  right: 7rpx;
+  top: 8rpx;
+}
+.myitem_price{
+  right: 73rpx;
+  top: 8rpx;
+}
