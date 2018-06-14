@@ -4,14 +4,14 @@
   <view class='scrollView'>
     <view class='left'>
       <block wx:for="{{note}}" wx:key="">
-        <template is="item" data="{{...item}}" wx:if="{{index%2==0&&item.authur_class=='one'}}"></template>
-        <template is="myitem" data="{{...item}}" wx:if="{{index%2==0&&item.authur_class=='two'}}"></template>
+        <template is="nearitem" data="{{...item}}" wx:if="{{index%2==0&&item.sorts==1}}"></template>
+        <template is="myitem" data="{{...item}}" wx:if="{{index%2==0&&item.sorts==2}}"></template>
       </block>
     </view>
     <view class='right'>
       <block wx:for="{{note}}" wx:key="">
-        <template is="item" data="{{...item}}" wx:if="{{index%2==1&&item.authur_class=='one'}}"></template>
-        <template is="myitem" data="{{...item}}" wx:if="{{index%2==1&&item.authur_class=='two'}}"></template>
+        <template is="nearitem" data="{{...item}}" wx:if="{{index%2==1&&item.sorts==1}}"></template>
+        <template is="myitem" data="{{...item}}" wx:if="{{index%2==1&&item.sorts==2}}"></template>
       </block>
     </view>
   </view>

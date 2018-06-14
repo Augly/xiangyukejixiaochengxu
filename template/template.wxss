@@ -67,7 +67,7 @@
 
 .myitem_txt {
   position: absolute;
-  bottom: 105rpx;
+  bottom: 124rpx;
   width: 100%;
   height: 80rpx;
   font-size: 26rpx;
@@ -96,8 +96,23 @@
   bottom: 0;
 }
 
+.myshowText_one{
+width: 100%;
+  height: 124rpx;
+  box-sizing: border-box;
+  padding: 12rpx 10rpx;
+  background-color: RGBA(255, 255, 255, 0.7);
+  position: absolute;
+  bottom: 0;
+}
+
 .anthur_Group {
   width: 100%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.anthur_Group_one{
   height: 60rpx;
   display: flex;
   align-items: center;
@@ -116,13 +131,23 @@
   border-radius: 50%;
   background: red;
 }
+.show_anthur_one{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: red;
+}
 
 .anthur_Info {
   width: 200rpx;
   height: 60rpx;
   margin-left: 15rpx;
 }
-
+.anthur_Info_one{
+  width: 135rpx;
+  height: 60rpx;
+  margin-left: 15rpx;
+}
 .Interestitem_title {
   font-size: 30rpx;
   font-family: PingFang-SC-Medium;
@@ -144,9 +169,16 @@
   align-items: center;
 }
 
+.anthurInfo_name_one{
+  width: 80%;
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+}
+
 .name {
-  font-size: 24rpx;
-  max-width: 150rpx;
+  font-size: 22rpx;
+  max-width: 140rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(51, 51, 51, 1);
   overflow: hidden;
@@ -157,7 +189,7 @@
 .anthur_Data {
   font-size: 24rpx;
   font-family: PingFang-SC-Medium;
-  color: rgba(153, 153, 153, 1);
+  color: rgba(51, 51, 51, 1);
 }
 
 .icon-nv, .icon-nan {
@@ -1017,13 +1049,13 @@
 }
 
 .name {
-  font-size: 32rpx;
+  font-size: 24rpx;
   font-family: PingFang-SC-Medium;
   color: rgba(51, 51, 51, 1);
 }
 
 .name .iconfont {
-  font-size: 32rpx;
+  font-size: 24rpx;
 }
 
 .time {

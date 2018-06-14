@@ -155,20 +155,25 @@ Page({
         })
       })
     } else if (event.currentTarget.dataset.id == '1'){
+      wx.showLoading({
+        title: '加载中...',
+        mask: true,
+      })
       config.ajax('POST', {
         user_id: app.globalData.user_id,
         lat: app.globalData.lat,
-        lng: app.globalData.lng
-      }, config.nearly, (res) => {
+        lng: app.globalData.lng,
+        page: 1
+      }, config.recommend, (res) => {
         console.log(res)
         //给共享经验设置距离
-        for (let i = 0; i < res.data.data.list.length; i++) {
-          res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
+        for (let i = 0; i < res.data.data[0].length; i++) {
+          res.data.data[0].distance = (res.data.data[0].distance / 1000).toFixed(1)
         }
-        console.log(res.data.data.list)
+        console.log(res.data.data[0])
         //赋值给数据note
         that.setData({
-          note: res.data.data.list
+          note: res.data.data[0]
         })
         wx.hideLoading()
       })
@@ -250,6 +255,19 @@ Page({
       url: '../Release/experience_res/experience_res?share_id=' + e.currentTarget.dataset.id,
     })
   },
+
+
+  looktjres:function(e){
+    if (e.currentTarget.dataset.sortid==2){
+      wx.navigateTo({
+        url: '../Release/experience_res/experience_res?share_id=' + e.currentTarget.dataset.id,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
+      })
+    } 
+  },
   scrolltolower: function () {
 
   },
@@ -268,6 +286,25 @@ Page({
     })
   },
   onLoad: function () {
+    var that=this
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng,
+      page: 1
+    }, config.recommend, (res) => {
+      console.log(res)
+      //给共享经验设置距离
+      for (let i = 0; i < res.data.data[0].length; i++) {
+        res.data.data[0].distance = (res.data.data[0].distance / 1000).toFixed(1)
+      }
+      console.log(res.data.data[0])
+      //赋值给数据note
+      that.setData({
+        note: res.data.data[0]
+      })
+      wx.hideLoading()
+    })
     wx.showTabBarRedDot({
       index: 3,
       success: function (res) {

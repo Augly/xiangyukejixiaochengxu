@@ -1,7 +1,13 @@
 /* pages/near/near.wxss */
 @import "../../template/template.wxss";
-.wrap{
+
+.wrap {
   box-sizing: border-box;
-  /* padding-top: 100rpx; */
-   /* padding-bottom: 100rpx; */
+  /* padding-top: 100rpx; *//* padding-bottom: 100rpx; */
+}
+
+.icon-xihuan1 {
+  font-size: 35rpx;
+  margin-left: 5rpx;
+  color: RGBA(152, 97, 225, 1);
 }

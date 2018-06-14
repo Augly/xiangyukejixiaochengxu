@@ -60,7 +60,7 @@
           </view>
           <view class='x_item_res_data'>{{item.create_time}}</view>
           <view class='x_item_res_mintitle'>
-            <text class='paple'>未完成</text> {{item.view}}人阅读、{{item.view}}人评论
+            <text class='paple'>未完成 </text> {{item.view}}人阅读、{{item.view}}人评论
             <view class='x_mintitle'>
               <text class='iconfont icon-icon'></text>删除</view>
           </view>

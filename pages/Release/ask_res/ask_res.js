@@ -153,8 +153,8 @@ Page({
       user_id: app.globalData.user_id,
       lat: app.globalData.lat,
       lng: app.globalData.lng,
-      share_id: options.share_id
-    }, config.getShareDetail, (res) => {
+      need_id: options.share_id
+    }, config.needres, (res) => {
       console.log(res)
       let myaudio = {
         src: res.data.data.media,

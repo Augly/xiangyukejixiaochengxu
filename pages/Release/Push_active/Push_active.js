@@ -63,9 +63,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      wx.setNavigationBarTitle({
-        title: '发布新活动'
-      })
+    wx.setNavigationBarTitle({
+      title: '发布新活动'
+    })
     this.setData({
       'adder.adder': app.globalData.adder,
     });

@@ -27,12 +27,12 @@
   <view class='scrollView'>
     <view class='left'>
       <block wx:for="{{note}}" wx:key="">
-        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        <template is="tjitem" data="{{...item}}" wx:if="{{index%2==0}}"></template>
       </block>
     </view>
     <view class='right'>
       <block wx:for="{{note}}" wx:key="">
-        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        <template is="tjitem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
       </block>
     </view>
   </view>
@@ -139,13 +139,13 @@
 
   <view class='InterestGroup' wx:elif="{{myindex==2}}">
     <block wx:for="{{demindlist}}" wx:key="">
-      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      <template is="deminditem" data="{{...item}}"></template>
     </block>
   </view>
 
   <view class='InterestGroup' wx:else="{{myindex==3}}">
     <block wx:for="{{demindlist}}" wx:key="">
-      <template is="deminditem" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      <template is="deminditem" data="{{...item}}"></template>
     </block>
   </view>
 </scroll-view>

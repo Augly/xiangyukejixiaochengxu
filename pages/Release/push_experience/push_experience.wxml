@@ -14,7 +14,7 @@
 <!--选择发布方式-->
 
 <template is="upimg" data="{{...myimg}}" wx:if="{{myimg.imgSrc!=null}}"></template>
-<template is="anthurPro" data='{{...description}}'></template>
+<!-- <template is="anthurPro" data='{{...description}}'></template> -->
 <template is='allkind' wx:if="{{type=='兴趣'}}" data="{{...myallkind}}"></template>
 <view wx:if="{{type=='共享经验'}}">
   <template is="selet_group" data="{{...select}}"></template>

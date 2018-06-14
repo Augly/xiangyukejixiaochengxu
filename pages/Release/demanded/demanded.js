@@ -616,25 +616,27 @@ Page({
       sendgift = 0
     }
     //文字说明
-    var reg = /^1(3|4|5|7|8)\d{9}$/;
-    if (that.data.name.name != '') {}else{
-      return false
-    wx.showModal({
-      title: '提示',
-      content: '收件人姓名不能为空',
-    })
-  }
 
-    if (reg.test(that.data.phone.phone) == true) { 
-
-    }else{
-      return false
-    wx.showModal({
-      title: '提示',
-      content: '收件人手机号不正确',
-    })
-  }
+    console.log(that.data.type)
     if (that.data.type=='跑腿'){
+      var reg = /^1(3|4|5|7|8)\d{9}$/;
+      if (that.data.name.name != '') { } else {
+        return false
+        wx.showModal({
+          title: '提示',
+          content: '收件人姓名不能为空',
+        })
+      }
+
+      if (reg.test(that.data.phone.phone) == true) {
+
+      } else {
+        return false
+        wx.showModal({
+          title: '提示',
+          content: '收件人手机号不正确',
+        })
+      }
       var ti = setInterval(function () {
         if (myimgSrc != null || myimgSrc != undefined) {  
 
@@ -694,6 +696,7 @@ Page({
         }
       }, 1000)
     }else{
+      console.log('非跑腿')
       if (this.data.text.info == null || this.data.text.info == undefined) {
         wx.showModal({
           title: '提示',
@@ -843,6 +846,7 @@ Page({
         price: that.data.allprice.allprice
       }
       config.ajax("POST", param, config.send, (res) => {
+        console.log(res)
         clearInterval(ti)
         //ajax访问成功函数
       }, (res) => {
@@ -885,6 +889,7 @@ Page({
         price:that.data.price.price
       }
       config.ajax("POST", param, config.send, (res) => {
+        console.log(res)
         //ajax访问成功函数
         clearInterval(ti)
       }, (res) => {

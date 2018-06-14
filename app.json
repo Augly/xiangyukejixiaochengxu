@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/begin/begin",
-    
     "pages/pay/pay",
     "pages/personl/sendGift/sendGift",
     "pages/Release/join_res/join_res",

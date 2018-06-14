@@ -71,6 +71,20 @@ Page({
       height: '100%',
     }
   },
+  /**
+ * 查看共享经验详情
+ */
+  lookres: function (e) {
+    wx.navigateTo({
+      url: '../Release/experience_res/experience_res?share_id=' + e.currentTarget.dataset.id,
+    })
+  },
+  //点击查看兴趣社详情
+  lookinterst(e) {
+    wx.navigateTo({
+      url: '../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
+    })
+  },
   //事件处理函数
   navClick: function (event) {
     // var _type=''

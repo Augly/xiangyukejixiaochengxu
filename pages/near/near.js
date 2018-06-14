@@ -88,11 +88,41 @@ Page({
       }
     })
   },
+  //查看兴趣或者共享经验
+  looktjres: function (e) {
+    console.log(e.currentTarget.dataset.sortid)
+    if (e.currentTarget.dataset.sortid =='2') {
+      console.log('共享经验')
+      wx.navigateTo({
+        url: '../Release/experience_res/experience_res?share_id=' + e.currentTarget.dataset.id,
+      })
+    } else {
+      console.log('兴趣社')
+      wx.navigateTo({
+        url: '../Release/Interest/Interest?id=' + e.currentTarget.dataset.id,
+      })
+    }
+  },
+
+  lookother: function (e) {
+    if (e.currentTarget.dataset.sortid =='3') {
+      wx.navigateTo({
+        url: '../index/run/run?id=' + e.currentTarget.dataset.id + '&userid=' + e.currentTarget.dataset.userid,
+      })
+    } else {
+      wx.navigateTo({
+        url: '../Release/ask_res/ask_res?id=' + e.currentTarget.dataset.id,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this
+    wx.showLoading({
+      title: '加载中...',
+    })
     config.ajax('POST', {
       user_id: app.globalData.user_id,
       lat: app.globalData.lat,

@@ -7,6 +7,8 @@ const options = {
   format: 'mp3'
 },
 
+recommend='/api/portal/Index/recommend',  //推荐详情
+
 errDetail ='/api/portal/Purchase/errDetail', //需求详情
 
 myBalance='/api/portal/User/myBalance',  //用户余额
@@ -78,6 +80,10 @@ giftlist='/api/portal/User/gift', //礼物列表
 giftBuy='/api/portal/User/giftBuy', //购买礼物
 
 myGift='/api/portal/User/myGift',  //我的背包
+
+myDel='/api/portal/User/myDel',  //我的删除
+
+needres='/api/portal/Purchase/errDetail',  //需求详情
 
 interest ='/api/portal/Interest/interestindex', 
 
@@ -216,6 +222,8 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  needres: needres,
+  recommend: recommend,
   nearly: nearly,
   myCollection: myCollection,
   user_card: user_card,
