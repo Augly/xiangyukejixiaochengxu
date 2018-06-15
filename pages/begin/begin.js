@@ -296,7 +296,7 @@ Page({
       console.log(res)
       //给共享经验设置距离
       for (let i = 0; i < res.data.data[0].length; i++) {
-        res.data.data[0].distance = (res.data.data[0].distance / 1000).toFixed(1)
+        res.data.data[0][i].distance = (res.data.data[0][i].distance / 1000).toFixed(1)
       }
       console.log(res.data.data[0])
       //赋值给数据note

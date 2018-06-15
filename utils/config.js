@@ -7,111 +7,113 @@ const options = {
   format: 'mp3'
 },
 
-recommend='/api/portal/Index/recommend',  //推荐详情
+  myorder='/api/portal/User/myOrder',  //我的订单
 
-errDetail ='/api/portal/Purchase/errDetail', //需求详情
+  recommend = '/api/portal/Index/recommend',  //推荐详情
 
-myBalance='/api/portal/User/myBalance',  //用户余额
+  errDetail = '/api/portal/Purchase/errDetail', //需求详情
 
-checkInterestJoin='/api/portal/Join/checkInterestJoin', //检查兴趣社是否可参与
+  myBalance = '/api/portal/User/myBalance',  //用户余额
 
-imgurl ="http://xiangyu.wx.bronet.cn/images/",
+  checkInterestJoin = '/api/portal/Join/checkInterestJoin', //检查兴趣社是否可参与
 
-myimgUrl ="https://xiangyu.lu.broteam.cn/public/assets/", // 图片地址
+  imgurl = "http://xiangyu.wx.bronet.cn/images/",
 
-addShare ="/api/portal/Share/setShare",
+  myimgUrl = "https://xiangyu.lu.broteam.cn/public/assets/", // 图片地址
 
-uploadFile ="https://xiangyu.lu.broteam.cn/portal/Common/upload", //上传文件接口
+  addShare = "/api/portal/Share/setShare",
 
-getOpenid = "/api/portal/Index/getOpenid",  //获取openid
+  uploadFile = "https://xiangyu.lu.broteam.cn/portal/Common/upload", //上传文件接口
 
-setInfo ='/api/portal/User/changeName',
+  getOpenid = "/api/portal/Index/getOpenid",  //获取openid
 
-lists ='/api/portal/Purchase/lists',
+  setInfo = '/api/portal/User/changeName',
 
-setJoin ='/api/portal/Join/setJoin',
+  lists = '/api/portal/Purchase/lists',
 
-getShareDetail ='/api/portal/Share/getShareDetail',
+  setJoin = '/api/portal/Join/setJoin',
 
-setInterest ='/api/portal/Interest/setInterest',
+  getShareDetail = '/api/portal/Share/getShareDetail',
 
-person ='/api/portal/User/index',
+  setInterest = '/api/portal/Interest/setInterest',
 
-interestSort ='/api/portal/Interest/interestSort', //兴趣社分类
+  person = '/api/portal/User/index',
 
-insterstList ='/api/portal/Interest/interestList',
+  interestSort = '/api/portal/Interest/interestSort', //兴趣社分类
 
-send ='/api/portal/Purchase/send', //发布跑腿
+  insterstList = '/api/portal/Interest/interestList',
 
-sendCode='/api/portal/Common/sendCode',  //发送手机短信
+  send = '/api/portal/Purchase/send', //发布跑腿
 
-bindMobile ='/api/portal/Common/bindMobile', //绑定手机号
+  sendCode = '/api/portal/Common/sendCode',  //发送手机短信
 
-sortList ='/api/portal/Interest/interestSort', 
+  bindMobile = '/api/portal/Common/bindMobile', //绑定手机号
 
-payOrder ='/api/portal/User/payOrder',  //购买礼物提交
+  sortList = '/api/portal/Interest/interestSort',
 
-joinShare ='/api/portal/User/joinShare',  //我参与的共享经验
+  payOrder = '/api/portal/User/payOrder',  //购买礼物提交
 
-joinInterest ='/api/portal/User/joinInterest', //我参与的兴趣社
+  joinShare = '/api/portal/User/joinShare',  //我参与的共享经验
 
-joinComment ='/api/portal/Common/joinComment', //发表评论
+  joinInterest = '/api/portal/User/joinInterest', //我参与的兴趣社
 
-fans ='/api/portal/User/fans',
+  joinComment = '/api/portal/Common/joinComment', //发表评论
 
-myOrder='/api/portal/User/myOrder',  //礼物变现
+  fans = '/api/portal/User/fans',
 
-withdraw ='/api/portal/User/withdraw', //提现页面
+  myOrder = '/api/portal/User/myOrder',  //礼物变现
 
-tx='/api/portal/User/withdraw_handle', //提现提交
+  withdraw = '/api/portal/User/withdraw', //提现页面
 
-userGood ='/api/portal/Common/userGood', //点赞
+  tx = '/api/portal/User/withdraw_handle', //提现提交
 
-follow ='/api/portal/User/addFollow', //关注
+  userGood = '/api/portal/Common/userGood', //点赞
 
-favorite ='/api/portal/Common/favorite', //收藏 
+  follow = '/api/portal/User/addFollow', //关注
 
-Recharge ='/api/portal/User/addBalance',
+  favorite = '/api/portal/Common/favorite', //收藏 
 
-authorize='/api/portal/Common/authorize',  //个人信息存储
+  Recharge = '/api/portal/User/addBalance',
 
-giftlist='/api/portal/User/gift', //礼物列表
+  authorize = '/api/portal/Common/authorize',  //个人信息存储
 
-giftBuy='/api/portal/User/giftBuy', //购买礼物
+  giftlist = '/api/portal/User/gift', //礼物列表
 
-myGift='/api/portal/User/myGift',  //我的背包
+  giftBuy = '/api/portal/User/giftBuy', //购买礼物
 
-myDel='/api/portal/User/myDel',  //我的删除
+  myGift = '/api/portal/User/myGift',  //我的背包
 
-needres='/api/portal/Purchase/errDetail',  //需求详情
+  myDel = '/api/portal/User/myDel',  //我的删除
 
-interest ='/api/portal/Interest/interestindex', 
+  needres = '/api/portal/Purchase/errDetail',  //需求详情
 
-user_share='/api/portal/User/share',  //我发布的共享经验
+  interest = '/api/portal/Interest/interestindex',
 
-user_interest='/api/portal/User/interest',  //我发布的兴趣社
+  user_share = '/api/portal/User/share',  //我发布的共享经验
 
-user_need ='/api/portal/User/need',  //我发布的需求
+  user_interest = '/api/portal/User/interest',  //我发布的兴趣社
 
-user_card='/api/portal/User/myCard',  //我的名片
+  user_need = '/api/portal/User/need',  //我发布的需求
 
-myPresentWithdraw='/api/portal/User/myPresentWithdraw', //礼物变现
+  user_card = '/api/portal/User/myCard',  //我的名片
 
-getexper ='/api/portal/Share/getShare', 
+  myPresentWithdraw = '/api/portal/User/myPresentWithdraw', //礼物变现
 
-nearly='/api/portal/Index/nearly',  //附近
+  getexper = '/api/portal/Share/getShare',
 
-myCollection='/api/portal/User/myCollection',  //我的收藏
+  nearly = '/api/portal/Index/nearly',  //附近
 
-checkMobile='/api/portal/Common/checkMobile', //检查是否绑定过手机号
+  myCollection = '/api/portal/User/myCollection',  //我的收藏
 
-send_present ='/api/portal/Common/send_present', //赠送礼物
+  checkMobile = '/api/portal/Common/checkMobile', //检查是否绑定过手机号
 
-userCard='/api/portal/Common/userCard',  //获取用户名片信息
+  send_present = '/api/portal/Common/send_present', //赠送礼物
 
-getfollow='/api/portal/User/follow',  //获取我的关注列表
+  userCard = '/api/portal/Common/userCard',  //获取用户名片信息
 
-gitpresent='/api/portal/Common/present';
+  getfollow = '/api/portal/User/follow',  //获取我的关注列表
+
+  gitpresent = '/api/portal/Common/present';
 
 //获取dataset
 
@@ -153,7 +155,7 @@ function ajax(Type, params, url, successData, errorData, completeData) {
   })
 }
 
-function pay(res, successData){
+function pay(res, successData) {
   wx.requestPayment({
     "timeStamp": res.data.data.timeStamp,
     "nonceStr": res.data.data.nonceStr,
@@ -195,6 +197,9 @@ function timeFormat(time) {
     curYear = curDate.getFullYear(),
     curHour = curDate.getHours(),
     timeStr;
+  if (minute < 10) {
+    minute = '0' + minute
+  }
   if (year < curYear) {
     timeStr = year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
   } else {
@@ -222,34 +227,36 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  myorder: myorder,
+  myDel: myDel,
   needres: needres,
   recommend: recommend,
   nearly: nearly,
   myCollection: myCollection,
   user_card: user_card,
   user_need: user_need,
-  user_interest:user_interest,
+  user_interest: user_interest,
   user_share: user_share,
   myBalance: myBalance,
   getfollow: getfollow,
   errDetail: errDetail,
-  payOrder:payOrder,
+  payOrder: payOrder,
   send_present: send_present,
   tx: tx,
-  withdraw:withdraw,
+  withdraw: withdraw,
   interest: interest,
-  joinInterest:joinInterest,
+  joinInterest: joinInterest,
   joinShare: joinShare,
   getDataset: getDataset,
   uid: uid,
-  checkInterestJoin:checkInterestJoin,
+  checkInterestJoin: checkInterestJoin,
   setInfo: setInfo,
   ajax: ajax,
   getOpenid: getOpenid,
   options: options,
   uploadFile: uploadFile,
   addShare: addShare,
-  myimgUrl:myimgUrl,
+  myimgUrl: myimgUrl,
   getexper: getexper,
   setInterest: setInterest,
   person: person,
@@ -262,7 +269,7 @@ module.exports = {
   timeFormat: timeFormat,
   getShareDetail: getShareDetail,
   setJoin: setJoin,
-  userGood:userGood,
+  userGood: userGood,
   follow: follow,
   favorite: favorite,
   joinComment: joinComment,
@@ -274,7 +281,7 @@ module.exports = {
   bindMobile: bindMobile,
   checkMobile: checkMobile,
   giftlist: giftlist,
-  giftBuy:giftBuy,
+  giftBuy: giftBuy,
   myGift: myGift,
   authorize: authorize,
   myPresentWithdraw: myPresentWithdraw,

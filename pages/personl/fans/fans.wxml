@@ -1,9 +1,9 @@
 <view class="fans_list" wx:for="{{allData}}">
   <image class='fans_logo'></image>
   <view class='fans_title'>{{item.user_nickname}}
-    <text class='iconfont icon-nv' wx:if="{{item.sex==1}}"></text>
-    <text class='iconfont icon-nan' wx:if="{{item.sex==0}}"></text> </view>
-  <view class='fans_type' bindtap='gzone'  data-id="{{item.id}}" data-index='{{index}}'>
+    <text class='iconfont icon-nv' wx:if="{{item.sex==2}}"></text>
+    <text class='iconfont icon-nan' wx:if="{{item.sex==1}}"></text> </view>
+  <view class='fans_type' bindtap='gzone'  data-id="{{item.concerned_id}}" data-index='{{index}}'>
     <text class='iconfont icon-guanzhu1' wx:if="{{item.is_each==0}}"></text>
     <text class='iconfont icon-quxiaoguanzhux' wx:if="{{item.is_each==1}}"></text> {{item.gztype}} 
   </view>

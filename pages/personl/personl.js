@@ -18,6 +18,7 @@ Page({
     config.ajax('POST',{
       user_id: app.globalData.user_id
     }, config.person,(res)=>{
+      console.log(res)
         that.setData({
           alldata:res.data.data
         })
@@ -93,7 +94,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    config.ajax('POST', {
+      user_id: app.globalData.user_id
+    }, config.person, (res) => {
+      console.log(res)
+      that.setData({
+        alldata: res.data.data
+      })
+    })
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
   },
 
   /**

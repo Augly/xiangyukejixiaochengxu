@@ -15,13 +15,13 @@
 
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;" bindchange="finish" current='{{index}}'>
   <swiper-item>
-    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;" scroll-y>
       <view class='s_item' wx:for="{{myShare}}" bindtap='share' data-id='{{item.id}}'>
         <image class='s_item_logo' src='{{item.thumb}}'></image>
         <view class='s_item_res'>
           <view class='s_item_res_title'>
             <view class='s_title'>{{item.title}}</view>
-            <view class='s_mintitle'>
+            <view class='s_mintitle' catchtap='shareMydel' data-id='{{item.id}}' data-index="{{index}}">
               <text class='iconfont icon-icon'></text>删除</view>
           </view>
           <view class='s_item_res_data'>{{item.create_time}}</view>
@@ -33,13 +33,13 @@
 
 
   <swiper-item>
-    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;" scroll-y>
       <view class='s_item' wx:for="{{myInterest}}" bindtap='lookinterset' data-id='{{item.id}}'>
         <image class='s_item_logo' style='width:249rpx' src='{{item.thumb}}'></image>
         <view class='s_item_res' style='width:420rpx'>
           <view class='s_item_res_title'>
             <view class='s_title'>{{item.title}}</view>
-            <view class='s_mintitle'>
+            <view class='s_mintitle' catchtap='interMydel' data-id='{{item.id}}' data-index="{{index}}">
               <text class='iconfont icon-icon'></text>删除</view>
           </view>
           <view class='s_item_res_data'>{{item.create_time}}</view>
@@ -50,7 +50,7 @@
   </swiper-item>
 
   <swiper-item>
-    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;">
+    <scroll-view class='scrollView' style="width:{{systemInfo.windowWidth}}px;height:{{systemInfo.windowHeight}}px;" scroll-y>
       <view class='x_item' wx:for="{{myNeed}}">
         <image class='x_item_logo' src='{{item.thumb}}'></image>
         <view class='x_item_res'>
@@ -61,7 +61,7 @@
           <view class='x_item_res_data'>{{item.create_time}}</view>
           <view class='x_item_res_mintitle'>
             <text class='paple'>未完成 </text> {{item.view}}人阅读、{{item.view}}人评论
-            <view class='x_mintitle'>
+            <view class='x_mintitle' catchtap='needMydel' data-id='{{item.id}}' data-index="{{index}}" data-type="{{item.table}}">
               <text class='iconfont icon-icon'></text>删除</view>
           </view>
         </view>

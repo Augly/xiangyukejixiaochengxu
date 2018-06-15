@@ -1,0 +1,5 @@
+<view>
+  <button bindtap='test'>测试</button>
+  <input bindinput='ipt'></input>
+  <button bindtap='send'>发送</button>
+</view>

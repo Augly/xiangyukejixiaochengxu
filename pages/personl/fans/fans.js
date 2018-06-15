@@ -78,8 +78,7 @@ Page({
           })
         } else if (res.data.data.status == '0') {
           if (this.data._type=='关注'){
-            gz = gz.splice(event.currentTarget.dataset.index,1)
-            console.log(gz)
+            gz.splice(event.currentTarget.dataset.index,1)
           }else{
           gz[event.currentTarget.dataset.index].is_each=0
           gz[event.currentTarget.dataset.index].gztype = '添加关注'

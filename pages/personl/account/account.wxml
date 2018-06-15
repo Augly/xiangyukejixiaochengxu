@@ -12,7 +12,7 @@
   <view class='acount_item_title'>我的礼物</view>
   <text class='iconfont icon-arrow'></text>
 </view>
-<view class='account_item' >
+<view class='account_item' bindtap='myorder'>
   <image class='acount_item_logo' src='http://xiangyu.wx.bronet.cn/images/tixian02@2x.png'></image>
   <view class='acount_item_title'>我的账单</view>
   <text class='iconfont icon-arrow'></text>

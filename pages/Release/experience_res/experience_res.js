@@ -259,6 +259,17 @@ Page({
           iszan: true,
         })
       }
+      if (res.data.data.is_concern == 0) {
+        that.setData({
+          isgz: false,
+          gztype:'关注'
+        })
+      } else {
+        that.setData({
+          isgz: true,
+          gztype:'已关注'
+        })
+      }
       if (res.data.data.is_favorite == 0) {
         that.setData({
           issc: false,

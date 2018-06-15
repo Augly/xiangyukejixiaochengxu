@@ -1,4 +1,6 @@
 // pages/personl/push/push.js
+let app=getApp()
+const config=require('../../../utils/config.js');
 Page({
 
   /**

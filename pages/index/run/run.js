@@ -17,7 +17,7 @@ Page({
     console.log(options)
     config.ajax('POST',{
       type:1,
-      err_id:options.id,
+      need_id:options.id,
       user_id: options.userid,
       lat: app.globalData.lat,
       lng: app.globalData.lng

@@ -141,5 +141,59 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  /**
+   * 共享经验删除
+   */
+  shareMydel:function(e){
+    var myShare = this.data.myShare
+    config.ajax('POST',{
+      user_id: app.globalData.user_id,
+      id:e.currentTarget.dataset.id,
+      type:4
+    }, config.myDel,(res)=>{
+      myShare.splice(e.currentTarget.dataset.index,1)
+      this.setData({
+        myShare: myShare
+      })
+    })
+  },
+  /**
+   * 兴趣社删除
+   */
+  interMydel: function (e){
+    var myInterest = this.data.myInterest
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      id: e.currentTarget.dataset.id,
+      type: 3
+    }, config.myDel, (res) => {
+      myInterest.splice(e.currentTarget.dataset.index, 1)
+      this.setData({
+        myInterest: myInterest
+      })
+    })
+  },
+  /**
+   * 需求删除
+   */
+  needMydel: function (e){
+    var myNeed = this.data.myNeed
+    if (e.currentTarget.dataset.type=='跑'){
+      var _type=1
+    }else{
+      var _type = 2
+    }
+    config.ajax('POST', {
+      user_id: app.globalData.user_id,
+      id: e.currentTarget.dataset.id,
+      type: _type
+    }, config.myDel, (res) => {
+      myNeed.splice(e.currentTarget.dataset.index, 1)
+      console.log(myNeed)
+      this.setData({
+        myNeed: myNeed
+      })
+    })
+  },
 })
