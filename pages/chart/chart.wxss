@@ -1,0 +1,60 @@
+/* pages/chart/chart.wxss */
+
+.souGroup {
+  width: 100%;
+  height: 100rpx;
+  background-color: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+  padding: 0rpx 50rpx;
+  display: flex;
+  align-items: center;
+}
+
+.icon-search {
+  font-size: 40rpx;
+  color: RGBA(153, 153, 153, 1);
+}
+
+.search_ipt {
+  width: 550rpx;
+  height: 98%;
+  background-color: none;
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  color: rgba(51, 51, 51, 1);
+}
+
+.list_item {
+  width: 100%;
+  height: 110rpx;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0rpx 64rpx;
+}
+
+.item_logo {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: yellow;
+}
+
+.list_name {
+  font-size: 32rpx;
+  font-family: PingFang-SC-Regular;
+  color: rgba(153, 153, 153, 1);
+  width: 100%;
+  height: 56rpx;
+  box-sizing: border-box;
+  padding: 0rpx 62rpx;
+  background-color: RGBA(245, 246, 250, 1);
+}
+
+.item_title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
+  margin-left: 25rpx;
+}

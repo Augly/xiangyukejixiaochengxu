@@ -137,9 +137,17 @@ Page({
    * 自定义打赏金额
    */
   Tip_myipt:function(e){
-    this.setData({
-      'Tip_Data.Tip_myipt':e.detail.value
-    })
+    if (e.detail.value!=''){
+      this.setData({
+        'Tip_Data.TipIndex':-1
+      })
+    }else{
+      this.setData({
+        'Tip_Data.Tip_myipt': e.detail.value,
+        'Tip_Data.TipIndex': 0
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -617,30 +625,28 @@ Page({
     }
     //文字说明
 
-    console.log(that.data.type)
     if (that.data.type=='跑腿'){
       var reg = /^1(3|4|5|7|8)\d{9}$/;
       if (that.data.name.name != '') { } else {
-        return false
         wx.showModal({
           title: '提示',
           content: '收件人姓名不能为空',
         })
+        return false
       }
 
       if (reg.test(that.data.phone.phone) == true) {
 
       } else {
-        return false
         wx.showModal({
           title: '提示',
           content: '收件人手机号不正确',
         })
+        return false
+        
       }
       var ti = setInterval(function () {
         if (myimgSrc != null || myimgSrc != undefined) {  
-
-            
               wx.showLoading({
                 title: '发布中',
               })
@@ -648,6 +654,7 @@ Page({
               if (that.data.Tip_Data.Tip_myipt == '') {
                 price = that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value
               } else {
+               
                 price = that.data.Tip_Data.Tip_myipt
               }
               if (that.data.rundata.otherdemind == '') {
@@ -680,6 +687,7 @@ Page({
                 price: that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value,
                 position: that.data.adder.adder,
               }
+              console.log(22)
               config.ajax("POST", param, config.send, (res) => {
                 //ajax访问成功函数
                 console.log(res)

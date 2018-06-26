@@ -1,0 +1,54 @@
+
+.myDialogWrap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: RGBA(0, 0, 0, 0.8);
+  z-index:20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.myDialog{
+  width: 686rpx;
+  height:auto;
+  background-color: rgba(255, 255, 255, 1); 
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.myDialog_content{
+  padding:66rpx 119rpx;
+  font-size: 36rpx;
+  color: RGBA(0, 0, 0,1); 
+  text-align: center;
+}
+
+.myDialog_botton{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size:36rpx;
+}
+
+.myDialog_del{
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: RGBA(0, 0, 0,1);
+  background-color: RGBA(235, 235, 235, 1);
+}
+
+.myDialog_send{
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: RGBA(255, 255, 255, 1);
+  background-color: RGBA(152, 97, 225, 1);
+}

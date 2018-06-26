@@ -1,0 +1,81 @@
+<!--pages/chart/chartRoom/chartRoom.wxml-->
+ 
+<view>
+  <view class='chartType'>
+    <view class='chartItem'>
+      <text class='iconfont icon-weixin1'></text>
+      <text>一键换微信</text>
+    </view>
+    <view class='chartItem'>
+      <text class='iconfont icon-dianhua'></text>
+      <text>一键换电话</text>
+    </view>
+    <view class='chartItem'>
+      <text class='iconfont icon-yaoqing'></text>
+      <text>约见面</text>
+    </view>
+  </view>
+  <scroll-view class='chartRecord' style='height:{{myheight}}px;width:100%' scroll-y>
+    <view class='record'>
+    <view class='record_wrap'>  
+      <view class='recordTime'>
+        2018/08/05 16:30
+      </view>
+    </view>
+    <view class='chart_wrap'>
+      <view class='chart_list'>
+          <image class='list_logo'></image>
+          <view class='list_main'>
+            <view class='sj'>
+
+            </view>
+            <view class='main_wrap'>
+              1111
+            </view>
+          </view>
+      </view>
+      <view class='chart_list_right'>
+       
+          <view class='list_main_right'>
+            
+            <view class='main_wrap_right'>
+              我也不知道，让我想想昂！我也不知道，让我想想昂！我也不知道，让我想想昂！我也不知道，让我想想昂！
+            </view>
+            <view class='sj_right'>
+
+            </view>
+          </view>
+           <image class='list_logo'></image>
+      </view>
+    </view>
+    </view>
+  </scroll-view>
+  <view class='chart_Group'>
+    <view class='chartsend'>
+      <text class='iconfont icon-yuyin'></text>
+      <input class='ipt'></input>
+      <text class='iconfont icon-add'></text>
+    </view>
+    <view class='more'>
+      <view class='more_item'>
+        <view class='more_item_all'>
+            <text class='iconfont icon-zhaopian'></text>
+        </view>
+        <view class='more_item_alltitle'>相册</view>
+      </view>
+      <view class='more_item'>
+      <view class='more_item_all'>
+          <text class='iconfont icon-camera2'></text>
+      </view>
+      <view class='more_item_alltitle'>拍摄</view>
+      </view>
+      <view class='more_item'>
+      <view class='more_item_all'>
+          <text class='iconfont icon-huatong'></text>
+      </view>
+      <view class='more_item_alltitle'>语音</view>
+      </view>
+    </view>
+  </view>
+</view>
+ <myDialog id='myDialog' isShow="{{isShow}}" config="{{config}}" bind:mycel="DialogCel" bind:mysend="DialogSend"></myDialog> 

@@ -1,0 +1,196 @@
+/* pages/chart/chartRoom/chartRoom.wxss */
+
+page {
+  background-color: RGBA(245, 246, 250, 1);
+}
+
+.chartType {
+  width: 100%;
+  height: 150rpx;
+  box-sizing: border-box;
+  padding: 0rpx 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chartItem {
+  width: 220rpx;
+  height: 90rpx;
+  border: 2rpx solid RGBA(152, 97, 225, 1);
+  border-radius: 5rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: RGBA(152, 97, 225, 1);
+}
+
+.chartRecord {
+  box-sizing: border-box;
+  padding: 0rpx 32rpx 100rpx 32rpx;
+}
+
+.record_wrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recordTime {
+  font-size: 24rpx;
+  color: rgba(102, 102, 102, 1);
+  line-height: 60rpx;
+  display: inline-block;
+  padding: 0rpx 23rpx;
+  background-color: RGBA(236, 236, 236, 1);
+}
+
+.chart_list {
+  display: flex;
+  margin-top: 31rpx;
+}
+
+.chart_list_right {
+  display: flex;
+  margin-top: 31rpx;
+  justify-content: flex-end;
+}
+
+.list_main {
+  max-width: 450rpx;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 13rpx;
+  margin-top: 10rpx;
+}
+
+.list_main_right {
+  max-width: 450rpx;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  margin-right: 13rpx;
+  margin-top: 10rpx;
+}
+
+.sj_right {
+  width: 0rpx;
+  border-left: 20rpx solid RGBA(130, 203, 130, 1);
+  border-top: 12rpx solid transparent;
+  border-bottom: 12rpx solid transparent;
+  margin-top: 30rpx;
+}
+
+.list_logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.sj {
+  width: 0rpx;
+  border-right: 20rpx solid rgba(255, 255, 255, 1);
+  border-top: 12rpx solid transparent;
+  border-bottom: 12rpx solid transparent;
+  margin-top: 30rpx;
+}
+
+.main_wrap {
+  display: inline-block;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  padding: 26rpx;
+  border-radius: 20rpx;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.main_wrap_right {
+  display: inline-block;
+  font-size: 28rpx;
+  color: RGBA(255, 255, 255, 1);
+  padding: 26rpx;
+  border-radius: 20rpx;
+  background-color: RGBA(130, 203, 130, 1);
+}
+
+
+.chart_Group{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  min-height: 100rpx;
+  border-top:1rpx solid RGBA(235, 235, 235, 1);
+  border-bottom:1rpx solid RGBA(235, 235, 235, 1);
+}
+.chartsend{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;justify-content: center;
+}
+
+.icon-weixin1,.icon-dianhua,.icon-yaoqing{
+  font-size: 45rpx;
+  color: RGBA(152, 97, 225, 1); 
+  margin-right: 8rpx;
+}
+
+.icon-yuyin{
+  font-size: 60rpx;
+  color: RGBA(153, 153, 153, 1);
+  margin-right: 18rpx;
+}
+.icon-add{
+   font-size: 60rpx;
+  color: RGBA(153, 153, 153, 1);
+  margin-left: 28rpx;
+}
+.ipt{
+  width: 520rpx;
+  height: 72rpx;
+  border: 1rpx solid RGBA(235, 235, 235, 1);
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding: 0rpx 10rpx;
+}
+
+.more{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 275rpx;
+}
+.more_item_all{
+    width: 160rpx;
+  height: 160rpx;
+  border:1rpx solid RGBA(235, 235, 235, 1);
+  border-radius:10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.more_item_alltitle{
+  text-align: center;
+   font-size: 24rpx;
+   margin-top: 25rpx;
+   color: RGBA(102, 102, 102, 1);
+}
+
+.more_item{
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ align-items:center; 
+
+}
+
+.icon-zhaopian,.icon-camera2,.icon-huatong{
+  font-size: 84rpx;
+  color: RGBA(153, 153, 153, 1);
+}

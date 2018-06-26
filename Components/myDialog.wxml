@@ -1,0 +1,10 @@
+
+<view class='myDialogWrap' style='background-color:{{config.wrapBgcor}}' wx:if="{{isShow}}" bindtap='hidemyDialog'>
+  <view class='myDialog' style='background-color:{{config.myDialogBgcor}};width:{{config.myDialogWidth}};'>
+      <view class='myDialog_content' style='padding:{{config.myDialog_contentPadding}};font-size:{{config.myDialog_contentFs}};'>{{config.myDialogMain}}</view>
+      <view class='myDialog_botton' style='font-size:{{config.myDialog_bottonFs}};'>
+          <view class='myDialog_del' wx:if="{{config.showCel}}" style='background-color:{{config.myDialog_delBgcor}};color:{{config.myDialog_delCor}};' catchtap='myDialogCel'>{{config.myDialog_delMain}}</view>
+          <view class='myDialog_send' style='background-color:{{config.myDialog_sendBgcor}};color:{{config.myDialog_sendCor}};' catchtap='myDialogSend'>{{config.myDialog_sendMain}}</view>
+      </view>
+  </view>
+</view>

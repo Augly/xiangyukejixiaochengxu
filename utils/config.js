@@ -6,6 +6,7 @@ const options = {
   encodeBitRate: 16000,
   format: 'mp3'
 },
+  addressList='/api/portal/User/addressList',  //通讯录
 
   myorder='/api/portal/User/myOrder',  //我的订单
 
@@ -227,6 +228,7 @@ function timeFormat(time) {
  * 登录
  */
 module.exports = {
+  addressList: addressList,
   myorder: myorder,
   myDel: myDel,
   needres: needres,

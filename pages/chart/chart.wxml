@@ -1,0 +1,12 @@
+<!--pages/chart/chart.wxml-->
+<view class='souGroup'>
+    <text class='iconfont icon-search'></text>
+    <input class='search_ipt' placeholder='搜索'></input>
+</view>
+<view wx:for="{{List}}">
+  <view class='list_name'>{{item.name}}</view>
+  <view class='list_item' wx:for="{{item.list}}" wx:for-item="myitem">
+    <image class='item_logo' src='{{myitem.avatar}}'></image>
+    <view class='item_title'>{{myitem.user_nickname}}</view>
+  </view>
+</view>

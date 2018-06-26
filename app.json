@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/chart/chartRoom/chartRoom",
+    "pages/chart/chart",
     "pages/index/index",
     "pages/test/test",
     "pages/begin/begin",
