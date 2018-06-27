@@ -550,7 +550,18 @@ bj:function(e){
       config.ajax("POST", param, config.setJoin, (res) => {
         //ajax访问成功函数
         wx.hideLoading()
-        console.log(res)
+        wx.showToast({
+          title:'参与成功!',
+          icon: 'none',
+          mask: true,
+          success:()=>{
+            setTimeout(()=>{
+              wx.navigateBack({
+                delta: 1,
+              })
+            })
+          }
+        })
 
       }, (res) => {
         //ajax访问失败函数

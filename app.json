@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/chart/chartRoom/chartRoom",
     "pages/chart/chart",
-    "pages/index/index",
     "pages/test/test",
     "pages/begin/begin",
     "pages/pay/pay",

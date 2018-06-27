@@ -584,14 +584,14 @@
 <template name="memberPL_LIST">
   <view class='pl_list'>
     <view class='pl_user'>
-      <image class='pl_userImg' src='https://wx.qlogo.cn/mmopen/vi_32/QicRsQg7tSzicuibpz04DgqOMTkXl71HiaianRrLmrpTtkF21GlqQicpugbcpWyoML6eVjW57bACVKNd2b5vbrS2Ty7w/0' bindtap='showCard'></image>
-      <view class='pl_name'>苏菀菁
+      <image class='pl_userImg' src='{{avatar}}' bindtap='showCard'></image>
+      <view class='pl_name'>{{user_nickname}}
         <text class='iconfont icon-nv'></text>
       </view>
-      <view class='pl_data'>2018-02-11加入</view>
+      <view class='pl_data'>{{create_time}}加入</view>
     </view>
     <view class='userAdder' style='margin-top: 15rpx;margin-left: 85rpx;'>
-      <text class='iconfont icon-dizhi'></text> 天津 · 建国楼 0.8km
+      <text class='iconfont icon-dizhi'></text>{{position}} {{distance}}km
     </view>
   </view>
 </template>

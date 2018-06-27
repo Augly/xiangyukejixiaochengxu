@@ -26,13 +26,46 @@ Page({
     joinIndex: '',
     changeCard: {
       changeCard: false
-    }
+    },
+    searchValue:'',
+    joinList:[]
   },
   /**
    * wp
    */
   wp() {
 
+  },
+  /**
+   * 搜索
+   */
+  search(e){
+    this.setData({
+      searchValue:e.detail.value
+    })
+  },
+
+  se(){
+    var that=this
+    config.ajax('POST',{
+      user_id: app.globalData.user_id,
+      share_id: that.data.id,
+      keyword: that.data.searchValue,
+      lat: app.globalData.lat,
+      lng: app.globalData.lng
+    }, config.getShareJoinUsers,(res)=>{
+      console.log(res)
+      for(var x in res.data.data){
+        res.data.data[x].distance = (res.data.data[x].distance / 1000).toFixed(2)
+        res.data.data[x].create_time = config.timeFormat(res.data.data[x].create_time * 1000)
+      }
+      this.setData({
+        joinList:res.data.data
+      })
+
+    },(res)=>{
+
+    })
   },
   /**
  * 显示名片

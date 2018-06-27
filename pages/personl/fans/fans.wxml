@@ -1,5 +1,5 @@
 <view class="fans_list" wx:for="{{allData}}">
-  <image class='fans_logo'></image>
+  <image class='fans_logo' src='{{item.avatar}}'></image>
   <view class='fans_title'>{{item.user_nickname}}
     <text class='iconfont icon-nv' wx:if="{{item.sex==2}}"></text>
     <text class='iconfont icon-nan' wx:if="{{item.sex==1}}"></text> </view>

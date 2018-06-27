@@ -27,7 +27,7 @@
   <view class='content'>
     <!-- <image class='thumb' mode='widthFix' src='{{alldata.thumb}}'></image> -->
     <view class='textContent'>{{alldata.word}}</view>
-     <image class='thumb' mode='widthFix' src='{{alldata.image}}' wx:if="{{alldata.image!=''}}"></image> 
+    <image class='thumb' mode='widthFix' src='{{alldata.image}}' wx:if="{{alldata.image!=''}}"></image>
     <!--我添加的音频-->
     <template is="myaudio" data="{{...myaudio}}" wx:if="{{alldata.time!=0}}"></template>
     <!--我添加的视频-->
@@ -47,38 +47,38 @@
       </view>
     </view>
   </view>
-  <template is="USERLIST" wx:if="{{clickIndex}}"  data="{{...alldata}}"></template>
+  <template is="USERLIST" wx:if="{{clickIndex}}" data="{{...alldata}}"></template>
   <view class='seacherGroup' wx:if="{{!clickIndex}}">
     <text class='iconfont icon-sousuo'></text>
-    <input class='seach_ipt' placeholder="请输入搜索词"></input>
-    <view class='seacherTitle'>搜索</view>
+    <input class='seach_ipt' placeholder="请输入搜索词" bindinput='search' value='{{searchValue}}'></input>
+    <view class='seacherTitle' bindtap='se'>搜索</view>
   </view>
-  <block>
-    <template is="memberPL_LIST" wx:if="{{!clickIndex}}"></template>
+  <block wx:for="{{joinList}}">
+    <template is="memberPL_LIST" wx:if="{{!clickIndex}}" data="{{...item}}"></template>
   </block>
+  <view class='nodata' wx:if="{{joinList.length==0}}">暂无数据</view>
 </view>
 <view class='kong'></view>
-
 <view wx:if="{{!getfous||!gift}}">
-  <view class='foot'>
-    <view class='foot_item' bindtap='zan'>
-      <image class=''></image>
-      <view class="iconfont {{iszan?'icon-xihuan1':'icon-xin'}}"></view>
-      <view class='foot_title'>点赞</view>
-    </view>
-    <view class='foot_item' bindtap='sendgift'>
-      <view class='iconfont icon-gifs'></view>
-      <view class='foot_title'>送礼</view>
-    </view>
-    <view class='foot_item' bindtap='topublish'>
-      <view class='iconfont icon-shuangren'></view>
-      <view class='foot_title'>参与</view>
-    </view>
-    <view class='foot_item'>
-      <view class='iconfont icon-fenxiang'></view>
-      <view class='foot_title'>分享</view>
-    </view>
-  </view>
+  <cover-view class='foot' wx:if="{{!getfous||!gift}}">
+    <cover-view class='foot_item' bindtap='zan'>
+      <cover-image class='item_logo' src='/img/heart.png' wx:if="{{iszan}}"></cover-image>
+      <cover-image class='item_logo' src='/img/nomol.png' wx:if="{{!iszan}}"></cover-image>
+      <cover-view class='foot_title'>点赞</cover-view>
+    </cover-view>
+    <cover-view class='foot_item' bindtap='sendgift'>
+      <cover-image class='item_logo' src='/img/gift.png'></cover-image>
+      <cover-view class='foot_title'>送礼</cover-view>
+    </cover-view>
+    <cover-view class='foot_item' bindtap='topublish'>
+      <cover-image class='item_logo' src='/img/double.png'></cover-image>
+      <cover-view class='foot_title'>参与</cover-view>
+    </cover-view>
+    <cover-view class='foot_item'>
+      <cover-image class='item_logo' src='/img/share.png'></cover-image>
+      <cover-view class='foot_title'>分享</cover-view>
+    </cover-view>
+  </cover-view>
 </view>
 
 
@@ -94,9 +94,7 @@
 </view>
 
 
- 
+
 
 <template is='giftGroup' data="{{...giftGroup}}"></template>
 <template is='changeCard' data="{{...changeCard}}"></template>
-
-

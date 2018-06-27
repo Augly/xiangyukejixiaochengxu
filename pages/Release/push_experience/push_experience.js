@@ -4,7 +4,7 @@ var time = config.options.duration;  //获取预定时间
 var timeclone = null; //  开始录音时的定时器
 var mytime = null; //录音文件的时间
 var playTime = null;  //试听的时间
-let app=getApp()
+let app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -36,25 +36,25 @@ Page({
       audioTime: 0, //
       trylisten: true
     },
-    text:{
-      info:null
+    text: {
+      info: null
     },
-    adder:{
-      adder:null
+    adder: {
+      adder: null
     },
-    myallkind:{
-      index:0,
-      kindarray:['种类一','种类二','种类三'],
-      seletMain:1
+    myallkind: {
+      index: 0,
+      kindarray: ['种类一', '种类二', '种类三'],
+      seletMain: 1
     },
-    description:{
-      descriptioncontent:''
+    description: {
+      descriptioncontent: ''
     }
   },
   /**
    * 作者介绍
    */
-  description:function(e){
+  description: function (e) {
     this.setData({
       'description.descriptioncontent': e.detail.value,
     })
@@ -63,26 +63,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.type=='兴趣'){
+    if (options.type == '兴趣') {
       wx.setNavigationBarTitle({
         title: '发布兴趣'
       })
       this.setData({
-        showtext:true
+        showtext: true
       })
-    }else{
+    } else {
       wx.setNavigationBarTitle({
         title: '发布共享经验'
       })
     }
-    config.ajax('POST', {}, config.interestSort,(res)=>{
+    config.ajax('POST', {}, config.interestSort, (res) => {
       console.log(res.data.data)
       this.setData({
-        'myallkind.kindarray':res.data.data[0]
+        'myallkind.kindarray': res.data.data[0]
       })
     })
     this.setData({
-      title:options.title,
+      title: options.title,
       'adder.adder': app.globalData.adder,
       'type': options.type
     });
@@ -140,8 +140,8 @@ Page({
   /**
    * 选择种类
    */
-  bindPickerKind:function(e){
-    var that=this
+  bindPickerKind: function (e) {
+    var that = this
     this.setData({
       'myallkind.index': e.detail.value,
       'myallkind.seletMain': that.data.myallkind.kindarray[that.data.myallkind.index].id
@@ -152,22 +152,23 @@ Page({
    */
   switch1Change: function (res) {
     console.log(res.detail.value)
-    if (res.detail.value==true){
+    if (res.detail.value == true) {
       this.setData({
-        sendgift:true
+        sendgift: true
       })
     } else {
       this.setData({
         sendgift: false
-      })}
+      })
+    }
   },
 
-  jian:function(){
+  jian: function () {
     this.setData({
       'bugGroup.buy_number': this.data.bugGroup.buy_number--
     })
   },
-  jia:function(){
+  jia: function () {
     this.setData({
       'bugGroup.buy_number': this.data.bugGroup.buy_number++
     })
@@ -182,9 +183,9 @@ Page({
   },
 
 
-  subtext:function(e){
+  subtext: function (e) {
     this.setData({
-      'text.info':e.detail.value,
+      'text.info': e.detail.value,
     })
   },
   /**
@@ -435,8 +436,8 @@ Page({
    */
   push: function () {
     //参数对象
-    var that=this
-    
+    var that = this
+
 
     let audio, myaudio = '', imgSrc, myimgSrc = '', videoSrc, myvideoSrc = '', imgurl, myimgurl = '', info, sendgift, giftnumber = this.data.bugGroup.buy_number;
     //封面图
@@ -447,7 +448,7 @@ Page({
         showCancel: false,
       })
       return false
-    }else{
+    } else {
       console.log(this.data.img.imgurl)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -470,7 +471,7 @@ Page({
     //上传音频
     if (this.data.myaudio == null || this.data.myaudio == undefined) {
       audio = ''
-    }else{
+    } else {
       console.log(this.data.myaudio)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -489,7 +490,7 @@ Page({
     //上传图片
     if (this.data.myimg.imgSrc == null || this.data.myimg.imgSrc == undefined) {
       imgSrc = ''
-    }else{
+    } else {
       console.log(this.data.myimg)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -508,7 +509,7 @@ Page({
     //上传视频
     if (this.data.myvideo.videoSrc == null || this.data.myvideo.videoSrc == undefined) {
       videoSrc = ''
-    }else{
+    } else {
       console.log(this.data.myvideo)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -525,10 +526,10 @@ Page({
     }
 
     //礼物开关
-    if (this.data.sendgift==true){
-      sendgift=1
-    }else{
-      sendgift=0
+    if (this.data.sendgift == true) {
+      sendgift = 1
+    } else {
+      sendgift = 0
     }
     //文字说明
     if (this.data.text.info == null || this.data.text.info == undefined) {
@@ -555,9 +556,9 @@ Page({
                     if (myvideoSrc != null && myvideoSrc != '' && myvideoSrc != undefined) {
                       //上传了图片，音频，视频都成功了
                       wx.hideLoading()
-                      if(that.data.type=='兴趣'){
+                      if (that.data.type == '兴趣') {
                         getins()
-                      } else if (that.data.type == '共享经验'){
+                      } else if (that.data.type == '共享经验') {
                         getshare()
                       }
                       clearInterval(ti)
@@ -652,28 +653,23 @@ Page({
     }
 
 
-    function getshare(){
-      let material=''
-      console.log(myaudio)
-      if (myaudio!=''){
-        console.log(11)
+    function getshare() {
+      let material = ''
+      if (myaudio != '') {
         material = {
           myimgurl: myimgurl,
           time: that.data.audio_faile.duration,
           myaudio: myaudio,
           myvideoSrc: myvideoSrc
         }
-      }else{
-        console.log(22)
+      } else {
         material = {
           myimgurl: myimgurl,
           myaudio: myaudio,
-          time:0,
+          time: 0,
           myvideoSrc: myvideoSrc
         }
       }
-     
-      console.log(JSON.stringify(material))
       var param = {
         user_id: app.globalData.user_id,
         title: that.data.title,
@@ -688,8 +684,20 @@ Page({
       }
       config.ajax("POST", param, config.addShare, (res) => {
         //ajax访问成功函数
-        console.log(res)
-       
+
+        wx.showToast({
+          title: '共享经验发布成功',
+          icon: 'none',
+          mask: true,
+          success: () => {
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/begin/begin',
+              })
+            }, 2000)
+          }
+        })
+
       }, (res) => {
         //ajax访问失败函数
       }, (res) => {
@@ -699,9 +707,7 @@ Page({
 
     function getins() {
       let material = ''
-      console.log(myaudio)
       if (myaudio != '') {
-        console.log(11)
         material = {
           myimgurl: myimgurl,
           time: that.data.audio_faile.duration,
@@ -709,7 +715,6 @@ Page({
           myvideoSrc: myvideoSrc
         }
       } else {
-        console.log(22)
         material = {
           myimgurl: myimgurl,
           myaudio: myaudio,
@@ -733,7 +738,20 @@ Page({
       }
       config.ajax("POST", param, config.setInterest, (res) => {
         //ajax访问成功函数
-        console.log(res)
+        wx.showToast({
+          title: '兴趣社发布成功',
+          icon: 'none',
+          mask: true,
+          success: () => {
+           
+              setTimeout(() => {
+                wx.switchTab({
+                  url: '/pages/begin/begin',
+                })
+              }, 2000)
+            
+          }
+        })
       }, (res) => {
         //ajax访问失败函数
       }, (res) => {

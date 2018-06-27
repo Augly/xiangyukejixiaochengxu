@@ -690,6 +690,18 @@ Page({
               console.log(22)
               config.ajax("POST", param, config.send, (res) => {
                 //ajax访问成功函数
+                wx.showToast({
+                  title: '发布跑腿成功',
+                  icon: 'none',
+                  mask: true,
+                  success: () => {
+                    setTimeout(() => {
+                      wx.switchTab({
+                        url: '/pages/begin/begin',
+                      })
+                    }, 2000)
+                  }
+                })
                 console.log(res)
                 clearInterval(ti)
                 wx.hideLoading()
@@ -820,7 +832,6 @@ Page({
 
 
     function getsh() {
-      
       let material = ''
       console.log(myaudio)
       if (myaudio != '') {
@@ -854,7 +865,18 @@ Page({
         price: that.data.allprice.allprice
       }
       config.ajax("POST", param, config.send, (res) => {
-        console.log(res)
+        wx.showToast({
+          title: '二手置换发布成功',
+          icon: 'none',
+          mask: true,
+          success: () => {
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/begin/begin',
+              })
+            }, 2000)
+          }
+        })
         clearInterval(ti)
         //ajax访问成功函数
       }, (res) => {
@@ -898,6 +920,18 @@ Page({
       }
       config.ajax("POST", param, config.send, (res) => {
         console.log(res)
+        wx.showToast({
+          title: '问答发布成功',
+          icon: 'none',
+          mask: true,
+          success: () => {
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/begin/begin',
+              })
+            }, 2000)
+          }
+        })
         //ajax访问成功函数
         clearInterval(ti)
       }, (res) => {

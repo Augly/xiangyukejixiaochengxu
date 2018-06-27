@@ -112,9 +112,11 @@ const options = {
 
   userCard = '/api/portal/Common/userCard',  //获取用户名片信息
 
+  getShareJoinUsers='/api/portal/Share/getShareJoinUsers',  //共享经验参与成员
+
   getfollow = '/api/portal/User/follow',  //获取我的关注列表
 
-  gitpresent = '/api/portal/Common/present';
+  gitpresent = '/api/portal/Common/present';  
 
 //获取dataset
 
@@ -287,5 +289,6 @@ module.exports = {
   myGift: myGift,
   authorize: authorize,
   myPresentWithdraw: myPresentWithdraw,
-  imgurl: imgurl
+  imgurl: imgurl,
+  getShareJoinUsers: getShareJoinUsers
 }
