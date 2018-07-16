@@ -6,11 +6,11 @@ App({
   onLaunch: function () {
     // 登录
     qqmapsdk = new QQMapWX({
-      key: 'CRZBZ-GGA6S-AFZOH-6JEIJ-RFOAE-RSB5H'
+      key: '3K3BZ-L6JK4-KHXUC-XDMPY-B42S5-UPF7P'
     });
 
 
-    var that=this
+    var that = this
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -23,7 +23,7 @@ App({
           that.globalData.user_id = res.data.data.user_id
           wx.getLocation({
             type: 'wgs84',
-            success:(res)=>{
+            success: (res) => {
               that.globalData.lat = res.latitude
               that.globalData.lng = res.longitude
               qqmapsdk.reverseGeocoder({
@@ -32,19 +32,21 @@ App({
                   longitude: res.longitude
                 },
                 success: function (res) {
+                  console.log(res)
                   console.log(res.result.address_component);
+                  console.log(res.result.address_component)
                   that.globalData.adder = res.result.address_component.city.slice(0, res.result.address_component.city.length - 1) + ' · ' + res.result.address_component.district.slice(0, res.result.address_component.district.length - 1)
                 },
                 fail: function (res) {
                   console.log(res);
-                 
+
                 },
                 complete: function (res) {
                   // console.log(res);
                 }
               });
             },
-            fail:(res)=>{
+            fail: (res) => {
               wx.navigateBack({ delta: 1 })
             }
 
@@ -80,11 +82,12 @@ App({
   },
   globalData: {
     userInfo: null,
-    user_id:null,
-    lat:null,
-    lng:null,
-    imgurl:'http://xiangyu.wx.bronet.cn/images/',
-    adder:null
+    user_id: null,
+    lat: null,
+    lng: null,
+    imgurl: 'http://xiangyu.wx.bronet.cn/images/',
+    adder: null,
+    formId: null
   }
 })
 

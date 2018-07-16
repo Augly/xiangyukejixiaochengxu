@@ -54,7 +54,6 @@ Page({
   bindDate: function (e) {
     var that = this;
     myallinfo.birthday = e.detail.value;
-
     var st = myallinfo.birthday.split('-')
     var sm = parseInt(st[1] + st[2])
     var n = 0

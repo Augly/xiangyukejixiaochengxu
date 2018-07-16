@@ -116,6 +116,8 @@ const options = {
 
   getfollow = '/api/portal/User/follow',  //获取我的关注列表
 
+  getUserChatLog='/api/portal/Common/getUserChatLog',  //获取用户聊天内容
+
   gitpresent = '/api/portal/Common/present';  
 
 //获取dataset
@@ -190,7 +192,7 @@ function pay(res, successData) {
  * 时间转换
  */
 function timeFormat(time) {
-  var date = new Date(time),
+  var date = new Date(time*1000),
     curDate = new Date(),
     year = date.getFullYear(),
     month = date.getMonth() + 1,
@@ -225,6 +227,44 @@ function timeFormat(time) {
   return timeStr;
 }
 
+/**
+ * 时间转换
+ */
+function timeFormatNotime(time) {
+  var date = new Date(time * 1000),
+    curDate = new Date(),
+    year = date.getFullYear(),
+    month = date.getMonth() + 1,
+    day = date.getDate(),
+    hour = date.getHours(),
+    minute = date.getMinutes(),
+    curYear = curDate.getFullYear(),
+    curHour = curDate.getHours(),
+    timeStr;
+  if (minute < 10) {
+    minute = '0' + minute
+  }
+  if (year < curYear) {
+    timeStr = year + '年' + month + '月' + day + '日 ' + hour + ':' + minute;
+  } else {
+    var pastTime = curDate - date,
+      pastH = pastTime / 3600000;
+
+    if (pastH > curHour) {
+      timeStr = month + '月' + day + '日 ';
+    } else if (pastH >= 1) {
+      timeStr = '今天 ' + hour + ':' + minute + '分';
+    } else {
+      var pastM = curDate.getMinutes() - minute;
+      if (pastM > 1) {
+        timeStr = pastM + '分钟前';
+      } else {
+        timeStr = '刚刚';
+      }
+    }
+  }
+  return timeStr;
+}
 
 /**
  * 登录
@@ -271,6 +311,7 @@ module.exports = {
   send: send,
   lists: lists,
   timeFormat: timeFormat,
+  timeFormatNotime: timeFormatNotime,
   getShareDetail: getShareDetail,
   setJoin: setJoin,
   userGood: userGood,
@@ -290,5 +331,6 @@ module.exports = {
   authorize: authorize,
   myPresentWithdraw: myPresentWithdraw,
   imgurl: imgurl,
-  getShareJoinUsers: getShareJoinUsers
+  getShareJoinUsers: getShareJoinUsers,
+  getUserChatLog: getUserChatLog
 }

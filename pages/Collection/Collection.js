@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-const config=require('../../utils/config.js')
+const config = require('../../utils/config.js')
 let app = getApp()
 Page({
   data: {
@@ -88,7 +88,7 @@ Page({
   //事件处理函数
   navClick: function (event) {
     // var _type=''
-    var that=this
+    var that = this
     this.setData({
       index: event.currentTarget.dataset.id
     })
@@ -99,7 +99,7 @@ Page({
       lng: app.globalData.lng
     }, config.myCollection, (res) => {
       console.log(res)
-      if(res.data.data.length==0){
+      if (res.data.data.length == 0) {
         that.setData({
           note: []
         })
@@ -107,7 +107,7 @@ Page({
           title: '暂无数据',
           icon: 'none',
         })
-      }else{
+      } else {
         for (let i = 0; i < res.data.data.list.length; i++) {
           res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
         }
@@ -115,9 +115,9 @@ Page({
           note: res.data.data.list
         })
       }
-     
+
       //赋值给数据note
-     
+
     })
 
     // if (event.currentTarget.dataset.id==1){
@@ -153,17 +153,17 @@ Page({
     })
   },
   onLoad: function () {
-    var that=this
+    var that = this
     this.setData({
       imgurl: app.globalData.imgurl
     })
     this.getSystemInfo()
-    config.ajax('POST',{
+    config.ajax('POST', {
       user_id: app.globalData.user_id,
-      type:1,
+      type: 1,
       lat: app.globalData.lat,
       lng: app.globalData.lng
-    }, config.myCollection,(res)=>{
+    }, config.myCollection, (res) => {
       for (let i = 0; i < res.data.data.list.length; i++) {
         res.data.data.list[i].distance = (res.data.data.list[i].distance / 1000).toFixed(1)
       }

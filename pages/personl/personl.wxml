@@ -48,7 +48,7 @@
     <view class='myitem_list_title'>我的账户</view>
    <text class='iconfont icon-bangzhujinru' style='margin-left:auto;color:#999999'></text>
   </view>
-   <view class='myitem_list'>
+   <view class='myitem_list' bindtap='totxl'>
     <text class='iconfont icon-shoujitongxunlu'></text>
     <view class='myitem_list_title'>通讯录</view>
    <text class='iconfont icon-bangzhujinru' style='margin-left:auto;color:#999999'></text>

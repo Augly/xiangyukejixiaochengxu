@@ -63,6 +63,12 @@ Page({
       url: '../business_Card/business_Card',
     })
   },
+  //通讯录地址
+  totxl(){
+    wx.navigateTo({
+      url: '/pages/chart/chart',
+    })
+  },
   fans:function(){
     wx.navigateTo({
       url: 'fans/fans?_type=粉丝',

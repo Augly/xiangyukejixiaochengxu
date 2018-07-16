@@ -9,15 +9,18 @@ Page({
   data: {
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     config.ajax('POST', {
-      user_id: 5,
+      user_id: app.globalData.user_id,
       keyword: ''
     }, config.addressList, (res) => {
+      console.log(res)
+      // if(res.data.){
+
+      // }
       this.setData({
         List: this.toArr(res.data.data)
       })
@@ -25,7 +28,12 @@ Page({
 
     })
   },
-
+  toCharrooom(e){
+    app.globalData.formId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/chart/chartRoom/chartRoom',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -53,6 +61,12 @@ Page({
     let result = Object.keys(obj).map((el) => {
       newarr.push(obj[el]);
     });
+    console.log(newarr)
+    for(var i in newarr){
+      if (newarr[i].name == null || newarr[i].name==undefined){
+        newarr[i].name='#'
+      }
+    }
     return newarr
   },
 

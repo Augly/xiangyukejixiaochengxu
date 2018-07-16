@@ -27,8 +27,8 @@ Page({
     changeCard: {
       changeCard: false
     },
-    searchValue:'',
-    joinList:[]
+    searchValue: '',
+    joinList: []
   },
   /**
    * wp
@@ -39,31 +39,31 @@ Page({
   /**
    * 搜索
    */
-  search(e){
+  search(e) {
     this.setData({
-      searchValue:e.detail.value
+      searchValue: e.detail.value
     })
   },
 
-  se(){
-    var that=this
-    config.ajax('POST',{
+  se() {
+    var that = this
+    config.ajax('POST', {
       user_id: app.globalData.user_id,
       share_id: that.data.id,
       keyword: that.data.searchValue,
       lat: app.globalData.lat,
       lng: app.globalData.lng
-    }, config.getShareJoinUsers,(res)=>{
+    }, config.getShareJoinUsers, (res) => {
       console.log(res)
-      for(var x in res.data.data){
+      for (var x in res.data.data) {
         res.data.data[x].distance = (res.data.data[x].distance / 1000).toFixed(2)
         res.data.data[x].create_time = config.timeFormat(res.data.data[x].create_time * 1000)
       }
       this.setData({
-        joinList:res.data.data
+        joinList: res.data.data
       })
 
-    },(res)=>{
+    }, (res) => {
 
     })
   },
@@ -295,12 +295,12 @@ Page({
       if (res.data.data.is_concern == 0) {
         that.setData({
           isgz: false,
-          gztype:'关注'
+          gztype: '关注'
         })
       } else {
         that.setData({
           isgz: true,
-          gztype:'已关注'
+          gztype: '已关注'
         })
       }
       if (res.data.data.is_favorite == 0) {
@@ -514,7 +514,7 @@ Page({
             showCancel: false,
           })
         }
-      }else{
+      } else {
         wx.showToast({
           title: '不可关注自己',
           icon: 'none',

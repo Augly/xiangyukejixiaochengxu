@@ -55,8 +55,9 @@
   </view>
   <block wx:for="{{joinList}}">
     <template is="memberPL_LIST" wx:if="{{!clickIndex}}" data="{{...item}}"></template>
+    <!-- <view class='nodata' wx:if="{{joinList.length==0}}">暂无数据</view> -->
   </block>
-  <view class='nodata' wx:if="{{joinList.length==0}}">暂无数据</view>
+
 </view>
 <view class='kong'></view>
 <view wx:if="{{!getfous||!gift}}">

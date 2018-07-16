@@ -1,22 +1,48 @@
 // pages/chart/chartRoom/chartRoom.js
+const config = require('../../../utils/config.js');
+let app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isShow:true
+    isShow:false,
+    more: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      uid: app.globalData.user_id
+    })
+    config.ajax('POST', {
+      send_id: app.globalData.user_id,
+      recieve_id: app.globalData.formId
+    }, config.getUserChatLog, (res) => {
+      console.log(res)
+      for(var i=0;i<res.data.data.length;i++){
+        res.data.data[i].date = config.timeFormatNotime(res.data.data[i].date)
+        for(var n=0;n<res.data.data[i].list.length;n++){
+          res.data.data[i].list[n].create_time = config.timeFormat(res.data.data[i].list[n].create_time)
+        }
+      }
+      console.log(res.data.data)
+      this.setData({
+        loglist:res.data.data,
+        myTop: res.data.data.length-1,
+        myTopOne: res.data.data[res.data.data.length - 1].list.length-1
+      })
+    }, (res) => {
+
+    })
     try {
       wx.getSystemInfo({
-        success:(res)=>{
+        success: (res) => {
           this.setData({
-            myheight: res.windowHeight - res.windowWidth/750*150
+            myheight: res.windowHeight - res.windowWidth / 750 * 150
           })
         },
         fail: function (res) { },
@@ -34,9 +60,9 @@ Page({
 
     }
     this.toastedit = this.selectComponent("#myDialog")
-    console.log(this.toastedit)  
+    console.log(this.toastedit)
   },
-  DialogSend(){
+  DialogSend() {
     this.setData({
       isShow: false
     })
@@ -73,7 +99,59 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.connectSocket({
+      url: 'wss://xiangyu.lu.broteam.cn:9501',
+      data: '刘朕是大傻逼！哈哈',
+      header: {
+        'content-type': 'application/json'
+      },
+      method: "GET",
+      success: function (res) {
+        console.log(res)
+        wx.onSocketOpen(function (res) {
+          console.log('WebSocket连接已打开！')
+          
+        })
+        wx.onSocketMessage(function (res) {
+          console.log('收到消息')
+          console.log(res)
+          // console.log(JSON.parse(res.data))
+          // this.setData({
+          //   alldata: JSON.parse(res.data)
+          // })
+          // console.log('收到服务器内容：' + res.data)
+        })
+        wx.onSocketClose(function (res) {
+          console.log('WebSocket 已关闭！')
+        })
+        wx.onSocketError(function (res) {
+          console.log('WebSocket连接打开失败，请检查！')
+        })
+      },
+      fail: function () {
+        console.log(res)
+      }
+    })
+  },
+  send(e){
+    var data = JSON.stringify({
+      userId: app.globalData.user_id,
+      formId: app.globalData.formId,
+      word:e.detail.value
+    })
+    wx.sendSocketMessage({
+      data: data,
+      success: function (res) {
+        console.log(res)
+        // console.log('第一次发送1')
+      },
+      fail: function () {
+        console.log('发送失败')
+      },
+      complete: function () {
+        // console.log(23)
+      }
+    })
   },
 
   /**

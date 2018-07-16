@@ -1,5 +1,5 @@
 <!--pages/chart/chartRoom/chartRoom.wxml-->
- 
+
 <view>
   <view class='chartType'>
     <view class='chartItem'>
@@ -15,67 +15,67 @@
       <text>约见面</text>
     </view>
   </view>
-  <scroll-view class='chartRecord' style='height:{{myheight}}px;width:100%' scroll-y>
-    <view class='record'>
-    <view class='record_wrap'>  
-      <view class='recordTime'>
-        2018/08/05 16:30
+  <scroll-view class='chartRecord' style='height:{{myheight}}px;width:100%' scroll-y  scroll-into-view="a{{myTop}}{{myTopOne}}" scroll-with-animation>
+    <view class='record' wx:for="{{loglist}}">
+      <view class='record_wrap'>
+        <view class='recordTime'>
+          {{item.date}}
+        </view>
       </view>
-    </view>
-    <view class='chart_wrap'>
-      <view class='chart_list'>
-          <image class='list_logo'></image>
+      <view class='chart_wrap' wx:for="{{item.list}}" wx:for-index="myindex" wx:for-item="myitem" id="a{{index}}{{myindex}}">
+        <view class='chart_list' wx:if="{{myitem.send_id!=uid}}">
+          <image class='list_logo' src='{{myitem.avatar}}'></image>
           <view class='list_main'>
             <view class='sj'>
 
             </view>
             <view class='main_wrap'>
-              1111
+              {{myitem.word}}
             </view>
           </view>
-      </view>
-      <view class='chart_list_right'>
-       
+        </view>
+        <view class='chart_list_right' wx:else>
+
           <view class='list_main_right'>
-            
+
             <view class='main_wrap_right'>
-              我也不知道，让我想想昂！我也不知道，让我想想昂！我也不知道，让我想想昂！我也不知道，让我想想昂！
+               {{myitem.word}}
             </view>
             <view class='sj_right'>
 
             </view>
           </view>
-           <image class='list_logo'></image>
+          <image class='list_logo' src='{{myitem.avatar}}'></image>
+        </view>
       </view>
-    </view>
     </view>
   </scroll-view>
   <view class='chart_Group'>
     <view class='chartsend'>
       <text class='iconfont icon-yuyin'></text>
-      <input class='ipt'></input>
+      <input class='ipt' confirm-type='send' bindconfirm="send"></input>
       <text class='iconfont icon-add'></text>
     </view>
-    <view class='more'>
+    <view class='more' wx:if="{{more}}">
       <view class='more_item'>
         <view class='more_item_all'>
-            <text class='iconfont icon-zhaopian'></text>
+          <text class='iconfont icon-zhaopian'></text>
         </view>
         <view class='more_item_alltitle'>相册</view>
       </view>
       <view class='more_item'>
-      <view class='more_item_all'>
+        <view class='more_item_all'>
           <text class='iconfont icon-camera2'></text>
-      </view>
-      <view class='more_item_alltitle'>拍摄</view>
+        </view>
+        <view class='more_item_alltitle'>拍摄</view>
       </view>
       <view class='more_item'>
-      <view class='more_item_all'>
+        <view class='more_item_all'>
           <text class='iconfont icon-huatong'></text>
-      </view>
-      <view class='more_item_alltitle'>语音</view>
+        </view>
+        <view class='more_item_alltitle'>语音</view>
       </view>
     </view>
   </view>
 </view>
- <myDialog id='myDialog' isShow="{{isShow}}" config="{{config}}" bind:mycel="DialogCel" bind:mysend="DialogSend"></myDialog> 
+<myDialog id='myDialog' isShow="{{isShow}}" config="{{config}}" bind:mycel="DialogCel" bind:mysend="DialogSend"></myDialog>

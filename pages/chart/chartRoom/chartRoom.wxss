@@ -28,7 +28,7 @@ page {
 
 .chartRecord {
   box-sizing: border-box;
-  padding: 0rpx 32rpx 100rpx 32rpx;
+  padding: 0rpx 32rpx 120rpx 32rpx;
 }
 
 .record_wrap {
