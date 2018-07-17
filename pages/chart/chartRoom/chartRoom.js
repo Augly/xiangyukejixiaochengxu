@@ -1,13 +1,14 @@
 // pages/chart/chartRoom/chartRoom.js
 const config = require('../../../utils/config.js');
 let app = getApp()
+let concatWrap =null
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isShow:false,
+    isShow: false,
     more: false
   },
 
@@ -23,17 +24,17 @@ Page({
       recieve_id: app.globalData.formId
     }, config.getUserChatLog, (res) => {
       console.log(res)
-      for(var i=0;i<res.data.data.length;i++){
+      for (var i = 0; i < res.data.data.length; i++) {
         res.data.data[i].date = config.timeFormatNotime(res.data.data[i].date)
-        for(var n=0;n<res.data.data[i].list.length;n++){
+        for (var n = 0; n < res.data.data[i].list.length; n++) {
           res.data.data[i].list[n].create_time = config.timeFormat(res.data.data[i].list[n].create_time)
         }
       }
       console.log(res.data.data)
       this.setData({
-        loglist:res.data.data,
-        myTop: res.data.data.length-1,
-        myTopOne: res.data.data[res.data.data.length - 1].list.length-1
+        loglist: res.data.data,
+        myTop: res.data.data.length - 1,
+        myTopOne: res.data.data[res.data.data.length - 1].list.length - 1
       })
     }, (res) => {
 
@@ -99,6 +100,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that=this
+    var senddata={
+      userId: app.globalData.user_id,
+      formId: app.globalData.formId
+    }
     wx.connectSocket({
       url: 'wss://xiangyu.lu.broteam.cn:9501',
       data: '刘朕是大傻逼！哈哈',
@@ -110,11 +116,53 @@ Page({
         console.log(res)
         wx.onSocketOpen(function (res) {
           console.log('WebSocket连接已打开！')
-          
+          wx.sendSocketMessage({
+            data: JSON.stringify(senddata),
+            success: function (res) {
+              console.log(res)
+
+              console.log('第一次发送111')
+            },
+            fail: function () {
+              console.log('发送失败')
+            },
+            complete: function () {
+              // console.log(23)
+            }
+          })
         })
+
         wx.onSocketMessage(function (res) {
           console.log('收到消息')
           console.log(res)
+          // console.log(JSON.parse(res.data))
+          console.log(concatWrap)
+          if (res.data == '' || res.data == '{"msg":"连接成功"}'){
+
+          }else{
+            var alldata = that.data.loglist
+            if (concatWrap == undefined || concatWrap == null) {
+              concatWrap = {
+                date: config.timeFormatNotime(JSON.parse(res.data).create_time),
+                list: [JSON.parse(res.data)]
+              }
+              alldata.push(concatWrap)
+            } else {
+              console.log(concatWrap.list)
+              concatWrap.list.push(JSON.parse(res.data))
+              alldata[alldata.length - 1] = concatWrap
+            }
+
+
+            that.setData({
+              loglist: alldata,
+              myTop: alldata.length - 1,
+              myTopOne: alldata[alldata.length - 1].list.length - 1
+            })
+          }
+
+          // var data = JSON.parse(res.data)
+          // console.log(JSON.parse(data))
           // console.log(JSON.parse(res.data))
           // this.setData({
           //   alldata: JSON.parse(res.data)
@@ -133,16 +181,22 @@ Page({
       }
     })
   },
-  send(e){
+  myipt(e) {
+    this.setData({
+      main: e.detail.value
+    })
+  },
+  send(e) {
     var data = JSON.stringify({
       userId: app.globalData.user_id,
       formId: app.globalData.formId,
-      word:e.detail.value
+      word: e.detail.value || this.data.main
     })
     wx.sendSocketMessage({
       data: data,
       success: function (res) {
         console.log(res)
+
         // console.log('第一次发送1')
       },
       fail: function () {

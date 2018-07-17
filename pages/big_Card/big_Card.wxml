@@ -59,5 +59,6 @@
 <view class='kong'></view>
 
 <view class='footBottom' bindtap='editCard'>
-    编辑名片
+   <view class='footItem'>开启聊天</view>
+   <view class='footItem'>送TA礼物</view>
 </view>

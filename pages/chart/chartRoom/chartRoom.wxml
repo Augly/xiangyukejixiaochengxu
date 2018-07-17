@@ -53,8 +53,8 @@
   <view class='chart_Group'>
     <view class='chartsend'>
       <text class='iconfont icon-yuyin'></text>
-      <input class='ipt' confirm-type='send' bindconfirm="send"></input>
-      <text class='iconfont icon-add'></text>
+      <input class='ipt' confirm-type='send' bindconfirm="send" bindinput='myipt'></input>
+      <text class='iconfont icon-add' bindtap='send'></text>
     </view>
     <view class='more' wx:if="{{more}}">
       <view class='more_item'>

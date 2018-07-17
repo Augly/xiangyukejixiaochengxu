@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/big_Card/big_Card",
+    
     "pages/chart/chartRoom/chartRoom",
     "pages/chart/chart",
     "pages/test/test",

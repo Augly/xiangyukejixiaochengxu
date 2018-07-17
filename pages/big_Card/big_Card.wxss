@@ -1,0 +1,136 @@
+.head {
+  width: 100%;
+  height: 470rpx;
+  background-image: url('http://xiangyu.wx.bronet.cn/images/dpic03@2x.png');
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.head_logo {
+  width: 169rpx;
+  height: 169rpx;
+  border-radius: 50%;
+}
+
+.head_title {
+  font-size: 36rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  font-family: PingFang-SC-Bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.head_mintitle {
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  font-family: PingFang-SC-Bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.zl_list {
+  width: 100%;
+  height: auto;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+  box-sizing: border-box;
+  padding: 0rpx 27rpx;
+}
+
+.zl_item {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+}
+
+.zl_item .iconfont {
+  font-size: 40rpx;
+}
+
+.item_res {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
+  margin-left: 36rpx;
+}
+
+.hot_new {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 32rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+}
+
+.pic_new {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 32rpx 0rpx;
+  border-bottom: 1rpx solid RGBA(235, 235, 235, 1);
+}
+
+.hot_title {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  color: rgba(0, 0, 0, 1);
+  margin-bottom: 20rpx;
+}
+
+.hot_item {
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+}
+
+.hot_item_logo {
+  width: 133rpx;
+  height: 159rpx;
+  border-radius: 5rpx;
+  background-color: red;
+}
+
+.hot_item_res {
+  width: 500rpx;
+  height: 160rpx;
+  margin-left: 40rpx;
+  background-color: yellow;
+}
+
+.pic_list {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pic_list_img {
+  width: 245rpx;
+  height: 245rpx;
+  background-color: red;
+  margin-right: 6rpx;
+  margin-top: 6rpx;
+  display: block;
+}
+
+.kong {
+  width: 100%;
+  height: 160rpx;
+}
+
+.footBottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 160rpx;
+  background-color: rgba(255, 255, 255, 1);
+}
+.footItem{
+  width: 100%;
+height: 
+}

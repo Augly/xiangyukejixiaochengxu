@@ -194,3 +194,6 @@ page {
   font-size: 84rpx;
   color: RGBA(153, 153, 153, 1);
 }
+.record{
+  padding-bottom: 20rpx;
+}
