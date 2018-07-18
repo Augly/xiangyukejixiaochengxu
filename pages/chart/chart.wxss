@@ -38,7 +38,6 @@
   width: 80rpx;
   height: 80rpx;
   border-radius: 50%;
-  background-color: yellow;
 }
 
 .list_name {

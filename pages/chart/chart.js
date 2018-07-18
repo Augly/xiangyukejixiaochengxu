@@ -28,10 +28,67 @@ Page({
 
     })
   },
-  toCharrooom(e){
+  toCharrooom(e) {
     app.globalData.formId = e.currentTarget.dataset.id
+
     wx.navigateTo({
-      url: '/pages/chart/chartRoom/chartRoom',
+      url: "/pages/big_Card/big_Card",
+    })
+    // wx.navigateTo({
+    //   url: '/pages/chart/chartRoom/chartRoom',
+    // })
+  },
+    /**
+ * 购买礼物商城
+ */
+  gift_shop: function () {
+    wx.navigateTo({
+      url: '../../personl/gift_Shop/gift_Shop'
+    })
+  },
+
+  /**
+   * 赠送礼物
+   */
+  sendGift: function () {
+    var alldataArr = []
+    var alldata = this.data.giftGroup.GiftData
+    for (let n in alldata) {
+      for (let x in alldata[n].presentList) {
+        if (alldata[n].presentList[x].check == true) {
+          alldataArr.push(alldata[n].presentList[x])
+        }
+      }
+    }
+    var allArr = JSON.stringify(alldataArr)
+    wx.navigateTo({
+      url: '../../personl/sendGift/sendGift?alldataArr=' + allArr + '&user_id=' + this.data.alldata.user_id,
+    })
+  },
+  /**
+ * 礼物切换
+ */
+  lookgift: function (event) {
+    this.setData({
+      'giftGroup.myindex': config.getDataset(event, 'id')
+    })
+  },
+  /**
+ * 选择礼物
+ */
+  selectIndex: function (event) {
+    var allData = this.data.giftGroup.GiftData
+    allData[this.data.giftGroup.myindex].presentList[config.getDataset(event, 'index')].check = !allData[this.data.giftGroup.myindex].presentList[config.getDataset(event, 'index')].check
+    this.setData({
+      'giftGroup.GiftData': allData
+    })
+  },
+  /**
+ * 切换
+ */
+  clicktab(e) {
+    this.setData({
+      clickIndex: e.currentTarget.dataset.id
     })
   },
 
@@ -62,9 +119,9 @@ Page({
       newarr.push(obj[el]);
     });
     console.log(newarr)
-    for(var i in newarr){
-      if (newarr[i].name == null || newarr[i].name==undefined){
-        newarr[i].name='#'
+    for (var i in newarr) {
+      if (newarr[i].name == null || newarr[i].name == undefined) {
+        newarr[i].name = '#'
       }
     }
     return newarr
@@ -74,7 +131,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**

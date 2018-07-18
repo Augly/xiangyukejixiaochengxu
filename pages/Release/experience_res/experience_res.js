@@ -70,10 +70,13 @@ Page({
   /**
  * 显示名片
  */
-  showCard: function (event) {
+   showCard: function (event) {
+    console.log(config.getDataset(event, 'userid'))
     config.ajax('POST', {
-      user_id: config.getDataset(event, 'userid')
+      user_id: app.globalData.user_id,
+      send_id: config.getDataset(event, 'userid')
     }, config.userCard, (res) => {
+      console.log(res)
       console.log(res.data.data[0])
       this.setData({
         'changeCard.changeCard': true,

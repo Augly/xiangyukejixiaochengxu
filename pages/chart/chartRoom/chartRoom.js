@@ -1,17 +1,61 @@
 // pages/chart/chartRoom/chartRoom.js
 const config = require('../../../utils/config.js');
 let app = getApp()
-let concatWrap =null
+let concatWrap = null,
+  page = 1
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     isShow: false,
-    more: false
+    more: false,
+    loglist:[]
   },
+  getMore() {
+    wx.showLoading({
+      title: '获取历史信息...',
+      mask: true,
+      success: (res) => {
+        config.ajax('POST', {
+          send_id: app.globalData.user_id,
+          recieve_id: app.globalData.formId,
+          page: page
+        }, config.getUserChatLog, (res) => {
+          if (res.data.data.length != 0) {
+            for (var i = 0; i < res.data.data.length; i++) {
+              res.data.data[i].date = config.timeFormatNotime(res.data.data[i].date)
+              for (var n = 0; n < res.data.data[i].list.length; n++) {
+                res.data.data[i].list[n].create_time = config.timeFormat(res.data.data[i].list[n].create_time)
+              }
+            }
+            var alldata = this.data.loglist
+            alldata.unshift(res.data.data[0])
+            this.setData({
+              loglist: alldata,
+              myTop: 0,
+              myTopOne: 9
+            })
+            page++
+            setTimeout((res) => {
+              wx.hideLoading()
+            }, 1500)
+          } else {
+            config.mytoast('没有更多数据了')
+          }
 
+        }, (res) => {
+
+        })
+
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+    // config.mytoast('正在获取更多数据', (res) => {
+
+    // })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -21,7 +65,8 @@ Page({
     })
     config.ajax('POST', {
       send_id: app.globalData.user_id,
-      recieve_id: app.globalData.formId
+      recieve_id: app.globalData.formId,
+      page: 1
     }, config.getUserChatLog, (res) => {
       console.log(res)
       for (var i = 0; i < res.data.data.length; i++) {
@@ -30,12 +75,13 @@ Page({
           res.data.data[i].list[n].create_time = config.timeFormat(res.data.data[i].list[n].create_time)
         }
       }
-      console.log(res.data.data)
-      this.setData({
-        loglist: res.data.data,
-        myTop: res.data.data.length - 1,
-        myTopOne: res.data.data[res.data.data.length - 1].list.length - 1
-      })
+      if(res.data.data.length!=0){
+        this.setData({
+          loglist: res.data.data,
+          myTop: res.data.data.length - 1,
+          myTopOne: res.data.data[res.data.data.length - 1].list.length - 1
+        })
+      }
     }, (res) => {
 
     })
@@ -62,46 +108,8 @@ Page({
     }
     this.toastedit = this.selectComponent("#myDialog")
     console.log(this.toastedit)
-  },
-  DialogSend() {
-    this.setData({
-      isShow: false
-    })
-    console.log('点击了确认')
-  },
-  DialogCel() {
-    console.log('点击了取消')
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    this.setData({
-      config: {
-        wrapBgcor: 'RGBA(0, 0, 0, 0.8)',   //wrap背景色
-        myDialogBgcor: 'rgba(255, 255, 255, 1)', //Dialog背景色
-        myDialogMain: '你好呀',  //Dialog内容
-        myDialogWidth: '686rpx',  //Dialog宽度
-        myDialog_contentPadding: '66rpx 119rpx',  //Dialog内容padding
-        myDialog_contentFs: '36rpx',  //Dialog内容字号
-        myDialog_bottonFs: '36rpx',  //Dialog按钮字号
-        myDialog_delMain: '取消',  //Dialog取消文字
-        myDialog_delBgcor: 'RGBA(235, 235, 235, 1)',  //Dialog取消按钮里面的
-        myDialog_delCor: 'RGBA(0, 0, 0,1)',
-        myDialog_sendMain: '确认',
-        myDialog_sendBgcor: 'RGBA(152, 97, 225, 1)',
-        myDialog_sendCor: 'RGBA(255, 255, 255, 1)',
-        showCel: true
-      }
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var that=this
-    var senddata={
+    var that = this
+    var senddata = {
       userId: app.globalData.user_id,
       formId: app.globalData.formId
     }
@@ -137,9 +145,9 @@ Page({
           console.log(res)
           // console.log(JSON.parse(res.data))
           console.log(concatWrap)
-          if (res.data == '' || res.data == '{"msg":"连接成功"}'){
+          if (res.data == '' || res.data == '{"msg":"连接成功"}') {
 
-          }else{
+          } else {
             var alldata = that.data.loglist
             if (concatWrap == undefined || concatWrap == null) {
               concatWrap = {
@@ -148,16 +156,14 @@ Page({
               }
               alldata.push(concatWrap)
             } else {
-              console.log(concatWrap.list)
               concatWrap.list.push(JSON.parse(res.data))
               alldata[alldata.length - 1] = concatWrap
             }
-
-
             that.setData({
               loglist: alldata,
               myTop: alldata.length - 1,
-              myTopOne: alldata[alldata.length - 1].list.length - 1
+              myTopOne: alldata[alldata.length - 1].list.length - 1,
+              more:false
             })
           }
 
@@ -180,6 +186,95 @@ Page({
         console.log(res)
       }
     })
+  },
+  DialogSend() {
+    this.setData({
+      isShow: false
+    })
+    console.log('点击了确认')
+  },
+  DialogCel() {
+    console.log('点击了取消')
+  },
+  /**
+   * 点击开启视频，语音发送
+   */
+  more() {
+    this.setData({
+      more: !this.data.more,
+      myTop: this.data.myTop,
+      myTopOne: this.data.myTopOne
+    })
+  },
+  /**
+   * 选择照片
+   */
+  addPhoto(){
+    config.chooseImage((res)=>{
+      console.log(res)
+      wx.uploadFile({
+        url: config.uploadFile, //仅为示例，非真实的接口地址
+        filePath: res.tempFilePaths[0],
+        name: 'file',
+        formData: {
+          filetype: 'image',
+          app: 'material'
+        },
+        success: function (res) {
+          console.log(JSON.parse(res.data))
+          var myimgSrc = JSON.parse(res.data).data[0].url
+
+          var data = JSON.stringify({
+            userId: app.globalData.user_id,
+            formId: app.globalData.formId,
+            image: myimgSrc
+          })
+          
+          wx.sendSocketMessage({
+            data: data,
+            success: function (res) {
+              console.log(res)
+            },
+            fail: function () {
+              console.log('发送失败')
+            },
+            complete: function () {
+              
+            }
+          })
+        }
+      })
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.setData({
+      config: {
+        wrapBgcor: 'RGBA(0, 0, 0, 0.8)',   //wrap背景色
+        myDialogBgcor: 'rgba(255, 255, 255, 1)', //Dialog背景色
+        myDialogMain: '你好呀',  //Dialog内容
+        myDialogWidth: '686rpx',  //Dialog宽度
+        myDialog_contentPadding: '66rpx 119rpx',  //Dialog内容padding
+        myDialog_contentFs: '36rpx',  //Dialog内容字号
+        myDialog_bottonFs: '36rpx',  //Dialog按钮字号
+        myDialog_delMain: '取消',  //Dialog取消文字
+        myDialog_delBgcor: 'RGBA(235, 235, 235, 1)',  //Dialog取消按钮里面的
+        myDialog_delCor: 'RGBA(0, 0, 0,1)',
+        myDialog_sendMain: '确认',
+        myDialog_sendBgcor: 'RGBA(152, 97, 225, 1)',
+        myDialog_sendCor: 'RGBA(255, 255, 255, 1)',
+        showCel: true
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
   myipt(e) {
     this.setData({

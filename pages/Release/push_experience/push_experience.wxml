@@ -12,7 +12,6 @@
 <!--我添加的视频-->
 <template is="myvideo" data="{{...myvideo}}" wx:if="{{myvideo.videoSrc!=null}}"></template>
 <!--选择发布方式-->
-
 <template is="upimg" data="{{...myimg}}" wx:if="{{myimg.imgSrc!=null}}"></template>
  <!-- <template is="anthurPro" wx:if="{{type=='兴趣'}}"  data='{{...description}}'></template>  -->
 <template is='allkind' wx:if="{{type=='兴趣'}}" data="{{...myallkind}}"></template>

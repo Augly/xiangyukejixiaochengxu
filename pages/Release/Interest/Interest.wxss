@@ -67,7 +67,6 @@
   width: 110rpx;
   height: 110rpx;
   border-radius: 50%;
-  background-color: red;
 }
 
 .anthur_name {
@@ -197,6 +196,7 @@ box-sizing: border-box;
   margin-right: 5rpx;
   color: RGBA(152, 97, 225, 1);
 }
+
 
 .giftGroup {
   width: 100%;

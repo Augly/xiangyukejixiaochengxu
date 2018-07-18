@@ -15,7 +15,7 @@
       <text>约见面</text>
     </view>
   </view>
-  <scroll-view class='chartRecord' style='height:{{myheight}}px;width:100%' scroll-y  scroll-into-view="a{{myTop}}{{myTopOne}}" scroll-with-animation>
+  <scroll-view class="chartRecord {{more?'pd':''}}" style='height:{{myheight}}px;width:100%' scroll-y scroll-into-view="a{{myTop}}{{myTopOne}}" scroll-with-animation bindscrolltoupper='getMore'>
     <view class='record' wx:for="{{loglist}}">
       <view class='record_wrap'>
         <view class='recordTime'>
@@ -29,17 +29,32 @@
             <view class='sj'>
 
             </view>
-            <view class='main_wrap'>
+            <view class='main_wrap' wx:if="{{myitem.image!=null}}">
+              <image class='main_wrapImg' src="{{myitem.image}}" mode='widthFix'>
+
+              </image>
+            </view>
+            <view class='main_wrap' wx:elif="{{myitem.word!=null}}">
               {{myitem.word}}
+            </view>
+            <view class='main_wrap' wx:else="{{myitem.media!=null}}">
+              {{myitem.media}}
             </view>
           </view>
         </view>
         <view class='chart_list_right' wx:else>
 
           <view class='list_main_right'>
+             <view class='main_wrap_right' wx:if="{{myitem.image!=null}}">
+              <image class='main_wrapImg' src="{{myitem.image}}" mode='widthFix'>
 
-            <view class='main_wrap_right'>
-               {{myitem.word}}
+              </image>
+            </view>
+            <view class='main_wrap_right' wx:elif="{{myitem.word!=null}}">
+              {{myitem.word}}
+            </view>
+            <view class='main_wrap_right' wx:else="{{myitem.media!=null}}">
+              {{myitem.media}}
             </view>
             <view class='sj_right'>
 
@@ -54,11 +69,11 @@
     <view class='chartsend'>
       <text class='iconfont icon-yuyin'></text>
       <input class='ipt' confirm-type='send' bindconfirm="send" bindinput='myipt'></input>
-      <text class='iconfont icon-add' bindtap='send'></text>
+      <text class='iconfont icon-add' bindtap='more'></text>
     </view>
     <view class='more' wx:if="{{more}}">
       <view class='more_item'>
-        <view class='more_item_all'>
+        <view class='more_item_all' bindtap='addPhoto'>
           <text class='iconfont icon-zhaopian'></text>
         </view>
         <view class='more_item_alltitle'>相册</view>

@@ -118,6 +118,8 @@ const options = {
 
   getUserChatLog='/api/portal/Common/getUserChatLog',  //获取用户聊天内容
 
+  userChangeCard ='/api/portal/User/userChangeCard',
+
   gitpresent = '/api/portal/Common/present';  
 
 //获取dataset
@@ -192,7 +194,7 @@ function pay(res, successData) {
  * 时间转换
  */
 function timeFormat(time) {
-  var date = new Date(time*1000),
+  var date = new Date(time),
     curDate = new Date(),
     year = date.getFullYear(),
     month = date.getMonth() + 1,
@@ -265,11 +267,46 @@ function timeFormatNotime(time) {
   }
   return timeStr;
 }
-
+/**
+ * 封装自定义优美的toast
+ */
+function mytoast(main, successData) {
+  wx.showToast({
+    title: main,
+    icon: 'none',
+    mask: true,
+    success: function (res) {
+      if (successData){
+        setTimeout((res) => {
+          successData(res)
+        }, 1500)
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) { },
+  })
+}
+/**
+ * 选择图片
+ */
+function chooseImage(successData) {
+  wx.chooseImage({
+    count: 1,
+    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+    success: (res) => {
+      // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+      // var tempFilePaths = res.tempFilePaths
+      successData(res)
+    }
+  })
+}
 /**
  * 登录
  */
 module.exports = {
+  chooseImage: chooseImage,
+  mytoast: mytoast,
   addressList: addressList,
   myorder: myorder,
   myDel: myDel,
@@ -332,5 +369,6 @@ module.exports = {
   myPresentWithdraw: myPresentWithdraw,
   imgurl: imgurl,
   getShareJoinUsers: getShareJoinUsers,
-  getUserChatLog: getUserChatLog
+  getUserChatLog: getUserChatLog,
+  userChangeCard: userChangeCard
 }

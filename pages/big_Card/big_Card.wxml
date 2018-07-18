@@ -1,24 +1,26 @@
-<view class="mywrap">
+
+<import src="../../template/template.wxml" />
+ <view class="mywrap">
   <view class='head'>
     <image class='head_logo' src='{{alldata.avatar}}'></image>
-    <view class='head_title'>{{avatar.user_nickname}}</view>
+    <view class='head_title'>{{alldata.user_nickname}}</view>
     <view class='head_mintitle'>在实现自我价值中寻求一种满足感</view>
   </view>
-</view>
+</view> 
 
 
-<view class='zl_list'>
+ <view class='zl_list'>
   <view class='zl_item'>
     <text class='iconfont icon-weixin1'></text>
-    <text class='item_res'>xiangyuxiao1994</text>
+    <text class='item_res'>{{alldata.wechat==null?'未填写':alldata.wechat}}</text>
   </view>
   <view class='zl_item'>
     <text class='iconfont icon-shouji'></text>
-    <text class='item_res'>18965984365</text>
+    <text class='item_res'>{{alldata.mobile==''?'未填写':alldata.mobile}}</text>
   </view>
   <view class='zl_item'>
     <text class='iconfont icon-wode'></text>
-    <text class='item_res'>{{alldata.sex}} {{alldata.constellation}} {{alldata.birthday}}</text>
+    <text class='item_res'>{{alldata.sex}} {{alldata.constellation==null?'未填写':alldata.constellation}} {{alldata.birthday}}</text>
   </view>
   <view class='zl_item'>
     <text class='iconfont icon-weizhi'></text>
@@ -26,12 +28,12 @@
   </view>
   <view class='zl_item'>
     <text class='iconfont icon-zhiye'></text>
-    <text class='item_res'>大学教师</text>
+    <text class='item_res'>{{alldata.profession==null?'未填写':alldata.profession}}</text>
   </view>
-</view>
+</view> 
 
 
-<view class='hot_new'>
+ <view class='hot_new'>
   <view class='hot_title'>
     最新动态
   </view>
@@ -41,12 +43,12 @@
 
     </view>
   </view>
-</view>
+</view> 
 
 
-<view class='pic_new'>
+ <view class='pic_new'>
   <view class='hot_title' style='padding:0rpx 32rpx;'>
-    最新动态
+    精选照片
   </view>
   <view class='pic_list'>
     <image class='pic_list_img'></image>
@@ -54,11 +56,13 @@
     <image class='pic_list_img'></image>
     <image class='pic_list_img'></image>
   </view>
-</view>
+</view> 
 
 <view class='kong'></view>
 
-<view class='footBottom' bindtap='editCard'>
-   <view class='footItem'>开启聊天</view>
-   <view class='footItem'>送TA礼物</view>
+<view class='footBottom'>
+   <view class='footItem' bindtap='chart'>开启聊天</view>
+   <view class='footItem' bindtap='sendgift'>送TA礼物</view>
 </view>
+
+<template is='giftGroup' data="{{...giftGroup}}"></template>
