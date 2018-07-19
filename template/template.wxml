@@ -513,7 +513,7 @@
       <view class='main'>{{item.word}}</view>
       <!-- <view class='lookmore'>全文</view> -->
       <view class='imgGroup'>
-        <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem" wx:if="{{item.image.length==1}}" src='{{myitem}}'></image>
+        <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem" wx:if="{{item.image.length==1}}" src='{{myitem}}' bin></image>
         <image class='doubleAndpersonl' wx:for="{{item.image}}" wx:if="{{item.image.length==2||item.image.length==4}}" src='{{myitem}}'></image>
         <image class='four' wx:for="{{item.image}}" wx:if="{{item.image.length>=5}}" src='{{myitem}}'></image>
       </view>

@@ -348,6 +348,7 @@ box-sizing: border-box;
 }
 
 .goshop {
+  font-size: 26rpx;
   background-color: RGBA(74, 144, 226, 1);
   color: RGBA(255, 255, 255, 1);
 }

@@ -1315,8 +1315,8 @@ width: 100%;
 }
 
 .myvideo {
-  width: 360rpx;
-  height: 360rpx;
+  width:500rpx;
+  height: 400rpx;
   display: block;
   margin-left: 24rpx;
   margin-top: 24rpx;
