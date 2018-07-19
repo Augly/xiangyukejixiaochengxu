@@ -1,19 +1,19 @@
 // pages/Release/push_experience/push_experience.js
 const config = require("../../../utils/config.js");
-var time = config.options.duration;  //获取预定时间
+var time = config.options.duration; //获取预定时间
 var timeclone = null; //  开始录音时的定时器
 var mytime = null; //录音文件的时间
-var playTime = null;  //试听的时间
+var playTime = null; //试听的时间
 let app = getApp()
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    showtext: false,  //文字是否显示
-    audioshow: false,  //录音组件是否显示
-    showaudio: true,  //是否显示录音组件
-    playType: true,  //是否可以试听
+    showtext: false, //文字是否显示
+    audioshow: false, //录音组件是否显示
+    showaudio: true, //是否显示录音组件
+    playType: true, //是否可以试听
     sendgift: false,
     myvideo: {
       controls: false,
@@ -29,10 +29,10 @@ Page({
     img: {
       imgurl: 'http://xiangyu.wx.bronet.cn/images/jiajia@2x.png'
     },
-    audio: {  //音频组件的数据
-      mytype: 'start',  //显示类型
-      showTime: null,  //显示的已录制时间
-      loadingTime: 0,  //剩余录音时间
+    audio: { //音频组件的数据
+      mytype: 'start', //显示类型
+      showTime: null, //显示的已录制时间
+      loadingTime: 0, //剩余录音时间
       audioTime: 0, //
       trylisten: true
     },
@@ -439,7 +439,11 @@ Page({
     var that = this
 
 
-    let audio, myaudio = '', imgSrc, myimgSrc = '', videoSrc, myvideoSrc = '', imgurl, myimgurl = '', info, sendgift, giftnumber = this.data.bugGroup.buy_number;
+    let audio, myaudio = '',
+      imgSrc, myimgSrc = '',
+      videoSrc, myvideoSrc = '',
+      imgurl, myimgurl = '',
+      info, sendgift, giftnumber = this.data.bugGroup.buy_number;
     //封面图
     if (this.data.img.imgurl == 'http://xiangyu.wx.bronet.cn/images/jiajia@2x.png' || this.data.img.imgurl == undefined || this.data.img.imgurl == null) {
       wx.showModal({
@@ -743,13 +747,13 @@ Page({
           icon: 'none',
           mask: true,
           success: () => {
-           
-              setTimeout(() => {
-                wx.switchTab({
-                  url: '/pages/begin/begin',
-                })
-              }, 2000)
-            
+
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/begin/begin',
+              })
+            }, 2000)
+
           }
         })
       }, (res) => {

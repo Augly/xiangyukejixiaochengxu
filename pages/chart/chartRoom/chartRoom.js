@@ -1,5 +1,9 @@
 // pages/chart/chartRoom/chartRoom.js
-const config = require('../../../utils/config.js');
+const config = require("../../../utils/config.js");
+var time = config.options.duration;  //获取预定时间
+var timeclone = null; //  开始录音时的定时器
+var mytime = null; //录音文件的时间
+var playTime = null;  //试听的时间
 let app = getApp()
 let concatWrap = null,
   page = 1
@@ -10,7 +14,17 @@ Page({
   data: {
     isShow: false,
     more: false,
-    loglist:[]
+    loglist: [],
+    audioshow: false,  //录音组件是否显示
+    showaudio: true,  //是否显示录音组件
+    playType: true,  //是否可以试听
+    audio: {  //音频组件的数据
+      mytype: 'start',  //显示类型
+      showTime: null,  //显示的已录制时间
+      loadingTime: 0,  //剩余录音时间
+      audioTime: 0, //
+      trylisten: true
+    },
   },
   getMore() {
     wx.showLoading({
@@ -60,6 +74,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     this.setData({
       uid: app.globalData.user_id
     })
@@ -75,7 +90,7 @@ Page({
           res.data.data[i].list[n].create_time = config.timeFormat(res.data.data[i].list[n].create_time)
         }
       }
-      if(res.data.data.length!=0){
+      if (res.data.data.length != 0) {
         this.setData({
           loglist: res.data.data,
           myTop: res.data.data.length - 1,
@@ -163,7 +178,7 @@ Page({
               loglist: alldata,
               myTop: alldata.length - 1,
               myTopOne: alldata[alldata.length - 1].list.length - 1,
-              more:false
+              more: false
             })
           }
 
@@ -185,6 +200,35 @@ Page({
       fail: function () {
         console.log(res)
       }
+    })
+    that.setData({
+      // title: options.title,
+      'adder.adder': app.globalData.adder,
+      // 'type': options.type
+    });
+
+    this.recorderManager = wx.getRecorderManager();
+    this.recorderManager.onError(function () {
+      that.tip("录音失败！")
+    });
+    this.recorderManager.onStop(function (res) {
+      that.setData({
+        audio_faile: res,
+        src: res.tempFilePath,
+      })
+      mytime = res.duration
+      playTime = mytime;
+      that.setData({
+        'audio.audioTime': that.formatDuring(mytime)
+      })
+    });
+    this.innerAudioContext = wx.createInnerAudioContext();
+    this.innerAudioContext.onError((res) => {
+      that.tip("播放录音失败！")
+    })
+    this.setData({
+      'audio.showTime': this.formatDuring(time),
+      'audio.loadingTime': this.formatDuring(config.options.duration - time)
     })
   },
   DialogSend() {
@@ -209,8 +253,8 @@ Page({
   /**
    * 选择照片
    */
-  addPhoto(){
-    config.chooseImage((res)=>{
+  addPhoto() {
+    config.chooseImage((res) => {
       console.log(res)
       wx.uploadFile({
         url: config.uploadFile, //仅为示例，非真实的接口地址
@@ -229,7 +273,7 @@ Page({
             formId: app.globalData.formId,
             image: myimgSrc
           })
-          
+
           wx.sendSocketMessage({
             data: data,
             success: function (res) {
@@ -239,7 +283,7 @@ Page({
               console.log('发送失败')
             },
             complete: function () {
-              
+
             }
           })
         }
@@ -269,7 +313,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -291,8 +334,6 @@ Page({
       data: data,
       success: function (res) {
         console.log(res)
-
-        // console.log('第一次发送1')
       },
       fail: function () {
         console.log('发送失败')
@@ -330,11 +371,245 @@ Page({
   onReachBottom: function () {
 
   },
+  /**
+    * 添加录音
+    */
+  addaudio: function () {
+    console.log(1)
+    var that = this
+    time = config.options.duration;
+    console.log(2)
+    that.setData({
+      audioshow: true,
+      'audio.showTime': this.formatDuring(time),
+      'audio.loadingTime': this.formatDuring(config.options.duration - time)
+    })
+  },
 
+  /**
+   * 重录
+   */
+  returnaddaudio: function () {
+    this.innerAudioContext.stop()
+    time = config.options.duration;
+    this.setData({
+      showaudio: true
+    })
+  },
+
+  /**
+   * 上传音频
+   */
+  uploadaudio() {
+
+    this.innerAudioContext.stop()
+    time = config.options.duration;
+    this.setData({
+      myaudio: this.data.audio_faile,
+      showaudio: true,
+      audioshow: false,
+      'myaudio.duration': this.formatDuringtwo(this.data.audio_faile.duration)
+    })
+    //上传音频
+    if (this.data.myaudio == null || this.data.myaudio == undefined) {
+      var audio = ''
+    } else {
+      console.log(this.data.myaudio)
+      wx.uploadFile({
+        url: config.uploadFile, //仅为示例，非真实的接口地址
+        filePath: this.data.myaudio.tempFilePath,
+        name: 'file',
+        formData: {
+          filetype: 'audio',
+          app: 'material'
+        },
+        success: function (res) {
+          console.log(res)
+          var myaudio = JSON.parse(res.data).data[0].filepath
+
+          var data = JSON.stringify({
+            userId: app.globalData.user_id,
+            formId: app.globalData.formId,
+            media: myaudio
+          })
+          wx.sendSocketMessage({
+            data: data,
+            success: function (res) {
+              console.log(res)
+            },
+            fail: function () {
+              console.log('发送失败')
+            },
+            complete: function () {
+              // console.log(23)
+            }
+          })
+
+
+        }
+      })
+    }
+
+  },
+  /**
+   * 播放音频
+   */
+  playaudio() {
+    var that = this;
+    this.innerAudioContext.src = this.data.myaudio.tempFilePath;
+    this.innerAudioContext.play()
+    var moneytime = that.data.audio_faile.duration;
+    if (mytime > moneytime) {
+
+    } else {
+      var timeclone = setInterval(function () {
+        that.data.audio_faile.duration -= 1000;
+        that.setData({
+          'myaudio.duration': that.formatDuringtwo(that.data.audio_faile.duration),
+        })
+        if (that.data.audio_faile.duration < 1000) {
+          clearInterval(timeclone)
+          that.data.audio_faile.duration = moneytime
+        }
+      }, 1000)
+    }
+
+  },
+  play(e) {
+    console.log(e.currentTarget.dataset.src)
+    var that = this;
+    this.innerAudioContext.stop()
+    this.innerAudioContext.src = e.currentTarget.dataset.src;
+    this.innerAudioContext.play()
+  },
+  //时间转换
+  formatDuring(mss) {
+    var days = parseInt(mss / (1000 * 60 * 60 * 24));
+    var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+    var min = minutes.toString().length == 1 ? '0' + minutes : minutes;
+    var seconds = Math.round((mss % (1000 * 60)) / 1000);
+    var sec = seconds.toString().length == 1 ? '0' + seconds : seconds;
+    return min + "分" + sec + '秒';
+  },
+  //时间转换
+  formatDuringtwo(mss) {
+    var days = parseInt(mss / (1000 * 60 * 60 * 24));
+    var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+    var min = minutes.toString().length == 1 ? '0' + minutes : minutes;
+    var seconds = Math.round((mss % (1000 * 60)) / 1000);
+    var sec = seconds.toString().length == 1 ? '0' + seconds : seconds;
+    return min + ":" + sec + '"';
+  },
+  /**
+   * 开始录音
+   */
+  audio_start() {
+    var that = this;
+    that.setData({
+      'audio.mytype': 'stop'
+    })
+    this.recorderManager.start(config.options);
+    timeclone = setInterval(function () {
+      time -= 1000;
+      that.setData({
+        'audio.showTime': that.formatDuring(time),
+        'audio.loadingTime': that.formatDuring(config.options.duration - time)
+      })
+      if (time == 0) {
+        clearInterval(timeclone)
+      }
+    }, 1000)
+  },
+  //录音停止
+  audio_stop() {
+    var that = this;
+    this.recorderManager.stop()
+    clearInterval(timeclone)
+  },
+  //下一步
+  nextStep() {
+    var that = this;
+    if (time === config.options.duration) {
+      wx.showModal({
+        title: '提示',
+        content: '请点击开始录制视频',
+        showCancel: false
+      })
+    } else {
+      this.recorderManager.stop()
+      clearInterval(timeclone)
+      time = config.options.duration;
+      that.setData({
+        'audio.mytype': 'start',
+        'audio.showTime': that.formatDuring(time),
+        'audio.loadingTime': that.formatDuring(config.options.duration - time),
+        showaudio: false,
+      })
+    }
+  },
+  //试听音乐
+  trylisten() {
+    var that = this;
+    this.innerAudioContext.src = this.data.src;
+    this.innerAudioContext.play()
+    that.setData({
+      'audio.trylisten': false
+    })
+    var timetwo = setInterval(function () {
+      playTime -= 1000;
+      that.setData({
+        'audio.audioTime': that.formatDuring(playTime)
+      })
+      if (playTime < 1000) {
+        clearInterval(timetwo)
+        that.setData({
+          'audio.trylisten': true
+        })
+        playTime = mytime
+      }
+    }, 1000)
+  },
+  //取消录音
+  celaudio() {
+    this.recorderManager.stop()
+    time = config.options.duration;
+    this.setData({
+      audioshow: false,
+      'audio.showTime': this.formatDuring(time),
+      'audio.loadingTime': this.formatDuring(config.options.duration - time),
+      'audio.mytype': 'start',
+      showaudio: true
+    })
+    clearInterval(timeclone)
+  },
+  //叉掉
+  hideaudio() {
+    this.setData({
+      audioshow: false,
+      showaudio: true,
+      'audio.mytype': 'start',
+    })
+  },
+  tip: function (msg) {
+    wx.showModal({
+      title: '提示',
+      content: msg,
+      showCancel: false
+    })
+  },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  /**
+ * 生命周期函数--监听页面隐藏
+ */
+  onHide: function () {
+    this.innerAudioContext.stop()
+  },
+
 })

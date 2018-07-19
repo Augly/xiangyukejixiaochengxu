@@ -1,5 +1,5 @@
 /* pages/chart/chartRoom/chartRoom.wxss */
-
+@import "../../../template/template.wxss";
 page {
   background-color: RGBA(245, 246, 250, 1);
 }
@@ -204,4 +204,16 @@ page {
 .main_wrapImg{
   width: 220rpx;
   height: auto;
+}
+.myaudio {
+   width:200rpx !important; 
+  height: 88rpx;
+  background-color: RGBA(40, 213, 203, 1);
+  border-radius: 20rpx;
+   margin-left:0rpx !important; 
+   margin-top:0rpx !important; 
+  box-sizing: border-box;
+   padding: 0rpx !important; 
+  display: flex;
+  align-items: center;
 }
