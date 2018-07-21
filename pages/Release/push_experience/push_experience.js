@@ -63,18 +63,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.type == '兴趣') {
-      wx.setNavigationBarTitle({
-        title: '发布兴趣'
-      })
+    console.log(options)
+    config.ajax('POST', {
+
+    }, config.nav, (res) => {
+      console.log(res)
       this.setData({
-        showtext: true
+        navData: res.data.data
       })
-    } else {
-      wx.setNavigationBarTitle({
-        title: '发布共享经验'
-      })
-    }
+      if (options.type == this.data.navData.share_name) {
+        this.setData({
+          showtext: true
+        })
+      } 
+    }, (res) => {
+
+    })
+    wx.setNavigationBarTitle({
+      title: options.type
+    })
+
     config.ajax('POST', {}, config.interestSort, (res) => {
       console.log(res.data.data)
       this.setData({

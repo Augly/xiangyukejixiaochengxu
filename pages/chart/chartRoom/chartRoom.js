@@ -172,7 +172,12 @@ Page({
               alldata.push(concatWrap)
             } else {
               concatWrap.list.push(JSON.parse(res.data))
-              alldata[alldata.length - 1] = concatWrap
+              if (alldata.length==0){
+                alldata[0] = concatWrap
+              }else{
+                alldata[alldata.length - 1] = concatWrap
+              }
+              console.log(alldata)
             }
             that.setData({
               loglist: alldata,

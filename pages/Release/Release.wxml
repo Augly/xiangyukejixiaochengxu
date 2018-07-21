@@ -12,9 +12,9 @@
     选择发布类型
   </view>
   <view class='select'>
-    <view class="select_item {{selectIndex==1?'select_item_active':''}}" bindtap='click' data-id='1'>共享经验</view>
-    <view class="select_item {{selectIndex==2?'select_item_active':''}}" bindtap='click' data-id='2'>需求</view>
-    <view class="select_item {{selectIndex==3?'select_item_active':''}}" bindtap='click' data-id='3'>兴趣</view>
+     <view class="select_item {{selectIndex==1?'select_item_active':''}}" bindtap='click' data-id='1'> {{navData.interest_name}}</view>
+    <view class="select_item {{selectIndex==2?'select_item_active':''}}" bindtap='click' data-id='2'> {{navData.need_name}}</view>
+    <view class="select_item {{selectIndex==3?'select_item_active':''}}" bindtap='click' data-id='3'> {{navData.share_name}}</view> 
   </view>
 </view>
 

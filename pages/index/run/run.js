@@ -36,6 +36,11 @@ Page({
 
    
   },
+  tobill(){
+    config.mytoast('系统升级,正在维护',(res)=>{
+
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -56,7 +61,40 @@ Page({
    */
   onShow: function () {
   
+
+
+
+
   },
+
+  uploadImg(){
+    var n = this.data.myimg.imgSrc.length - 1; //需要上传图片数组的长度-1
+    var s = 0;  //初始化索引值标志
+    (function upArr() {  //上传图片函数
+      wx.uploadFile({
+        url: config.uploadFile,  //需要上传的接口
+        filePath: that.data.myimg.imgSrc[s],  //需要上传的图片文件
+        name: 'file',
+        formData: {
+          filetype: 'image',
+          app: 'material'
+        },
+        success: function (res) {  //上传成功后
+          myimgurl += ',' + JSON.parse(res.data).data[0].filepath
+          if (n > s) {  //判断是否全部上传完，此处为未全部上传完，继续调用上传函数
+            s++   //标志
+            upArr()
+          } else {
+            //全部上传成功区间
+            console.log(myimgurl)
+          }
+        }
+      })
+    })()
+  },
+  /**
+   * 我要接单
+   */
 
   /**
    * 生命周期函数--监听页面隐藏

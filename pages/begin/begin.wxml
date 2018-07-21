@@ -5,13 +5,13 @@
     推荐
   </view>
   <view class="nav_bar {{index==2?'nav_active':''}}" data-id='2' bindtap='navClick'>
-    共享经验
+    {{navData.interest_name}}
   </view>
   <view class="nav_bar {{index==3?'nav_active':''}}" data-id='3' bindtap='navClick'>
-    兴趣社
+    {{navData.need_name}}
   </view>
   <view class="nav_bar {{index==4?'nav_active':''}}" data-id='4' bindtap='navClick'>
-    需求
+    {{navData.share_name}}
   </view>
 </view>
 
@@ -120,13 +120,13 @@
     <view class='select_Group'>
       <view class='demandselect_head'>
         <view class="demandselect_item {{myindex==1?'demandselect_item_active':''}}" data-id='1' bindtap='demindtap'>
-          附近跑腿
+          二手置换
         </view>
         <view class="demandselect_item {{myindex==2?'demandselect_item_active':''}}" data-id='2' bindtap='demindtap'>
           问答
         </view>
         <view class="demandselect_item {{myindex==3?'demandselect_item_active':''}}" data-id='3' bindtap='demindtap'>
-          二手置换
+           附近跑腿
         </view>
       </view>
     </view>

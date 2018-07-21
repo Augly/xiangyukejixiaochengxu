@@ -27,7 +27,7 @@
   <view class='content'>
     <!-- <image class='thumb' mode='widthFix' src='{{alldata.thumb}}'></image> -->
     <view class='textContent'>{{alldata.word}}</view>
-    <image class='thumb' mode='widthFix' src='{{alldata.image}}' wx:if="{{alldata.image!=''}}"></image>
+    <image class='thumb' mode='widthFix' src='{{alldata.image}}' wx:if="{{alldata.image!=''}}" catchtap='viewImg' data-src='{{alldata.image}}'></image>
     <!--我添加的音频-->
     <template is="myaudio" data="{{...myaudio}}" wx:if="{{alldata.time!=0}}"></template>
     <!--我添加的视频-->

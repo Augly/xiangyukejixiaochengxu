@@ -9,7 +9,7 @@
       </view>
       <view class='head_type'>
         <view class='head_type_title'>{{alldata.err.create_time}}</view>
-        <view class='head_type_mintitle'>跑</view>
+        <view class='head_type_mintitle'>带</view>
       </view>
     </view>
     <view class='head_main'>
@@ -81,6 +81,6 @@
 
 
 <view class='foot'>
-    <view class='get' wx:if="{{alldata.err.status==1}}">我要接单</view>
+    <view class='get' wx:if="{{alldata.err.status==1}}" bindtap='tobill'>我要接单</view>
     <view class='pl' bindtap='pl'>评论</view>
 </view>

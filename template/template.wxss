@@ -13,7 +13,6 @@
   border: 1rpx solid RGBA(240, 240, 240, 1);
   margin-top: 10rpx;
   overflow: hidden;
-  /* position: absolute; */
 }
 
 .item_active {

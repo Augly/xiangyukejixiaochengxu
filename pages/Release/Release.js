@@ -119,9 +119,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    qqmapsdk = new QQMapWX({
-      key: 'CRZBZ-GGA6S-AFZOH-6JEIJ-RFOAE-RSB5H'
-    });
+    config.ajax('POST', {
+
+    }, config.nav, (res) => {
+      console.log(res)
+      this.setData({
+        navData: res.data.data
+      })
+    }, (res) => {
+
+    })
   },
 
   /**
@@ -155,6 +162,7 @@ Page({
       })
       return false
     }
+    console.log(this.data.selectIndex)
     if (this.data.selectIndex=='2'){
       config.ajax('POST',{
         user_id: app.globalData.user_id
@@ -164,19 +172,24 @@ Page({
             phoneMask: true
           })
         }else{
+          // wx.navigateTo({
+          //   url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.navData.need_name,
+          // })
           wx.navigateTo({
-            url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.array[this.data.index],
-          })
+            url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.array[this.data.index]
+            })
+
+
         }
       })
 
     } else if (this.data.selectIndex == '1'){
        wx.navigateTo({
-         url: 'push_experience/push_experience?title='+this.data.title+'&type=共享经验',
+         url: 'push_experience/push_experience?title=' + this.data.title + '&type=' + this.data.navData.interest_name,
        })
     }else{
       wx.navigateTo({
-        url: 'push_experience/push_experience?title=' + this.data.title+'&type=兴趣',
+        url: 'push_experience/push_experience?title=' + this.data.title + '&type=' + this.data.navData.share_name,
       })
     }
   },

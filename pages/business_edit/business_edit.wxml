@@ -1,65 +1,64 @@
 <view class="upload_imgGroup">
   <view class='upload_imgGroup_title'>上传精选照片（最多5张）</view>
-
   <view class='upload_wrap'>
-    <image class='upload_item'>
-      <view class='img_cha'></view>
+    <image wx:for="{{myimgArr}}" class='upload_item' src='{{item}}'>
+      <view class='img_cha' bindtap='cha' data-index='{{index}}'></view>
     </image>
-    <image class='upload_item'></image>
-    <image class='upload_item'></image>
-    <image class='upload_item'></image>
+    <image class='upload_item' bindtap='upimg' src='http://xiangyu.wx.bronet.cn/images/jiajia@2x.png'>
+      <!-- <view class='img_cha'></view> -->
+    </image>
   </view>
 </view>
-
 <view class='mytitle'>
   <view class='title_t'>座右铭</view>
-  <textarea class='title_text'></textarea>
+  <textarea class='title_text' bindinput='Motto' value='{{Motto}}'></textarea>
 </view>
-
 <view class='userInfo'>
   <view class='userItem'>
     <view class='item_title'>
       微信号
     </view>
-    <input class='item_ipt'></input>
+    <input class='item_ipt' bindinput='wxChart' value='{{wxChart}}'></input>
   </view>
   <view class='userItem'>
     <view class='item_title'>
       电话号
     </view>
-    <input class='item_ipt'></input>
+    <input class='item_ipt' bindinput='tell' value='{{tell}}'></input>
   </view>
 </view>
-
 <view class='userInfo'>
-  <view class='userItem'>
-    <view class='item_title'>
-      性别
+  <picker range='{{sex}}' bindchange='selectSex'>
+    <view class='userItem'>
+      <view class='item_title'>
+        性别
+      </view>
+      <view class='item_iptView'>{{sexIndex}}</view>
+      <!-- <input class='item_ipt' bindinput='sex' value='{{sex}}'></input> -->
     </view>
-    <input class='item_ipt'></input>
-  </view>
-  <view class='userItem'>
-    <view class='item_title'>
-      生日
+  </picker>
+  <picker mode='date' bindchange='mydata' end='{{enddata}}'>
+    <view class='userItem'>
+      <view class='item_title'>
+        生日
+      </view>
+      <view class='item_iptView'>{{brith}}</view>
     </view>
-    <input class='item_ipt'></input>
-  </view>
+  </picker>
   <view class='userItem'>
     <view class='item_title'>
       现居
     </view>
-    <input class='item_ipt'></input>
+    <input class='item_ipt' bindinput='workpace' value='{{workpace}}'></input>
   </view>
   <view class='userItem'>
     <view class='item_title'>
       职业
     </view>
-    <input class='item_ipt'></input>
+    <input class='item_ipt' bindinput='myporsesio' value='{{myporsesio}}'></input>
   </view>
 </view>
-
 <view class='kong'></view>
-
 <view class='footBottom'>
-    保存
+  保存
 </view>

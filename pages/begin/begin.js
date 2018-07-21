@@ -9,7 +9,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     index: 1,
-    myindex: 1,
+    myindex:1,
     myimgUrl: config.myimgUrl,
     imgUrls: [
       'http://xiangyu.wx.bronet.cn/images/abanner@2x.png',
@@ -138,8 +138,13 @@ Page({
         mask: true,
       })
       //获取需求数据
+      if (that.data.myindex==3){
+        var myindex=1
+      } else if(that.data.myindex==1){
+        var myindex = 3
+      }
       config.ajax('POST', {
-        type: that.data.myindex,
+        type: myindex,
         user_id: app.globalData.user_id,
         lat: app.globalData.lat,
         lng: app.globalData.lng,
@@ -188,9 +193,25 @@ Page({
     })
   },
   goask_res(e) {
+    console.log(e)
+   if(e.currentTarget.dataset.sortid=='问'){
+     wx.showToast({
+       title: '系统维护,正在升级',
+       icon: 'none',
+       mask: true,
+       success: function(res) {},
+       fail: function(res) {},
+       complete: function(res) {},
+     })
+    //  wx.navigateTo({
+    //    url: '/pages/Release/ask_res/ask_res?id=' + e.currentTarget.dataset.id + '&userid=' + e.currentTarget.dataset.userid,
+    //  })
+   }else{
     wx.navigateTo({
       url: '../index/run/run?id=' + e.currentTarget.dataset.id + '&userid=' + e.currentTarget.dataset.userid,
     })
+   }
+
   },
 
   //选择兴趣社名下分类
@@ -230,8 +251,16 @@ Page({
       title: '加载中...',
       mask: true,
     })
+    if (that.data.myindex == '3') {
+      var myindex = '1'
+    } else if (that.data.myindex == '1') {
+      var myindex = '3'
+    }else{
+      var myindex = that.data.myindex
+    }
+    console.log(myindex)
     config.ajax('POST', {
-      type: that.data.myindex,
+      type: myindex,
       user_id: app.globalData.user_id,
       lat: app.globalData.lat,
       lng: app.globalData.lng,
@@ -305,13 +334,22 @@ Page({
       })
       wx.hideLoading()
     })
+    config.ajax('POST',{
+
+    }, config.nav,(res)=>{
+      console.log(res)
+      this.setData({
+        navData:res.data.data
+      })
+    },(res)=>{
+
+    })
     wx.showTabBarRedDot({
       index: 3,
       success: function (res) {
         wx.setTabBarBadge({
           index: 3,
           text: '1111',
-
         })
       },
       fail: function (res) { },

@@ -35,7 +35,7 @@
 <template name="tjitem">
   <view class="item" bindtap='looktjres' data-id='{{id}}' data-user_id="{{user_id}}" data-sortid="{{sort}}">
     <view class='showImg'>
-      <image class="item_img" src="{{thumb}}" mode="widthFix" lazy-load='true'></image>
+      <image class="item_img" src="{{thumb}}" mode="widthFix" lazy-load='true' ></image>
       <image class='item_act' wx:if="{{authur_type=='type_one'}}" src="{{authur_act}}" lazy-load='true'></image>
       <view class='item_txt'>{{title}}</view>
     </view>
@@ -160,7 +160,7 @@
 </template>
 <!--需求模板  -->
 <template name="deminditem">
-  <view class="demminditem" bindtap='goask_res' data-id='{{id}}' data-userid="{{user_id}}" data-sortid="{{sort}}">
+  <view class="demminditem" bindtap='goask_res' data-id='{{id}}' data-userid="{{user_id}}" data-sortid="{{type}}">
     <view class='demind_left'>
       <image class='demind_img' src='{{thumb}}'></image>
       <view class='run'>{{type}}</view>
@@ -264,7 +264,7 @@
 </template>
 <!--添加图片展示模块儿-->
 <template name="upimg">
-  <image class='myvideo' src='{{imgSrc}}' mode="widthFix"></image>
+  <image class='myvideo' src='{{imgSrc}}' mode="widthFix" catchtap='viewImg'  data-src='{{imgSrc}}'></image>
 </template>
 <!--内容编辑模块  -->
 <template name="textall">
@@ -513,9 +513,9 @@
       <view class='main'>{{item.word}}</view>
       <!-- <view class='lookmore'>全文</view> -->
       <view class='imgGroup'>
-        <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem" wx:if="{{item.image.length==1}}" src='{{myitem}}' bin></image>
-        <image class='doubleAndpersonl' wx:for="{{item.image}}" wx:if="{{item.image.length==2||item.image.length==4}}" src='{{myitem}}'></image>
-        <image class='four' wx:for="{{item.image}}" wx:if="{{item.image.length>=5}}" src='{{myitem}}'></image>
+        <image class='personlImg' wx:for="{{item.image}}" wx:for-item="myitem" wx:if="{{item.image.length==1}}" src='{{myitem}}' catchtap='viewImg'  data-src='{{myitem}}'></image>
+        <image class='doubleAndpersonl' wx:for="{{item.image}}" wx:if="{{item.image.length==2||item.image.length==4}}" src='{{myitem}}'  catchtap='viewImg'  data-src='{{myitem}}'></image>
+        <image class='four' wx:for="{{item.image}}" wx:if="{{item.image.length>=5}}" src='{{myitem}}'  catchtap='viewImg'  data-src='{{myitem}}'></image>
       </view>
 
       <view class='myaudio' bindtap='playjoinaudio' style='margin-left:0rpx' data-src='{{item.media}}' data-id='{{index}}' wx:if="{{item.video!=''}}">

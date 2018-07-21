@@ -94,7 +94,9 @@ Page({
       url: '../../personl/gift_Shop/gift_Shop'
     })
   },
-
+  viewImg(e){
+    config.viewImg(e.currentTarget.dataset.src)
+  },
   /**
    * 赠送礼物
    */

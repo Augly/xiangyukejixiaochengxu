@@ -137,9 +137,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     var that = this
     that.setData({
-      id: options.share_id
+      id: options.id,
+      need_id: options.userid
     })
 
     this.innerAudioContext = wx.createInnerAudioContext();
@@ -153,19 +155,20 @@ Page({
       user_id: app.globalData.user_id,
       lat: app.globalData.lat,
       lng: app.globalData.lng,
-      need_id: options.share_id
-    }, config.needres, (res) => {
+      need_id: options.id,
+      type:2
+    }, config.errDetail, (res) => {
       console.log(res)
       let myaudio = {
         src: res.data.data.media,
         time: res.data.data.time
       }
-      for (let i = 0; i < res.data.data.join.length; i++) {
-        res.data.data.join[i].distance = (res.data.data.join[i].distance / 1000).toFixed(2)
-        res.data.data.join[i].create_time = config.timeFormat(res.data.data.join[i].create_time * 1000)
-        res.data.data.join[i].duration = that.formatDuringtwo(res.data.data.join[i].time)
-      }
-      if (res.data.data.is_good == 0) {
+      // for (let i = 0; i < res.data.data.join.length; i++) {
+      //   res.data.data.join[i].distance = (res.data.data.join[i].distance / 1000).toFixed(2)
+      //   res.data.data.join[i].create_time = config.timeFormat(res.data.data.join[i].create_time * 1000)
+      //   res.data.data.join[i].duration = that.formatDuringtwo(res.data.data.join[i].time)
+      // }
+      if (res.data.data.count == 0) {
         that.setData({
           iszan: false,
         })
@@ -174,7 +177,7 @@ Page({
           iszan: true,
         })
       }
-      if (res.data.data.is_favorite == 0) {
+      if (res.data.data.fabulous == 0) {
         that.setData({
           issc: false,
           sctype: '收藏'
@@ -296,18 +299,19 @@ Page({
       user_id: app.globalData.user_id,
       lat: app.globalData.lat,
       lng: app.globalData.lng,
-      share_id: that.data.id
-    }, config.getShareDetail, (res) => {
+      need_id: that.data.id,
+      type:2
+    }, config.errDetail, (res) => {
       console.log(res)
       let myaudio = {
         src: res.data.data.media,
         time: res.data.data.time
       }
-      for (let i = 0; i < res.data.data.join.length; i++) {
-        res.data.data.join[i].distance = (res.data.data.join[i].distance / 1000).toFixed(2)
-        res.data.data.join[i].create_time = config.timeFormat(res.data.data.join[i].create_time * 1000)
-        res.data.data.join[i].duration = that.formatDuringtwo(res.data.data.join[i].time)
-      }
+      // for (let i = 0; i < res.data.data.join.length; i++) {
+      //   res.data.data.join[i].distance = (res.data.data.join[i].distance / 1000).toFixed(2)
+      //   res.data.data.join[i].create_time = config.timeFormat(res.data.data.join[i].create_time * 1000)
+      //   res.data.data.join[i].duration = that.formatDuringtwo(res.data.data.join[i].time)
+      // }
       that.setData({
         alldata: res.data.data,
         myaudio: myaudio,

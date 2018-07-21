@@ -38,6 +38,9 @@ Page({
       myheight: 'auto'
     })
   },
+  viewImg(e) {
+    config.viewImg(e.currentTarget.dataset.src)
+  },
   /**
 * 显示名片
 */

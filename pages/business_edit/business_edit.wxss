@@ -25,7 +25,6 @@ page {
   width: 209rpx;
   height: 209rpx;
   border-radius: 5rpx;
-  background-color: red;
   margin-right: 19rpx;
   display: block;
   margin-top: 19rpx;
@@ -92,6 +91,10 @@ page {
   width: 500rpx;
   height: 98rpx;
   color: RGBA(102, 102, 102, 1);
+}
+.item_iptView{
+  line-height: 98rpx;
+  color: rgba(0, 0, 0, 1);
 }
 
 .kong {

@@ -120,6 +120,8 @@ const options = {
 
   userChangeCard ='/api/portal/User/userChangeCard',
 
+  nav='/api/portal/Common/nav',
+
   gitpresent = '/api/portal/Common/present';  
 
 //获取dataset
@@ -302,6 +304,15 @@ function chooseImage(successData) {
   })
 }
 /**
+ * 封装图片预览函数
+ */
+function viewImg(imgSrc){
+  wx.previewImage({
+    current: imgSrc, // 当前显示图片的http链接
+    urls: [imgSrc] // 需要预览的图片http链接列表
+  })
+}
+/**
  * 登录
  */
 module.exports = {
@@ -370,5 +381,7 @@ module.exports = {
   imgurl: imgurl,
   getShareJoinUsers: getShareJoinUsers,
   getUserChatLog: getUserChatLog,
-  userChangeCard: userChangeCard
+  userChangeCard: userChangeCard,
+  viewImg: viewImg,
+  nav: nav
 }

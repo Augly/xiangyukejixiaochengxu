@@ -1,6 +1,5 @@
 <view class='draw_container'>
-  <image class='draw_box' src='../../img/group1@2x.png'>
+  <image class='draw_box' src='../../img/qidongye@2x.png'>
   </image>
-  <text class='draw_text'>分享生活，让彼此相遇</text>
   <button class='draw_btn' open-type="getUserInfo" bindgetuserinfo="userInfoHandler">立即进入</button>
 </view>
