@@ -1,0 +1,3 @@
+<!--pages/index/changCard/changCard.wxml-->
+<import src="../../../template/template.wxml" />
+<template is='changeCard' data="{{...changeCard}}"></template>

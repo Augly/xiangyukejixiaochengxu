@@ -194,24 +194,24 @@ Page({
   },
   goask_res(e) {
     console.log(e)
-   if(e.currentTarget.dataset.sortid=='问'){
-     wx.showToast({
-       title: '系统维护,正在升级',
-       icon: 'none',
-       mask: true,
-       success: function(res) {},
-       fail: function(res) {},
-       complete: function(res) {},
-     })
+    if (e.currentTarget.dataset.sortid =='带'){
+      wx.navigateTo({
+        url: '../index/run/run?id=' + e.currentTarget.dataset.id + '&userid=' + e.currentTarget.dataset.userid,
+      })
+     
     //  wx.navigateTo({
     //    url: '/pages/Release/ask_res/ask_res?id=' + e.currentTarget.dataset.id + '&userid=' + e.currentTarget.dataset.userid,
     //  })
    }else{
-    wx.navigateTo({
-      url: '../index/run/run?id=' + e.currentTarget.dataset.id + '&userid=' + e.currentTarget.dataset.userid,
-    })
+     wx.showToast({
+       title: '系统维护,正在升级',
+       icon: 'none',
+       mask: true,
+       success: function (res) { },
+       fail: function (res) { },
+       complete: function (res) { },
+     })
    }
-
   },
 
   //选择兴趣社名下分类

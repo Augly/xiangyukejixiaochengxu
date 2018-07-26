@@ -122,6 +122,8 @@ const options = {
 
   nav='/api/portal/Common/nav',
 
+  receipt='/api/portal/Purchase/receipt',   //我发布的跑腿详情，接单
+
   gitpresent = '/api/portal/Common/present';  
 
 //获取dataset
@@ -383,5 +385,6 @@ module.exports = {
   getUserChatLog: getUserChatLog,
   userChangeCard: userChangeCard,
   viewImg: viewImg,
-  nav: nav
+  nav: nav,
+  receipt: receipt
 }

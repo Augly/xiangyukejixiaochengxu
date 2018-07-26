@@ -8,7 +8,20 @@ App({
     qqmapsdk = new QQMapWX({
       key: '3K3BZ-L6JK4-KHXUC-XDMPY-B42S5-UPF7P'
     });
-
+    wx.connectSocket({
+      url: 'wss://xiangyu.lu.broteam.cn:9501',
+      data: '',
+      header: {
+        'content-type': 'application/json'
+      },
+      method: "GET",
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function () {
+        console.log(res)
+      }
+    })
 
     var that = this
     wx.login({

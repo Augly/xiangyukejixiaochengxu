@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/changCard/changCard",
+    "pages/test/test",
     "pages/big_Card/big_Card",
-    
     "pages/chart/chartRoom/chartRoom",
     "pages/chart/chart",
-    "pages/test/test",
     "pages/begin/begin",
     "pages/pay/pay",
     "pages/personl/sendGift/sendGift",

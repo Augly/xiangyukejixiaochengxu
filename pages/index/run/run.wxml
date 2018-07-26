@@ -50,7 +50,7 @@
       <view class='oldpush'>
         <view class='push_head'>
           <view class="line  {{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?'line_active':''}}"></view>
-          <image class="push_logo {{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?'logo_active':''}}" src="{{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?alldata.user.avatar:imgUrl}}"></image>
+          <image class="push_logo {{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?'logo_active':''}}" src="{{alldata.err.status==4||alldata.err.status==3||alldata.err.status==2?alldata.recieve.avatar:imgUrl}}"></image>
         </view>
         <view class='oldpush_title'>
             被抢啦
@@ -59,7 +59,7 @@
       <view class='oldpush'>
         <view class='push_head'>
          <view class="line  {{alldata.err.status==4||alldata.err.status==3?'line_active':''}}"></view>
-          <image class="push_logo {{alldata.err.status==4||alldata.err.status==3?'logo_active':''}}"  src="{{alldata.err.status==4||alldata.err.status==3?alldata.user.avatar:imgUrl}}"></image>
+          <image class="push_logo {{alldata.err.status==4||alldata.err.status==3?'logo_active':''}}"  src="{{alldata.err.status==4||alldata.err.status==3?alldata.recieve.avatar:imgUrl}}"></image>
         </view>
         <view class='oldpush_title'>
             已送达
@@ -68,7 +68,7 @@
       <view class='newpush'>
         <view class='push_head'>
           <view class="line  {{alldata.err.status==4?'line_active':''}}"></view>
-          <image class="push_logo {{alldata.err.status==4?'logo_active':''}}" src="{{alldata.err.status==4?alldata.user.avatar:imgUrl}}"></image>
+          <image class="push_logo {{alldata.err.status==4?'logo_active':''}}" src="{{alldata.err.status==4?alldata.recieve.avatar:imgUrl}}"></image>
         </view>
         <view class='push_title'>
             已结算

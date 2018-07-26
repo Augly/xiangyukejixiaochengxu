@@ -36,6 +36,7 @@ Page({
           recieve_id: app.globalData.formId,
           page: page
         }, config.getUserChatLog, (res) => {
+          console.log(res.data.data)
           if (res.data.data.length != 0) {
             for (var i = 0; i < res.data.data.length; i++) {
               res.data.data[i].date = config.timeFormatNotime(res.data.data[i].date)
@@ -66,9 +67,6 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
-    // config.mytoast('正在获取更多数据', (res) => {
-
-    // })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -78,6 +76,8 @@ Page({
     this.setData({
       uid: app.globalData.user_id
     })
+    concatWrap = null
+    console.log('进入聊天')
     config.ajax('POST', {
       send_id: app.globalData.user_id,
       recieve_id: app.globalData.formId,
@@ -121,95 +121,65 @@ Page({
     finally {
 
     }
-    this.toastedit = this.selectComponent("#myDialog")
-    console.log(this.toastedit)
-    var that = this
     var senddata = {
       userId: app.globalData.user_id,
       formId: app.globalData.formId
     }
-    wx.connectSocket({
-      url: 'wss://xiangyu.lu.broteam.cn:9501',
-      data: '刘朕是大傻逼！哈哈',
-      header: {
-        'content-type': 'application/json'
-      },
-      method: "GET",
-      success: function (res) {
-        console.log(res)
-        wx.onSocketOpen(function (res) {
-          console.log('WebSocket连接已打开！')
-          wx.sendSocketMessage({
-            data: JSON.stringify(senddata),
-            success: function (res) {
-              console.log(res)
+    wx.onSocketOpen(function (res) {
+      wx.sendSocketMessage({
+        data: JSON.stringify(senddata),
+        success: function (res) {
+          console.log('第一次发送111')
+        },
+        fail: function () {
+          console.log('发送失败')
+        },
+        complete: function () {
 
-              console.log('第一次发送111')
-            },
-            fail: function () {
-              console.log('发送失败')
-            },
-            complete: function () {
-              // console.log(23)
-            }
-          })
-        })
+        }
+      })
+    })
 
-        wx.onSocketMessage(function (res) {
-          console.log('收到消息')
-          console.log(res)
-          // console.log(JSON.parse(res.data))
-          console.log(concatWrap)
-          if (res.data == '' || res.data == '{"msg":"连接成功"}') {
+    wx.onSocketMessage(function (res) {
+      console.log('收到消息')
+      console.log(concatWrap)
+      if (res.data == '' || res.data == '{"msg":"连接成功"}') {
 
-          } else {
-            var alldata = that.data.loglist
-            if (concatWrap == undefined || concatWrap == null) {
-              concatWrap = {
-                date: config.timeFormatNotime(JSON.parse(res.data).create_time),
-                list: [JSON.parse(res.data)]
-              }
-              alldata.push(concatWrap)
-            } else {
-              concatWrap.list.push(JSON.parse(res.data))
-              if (alldata.length==0){
-                alldata[0] = concatWrap
-              }else{
-                alldata[alldata.length - 1] = concatWrap
-              }
-              console.log(alldata)
-            }
-            that.setData({
-              loglist: alldata,
-              myTop: alldata.length - 1,
-              myTopOne: alldata[alldata.length - 1].list.length - 1,
-              more: false
-            })
+      } else {
+        var alldata = that.data.loglist
+        if (concatWrap == undefined || concatWrap == null) {
+          concatWrap = {
+            date: config.timeFormatNotime(JSON.parse(res.data).create_time),
+            list: [JSON.parse(res.data)]
           }
-
-          // var data = JSON.parse(res.data)
-          // console.log(JSON.parse(data))
-          // console.log(JSON.parse(res.data))
-          // this.setData({
-          //   alldata: JSON.parse(res.data)
-          // })
-          // console.log('收到服务器内容：' + res.data)
+          alldata.push(concatWrap)
+        } else {
+          concatWrap.list.push(JSON.parse(res.data))
+          if (alldata.length == 0) {
+            alldata[0] = concatWrap
+          } else {
+            alldata[alldata.length - 1] = concatWrap
+          }
+        }
+        that.setData({
+          loglist: alldata,
+          myTop: alldata.length - 1,
+          myTopOne: alldata[alldata.length - 1].list.length - 1,
+          more: false
         })
-        wx.onSocketClose(function (res) {
-          console.log('WebSocket 已关闭！')
-        })
-        wx.onSocketError(function (res) {
-          console.log('WebSocket连接打开失败，请检查！')
-        })
-      },
-      fail: function () {
-        console.log(res)
       }
     })
+    wx.onSocketClose(function (res) {
+      console.log('WebSocket 已关闭！')
+    })
+    wx.onSocketError(function (res) {
+      console.log('WebSocket连接打开失败，请检查！')
+    })
+    this.toastedit = this.selectComponent("#myDialog")
+    console.log(this.toastedit)
+    var that = this
     that.setData({
-      // title: options.title,
       'adder.adder': app.globalData.adder,
-      // 'type': options.type
     });
 
     this.recorderManager = wx.getRecorderManager();
@@ -240,7 +210,6 @@ Page({
     this.setData({
       isShow: false
     })
-    console.log('点击了确认')
   },
   DialogCel() {
     console.log('点击了取消')
@@ -335,6 +304,11 @@ Page({
       formId: app.globalData.formId,
       word: e.detail.value || this.data.main
     })
+    console.log(JSON.stringify({
+      userId: app.globalData.user_id,
+      formId: app.globalData.formId,
+      word: e.detail.value || this.data.main
+    }))
     wx.sendSocketMessage({
       data: data,
       success: function (res) {
@@ -353,7 +327,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    wx.connectSocket({
+      url: 'wss://xiangyu.lu.broteam.cn:9501',
+      data:'',
+      header: {
+        'content-type': 'application/json'
+      },
+      method: "GET"
+    })
   },
 
   /**
@@ -430,7 +411,7 @@ Page({
         },
         success: function (res) {
           console.log(res)
-          var myaudio = JSON.parse(res.data).data[0].filepath
+          var myaudio = JSON.parse(res.data).data[0].preview_url
 
           var data = JSON.stringify({
             userId: app.globalData.user_id,

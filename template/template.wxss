@@ -344,6 +344,7 @@ width: 100%;
   height: 60rpx;
   position: absolute;
   bottom: 0;
+  left: 0;
   background-color: rgba(152, 97, 225, 0.6);
   font-size: 26rpx;
   font-family: PingFang-SC-Medium;
@@ -372,7 +373,6 @@ width: 100%;
   display: flex;
   align-items: center;
 }
-
 .demindname {
   font-size: 32rpx;
   font-family: PingFang-SC-Medium;
@@ -1315,7 +1315,7 @@ width: 100%;
 
 .myvideo {
   width:500rpx;
-  height: 400rpx;
+  /* height: 400rpx; */
   display: block;
   margin-left: 24rpx;
   margin-top: 24rpx;
@@ -1381,7 +1381,8 @@ width: 100%;
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url('http://xiangyu.wx.bronet.cn/images/bbg@2x.png');
+  /* background-image: url('http://xiangyu.wx.bronet.cn/images/bbg@2x.png'); */
+  /* background: red; */
   background-size: 100% 100%;
   display: flex;
   align-items: center;
@@ -1399,13 +1400,28 @@ width: 100%;
 }
 
 .mask_main {
+   left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  margin-top: -361.5rpx;
   width: 600rpx;
   height: 723rpx;
   border-radius: 50rpx;
   /* background-color: red; */
   background-image: url('http://xiangyu.wx.bronet.cn/images/bbg01@2x.png');
   background-size: 100% 100%;
-  position: relative;
+  position: absolute;
+  z-index: 1000;
+}
+.tofix{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  margin-top: -361.5rpx;
+  z-index: -10;
 }
 
 .perSonl {

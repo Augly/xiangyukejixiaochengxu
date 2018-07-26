@@ -15,8 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    myallinfo = JSON.parse(options.maadder)
-    console.log(JSON.parse(options.maadder))
+    this.setData({
+      user: options.name
+    })
   },
   /**
    *修改用户名
@@ -32,10 +33,18 @@ Page({
   submit:function(){
     var that=this;
     config.ajax('POST',{
-      user_id:id,
-      user: that.data.user
+      user_id: app.globalData.user_id,
+      user_nickname: that.data.user
     }, config.setInfo,(res)=>{
-          config.log(res)
+          if(res.data.message=='成功'){
+            config.mytoast('修改成功!',(res)=>{
+              wx.navigateBack({
+                delta: 1,
+              })
+            })
+          }
+      },(res)=>{
+
       })},
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -17,17 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    config.ajax('POST', {
-      user_id: app.globalData.user_id
-    }, config.setInfo, (res) => {
-      console.log(res.data.data)
-      myallinfo = res.data.data
-      that.setData({
-        myinfo: res.data.data,
-        
-      })
-    })
+
   },
   /**
    * 选择性别
@@ -38,7 +28,8 @@ Page({
     myallinfo.sex = e.detail.value;
     config.ajax('POST', myallinfo, config.setInfo, (res) => {
       that.setData({
-        index: e.detail.value
+        index: e.detail.value,
+        myallinfo: myallinfo
       })
     })
   },
@@ -85,7 +76,8 @@ Page({
     myallinfo.constellation =n;
     config.ajax('POST', myallinfo, config.setInfo, (res) => {
       that.setData({
-        date: e.detail.value
+        date: e.detail.value,
+        myallinfo: myallinfo
       })
     })
   },
@@ -96,7 +88,7 @@ Page({
    */
   userName: function () {
     wx.navigateTo({
-      url: '../username/username?maadder=' + JSON.stringify(this.data.myinfo),
+      url: '../username/username?name=' + this.data.myallinfo.user_nickname,
       success: function (res) { },
       fail: function (res) { },
       complete: function (res) { },
@@ -110,7 +102,8 @@ Page({
     myallinfo.live = e.detail.value[0] + '-' + e.detail.value[1] + '-' + e.detail.value[2];
     config.ajax('POST', myallinfo, config.setInfo, (res) => {
       that.setData({
-        region: e.detail.value
+        region: e.detail.value,
+        myallinfo: myallinfo
       })
     })
   },
@@ -119,7 +112,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    config.ajax('POST', {
+      user_id: app.globalData.user_id
+    }, config.setInfo, (res) => {
+      myallinfo = res.data.data
+      that.setData({
+        myallinfo: res.data.data,
+        date: res.data.data.birthday,
+        index: res.data.data.sex
+      })
+    })
   },
 
   /**

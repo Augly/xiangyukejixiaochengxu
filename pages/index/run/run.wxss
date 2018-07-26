@@ -242,7 +242,7 @@ page {
   padding: 0rpx 32rpx;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .get {

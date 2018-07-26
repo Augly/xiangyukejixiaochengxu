@@ -15,6 +15,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      id:options.id
+    })
     config.ajax('POST',{
       type:1,
       need_id:options.id,
@@ -37,8 +40,14 @@ Page({
    
   },
   tobill(){
-    config.mytoast('系统升级,正在维护',(res)=>{
+    // config.mytoast('系统升级,正在维护',(res)=>{
 
+    // })
+    wx.navigateTo({
+      url: '/pages/index/wantBill/wantBill?id='+this.data.id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
 
@@ -53,7 +62,7 @@ Page({
    */
   pl:function(){
     wx.navigateTo({
-      url: '../pl/pl',
+      url: '../pl/pl?id='+this.data.id,
     })
   },
   /**

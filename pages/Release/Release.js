@@ -167,17 +167,20 @@ Page({
       config.ajax('POST',{
         user_id: app.globalData.user_id
       }, config.checkMobile,(res)=>{
-        if(res.data.cod==2){
-          this.setData({
-            phoneMask: true
+        console.log(res)
+
+        if(res.data.codo==1){
+          wx.navigateTo({
+            url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.array[this.data.index]
           })
+         
         }else{
           // wx.navigateTo({
           //   url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.navData.need_name,
           // })
-          wx.navigateTo({
-            url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.array[this.data.index]
-            })
+          this.setData({
+            phoneMask: true
+          })
 
 
         }

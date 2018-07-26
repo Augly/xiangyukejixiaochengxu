@@ -1,1 +1,24 @@
 /* pages/test/test.wxss */
+cover-view{
+ word-break: break-all ; word-wrap: break-word ; white-space: pre-line ;
+  line-height: 50rpx;
+  overflow: auto;
+}
+.chartWrap{
+  position: relative;
+  text-indent:30px;
+  /* display: inline-block; */
+}
+.name{
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  line-height: 50rpx;
+}
+.name{
+  color: red
+}
+.chartMain{
+  color: green
+}

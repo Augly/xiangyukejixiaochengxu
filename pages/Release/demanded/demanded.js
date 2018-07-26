@@ -81,7 +81,7 @@ Page({
         value: 30
       }],
       TipIndex:0,
-      Tip_myipt:''
+      value:10
     },
     otherdemind:{
       otheript:''
@@ -139,11 +139,12 @@ Page({
   Tip_myipt:function(e){
     if (e.detail.value!=''){
       this.setData({
-        'Tip_Data.TipIndex':-1
+        'Tip_Data.value': e.detail.value,
+        'Tip_Data.TipIndex': -1
       })
+
     }else{
       this.setData({
-        'Tip_Data.Tip_myipt': e.detail.value,
         'Tip_Data.TipIndex': 0
       })
     }
@@ -650,13 +651,13 @@ Page({
               wx.showLoading({
                 title: '发布中',
               })
-              let price = ''
-              if (that.data.Tip_Data.Tip_myipt == '') {
-                price = that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value
-              } else {
+          let price = that.data.Tip_Data.value
+              // if (that.data.Tip_Data.Tip_myipt == '') {
+              //   price = that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value
+              // } else {
                
-                price = that.data.Tip_Data.Tip_myipt
-              }
+              //   price = that.data.Tip_Data.Tip_myipt
+              // }
               if (that.data.rundata.otherdemind == '') {
                 wx.showModal({
                   title: '提示',
@@ -684,25 +685,27 @@ Page({
                 address: that.data.sendAdder,
                 lat: app.globalData.lat,
                 lng: app.globalData.lng,
-                price: that.data.Tip_Data.Tip_Arr[that.data.Tip_Data.TipIndex].value,
+                price: that.data.Tip_Data.value,
                 position: that.data.adder.adder,
               }
               console.log(22)
               config.ajax("POST", param, config.send, (res) => {
-                //ajax访问成功函数
-                wx.showToast({
-                  title: '发布跑腿成功',
-                  icon: 'none',
-                  mask: true,
-                  success: () => {
-                    setTimeout(() => {
-                      wx.switchTab({
-                        url: '/pages/begin/begin',
-                      })
-                    }, 2000)
-                  }
-                })
                 console.log(res)
+                config.pay(res,(res)=>{
+                  wx.showToast({
+                    title: '发布跑腿成功',
+                    icon: 'none',
+                    mask: true,
+                    success: () => {
+                      setTimeout(() => {
+                        wx.switchTab({
+                          url: '/pages/begin/begin',
+                        })
+                      }, 2000)
+                    }
+                  })
+                })
+                //ajax访问成功函数
                 clearInterval(ti)
                 wx.hideLoading()
 
@@ -711,8 +714,6 @@ Page({
               }, (res) => {
                 //不管成功与否都调用函数
               });
-            
-          
         }
       }, 1000)
     }else{

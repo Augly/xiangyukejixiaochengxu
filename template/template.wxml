@@ -259,7 +259,7 @@
 <!--添加视频展示模块儿-->
 <template name="myvideo">
   <view class='myvideo' style="z-index:10;">
-    <video class='myvideo' style='margin:0;' requestFullScreen objectFit="cover" controls="{{controls}}" src='{{videoSrc}}'></video>
+    <video class='myvideo' style='margin:0;'  src='{{videoSrc}}' bindtap='videoPlay'   direction='0' objectFit='fill' bindfullscreenchange='isScreenchange'></video>
   </view>
 </template>
 <!--添加图片展示模块儿-->
@@ -525,7 +525,7 @@
       </view>
 
       <view class='myvideo' style="z-index:10;margin-left:0" wx:if="{{item.video!=''}}">
-        <video class='myvideo' style='margin:0;' objectFit="cover" controls="{{controls}}" src='{{item.video}}'></video>
+        <video class='myvideo' style='margin:0;' bindtap='videoPlay'   direction='0' objectFit='fill' bindfullscreenchange='isScreenchange' src='{{item.video}}'></video>
       </view>
 
 

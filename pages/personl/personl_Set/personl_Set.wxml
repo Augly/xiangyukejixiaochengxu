@@ -9,14 +9,16 @@
 <view class='myzl'>
   <view class='myzl_item' bindtap='userName'>
     <view class='myzl_item_title'>用户名</view>
-    <view class='myzl_item_mintitle'>向昱筱</view>
+    <view class='myzl_item_mintitle'>{{myallinfo.user_nickname
+}}</view>
     <text class='iconfont icon-bangzhujinru'></text>
   </view>
 
 <picker mode="date" value="{{date}}" start="" end="" bindchange="bindDate">
     <view class='myzl_item'>
     <view class='myzl_item_title'>出生年月</view>
-    <view class='myzl_item_mintitle'>{{date}}</view>
+    <view class='myzl_item_mintitle'>{{myallinfo.birthday
+}}</view>
     <text class='iconfont icon-bangzhujinru'></text>
   </view>
 
@@ -35,7 +37,7 @@
   <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
     <view class='myzl_item'>
       <view class='myzl_item_title'>当前位置</view>
-      <view class='myzl_item_mintitle'>{{region[0]}}-{{region[1]}}-{{region[2]}}</view>
+      <view class='myzl_item_mintitle'>{{myallinfo.live}}</view>
       <text class='iconfont icon-bangzhujinru'></text>
     </view>
     </picker>

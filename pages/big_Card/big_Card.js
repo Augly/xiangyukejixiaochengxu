@@ -91,7 +91,7 @@ Page({
 */
   gift_shop: function () {
     wx.navigateTo({
-      url: '../../personl/gift_Shop/gift_Shop'
+      url: '/pages/personl/gift_Shop/gift_Shop'
     })
   },
 

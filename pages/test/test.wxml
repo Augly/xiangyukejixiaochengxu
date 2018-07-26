@@ -1,6 +1,3 @@
-<view>
-  <button bindtap='test'>测试</button>
-  <input bindinput='ipt'></input>
-  <button bindtap='send'>发送</button>
-  <view>11</view>
-</view>
+<cover-view class='chartWrap'>
+  <cover-view class='name'>你好:</cover-view>给爷爷笑一个给爷爷笑一个给爷爷笑一个给爷爷笑一个给爷爷笑一个给爷爷笑一个给爷爷笑一个
+</cover-view>

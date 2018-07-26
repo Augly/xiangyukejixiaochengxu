@@ -31,8 +31,40 @@ Page({
       selectIndex: '0',
       myindex: '0'
     },
+    playIndex:null,
   },
-
+  /**
+     * 播放视频
+     */
+  videoPlay(e) {
+    if (!this.data.playIndex) { // 没有播放时播放视频
+      this.setData({
+        playIndex: e.currentTarget.id,
+      })
+      var videoContext = wx.createVideoContext(this.data.playIndex, this)
+      videoContext.requestFullScreen()
+      videoContext.play()
+    } else {                    // 有播放时先将prev暂停到0s，再播放当前点击的current
+      var videoContextPrev = wx.createVideoContext(this.data.playIndex, this)
+      videoContextPrev.seek(0)
+      videoContextPrev.pause()
+      this.setData({
+        playIndex: e.currentTarget.id,
+      })
+      var videoContextCurrent = wx.createVideoContext(this.data.playIndex, this)
+      videoContextCurrent.requestFullScreen()
+      videoContextCurrent.play()
+    }
+  },
+  /**
+   * 检测退出全屏时
+   */
+  isScreenchange(e) {
+    if (!e.detail.fullScreen) {
+      var videoContext = wx.createVideoContext(this.data.playIndex, this)
+      videoContext.pause()
+    }
+  },
   lookmore: function () {
     this.setData({
       myheight: 'auto'
@@ -45,19 +77,12 @@ Page({
 * 显示名片
 */
   showCard: function (event) {
-    console.log(config.getDataset(event, 'userid'))
-    config.ajax('POST', {
-      user_id: app.globalData.user_id,
-      send_id: config.getDataset(event, 'userid')
-    }, config.userCard, (res) => {
-      console.log(res)
-      console.log(res.data.data[0])
-      this.setData({
-        'changeCard.changeCard': true,
-        'changeCard.data': res.data.data[0]
-      })
+    wx.navigateTo({
+      url: '/pages/index/changCard/changCard?senid=' + config.getDataset(event, 'userid'),
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
     })
-
   },
   push_active:function(){
     wx.navigateTo({
@@ -202,12 +227,9 @@ Page({
           gztype: '已关注'
         })
       }
-      console.log(res.data.data)
       that.setData({
+        interest_id: options.id,
         alldata: res.data.data,
-      })
-      console.log(res.data.data)
-      that.setData({
         interestData: res.data.data,
         id: res.data.data.id,
         user_id: res.data.data.user_id
@@ -216,7 +238,6 @@ Page({
     config.ajax('POST', {
       user_id: app.globalData.user_id,
     }, config.gitpresent, (res) => {
-      console.log(res)
       that.setData({
         'giftGroup.GiftData': res.data.data[0]
       })
@@ -471,7 +492,53 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    if (that.data.interest_id){
+      config.ajax('POST', {
+        user_id: app.globalData.user_id,
+        interest_id: options.id,
+        lat: app.globalData.lat,
+        lng: app.globalData.lng
+      }, config.interest, (res) => {
+        console.log(res)
+        for (let i = 0; i < res.data.data.join.length; i++) {
+          res.data.data.join[i].distance = (res.data.data.join[i].distance / 1000).toFixed(2)
+          res.data.data.join[i].create_time = config.timeFormat(res.data.data.join[i].create_time * 1000)
+          res.data.data.join[i].duration = that.formatDuringtwo(res.data.data.join[i].time)
+        }
+        if (res.data.data.is_favorite == 0) {
+          that.setData({
+            sctype: '收藏',
+          })
+        } else {
+          that.setData({
+            sctype: '已收藏',
+          })
+        }
+        if (res.data.data.is_concern == 0) {
+          that.setData({
+            gztype: '关注'
+          })
+        } else {
+          that.setData({
+            gztype: '已关注'
+          })
+        }
+        that.setData({
+          alldata: res.data.data,
+          interestData: res.data.data,
+          id: res.data.data.id,
+          user_id: res.data.data.user_id
+        })
+      })
+      config.ajax('POST', {
+        user_id: app.globalData.user_id,
+      }, config.gitpresent, (res) => {
+        that.setData({
+          'giftGroup.GiftData': res.data.data[0]
+        })
+      })
+    }
   },
 
   /**

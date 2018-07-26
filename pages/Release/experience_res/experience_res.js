@@ -28,13 +28,47 @@ Page({
       changeCard: false
     },
     searchValue: '',
-    joinList: []
+    joinList: [],
+    //增加视频播放
+    playIndex:null
   },
   /**
    * wp
    */
   wp() {
 
+  },
+  /**
+   * 播放视频
+   */
+  videoPlay(e){
+    if (!this.data.playIndex) { // 没有播放时播放视频
+      this.setData({
+        playIndex: e.currentTarget.id,
+      })
+      var videoContext = wx.createVideoContext(this.data.playIndex, this)
+      videoContext.requestFullScreen()
+      videoContext.play()
+    } else {                    // 有播放时先将prev暂停到0s，再播放当前点击的current
+      var videoContextPrev = wx.createVideoContext(this.data.playIndex, this)
+      videoContextPrev.seek(0)
+      videoContextPrev.pause()
+      this.setData({
+        playIndex: e.currentTarget.id,
+      })
+      var videoContextCurrent = wx.createVideoContext(this.data.playIndex, this)
+      videoContextCurrent.requestFullScreen()
+      videoContextCurrent.play()
+    }
+  },
+  /**
+   * 检测退出全屏时
+   */
+  isScreenchange(e){
+    if (!e.detail.fullScreen){
+      var videoContext = wx.createVideoContext(this.data.playIndex, this)
+      videoContext.pause()
+    }
   },
   /**
    * 搜索
@@ -71,19 +105,12 @@ Page({
  * 显示名片
  */
    showCard: function (event) {
-    console.log(config.getDataset(event, 'userid'))
-    config.ajax('POST', {
-      user_id: app.globalData.user_id,
-      send_id: config.getDataset(event, 'userid')
-    }, config.userCard, (res) => {
-      console.log(res)
-      console.log(res.data.data[0])
-      this.setData({
-        'changeCard.changeCard': true,
-        'changeCard.data': res.data.data[0]
-      })
+    wx.navigateTo({
+      url: '/pages/index/changCard/changCard?senid=' + config.getDataset(event, 'userid'),
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
     })
-
   },
 
   /**
@@ -133,14 +160,7 @@ Page({
       'giftGroup.GiftData': allData
     })
   },
-  /**
-   * 关闭名片按钮
-   */
-  cendelChangeCard: function () {
-    this.setData({
-      'changeCard.changeCard': false
-    })
-  },
+
   /**
    * * 输入框获得焦点 
    */
