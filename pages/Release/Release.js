@@ -169,15 +169,12 @@ Page({
       }, config.checkMobile,(res)=>{
         console.log(res)
 
-        if(res.data.codo==1){
+        if(res.data.code==1){
           wx.navigateTo({
             url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.array[this.data.index]
           })
          
         }else{
-          // wx.navigateTo({
-          //   url: 'demanded/demanded?title=' + this.data.title + '&type=' + this.data.navData.need_name,
-          // })
           this.setData({
             phoneMask: true
           })
